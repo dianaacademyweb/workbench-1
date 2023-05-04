@@ -1,0 +1,25 @@
+# .gitignore
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Django secret key
+*.secret
+
+# Database file
+db.sqlite3
+
+# Virtual Environment
+venv/
+.env/
+.env
+env/
+
+# Media files
+media/
+.creatorai/
