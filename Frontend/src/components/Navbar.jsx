@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import {Link} from 'react-router-dom'
+import AuthContext from '../context/AuthContext'
 
-function Navbar() {
+function Navbar()  {
+  let {user} = useContext(AuthContext)
   return (
     <div>
-      <h1 className='text-black'> this is the navigation bar </h1>
+      <Link to="/" >Home   </Link>
+
+      <span>!</span>
+
+      
+      <Link to= "/dashboard">Dashboard</Link>
+      <span> | </span>
+      {user ? ( 
+        <p>logout</p>
+
+      ):(
+        <Link to= "/login">Login </Link>
+      )
+      
+    }
+      {user && <p>hello {user.username}</p> }
+      
     </div>
   )
 }

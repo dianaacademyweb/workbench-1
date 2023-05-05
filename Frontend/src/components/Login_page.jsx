@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../context/AuthContext";
 
 function Login_page() {
+  let {loginUser}=useContext(AuthContext)
   const [registrationType, setRegistrationType] = useState("employee");
   return (
     <div className=" px-36 py-8 bg-gray-200 h-fit ">
@@ -40,9 +42,12 @@ function Login_page() {
       {registrationType === "employee" && (
         <div className=" grid grid-cols-1 grid-flow-row justify-center text-white pt-8 py-8 ">
           <h1 className="text-3xl flex justify-center pt-8">Company login</h1>
-          <div class="px-8 ">
-            <form>
-              <div className="mb-4">
+          <div className="px-8 ">
+            <form onSubmit={loginUser}> 
+            <input type="text" name="username" placeholder="Enter username" className="text-black" />
+            <input type="password" name="password" placeholder="enter the password"  className="text-black"/>
+            <input type="submit" />
+              {/* <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   for="username"
@@ -53,6 +58,7 @@ function Login_page() {
                   type="text"
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="username"
+                  name = "username"
                   placeholder="Username"
                 />
               </div>
@@ -64,10 +70,10 @@ function Login_page() {
                   Password
                 </label>
                 <input
-                  classNameName="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
+                  className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                   type="password"
                   placeholder="******************"
+                  name="password"
                 />
                 <p className="text-red-500 text-xs italic">
                   Please choose a password.
@@ -76,28 +82,27 @@ function Login_page() {
               <div className="flex items-center justify-between">
                 <button
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
+                  type="submit"                >
                   Sign In as company Owner
                 </button>
                 <a
-                  class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                   href="#"
                 >
                   Forgot Password?
                 </a>
-              </div>
+              </div> */}
             </form>
-            <p class="text-center text-gray-500 text-xs"></p>
+            <p className="text-center text-gray-500 text-xs"></p>
           </div>
         </div>
       )}
        {registrationType === "manager" && (
         <div className=" grid grid-cols-1 grid-flow-row justify-center text-white pt-8 py-8  px-8">
           <h1 className="text-3xl flex justify-center pt-8">Manager login</h1>
-          <div class="px-8 ">
+          <div className="px-8 ">
             <form>
-            <div className="mb-4">
+            {/* <div className="mb-4">
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   for="username"
@@ -150,25 +155,24 @@ function Login_page() {
                   Sign In as companyOwner
                 </button>
                 <a
-                  class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                   href="#"
                 >
                   Forgot Password?
                 </a>
-              </div>
+              </div> */}
             </form>
-            <p class="text-center text-gray-500 text-xs"></p>
+            <p className="text-center text-gray-500 text-xs"></p>
           </div>
         </div>
       )}
       {registrationType === "companyOwner" && (
         <div className=" grid grid-cols-1 grid-flow-row justify-center text-white pt-8 ">
           <h1 className="text-3xl flex justify-center pt-8 ">Employe login</h1>
-          <div class="px-8 ">
+          <div className="px-8 ">
             <form>
-            <label
+            {/* <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
                 >
                   Company code 
                 </label>
@@ -217,12 +221,12 @@ function Login_page() {
                   Sign In as emplyee
                 </button>
                 <a
-                  class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
                   href="#"
                 >
                   Forgot Password?
                 </a>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>
