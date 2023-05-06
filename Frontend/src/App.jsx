@@ -5,20 +5,24 @@ import styles from "../Style";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/DashBoard/Dasboard";
-import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
   return (
     <div className="App ">
       <BrowserRouter>
         <AuthProvider>
-          <Navbar />
-          <Routes>
+        <Navbar />
+          <Routes> 
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Login_page />} />
-          <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-            <Route  path="*" element={<NotFound />} />
+          <Route element={<PrivateRoutes/>}>
+          <Route element ={<Dashboard/>} path="/dashboard" exact/>
+          </Route>
+          
+          <Route  path="*" element={<NotFound />} />
           </Routes>
+          
         </AuthProvider>
       </BrowserRouter>
       <div className=" w-full overflow-hidden " id="Home">
