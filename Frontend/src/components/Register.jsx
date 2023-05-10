@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import { Navigate } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 function Register() {
   // const [agreement, setAgremment] = useState(true);
   const [firstName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(undefined);
   // const [buttonText, setButtonText] = useState("Sign up");
   const register = async (event) => {
     if (event) {
@@ -43,7 +44,7 @@ function Register() {
     }
   };
   return (
-    <div>
+    <div className='mt-28'>
       <form action="POST">
       <label htmlFor="Username"></label>
       <input  placeholder='Name' type="text" name='username' onChange={(event) => {

@@ -8,5 +8,4 @@ function Dasboard() {
     </div>
   )
 }
-
 export default Dasboard
