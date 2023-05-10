@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import {Link} from 'react-router-dom'
-import AuthContext from '../context/AuthContext'
+import {useAuth} from '../context/AuthContext'
 
 function Navbar()  {
-  let {user, logoutUser} = useContext(AuthContext)
+  let {user, logoutUser} = useAuth()
   return (
       <div>
         <nav className="bg-black-gradient w-full flex py-3  ms:auto items-center fixed px-10 navbar top-0 left-0 z-50">
@@ -15,6 +15,9 @@ function Navbar()  {
          <span> <span></span></span>
          <li className="font-poppins font-normal cursor-pointer text-[16px]  text-white px-5 py-5">
          <Link to= "/dashboard">Dashboard</Link>
+         </li>
+         <li className="font-poppins font-normal cursor-pointer text-[16px]  text-white px-5 py-5">
+         <Link to= "/Register">Register</Link>
          </li>
          <span> <span></span></span>
          <li className="font-poppins font-normal cursor-pointer text-[16px] text-white px-5 py-5 ">

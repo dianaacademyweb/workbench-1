@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "workbench",
+			"path": ".."
+		},
+		{
+			"name": "api",
+			"path": "../../../../../../Downloads/django-react-soft-dashboard/django-api/api"
+		}
+	],
+	"settings": {}
+}

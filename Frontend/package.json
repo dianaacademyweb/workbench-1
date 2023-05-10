@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "framer-motion": "^9.0.4",
     "jwt-decode": "^3.1.2",
     "pure-react-carousel": "^1.30.1",

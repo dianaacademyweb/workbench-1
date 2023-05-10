@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
-import AuthContext from "../../context/AuthContext";
+import React, { useState } from "react";
+import {useAuth} from "../../context/AuthContext";
 
 function Login_page() {
-  let { loginUser } = useContext(AuthContext);
   const [registrationType, setRegistrationType] = useState("employee");
   return (
     <div className=" px-36 py-8 bg-gray-200 h-fit mt-32 ">
@@ -35,7 +34,7 @@ function Login_page() {
           <div className=" grid grid-cols-1 grid-flow-row justify-center text-white pt-8 py-8 ">
             <h1 className="text-3xl flex justify-center pt-8">Company login</h1>
             <div className="px-8 ">
-              <form onSubmit={loginUser}>
+              <form >
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
                   for="username"

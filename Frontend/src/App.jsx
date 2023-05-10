@@ -5,6 +5,7 @@ import styles from "../Style";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./components/DashBoard/Dasboard";
+import Register from "./components/Register";
 import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes> 
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Login_page />} />
+          <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
           <Route element ={<Dashboard/>} path="/dashboard" exact/>
           </Route>
