@@ -1,8 +1,60 @@
 import React, { useState } from "react";
 import {useAuth} from "../../context/AuthContext";
+import { Link } from "react-router-dom";
+import AuthApi from "../../auth/auth"
+import { Navigate } from "react-router-dom";
 
 function Login_page() {
+  const { setUser } = useAuth();
+  const { user } = useAuth();
+  const[email , setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(undefined);
+  const [buttonText, setButtonText] = useState("Sign in");
   const [registrationType, setRegistrationType] = useState("employee");
+  
+  const login = async (event) => {
+    if (event) {
+      event.preventDefault();
+    }
+    if (user && user.token) {
+      return Navigate("/dashboard");
+    }
+    if (email === "") {
+      return setError("You must enter your email.");
+    }
+    if (password === "") {
+      return setError("You must enter your password");
+    }
+    setButtonText("Signing in");
+    try {
+      let response = await AuthApi.Login({
+        email,
+        password,
+      });
+      if (response.data && response.data.success === false) {
+        return setError(response.data.msg);
+      }
+      return setProfile(response);
+    } catch (err) {
+      console.log(err);
+      setButtonText("Sign in");
+      if (err.response) {
+        return setError(err.response.data.msg);
+      }
+      return setError("There has been an error.");
+    }
+  };
+
+  const setProfile = async (response) => {
+    let user = { ...response.data.user };
+    user.token = response.data.token;
+    user = JSON.stringify(user);
+    setUser(user);
+    localStorage.setItem("user", user);
+    return Navigate("/dashboard")
+
+  };
   return (
     <div className=" px-36 py-8 bg-gray-200 h-fit mt-32 ">
       <div className=" grid grid-cols-2 justify-center  bg-primary gap-4  h-[500px] shadow-2xl rounded-2xl ">
@@ -13,7 +65,7 @@ function Login_page() {
             <div className=" flex  justify-center mt-8 mb-8  ">
               <button
                 onClick={() => setRegistrationType("employee")}
-                className=" bg-gray-500 hover:bg-gray-700 text-white font-bold w-32 h-16 rounded"
+                className=" bg-gray-500 hover:bg-gray-700 text-white font-bold w-[200px] h-16  rounded"
               >
                 Login as Company
               </button>
@@ -21,7 +73,7 @@ function Login_page() {
             <div className="flex justify-center">
               <button
                 onClick={() => setRegistrationType("companyOwner")}
-                className=" bg-gray-500 hover:bg-gray-700 text-white font-bold rounded w-32 h-16"
+                className=" bg-gray-500 hover:bg-gray-700 text-white font-bold rounded w-[200px] h-16"
               >
                 Login as Employe
               </button>
@@ -37,77 +89,49 @@ function Login_page() {
               <form >
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                ></label>
+                > Enter Your Email</label>
                 <input
+                   onChange={(event) => {
+                  setEmail(event.target.value);
+                  setError(undefined);
+                   }}
                   type="text"
-                  name="username"
+                  value={email}
+                  name="Email"
                   placeholder="Enter username"
                   className=" text-black shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <label
                   className="block text-gray-700 text-sm font-bold mb-2"
-                  for="password"
                 ></label>
-                <input
+                <input onChange={(event) => {
+                 setPassword(event.target.value);
+                 setError(undefined);
+              }}
+                  name = "password"
                   type="password"
-                  name="password"
+                  value={password}
                   placeholder="enter the password"
                   className="text-black shadow appearance-none border border-red-500 rounded w-full py-2 px-3  mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 />
                 <p className="text-white text-xs italic py-2">
                   Please choose a password.
                 </p>
-                <input
-                  type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                />
+                <button type="submit" onClick={login} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                 {buttonText}
+                </button>
+                <h1>{error}</h1>
+
+                
                 <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 float-right mr-8">
                   Forgot Password?
                 </a>
                 <p className=" py-5 px-5 flex justify-center items-center">
                   {" "}
-                  Not a user ?{" "}
-                  <span className="flex">
-                    {" "}
-                    <a href="" className="text-white text-lg">
-                      {" "}
-                      create acount{" "}
-                    </a>
-                  </span>
+                  Don&apos;t have an account?{" "}
+                  <button className="rounded px-3 py-2 bg-white mx-5"> <Link to = "/register"> register</Link></button>
+                  
                 </p>
-                {/* <div className="mb-4"></span> 
-                
-                  Username
-                </label>
-                <input
-                  type="text"
-                 
-                  id="username"
-                  name = "username"
-                  placeholder="Username"
-                />
-              </div>
-              <div className="mb-6">
-                
-                  Password
-                </label>
-                <input
-                  className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  type="password"
-                  placeholder="******************"
-                  name="password"
-                />
-               
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"                >
-                  Sign In as company Owner
-                </button>
-                
-              </div> */}
               </form>
               <p className="text-center text-gray-500 text-xs"></p>
             </div>
@@ -120,62 +144,6 @@ function Login_page() {
             </h1>
             <div className="px-8 ">
               <form>
-                {/* <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                >
-                  Company code 
-                </label>
-                <input
-                  type="text"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  placeholder="Zxc05 "
-                />
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  for="username"
-                >
-                  Username
-                </label>
-                <input
-                  type="text"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  id="username"
-                  placeholder="Username"
-                />
-              </div>
-              <div className="mb-6">
-                <label
-                  className="block text-gray-700 text-sm font-bold mb-2"
-                  for="password"
-                >
-                  Password
-                </label>
-                <input
-                  classNameName="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                  id="password"
-                  type="password"
-                  placeholder="******************"
-                />
-                <p className="text-red-500 text-xs italic">
-                  Please choose a password.
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <button
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                  type="button"
-                >
-                  Sign In as emplyee
-                </button>
-                <a
-                  className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-                  href="#"
-                >
-                  Forgot Password?
-                </a>
-              </div> */}
               </form>
             </div>
           </div>

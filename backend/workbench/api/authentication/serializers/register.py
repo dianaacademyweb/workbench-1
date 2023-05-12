@@ -11,7 +11,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "password", "email", "is_active", "date"]
+        fields = ["id", "username", "email",  "password", "is_active", "date"]
 
     def validate_username(self, value):
         try:
