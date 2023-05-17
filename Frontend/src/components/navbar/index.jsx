@@ -1,26 +1,33 @@
 import React from 'react'
 import Dropdown from '../../components/dropdown/index'
 import { FiAlignJustify } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import {useAuth} from '../../context/AuthContext'
-import Logout from '../LoginPage/logout';
 import avatar from '../../assets/Images/avatars/avatar10.png'
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import {
   IoMdNotificationsOutline,
   IoMdInformationCircleOutline,
 } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = (props) => {
   const {onopenSidenav, brandtext}= props;
-  const {user}= useAuth()
+  let {user}= useAuth()
+  const {setUser}= useAuth()
   // const { onOpenSidenav, brandText } = props;
 const [darkmode, setDarkmode] = React.useState(false);
+const Logout = async()=>{
+  // await AuthApi.Logout(user);
+  await setUser(null);
+  localStorage.removeItem("user");
+  return <Navigate to= "/login"/>
+}
   return (
-    <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
+    <nav className="fixed w-[1200px] top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
       <div className="ml-[6px]">
         <div className="h-6 w-[224px] pt-1">
           <a
@@ -33,11 +40,13 @@ const [darkmode, setDarkmode] = React.useState(false);
               /{" "}
             </span>
           </a>
+          <ul>
+          </ul>
           <Link
             className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-white dark:hover:text-white"
             to="/"
           >
-          {brandtext}
+          
           </Link>
         </div>
         <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white">
@@ -204,7 +213,8 @@ const [darkmode, setDarkmode] = React.useState(false);
                   href=" "
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
-                  Profile Settings
+                  <Link to="/profile">Profile Settings</Link>
+                  
                 </a>
                 <a
                   href=" "
@@ -216,14 +226,8 @@ const [darkmode, setDarkmode] = React.useState(false);
                   href=" "
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
-                    {user ? ( 
-        <p onClick={Logout}>Logout</p>
-
-      ):(
-        <Link to= "/login">Login </Link>
-      )
-      
-    }
+                   
+                   <button onClick={Logout}>Logout</button>
                 </a>
               </div>
             </div>

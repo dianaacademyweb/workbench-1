@@ -8,6 +8,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dash from './layouts/admin/Dash'
 import Register from "./components/Register";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import ProfilePage from "./components/profile/Profilepage";
+import UpdateProfile from "./components/profile/UpdateProfile";
+import Profile from "./components/profile/Profile";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -22,7 +25,14 @@ function App() {
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
           <Route element ={<Dash/>} path="/dashboard"/>
+          <Route path="/Profile" element={<Profile/>}>
+            <Route index element={<ProfilePage/>}/>
+            <Route path="profilepage" element={<ProfilePage/>}/>
+            <Route path="Updateprofile" element={<UpdateProfile/>}></Route>
           </Route>
+
+          </Route>
+         
           
           <Route  path="*" element={<NotFound />} />
           </Routes>

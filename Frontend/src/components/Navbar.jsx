@@ -6,8 +6,7 @@ import Logout from './LoginPage/logout'
 function Navbar()  {
  const {user} = useAuth();
   return (
-      <div>
-        <nav className="bg-black-gradient w-full flex py-3  ms:auto items-center fixed px-10 navbar top-0 left-0 z-50">
+        <nav className=" top-2 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-[#1b33bb4d]">
         <img src="" alt="WorkWarden" className="w-[100px] h-[px] text-white"  />
         <ul className="list-none sm:flex hidden justify-center items-center flex-1">
          <li className="font-poppins font-normal cursor-pointer text-[16px] text-white px-5 py-5">
@@ -32,7 +31,6 @@ function Navbar()  {
 
         </ul>
       </nav>
-      </div>
   )
 }
 

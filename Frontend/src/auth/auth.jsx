@@ -10,7 +10,9 @@ class AuthApi {
   };
 
   static Logout = (data) => {
-    return axios.post(`${base}/logout`, data, { headers: { Authorization: `${data.token}` } });
+    console.log("hello i m  here");
+    return axios.post(`${base}/logout`, data);
+    
   };
 }
 

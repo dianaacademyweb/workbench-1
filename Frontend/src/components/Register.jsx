@@ -46,6 +46,7 @@ function Register() {
   };
   return (
     <div className='mt-28'>
+      
       <h1 className=' text-3xl flex justify-center align-center'>Register here</h1>
       <form action="POST">
       <label htmlFor="Username"> Username</label>

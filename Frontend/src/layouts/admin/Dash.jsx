@@ -3,6 +3,8 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/index";
 import Navbar from "../../components/navbar/index";
 import { useAuth } from "../../context/AuthContext";
+import ScreenshotsRow from '../../components/DashBoard/Screen';
+import Employe from "../../components/DashBoard/Employelist";
 
 function Dash() {
   let {user}= useAuth()
@@ -23,13 +25,15 @@ function Dash() {
           <Navbar
               onOpenSidenav={() => setOpen(true)}
               logoText={"data"}
+              // {...rest}
             />
           </div>
 
         </main>
-        <div className=" mt-[50px] mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]">
-        <h1 className='text-4xl text-navy-700 flex justify-center  dark:text-white dark:hover:text-white'>Work warden </h1>
-     <h1 className=' mt-5 text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white'> this is the dashboard of {user && <p> {user.username}</p> }</h1>
+        <div className=" mt-[120px] mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]">
+        <h1 className=' text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
+     <ScreenshotsRow/>
+     <Employe/>
      <div className='mt-[500px]'> hello </div>
      <div className='mt-[600px]'>2nd part</div>
           {/* Routes */}

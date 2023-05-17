@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import {useAuth} from '../context/AuthContext'
-import Navbar from '../components/navbar/index'
+import Navbar from '../components/Navbar'
 
 function Home() {
   
