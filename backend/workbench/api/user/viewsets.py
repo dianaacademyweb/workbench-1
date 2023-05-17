@@ -5,7 +5,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from rest_framework import mixins
-
+from rest_framework.permissions import AllowAny
+from api.user.serializers import RegisterSerializer
 
 class UserViewSet(
     viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.UpdateModelMixin
@@ -39,3 +40,27 @@ class UserViewSet(
         self.update(request)
 
         return Response({"success": True}, status.HTTP_200_OK)
+
+
+
+
+class RegisterViewSet(viewsets.ModelViewSet):
+    http_method_names = ["post"]
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+
+        return Response(
+            {
+                "success": True,
+                "userID": user.id,
+                "msg": "The user was successfully registered",
+            },
+            status=status.HTTP_201_CREATED,
+        )    
+               

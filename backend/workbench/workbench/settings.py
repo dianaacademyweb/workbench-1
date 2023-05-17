@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django_rename_app',
     "api",
     "api.user",
-    "api.authentication",
     "api.dashboard",
 ]
 
