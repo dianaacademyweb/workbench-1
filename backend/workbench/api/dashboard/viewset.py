@@ -1,5 +1,4 @@
 from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated , IsAdminUser
 from rest_framework import viewsets, status
 from rest_framework.status import HTTP_401_UNAUTHORIZED
 from api.dashboard.serializers import  ProfileSerializer
@@ -7,8 +6,8 @@ from api.dashboard.models import Organization
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project
-from .serializers import ProjectSerializer
+from .models import Project, Employe
+from .serializers import ProjectSerializer , EmployeSerializer
 from rest_framework import generics
 
 class IsEmployeePermission(BasePermission):
@@ -57,6 +56,34 @@ class ProjectAPIView(generics.ListAPIView):
     permission_classes =[IsOrganizationPermission]
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    
+    
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employe.objects.all()
+    serializer_class = EmployeSerializer
+    
+    # def create_user(self , email, username, user_type , password = None, **Kwargs ):
+    #     if password is None:
+    #         raise TypeError("Superusers must have a password.")
+    #     if username is None:
+    #         raise TypeError("Users must have a username.")
+    #     if email is None:
+    #         raise TypeError("Users must have an email.")
+    #     user = self.model(username=username, user_type=user_type, email=self.normalize_email(email))
+    #     user.set_password(password)
+    #     user.save(using=self._db)
+        
+    #     return user
+
+        
+        
+        
+    
+    
+    
+    
+    
+     
     
             
                 

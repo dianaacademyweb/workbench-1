@@ -1,7 +1,7 @@
 
 from django.urls import path, include
 from django.contrib import admin
-from api.dashboard.viewset import ProjectAPIView
+from api.dashboard.viewset import ProjectAPIView , EmployeeViewSet
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from api.dashboard.models import Organization
 from rest_framework.exceptions import ValidationError
-from .models import Project
+from .models import Project , Employe
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -18,6 +18,14 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = '__all__'        
     
+    
+class EmployeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Employe
+        fields = '__all__'
+        
+    
+        
         
         
 

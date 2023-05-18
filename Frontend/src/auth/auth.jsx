@@ -2,7 +2,7 @@ import axios from "./index";
 
 class AuthApi {
   static Login = (data) => {
-    return axios.post(`${base}/login`, data);
+    return axios.post(`/token/`, data);
   };
 
   static Register = (data) => {
