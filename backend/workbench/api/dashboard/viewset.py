@@ -7,6 +7,9 @@ from api.dashboard.models import Organization
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
+from .models import Project
+from .serializers import ProjectSerializer
+from rest_framework import generics
 
 class IsEmployeePermission(BasePermission):
     def has_permission(self, request, view):
@@ -48,6 +51,14 @@ class OrganizationAPIView(APIView):
         serializer = ProfileSerializer(organizations, many=True, fields=('name', 'email', 'website'))
         return Response(serializer.data)         
         
+        
+class ProjectAPIView(generics.ListAPIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
+    
+            
                 
         
         

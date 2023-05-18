@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
-    'django_rename_app',
+    "django_rename_app",
+    "django_extensions",
     "api",
     "api.user",
     "api.dashboard",
@@ -196,3 +197,12 @@ CORS_ALLOW_HEADERS = (
     # ...
 )
 AUTH_USER_MODEL = "api_user.User"
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
+
+GRAPH_MODELS = {
+  'app_labels': ["api.user", "dashboard", "rest_framework_simplejwt"],
+}

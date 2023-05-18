@@ -6,14 +6,14 @@ from api.user.models import User
 
 
 class Organization(models.Model):
-    user_type = models.ForeignKey(User, on_delete=models.CASCADE )
+    user_type = models.ForeignKey(User, on_delete=models.CASCADE, default=None )
     orgnisation_Email = models.CharField(max_length=100 , default= "gmail.com")
     organization_name = models.CharField(max_length=100)
     organisation_contact = models.CharField(max_length=100)
     orgaisation_website = models.CharField(max_length=100)
     organisation_address = models.CharField(max_length=150)
     def __str__(self):
-        return f'{self.orgnisation_id}'
+        return f'{self.organization_name}'
     
  
           
@@ -35,6 +35,8 @@ class Project(models.Model):
     project_name = models.CharField(max_length=100)
     peoject_description = models.CharField(max_length=200)
     Organization_id= models.ForeignKey(Organization, on_delete=models.CASCADE)
+    def __str__(self):
+        return f'{self.project_name}'
 
     class Meta:
         db_table = "project"

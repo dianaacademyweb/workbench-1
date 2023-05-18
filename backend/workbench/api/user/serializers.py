@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 
+
 class UserSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(read_only=True)
 
