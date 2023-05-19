@@ -2,13 +2,15 @@ from rest_framework.response import Response
 from rest_framework import viewsets, status
 from rest_framework.status import HTTP_401_UNAUTHORIZED
 from api.dashboard.serializers import  ProfileSerializer
-from api.dashboard.models import Organization
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
 from .models import Project, Employe
 from .serializers import ProjectSerializer , EmployeSerializer
 from rest_framework import generics
+from api.user.serializers import RegisterSerializer
+
+from api.user.models import User
 
 class IsEmployeePermission(BasePermission):
     def has_permission(self, request, view):
@@ -23,7 +25,7 @@ class IsOrganizationPermission(BasePermission):
 class ProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = [JWTAuthentication]
     permission_classes =[IsOrganizationPermission]
-    queryset = Organization.objects.all()
+    queryset = User.objects.all()
     http_method_names = ["post"]
     serializer_class = ProfileSerializer
     
@@ -40,16 +42,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         }, 
             status=status.HTTP_201_CREATED
         )
-        
-class OrganizationAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
-    def get(self, request):
-        
-        organizations = Organization.objects.all()
-        serializer = ProfileSerializer(organizations, many=True, fields=('name', 'email', 'website'))
-        return Response(serializer.data)         
-        
+    
         
 class ProjectAPIView(generics.ListAPIView):
     authentication_classes = [JWTAuthentication]
@@ -74,7 +67,28 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     #     user.save(using=self._db)
         
     #     return user
+    
+    
+class EmployeeCreateAPIView(viewsets.ModelViewSet):
+    queryset = Employe.objects.all()
+    serializer_class = EmployeSerializer
 
+    def post(self, request, format=None):
+        user_serializer = RegisterSerializer(data=request.data)  # Assuming you have a UserSerializer for creating users
+        employee_serializer = EmployeSerializer(data=request.data)
+        if user_serializer.is_valid() and employee_serializer.is_valid():
+           user = user_serializer.save()  # Save the user instance
+           employee = employee_serializer.save(user=user)  # Associate the user with the employee instance
+           return Response(employee_serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(employee_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class EmployeListAPIView(APIView):
+    def get(self , request , formate = None):
+        user = request.user
+        emp_details = Employe.objects.filter(user = user)
+        serializer = EmployeSerializer(emp_details, many = True)
+        return Response(serializer.data)
         
         
         

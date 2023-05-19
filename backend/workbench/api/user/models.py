@@ -47,6 +47,10 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(db_index=True, max_length=255, unique=True)
     email = models.EmailField(db_index=True, unique=True)
+    organization_name = models.CharField(max_length=100, default=None,null=True)
+    organisation_contact = models.CharField(max_length=100, null=True, default=None)
+    orgaisation_website = models.CharField(max_length=100, null = True, default=None)
+    organisation_address = models.CharField(max_length=150, null =True, default=None)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date = models.DateTimeField(auto_now_add=True)

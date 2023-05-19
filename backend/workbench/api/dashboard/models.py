@@ -3,22 +3,11 @@ from django.db import models
 from api.user.models import User
 
 # Create your models here.
-
-
-class Organization(models.Model):
-    user_type = models.ForeignKey(User, on_delete=models.CASCADE, default=None )
-    orgnisation_Email = models.CharField(max_length=100 , default= "gmail.com")
-    organization_name = models.CharField(max_length=100)
-    organisation_contact = models.CharField(max_length=100)
-    orgaisation_website = models.CharField(max_length=100)
-    organisation_address = models.CharField(max_length=150)
-    def __str__(self):
-        return f'{self.organization_name}'
     
  
           
 class Employe(models.Model):
-    Organization_id =models.ForeignKey(Organization, on_delete=models.CASCADE)
+    Organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     e_name = models.CharField(max_length=100)
     e_email = models.EmailField()
     e_password = models.CharField(max_length=32)
@@ -34,7 +23,7 @@ class Employe(models.Model):
 class Project(models.Model):
     project_name = models.CharField(max_length=100)
     peoject_description = models.CharField(max_length=200)
-    Organization_id= models.ForeignKey(Organization, on_delete=models.CASCADE)
+    Organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.project_name}'
 
@@ -43,7 +32,7 @@ class Project(models.Model):
         
 class Board(models.Model):
     board_name = models.CharField(max_length=100)
-    orgnisation_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "board"
@@ -59,7 +48,7 @@ class Task(models.Model):
     task_update_date = models.CharField(max_length=55, null=True)
     board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='boardids')
     Project_id = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projectids')
-    orgnisation_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
     Employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE, related_name='employeeids')
     
     class Meta:
@@ -70,7 +59,7 @@ class Monitoring(models.Model):
     monitoring_title = models.CharField(max_length=200, null=True)
     monitaring_log_ts = models.CharField(max_length=200)
     Employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    orgnisation_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "monitoring"          
@@ -81,7 +70,7 @@ class MonitoringDetails(models.Model):
     md_total_time_seconds = models.CharField(max_length=200)
     md_date = models.CharField(max_length=200)
     e_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    o_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "MonitoringDetails"            
@@ -95,7 +84,7 @@ class Meeting(models.Model):
     m_start_time = models.CharField(max_length=55)
     m_stop_time = models.CharField(max_length=55)
     p_id = models.ForeignKey(Project, on_delete=models.CASCADE)
-    o_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "meeting"  
@@ -104,7 +93,7 @@ class Meeting(models.Model):
 class Project_Employee_Linker(models.Model):
     p_id = models.ForeignKey(Project, on_delete=models.CASCADE)
     e_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    o_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         unique_together = ('p_id', 'e_id','o_id')
@@ -113,7 +102,7 @@ class Project_Employee_Linker(models.Model):
 class WorkProductivityDataset(models.Model):
     w_pds = models.CharField(max_length=255)
     w_type = models.CharField(max_length=255)
-    o_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "WorkProductivityDataset"    
@@ -127,7 +116,7 @@ class AttendanceLogs(models.Model):
     attendance_lat = models.CharField(max_length=55)
     attendance_long = models.CharField(max_length=55)
     employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    orgnisation_id = models.ForeignKey(Organization, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "AttendanceLogs"                       

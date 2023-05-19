@@ -2,7 +2,8 @@ from api.user.viewsets import RegisterViewSet
 from api.dashboard.viewset import (
     ProfileViewSet,
     ProjectAPIView,
-    EmployeeViewSet
+    EmployeeViewSet,
+    EmployeeCreateAPIView,
 )
 from rest_framework import routers
 from api.user.viewsets import UserViewSet
@@ -15,7 +16,9 @@ router.register(r"register", RegisterViewSet, basename="register")
 
 router.register(r"profile", ProfileViewSet, basename="Profile")
 
-router.register(r"employe", EmployeeViewSet, basename="Profile")
+# router.register(r"employe", EmployeeViewSet, basename="Profile")
+
+router.register(r"createemploye", EmployeeCreateAPIView, basename="create_Employe")
 
 # router.register(r"Project", ProjectAPIView, basename="Profile")
 
