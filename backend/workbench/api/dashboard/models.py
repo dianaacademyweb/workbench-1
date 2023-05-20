@@ -7,7 +7,7 @@ from api.user.models import User
  
           
 class Employe(models.Model):
-    Organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     e_name = models.CharField(max_length=100)
     e_email = models.EmailField()
     e_password = models.CharField(max_length=32)
@@ -16,14 +16,14 @@ class Employe(models.Model):
     e_address = models.CharField(max_length=150)
     
     def __str__(self):
-        return f'{self.Organization_id} {self.e_email} {self.e_password} {self.e_address} {self.e_contact} {self.e_gender}'
+        return f'{self.organization_id} {self.e_email}'
 
     class Meta:
         db_table = "employee"
 class Project(models.Model):
     project_name = models.CharField(max_length=100)
     peoject_description = models.CharField(max_length=200)
-    Organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
+    organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return f'{self.project_name}'
 
@@ -32,7 +32,10 @@ class Project(models.Model):
         
 class Board(models.Model):
     board_name = models.CharField(max_length=100)
-    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE) 
+    def __str__(self):
+        return f'{self.board_name}'
+    
 
     class Meta:
         db_table = "board"
@@ -70,7 +73,7 @@ class MonitoringDetails(models.Model):
     md_total_time_seconds = models.CharField(max_length=200)
     md_date = models.CharField(max_length=200)
     e_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "MonitoringDetails"            

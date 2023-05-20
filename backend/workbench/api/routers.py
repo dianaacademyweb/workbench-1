@@ -4,6 +4,9 @@ from api.dashboard.viewset import (
     ProjectAPIView,
     EmployeeViewSet,
     EmployeeCreateAPIView,
+    EmployeListAPIView,
+    BoardCreateAPIViewset,
+    TaskCreateAPIViewSet
 )
 from rest_framework import routers
 from api.user.viewsets import UserViewSet
@@ -15,12 +18,18 @@ router.register(r"edit", UserViewSet, basename="user-edit")
 router.register(r"register", RegisterViewSet, basename="register")
 
 router.register(r"profile", ProfileViewSet, basename="Profile")
+  
+  
+router.register(r"projects", ProjectAPIView, basename="project")
 
-# router.register(r"employe", EmployeeViewSet, basename="Profile")
+
+router.register(r"task", TaskCreateAPIViewSet, basename="task")
+
 
 router.register(r"createemploye", EmployeeCreateAPIView, basename="create_Employe")
 
-# router.register(r"Project", ProjectAPIView, basename="Profile")
+router.register(r"createboard",BoardCreateAPIViewset , basename="create_Employe")
+
 
 urlpatterns = [
     *router.urls,

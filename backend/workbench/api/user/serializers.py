@@ -21,14 +21,21 @@ class RegisterSerializer(serializers.ModelSerializer):
         ('employee', 'Employee'),
         ('organization', 'Organization'),
     )
-    password = serializers.CharField(min_length=4, max_length=128, write_only=True)
     username = serializers.CharField(max_length=255, required=True)
     email = serializers.EmailField(required=True)
+    name_field = serializers.CharField(min_length =4, max_length=140)
+    contact = serializers.CharField(max_length=255, required=True)
+    website = serializers.CharField(max_length=255, required=True)
+    addres = serializers.CharField(max_length=255, required=True)
     user_type =serializers.ChoiceField(required=True, choices = USER_TYPE_CHOICES)
+    password = serializers.CharField(min_length=4, max_length=128, write_only=True)
+    
+    
+    
 
     class Meta:
         model = User
-        fields = ["id", "username", "email", "user_type", "password", "is_active", "date"]
+        fields = ["id", "username", "email","name_field", "contact","website","addres", "user_type", "password", "is_active", "date"]
 
     def validate_username(self, value):
         try:

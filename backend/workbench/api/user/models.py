@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, email, user_type,  password=None, **kwargs):
+    def create_user(self, username, email,name_field, contact,website,addres, user_type,  password=None, **kwargs):
         """Create and return a `User` with an email, username and password."""
         if password is None:
             raise TypeError("Superusers must have a password.")
@@ -17,13 +17,13 @@ class UserManager(BaseUserManager):
         if email is None:
             raise TypeError("Users must have an email.")
 
-        user = self.model(username=username, user_type=user_type, email=self.normalize_email(email))
+        user = self.model(username=username, user_type=user_type, email=self.normalize_email(email), organization_name =name_field,organisation_contact =contact,orgaisation_website=website,organisation_address=addres)
         user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, username, email, password):
+    def create_superuser(self, username, email, user_type, password):
         """
         Create and return a `User` with superuser (admin) permissions.
         """
@@ -35,7 +35,7 @@ class UserManager(BaseUserManager):
             raise TypeError("Superusers must have an username.")
      
 
-        user = self.create_user(username, email, password)
+        user = self.create_user(username, email,  user_type, password)
         user.is_superuser = True
         user.is_staff = True
         user.save(using=self._db)
@@ -61,10 +61,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
     def __str__(self):
-        return f"{self.user_type}"
-
-    def __str__(self):
-        return f"{self.email}"
+        return f"{self.id}"
     
     
    

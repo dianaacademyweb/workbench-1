@@ -5,8 +5,8 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe
-from .serializers import ProjectSerializer , EmployeSerializer
+from .models import Project, Employe, Board,Task
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
 
@@ -44,11 +44,18 @@ class ProfileViewSet(viewsets.ModelViewSet):
         )
     
         
-class ProjectAPIView(generics.ListAPIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
+class ProjectAPIView(viewsets.ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
+    
+class ProjectListAPIView(APIView):
+     def get(self ,request , id , formate =None):
+        queryset = Project.objects.filter(organization_id = id )
+        serializer = ProjectSerializer(queryset, many = True)
+        return Response(serializer.data)
+        
     
     
 class EmployeeViewSet(viewsets.ModelViewSet):
@@ -70,6 +77,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
+    
     queryset = Employe.objects.all()
     serializer_class = EmployeSerializer
 
@@ -84,13 +92,53 @@ class EmployeeCreateAPIView(viewsets.ModelViewSet):
         return Response(employee_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class EmployeListAPIView(APIView):
-    def get(self , request , formate = None):
-        user = request.user
-        emp_details = Employe.objects.filter(user = user)
-        serializer = EmployeSerializer(emp_details, many = True)
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
+    def get(self , request, id,  format=None ):
+        # queryset = Employe.objects.all()
+        # emp_details = Employe.objects.filter(id = Organization_id)
+        queryset = Employe.objects.filter(organization_id = id )
+        # print(emp_details.query)
+        serializer = EmployeSerializer(queryset, many = True)
+        return Response(serializer.data)
+    
+    
+class BoardCreateAPIViewset(viewsets.ModelViewSet):
+    queryset = Board.objects.all()
+    serializer_class = BoardSerializer
+    
+    
+    
+class BoardlistApi(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = Board.objects.filter(orgnisation_id = id )
+        serializer = BoardSerializer(queryset, many = True)
+        return Response(serializer.data)
+    
+    
+    
+    
+class TaskCreateAPIViewSet(viewsets.ModelViewSet):
+    queryset = Task.objects.all()
+    serializer_class =TaskSerializer
+    
+class boardwisetask(APIView):
+    def get(self, request, organization_id, board_id, formate =None ):
+        organization_id = self.kwargs['organization_id']
+        board_id = self.kwargs['board_id'] 
+        queryset =  queryset = Task.objects.filter(orgnisation_id=organization_id, board_id=board_id).all()
+        serializer = TaskSerializer(queryset, many=True)
         return Response(serializer.data)
         
+    
+    
+
+       
         
+        
+    
+    
+    
         
     
     
