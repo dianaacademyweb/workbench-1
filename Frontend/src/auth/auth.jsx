@@ -11,7 +11,7 @@ class AuthApi {
 
   static Logout = (data) => {
     console.log("hello i m  here");
-    return axios.post(`${base}/logout`, data);
+    return axios.post(`${base}/logout`);
     
   };
 }

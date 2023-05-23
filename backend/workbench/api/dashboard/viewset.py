@@ -77,6 +77,8 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     
     queryset = Employe.objects.all()
     serializer_class = EmployeSerializer

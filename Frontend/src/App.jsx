@@ -11,6 +11,11 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import ProfilePage from "./components/profile/Profilepage";
 import UpdateProfile from "./components/profile/UpdateProfile";
 import Profile from "./components/profile/Profile";
+import Employe from "./layouts/employe";
+import Addemploye  from "./views/employes/Addemploye";
+import Board from "./views/board/Board";
+import Createboard from './views/board/Createboard';
+import  AllEmploye  from "./views/board/Allboard";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -24,16 +29,24 @@ function App() {
           <Route  path="/login" element={<Login_page />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
-          <Route element ={<Dash/>} path="/dashboard"/>
-          <Route path="/Profile" element={<Profile/>}>
-            <Route index element={<ProfilePage/>}/>
-            <Route path="profilepage" element={<ProfilePage/>}/>
-            <Route path="Updateprofile" element={<UpdateProfile/>}></Route>
-          </Route>
+            <Route element ={<Dash/>} path="/dashboard"/>
+             <Route path="/Profile" element={<Profile/>}>
+               <Route index element={<ProfilePage/>}/>
+               <Route path="profilepage" element={<ProfilePage/>}/>
+               <Route path="Updateprofile" element={<UpdateProfile/>}></Route>
+             </Route>
+             <Route path="/employe" element={<Employe/>}>
+               <Route index element={<Employe/>}/>
+               <Route path="employePage" element={<Employe/>}/>
+               <Route path="addemploye" element={<Addemploye/>}></Route>
+             </Route>
+             <Route path="/Board" element={<Board/>}>
+               <Route index element={<Board/>}/>
+               <Route path="board" element={<AllEmpplyee/>}/>
+               <Route path="createboard" element={<Createboard/>}></Route>
+             </Route>
 
           </Route>
-         
-          
           <Route  path="*" element={<NotFound />} />
           </Routes>
           

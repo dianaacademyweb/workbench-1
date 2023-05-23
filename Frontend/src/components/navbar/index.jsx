@@ -17,13 +17,21 @@ import { useNavigate } from 'react-router-dom';
 const Navbar = (props) => {
   const {onopenSidenav, brandtext}= props;
   let {user}= useAuth()
+  let{id}= useAuth()
+  let {token}= useAuth()
   const {setUser}= useAuth()
+  const{setToken}= useAuth()
+  const{setId} = useAuth()
   // const { onOpenSidenav, brandText } = props;
 const [darkmode, setDarkmode] = React.useState(false);
 const Logout = async()=>{
   // await AuthApi.Logout(user);
   await setUser(null);
+  await setId(null);
+  await setToken(null);
   localStorage.removeItem("user");
+  localStorage.removeItem("id");
+  localStorage.removeItem("token")
   return <Navigate to= "/login"/>
 }
   return (

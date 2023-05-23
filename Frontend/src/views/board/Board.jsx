@@ -2,17 +2,16 @@ import React from 'react'
 import { Link  } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 
-function Employe() {
+function Board() {
   return (
     <div>
       <div>
-         <Link to="employe">employe</Link>
-         <Link to="addemploye">Add Employe</Link>
+         <Link to="Board">Board</Link>
+         <Link to="createboard">Add Board</Link>
          </div>
          <Outlet/>
-   
     </div>
   )
 }
 
-export default Employe
+export default Board

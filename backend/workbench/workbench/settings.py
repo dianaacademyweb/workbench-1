@@ -88,7 +88,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=800),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=5),
     "ROTATE_REFRESH_TOKENS": False,
     "BLACKLIST_AFTER_ROTATION": False,
@@ -181,7 +181,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 
 # Allow credentials to be sent with requests.
 CORS_ALLOW_CREDENTIALS = True
@@ -189,12 +189,6 @@ CORS_ALLOW_CREDENTIALS = True
 # Allow the `Authorization` header to be sent with requests.
 CORS_ALLOW_HEADERS = (
     'Authorization',
-)
-
-CORS_ALLOW_HEADERS = (
-    # ...
-    'Content-Type',
-    # ...
 )
 AUTH_USER_MODEL = "api_user.User"
 
@@ -206,3 +200,32 @@ GRAPH_MODELS = {
 GRAPH_MODELS = {
   'app_labels': ["api.user", "dashboard", "rest_framework_simplejwt"],
 }
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:5173',  # Replace with your client application's origin
+]
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+
+
+
+
+
+

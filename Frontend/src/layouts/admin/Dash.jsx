@@ -7,7 +7,7 @@ import ScreenshotsRow from '../../components/DashBoard/Screen';
 import Employe from "../../components/DashBoard/Employelist";
 
 function Dash() {
-  let {user}= useAuth()
+  let {id }= useAuth()
   const[open, setOpen]= React.useState(true);
   React.useEffect(() => {
     window.addEventListener("resize", () =>

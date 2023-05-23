@@ -9,10 +9,15 @@ import Checkbox from "../checkbox/index";
 import FixedPlugin from "../../components/fixedPlugin/FixedPlugin";
 import Authimage from "../../assets/Images/loginimage/Debit.png";
 import { useNavigate } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 function Login_page() {
   const navigate = useNavigate();
+  let {user}= useAuth;
   const { setUser } = useAuth();
-  const { user } = useAuth();
+  const {id} =useAuth();
+  const {setId} = useAuth();
+  const {token}= useAuth();
+  const {setToken}= useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(undefined);
@@ -43,7 +48,9 @@ function Login_page() {
       if (response.data && response.data.success === false) {
         return setError(response.data.msg);
       }
+      console.log(response);
       return setProfile(response);
+      
     } catch (err) {
       console.log(err);
       setButtonText("Sign in");
@@ -55,11 +62,18 @@ function Login_page() {
   };
 
   const setProfile = async (response) => {
+    console.log(response)
     let user = { ...response.data.user };
-    user.token = response.data.token;
+    var token = response.data.access;
+    var decode = jwtDecode(token)
+    let  id =  decode.user_id;
     user = JSON.stringify(user);
-    setUser(user);
     localStorage.setItem("user", user);
+    localStorage.setItem("id", id)
+    localStorage.setItem("token", token)
+    setUser(user);
+    setId(id);
+    setToken(token);
     return navigate('/dashboard');
   };
   return (
