@@ -23,6 +23,14 @@ class DashApi {
       },
     });
   };
+  static projectsdetails = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base2}/createemploye/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static createProject = (data) => {
     const token = localStorage.getItem("token");
     return axios.post(`${base2}/projects`, data,{

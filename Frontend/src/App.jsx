@@ -12,7 +12,7 @@ import ProfilePage from "./components/profile/Profilepage";
 import UpdateProfile from "./components/profile/UpdateProfile";
 import Profile from "./components/profile/Profile";
 import Employe from "./layouts/employe";
-import ListEmploy from './components/DashBoard/Employelist'
+import ListEmploy from './views/employes/AllEmpplyee'
 import Addemploye  from "./views/employes/Addemploye";
 import Board from "./views/board/Board";
 import Createboard from "./views/board/createboard";
