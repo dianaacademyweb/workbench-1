@@ -12,10 +12,13 @@ import ProfilePage from "./components/profile/Profilepage";
 import UpdateProfile from "./components/profile/UpdateProfile";
 import Profile from "./components/profile/Profile";
 import Employe from "./layouts/employe";
+import ListEmploy from './components/DashBoard/Employelist'
 import Addemploye  from "./views/employes/Addemploye";
 import Board from "./views/board/Board";
-import Createboard from './views/board/Createboard';
-import  AllEmploye  from "./views/board/Allboard";
+import Createboard from "./views/board/createboard";
+import  Allboard  from "./views/board/Allboard";
+import CreateProject from "./views/Projects/CreateProject";
+import Listproject from "./views/Projects/Listproject";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -36,14 +39,16 @@ function App() {
                <Route path="Updateprofile" element={<UpdateProfile/>}></Route>
              </Route>
              <Route path="/employe" element={<Employe/>}>
-               <Route index element={<Employe/>}/>
-               <Route path="employePage" element={<Employe/>}/>
+               <Route index element={<ListEmploy/>}/>
+               <Route path="employe" element={<ListEmploy/>}/>
                <Route path="addemploye" element={<Addemploye/>}></Route>
              </Route>
              <Route path="/Board" element={<Board/>}>
-               <Route index element={<Board/>}/>
-               <Route path="board" element={<AllEmpplyee/>}/>
+               <Route index element={<Allboard/>}/>
+               <Route path="allboard" element={<Allboard/>}/>
                <Route path="createboard" element={<Createboard/>}></Route>
+               <Route path="projects" element={<CreateProject/>}/>
+               <Route path="listprojects" element={<Listproject/>}></Route>
              </Route>
 
           </Route>

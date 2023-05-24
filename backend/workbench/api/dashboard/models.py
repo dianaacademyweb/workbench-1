@@ -119,7 +119,7 @@ class AttendanceLogs(models.Model):
     attendance_lat = models.CharField(max_length=55)
     attendance_long = models.CharField(max_length=55)
     employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
-    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)    
 
     class Meta:
         db_table = "AttendanceLogs"                       

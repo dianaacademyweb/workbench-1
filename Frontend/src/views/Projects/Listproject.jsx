@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DashApi from '../../dashboard/auth';
 
-function Employe() {
+function Listproject() {
   const[error, setError] = useState(undefined);
-  const [employees, setEmployees] = useState([]);
+  const [project, SetListProject] = useState([]);
 
   useEffect(() => {
-    const Employelist = async (event) => {
+    const Projectlist = async (event) => {
       if (event) {
         event.preventDefault();
       }
       try {
-        let response = await DashApi.Employelist({});
-        setEmployees(response.data);
+        let response = await DashApi.ListProject({});
+        SetListProject(response.data);
         console.log(response);
         if (response.data && response.data.success === false) {
           return setError(response.data.msg);
@@ -27,7 +27,7 @@ function Employe() {
       }
     };
 
-    Employelist(); // Call the function here
+    Projectlist(); // Call the function here
 
   }, []); // Empty dependency array for the initial effect
 
@@ -45,17 +45,21 @@ function Employe() {
       </div>
       <div className="mx-5 border-2 dark:border-white border-navy-400 rounded-md w-[300px] h-[450px]">
         <ul className=" text-xl justify-center">
-          <button className='justify-center ' >  {employees.map((employee) => (
-             <li  className='justify-center flex mx-[70px] items-center   text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2'  key={employee.id}>
-             <h1 className=' justify-center '>{employee.id}</h1>
-             <span className=' justify-center'>{employee.e_name}, </span>
+          <button className='justify-center ' >  {project.map((project) => (
+             <li  className='justify-center flex mx-[70px] items-center   text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2'  key={project.id}>
+             <h1 className=' justify-center '>{project.id}</h1>
+             <span className=' justify-center'>{project.project_name}, </span>
+             <span className=' justify-center'>{project.peoject_description}</span>
+
+             {error}
              {/* <span>{employee.e_email}</span> */}
            </li>
           ))}</button>
+        
         </ul>
       </div>
     </div>
   );
 }
 
-export default Employe;
+export default Listproject;

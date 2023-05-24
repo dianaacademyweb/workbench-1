@@ -45,7 +45,7 @@ function Login_page() {
         password,
       }
       );
-      if (response.data && response.data.success === false) {
+      if (response.data && response.data.success === true) {
         return setError(response.data.msg);
       }
       console.log(response);

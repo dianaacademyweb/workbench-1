@@ -23,6 +23,23 @@ class DashApi {
       },
     });
   };
+  static createProject = (data) => {
+    const token = localStorage.getItem("token");
+    return axios.post(`${base2}/projects`, data,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static ListProject = (data) => {
+    const id = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/Projectlist/${id}/`, data,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   static createboard = (data) => {
     const token = localStorage.getItem("token");
@@ -32,10 +49,11 @@ class DashApi {
       },
     });
   };
+  
 static boardlist = (data) => {
   const id = localStorage.getItem("id");
   const token = localStorage.getItem("token");
-  return axios.get(`${base}/createboard/${id}`, data, {
+  return axios.get(`${base}/boardlist/${id}/`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

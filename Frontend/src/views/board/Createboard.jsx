@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DashApi from '../../dashboard/auth';
-import Navbar  from '../../components/navbar/index'
 
 const Createboard = () => {
   const id = localStorage.getItem("id");
@@ -31,10 +30,10 @@ const Createboard = () => {
    
    <div>
     <div className='flex justify-end'>
-    <Navbar/>
+   
     </div>
      <div className="max-w-md mx-auto mt-20">
-      <h1 className="text-2xl font-bold mb-4">Employee Form</h1>
+      <h1 className="text-2xl font-bold mb-4">create board</h1>
       <form action='POST '>
         <div className="mb-4">
           <label htmlFor="e_name">Name:</label>
