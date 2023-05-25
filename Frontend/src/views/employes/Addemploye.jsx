@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DashApi from '../../dashboard/auth';
-import Navbar  from '../../components/navbar/index'
 
 const Addemploye = () => {
   const id = localStorage.getItem("id");
@@ -57,7 +56,6 @@ const Addemploye = () => {
    
    <div>
     <div className='flex justify-end'>
-    <Navbar/>
     </div>
      <div className="max-w-md mx-auto mt-20">
       <h1 className="text-2xl font-bold mb-4">Employee Form</h1>

@@ -2,11 +2,12 @@ from api.user.viewsets import RegisterViewSet
 from api.dashboard.viewset import (
     ProfileViewSet,
     ProjectAPIView,
-    EmployeeViewSet,
     EmployeeCreateAPIView,
     EmployeListAPIView,
     BoardCreateAPIViewset,
-    TaskCreateAPIViewSet
+    TaskCreateAPIViewSet,
+    ProjectEmployeLinkViewSet,
+    
 )
 from rest_framework import routers
 from api.user.viewsets import UserViewSet
@@ -29,6 +30,9 @@ router.register(r"task", TaskCreateAPIViewSet, basename="task")
 router.register(r"createemploye", EmployeeCreateAPIView, basename="create_Employe")
 
 router.register(r"createboard",BoardCreateAPIViewset , basename="create_Employe")
+
+router.register(r"projectlinker",ProjectEmployeLinkViewSet , basename="projectlinker")
+
 
 
 urlpatterns = [

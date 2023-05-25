@@ -24,20 +24,21 @@ function Dash() {
           <div className="h-full">
           <Navbar
               onOpenSidenav={() => setOpen(true)}
-              logoText={"data"}
+              logoText={"Work warden"}
+              brandText={"work Warden"}
               // {...rest}
             />
-          </div>
+         
 
-        </main>
-        <div className=" mt-[120px] mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]">
-        <h1 className=' text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
+         <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">        <h1 className=' text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
      <ScreenshotsRow/>
      <Employe/>
      <div className='mt-[500px]'> hello </div>
      <div className='mt-[600px]'>2nd part</div>
           {/* Routes */}
         </div>
+        </div>
+        </main>
       </div>
     </div>
   );

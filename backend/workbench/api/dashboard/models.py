@@ -14,6 +14,7 @@ class Employe(models.Model):
     e_gender = models.CharField(max_length=25)
     e_contact = models.CharField(max_length=100)
     e_address = models.CharField(max_length=150)
+    # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
         return f'{self.organization_id} {self.e_email}'

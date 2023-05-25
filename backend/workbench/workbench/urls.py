@@ -1,7 +1,7 @@
 
 from django.urls import path, include
 from django.contrib import admin
-from api.dashboard.viewset import ProjectAPIView , EmployeeViewSet , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,

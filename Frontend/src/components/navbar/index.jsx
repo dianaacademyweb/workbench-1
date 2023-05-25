@@ -15,7 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Navbar = (props) => {
-  const {onopenSidenav, brandtext}= props;
+  const navigate = useNavigate()
+  const {onOpenSidenav, brandtext}= props;
   let {user}= useAuth()
   let{id}= useAuth()
   let {token}= useAuth()
@@ -32,10 +33,10 @@ const Logout = async()=>{
   localStorage.removeItem("user");
   localStorage.removeItem("id");
   localStorage.removeItem("token")
-  return <Navigate to= "/login"/>
+  return navigate("/login")
 }
   return (
-    <nav className="fixed w-[1200px] top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
+    <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
       <div className="ml-[6px]">
         <div className="h-6 w-[224px] pt-1">
           <a
@@ -80,7 +81,7 @@ const Logout = async()=>{
         </div>
         <span
           className="flex cursor-pointer text-xl text-gray-600 dark:text-white xl:hidden"
-          onClick={onopenSidenav}
+          onClick={onOpenSidenav}
           
         >
           <FiAlignJustify className="h-5 w-5" />
@@ -217,26 +218,26 @@ const Logout = async()=>{
               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 
               <div className="mt-3 ml-4 flex flex-col">
-                <a
+                <h1
                   href=" "
                   className="text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   <Link to="/profile">Profile Settings</Link>
                   
-                </a>
-                <a
+                </h1>
+                <h1
                   href=" "
                   className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white"
                 >
                   Newsletter Settings
-                </a>
-                <a
+                </h1>
+                <h1
                   href=" "
                   className="mt-3 text-sm font-medium text-red-500 hover:text-red-500"
                 >
                    
                    <button onClick={Logout}>Logout</button>
-                </a>
+                </h1>
               </div>
             </div>
           }

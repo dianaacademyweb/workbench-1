@@ -48,6 +48,14 @@ class DashApi {
       },
     });
   };
+  static ProjectLinker = (data) => {
+    const token = localStorage.getItem("token");
+    return axios.post(`${base2}/projectlinker`, data,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   static createboard = (data) => {
     const token = localStorage.getItem("token");

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import DashApi from '../../dashboard/auth';
+import EmployeeProjectLinkerForm from './AssignProject';
 
 const CreateProject = () => {
   const id = localStorage.getItem("id");
@@ -79,6 +80,7 @@ const CreateProject = () => {
         </button>
       </form>
     </div>
+    <EmployeeProjectLinkerForm/>
    </div>
   );
 };

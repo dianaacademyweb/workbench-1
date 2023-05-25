@@ -5,10 +5,11 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
+
 
 from api.user.models import User
 
@@ -54,27 +55,7 @@ class ProjectListAPIView(APIView):
      def get(self ,request , id , formate =None):
         queryset = Project.objects.filter(organization_id = id )
         serializer = ProjectSerializer(queryset, many = True)
-        return Response(serializer.data)
-        
-    
-    
-class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset = Employe.objects.all()
-    serializer_class = EmployeSerializer
-    
-    # def create_user(self , email, username, user_type , password = None, **Kwargs ):
-    #     if password is None:
-    #         raise TypeError("Superusers must have a password.")
-    #     if username is None:
-    #         raise TypeError("Users must have a username.")
-    #     if email is None:
-    #         raise TypeError("Users must have an email.")
-    #     user = self.model(username=username, user_type=user_type, email=self.normalize_email(email))
-    #     user.set_password(password)
-    #     user.save(using=self._db)
-        
-    #     return user
-    
+        return Response(serializer.data)    
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
     authentication_classes = [JWTAuthentication]
@@ -83,15 +64,15 @@ class EmployeeCreateAPIView(viewsets.ModelViewSet):
     queryset = Employe.objects.all()
     serializer_class = EmployeSerializer
 
-    def post(self, request, format=None):
-        user_serializer = RegisterSerializer(data=request.data)  # Assuming you have a UserSerializer for creating users
-        employee_serializer = EmployeSerializer(data=request.data)
-        if user_serializer.is_valid() and employee_serializer.is_valid():
-           user = user_serializer.save()  # Save the user instance
-           employee = employee_serializer.save(user=user)  # Associate the user with the employee instance
-           return Response(employee_serializer.data, status=status.HTTP_201_CREATED)
+    # def create(self, request, format=None, *args ,**kwargs):
+    #     user_serializer = RegisterSerializer(data=request.data)  # Assuming you have a UserSerializer for creating users
+    #     employee_serializer = EmployeSerializer(data=request.data)
+    #     if user_serializer.is_valid() and employee_serializer.is_valid():
+    #        user = user_serializer.save()  # Save the user instance
+    #        employee = employee_serializer.save()  # Associate the user with the employee instance
+    #        return Response(employee_serializer.data, status=status.HTTP_201_CREATED)
 
-        return Response(employee_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #     return Response(employee_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class EmployeListAPIView(APIView):
     authentication_classes = [JWTAuthentication]
@@ -131,6 +112,15 @@ class boardwisetask(APIView):
         queryset =  queryset = Task.objects.filter(orgnisation_id=organization_id, board_id=board_id).all()
         serializer = TaskSerializer(queryset, many=True)
         return Response(serializer.data)
+    
+    
+    
+class ProjectEmployeLinkViewSet(viewsets.ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
+    queryset = Project_Employee_Linker.objects.all()
+    serializer_class = ProjectlinkerSerializer
+        
         
     
     
