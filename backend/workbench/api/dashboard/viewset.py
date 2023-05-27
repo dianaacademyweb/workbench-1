@@ -5,8 +5,8 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
 
@@ -120,6 +120,64 @@ class ProjectEmployeLinkViewSet(viewsets.ModelViewSet):
     # permission_classes =[IsOrganizationPermission]
     queryset = Project_Employee_Linker.objects.all()
     serializer_class = ProjectlinkerSerializer
+    
+    
+class MonitoringViewSet(viewsets.ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
+    queryset = MonitoringDetails.objects.all()
+    serializer_class = monitoringdetailSerializer   
+    
+    
+class employewiseMonitoring(APIView):
+    def get(self, request, organization_id, e_id, formate =None ):
+        organization_id = self.kwargs['organization_id']
+        e_id = self.kwargs['e_id'] 
+        queryset =  queryset = MonitoringDetails.objects.filter(orgnisation_id=organization_id, e_id =e_id).all()
+        serializer = monitoringdetailSerializer(queryset, many=True)
+        return Response(serializer.data)   
+    
+    
+    
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer     
+    
+    
+# class ImageUploadView(viewsets.ModelViewSet):
+#     queryset = ImageModel.objects.all()
+#     serializer_class = ImageModelSerializer
+
+
+# class ImageUploadView(APIView):
+#     def post(self, request, format=None):
+#         file_obj = request.FILES['image']
+#         # Do something with the file, such as saving it to the model
+
+#         return Response({'message': 'Image uploaded successfully'})  
+
+class ImageUploadView(viewsets.ModelViewSet):
+    queryset = ImageModel.objects.all()
+    serializer_class = ImageModelSerializer
+    filterset_fields = ['organization_id']
+    
+    
+class Seeimage(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = ImageModel.objects.filter(organization_id = id )
+        serializer = ImageModelSerializer(queryset, many = True)
+        return Response(serializer.data)    
+    
+    
+class Seeprofile(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = Profile.objects.filter(organization_id = id )
+        serializer = ProfileSerializer(queryset, many = True)
+        return Response(serializer.data)    
+        
+    
+    
+       
         
         
     

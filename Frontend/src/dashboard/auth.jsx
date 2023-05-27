@@ -5,6 +5,7 @@ import { useAuth } from '../context/AuthContext'
 class DashApi {
   
   
+  
   static Employelist = () => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("id");
@@ -70,6 +71,51 @@ static boardlist = (data) => {
   const id = localStorage.getItem("id");
   const token = localStorage.getItem("token");
   return axios.get(`${base}/boardlist/${id}/`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+static Getimage = (data) => {
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/seeimage/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+static Profile = (data) => {
+  const token = localStorage.getItem("token");
+  return axios.post(`${base2}/Profile`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+static SeeProfile = () => {
+  const id = localStorage.getItem("id")
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/seeprofile/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+static uploadimage = (data) => {
+  const token = localStorage.getItem("token");
+  const id = localStorage.getItem("id");
+  return axios.post(`${base2}/imageupload`,data,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+
+    },
+  });
+};
+static MonitoringList = (id) => {
+  const od = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/${od}/monitor/${id}/details/`,{
     headers: {
       Authorization: `Bearer ${token}`,
     },

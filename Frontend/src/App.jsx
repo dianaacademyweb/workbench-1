@@ -19,6 +19,8 @@ import Createboard from "./views/board/createboard";
 import  Allboard  from "./views/board/Allboard";
 import CreateProject from "./views/Projects/CreateProject";
 import Listproject from "./views/Projects/Listproject";
+import Profiledetail from './components/profile/SeeProfile';
+import CreateProfile from './components/profile/Profilepage'
 
 function App() {
   let user = localStorage.getItem("user");
@@ -34,9 +36,9 @@ function App() {
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>
              <Route path="/Profile" element={<Profile/>}>
-               <Route index element={<ProfilePage/>}/>
-               <Route path="profilepage" element={<ProfilePage/>}/>
-               <Route path="Updateprofile" element={<UpdateProfile/>}></Route>
+               <Route index element={<Profiledetail/>}/>
+               <Route path="profilepage" element={<Profiledetail/>}/>
+               <Route path="Updateprofile" element={<CreateProfile/>}></Route>
              </Route>
              <Route path="/employe" element={<Employe/>}>
                <Route index element={<ListEmploy/>}/>

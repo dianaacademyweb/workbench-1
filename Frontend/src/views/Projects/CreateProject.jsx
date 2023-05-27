@@ -26,9 +26,15 @@ const CreateProject = () => {
         peoject_description,
         organization_id,
       }); // Replace 'API_URL' with your actual API endpoint
-      console.log(response.data); // Handle the response as needed
+      if (response.data && response.statusText === "Created") {
+        return setError("project created succesfullly");
+      } // Handle the response as needed
     } catch (error) {
       console.error(error);
+      if (error.response) {
+        return setError(err.response.data.msg);
+      }
+      return setError('There has been an error.');
     }
   };
 
@@ -70,7 +76,7 @@ const CreateProject = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-       <h1>{error}</h1>
+        <h1>{error}</h1>
         <button
           type="submit" 
           onClick={Create}

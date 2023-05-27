@@ -45,10 +45,16 @@ const Addemploye = () => {
         e_gender,
         e_contact,
         e_address,
-      }); // Replace 'API_URL' with your actual API endpoint
+      });
+      if (response.data && response.statusText === "Created") {
+        return setError("project created succesfullly");
+      }  // Replace 'API_URL' with your actual API endpoint
       console.log(response.data); // Handle the response as needed
     } catch (error) {
-      console.error(error);
+      if (error.response) {
+        return setError(err.response.data.msg);
+      }
+      return setError('There has been an error.');
     }
   };
 

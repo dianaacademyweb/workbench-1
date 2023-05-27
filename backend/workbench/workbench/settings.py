@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -201,7 +202,9 @@ GRAPH_MODELS = {
   'app_labels': ["api.user", "dashboard", "rest_framework_simplejwt"],
 }
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:5173',  # Replace with your client application's origin
+    'http://localhost:5173',
+    'https://work-warden.web.app',
+    # Replace with your client application's origin
 ]
 CORS_ALLOW_METHODS = [
     'GET',
@@ -223,6 +226,10 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 
 
 

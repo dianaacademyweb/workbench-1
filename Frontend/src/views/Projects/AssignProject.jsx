@@ -18,8 +18,8 @@ function EmployeeProjectLinkerForm() {
         let response = await DashApi.ListProject({});
         setProjects(response.data);
         console.log(response);
-        if (response.data && response.data.success === false) {
-          return setError(response.data.msg);
+        if (response.data && response.statusText === "Created") {
+          return setError("employee assigned succesfully");
         }
       } catch (err) {
         console.log(err);

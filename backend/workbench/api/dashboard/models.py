@@ -17,10 +17,32 @@ class Employe(models.Model):
     # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
-        return f'{self.organization_id} {self.e_email}'
+        return f'{self.organization_id} {self.e_name}'
 
     class Meta:
         db_table = "employee"
+
+class Profile(models.Model):
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    # image = models.ImageField(upload_to='images/')
+    contact = models.CharField(max_length=100, null=True, default=None)
+    website = models.CharField(max_length=100, null = True, default=None)
+    address = models.CharField(max_length=150, null =True, default=None)
+    location = models.CharField(max_length = 150, null= True ,default=None)
+    Gender = models.CharField(max_length=160, null=True, default=None)
+    
+    def __str__(self):
+        return f'{self.name}'
+    
+class ImageModel(models.Model):
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='images/')  
+      
+        
+   
+
+
 class Project(models.Model):
     project_name = models.CharField(max_length=100)
     peoject_description = models.CharField(max_length=200)

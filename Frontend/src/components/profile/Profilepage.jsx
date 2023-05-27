@@ -1,58 +1,101 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react'
+import { Link } from "react-router-dom";
+import DashApi from '../../dashboard/auth';
+import { useNavigate } from 'react-router-dom';
 
-const ProfilePage = () => {
-  const [email, setEmail] = useState('example@example.com');
-  const [name, setName] = useState('John Doe');
-  const [contact, setContact] = useState('123-456-7890');
-  const [website, setWebsite] = useState('www.example.com');
-  const [address, setAddress] = useState('123 ABC Street, City');
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    // Update profile details
-    // You can make an API call here to save the updated information
+function CreateProfile() {
+  const navigate = useNavigate();
+  // const [agreement, setAgremment] = useState(true);
+  const id = localStorage.getItem("id");
+  const [name, setName] = useState("");
+  const [contact, setcontact] = useState("");
+  // const [image , setimage] = useState(" ")
+  const [website, setWebsite] = useState("");
+  const [address, setaddres] = useState("");
+  const [location, setlocation] = useState("");
+  const [Gender, setGender] = useState("");
+  const [organization_id, setOrganisation] = useState(id);
+
+  const [error, setError] = useState(undefined);
+  const [buttonText, setButtonText] = useState("Sign up");
+  const Profile = async (event) => {
+    if (event) {
+      event.preventDefault();
+    }
+    if (name === "") {
+      return setError("You must enter your name.");
+    }
+    try {
+      setButtonText("adding up ");
+      let response = await DashApi.Profile({
+        name,
+        contact,
+        website,
+        address,
+        location,
+        Gender,
+        organization_id,
+      });
+      console.log(response)
+      if (response.data && response.statusText === "Created") {
+        setButtonText("setting Profile");
+        setError("profile created succesfuly");
+        return navigate('/profile');
+      }
+      
+      
+    } catch (err) {
+      setButtonText("Add Details");
+      if (err.response) {
+        return setError(err.response.data.msg);
+      }
+      console.log(err)
+      return setError("There has been an error.");
+    }
   };
-
   return (
-    <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Profile</h2>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
-          Email
-        </label>
-        <p>{email}</p>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="name">
-          Name
-        </label>
-        <p>{name}</p>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="contact">
-          Contact
-        </label>
-        <p>{contact}</p>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="website">
-          Website URL
-        </label>
-        <p>{website}</p>
-      </div>
-      <div className="mb-4">
-        <label className="block text-gray-700 font-bold mb-2" htmlFor="address">
-          Address
-        </label>
-        <p>{address}</p>
-      </div>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        onClick={() => alert('Edit profile clicked')}
-      >
-        Edit Profile
-      </button>
+    <div className='mt-28'>
+      
+      <h1 className=' text-3xl flex justify-center align-center'>SetProfile here</h1>
+      <form action="POST">
+      <label htmlFor="Username">Name</label>
+      <input className='block text-black shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline'  placeholder='Name' type="text" name='name' value={name} onChange={(event) => {
+                  setName(event.target.value);
+                  setError(undefined);
+                }} />
+                <label htmlFor="">Contact</label>
+      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='contact' type="text" name='contact'value={contact} onChange={(event) => {
+                  setcontact(event.target.value);
+                  setError(undefined);
+                }} />
+                  <label htmlFor="">Website</label>
+      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Website url' type="text" name='organisation'value={website} onChange={(event) => {
+                  setWebsite(event.target.value);
+                  setError(undefined);
+                }} />
+                    <label htmlFor="">Address</label>
+      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Address' type="text" name='adrres'value={address} onChange={(event) => {
+                  setaddres(event.target.value);
+                  setError(undefined);
+                }} />
+                <label htmlFor="">Location</label>
+      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='location' type="text" name='location'value={location} onChange={(event) => {
+                  setlocation(event.target.value);
+                  setError(undefined);
+                }} />
+                <label htmlFor="">Gender</label>
+      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Enter your password' type="text" name='gender'value={Gender} onChange={(event) => {
+                  setGender(event.target.value);
+                  setError(undefined);
+                }} />
+                <h1>{error}</h1>
+
+                <button className='flex mt-10 '  type= "submit"onClick={Profile}> {buttonText}</button>
+      
+      </form>
     </div>
-  );
-};
-export default ProfilePage;
+  )
+}
+
+export default CreateProfile;

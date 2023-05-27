@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect , useState} from 'react'
 import Dropdown from '../../components/dropdown/index'
 import { FiAlignJustify } from "react-icons/fi";
 import { Link, Navigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import {
   IoMdInformationCircleOutline,
 } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import DashApi from '../../dashboard/auth';
 
 
 const Navbar = (props) => {
@@ -35,6 +36,55 @@ const Logout = async()=>{
   localStorage.removeItem("token")
   return navigate("/login")
 }
+const [profileImage, setProfileImage] = useState(undefined);
+const [profiles, setProfile] = useState([]);
+useEffect(() => {
+    const SeeProfile = async (event) => {
+      if (event) {
+        event.preventDefault();
+      }
+      try {
+        let response = await DashApi.SeeProfile();
+        setProfile(response.data[0]);
+        console.log(response);
+        if (response.data && response.data.success === true) {
+          return setError(response.data.msg);
+        }
+      } catch (err) {
+        console.log(err);
+        if (err.response) {
+          return setError(err.response.data.msg);
+        }
+        return setError('There has been an error.');
+      }
+    };
+
+    SeeProfile(); // Call the function here
+
+  }, []);
+
+useEffect(() => {
+  // Fetch the image URL or path from the API
+  const fetchProfileImage = async () => {
+    try {
+      const response = await DashApi.Getimage();
+      setProfileImage(response.data[0]);
+      console.log(response) // Assuming `message` contains the image URL
+      if (response.data && response.data.success === true) {
+          return setError(response.data.msg);
+        }
+      } catch (err) {
+        console.log(err);
+        if (err.response) {
+          return setError(err.response.data.msg);
+        }
+        return setError('There has been an error.');
+    }
+  };
+
+  fetchProfileImage();
+}, []);
+
   return (
     <nav className="sticky top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
       <div className="ml-[6px]">
@@ -200,20 +250,26 @@ const Logout = async()=>{
         {/* Profile & Dropdown */}
         <Dropdown
           button={
-            <img
-              className="h-10 w-10 rounded-full"
-              src={avatar}
-              alt="Ashish"
-            />
+            <div className=" flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+          {profileImage &&   (
+             
+    <div key={profileImage.id}>
+      <img className='rounded-[200px]' src={`http://127.0.0.1:8001${profileImage.image}`} alt={avatar} />
+    </div>
+   )}
+            </div>
+           
           }
           children={
             <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
               <div className="mt-3 ml-4">
-                <div className="flex items-center gap-2">
+                 {profiles && (
+                <div className="flex items-center gap-2"  key={profiles.id}>
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
-                    👋 Hey, {user.username}
+                    👋 Hey, {profiles.name}
                   </p>{" "}
                 </div>
+                 )}
               </div>
               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 

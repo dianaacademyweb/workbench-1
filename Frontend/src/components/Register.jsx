@@ -8,10 +8,6 @@ function Register() {
   // const [agreement, setAgremment] = useState(true);
   const [firstName, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [name_field, setname] = useState("");
-  const [contact, setContact] = useState("");
-  const [website, setWebsite] = useState("");
-  const [addres, setAddres] = useState("");
   const [user_type, setUser] = useState("organization");
   const [password, setPassword] = useState("");
   const [is_active, setActive] = useState("true");
@@ -28,18 +24,6 @@ function Register() {
     if (email === "") {
       return setError("You must enter your email.");
     }
-    if (name_field === "") {
-      return setError("You must enter your organization name");
-    }
-    if (contact === "") {
-      return setError("You must enter your contact");
-    }
-    if (website === "") {
-      return setError("You must enter your website");
-    }
-    if (addres === "") {
-      return setError("You must enter your addres.");
-    }
     if (user_type === "") {
       return setError("You must enter user_type.");
     }
@@ -51,10 +35,6 @@ function Register() {
       let response = await AuthApi.Register({
         username: firstName,
         email,
-        name_field,
-        contact,
-        website,
-        addres,
         user_type,
         password,
         is_active,
@@ -89,26 +69,6 @@ function Register() {
                 <label htmlFor="">Email</label>
       <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Enter your username' type="username" name='username'value={email} onChange={(event) => {
                   setEmail(event.target.value);
-                  setError(undefined);
-                }} />
-                 <label htmlFor="">Name</label>
-      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Enter your  email' type="Email" name='Email'value={name_field} onChange={(event) => {
-                  setname(event.target.value);
-                  setError(undefined);
-                }} />
-                 <label htmlFor="">Contact</label>
-      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Enter your Contact no' type="text" name='contact'value={contact} onChange={(event) => {
-                  setContact(event.target.value);
-                  setError(undefined);
-                }} />
-                 <label htmlFor="">Webiste</label>
-      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Your website domain' type="text" name='website'value={website} onChange={(event) => {
-                  setWebsite(event.target.value);
-                  setError(undefined);
-                }} />
-                           <label htmlFor="">Addres</label>
-      <input className='shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline block'  placeholder='Your adrres' type="text" name='addres'value={addres} onChange={(event) => {
-                  setAddres(event.target.value);
                   setError(undefined);
                 }} />
                   <label htmlFor="">User Type</label>

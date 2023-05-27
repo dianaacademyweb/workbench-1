@@ -19,10 +19,18 @@ const Createboard = () => {
       let  response = await DashApi.createboard({
         board_name,
         orgnisation_id,
-      }); // Replace 'API_URL' with your actual API endpoint
-      console.log(response.data); // Handle the response as needed
+      }); 
+      console.log(response);
+      if (response.data && response.statusText === "Created") {
+        return setError("Board created succesfullly");
+      } // Handle the response as needed// Replace 'API_URL' with your actual API endpoint
+       // Handle the response as needed
     } catch (error) {
       console.error(error);
+      if (error.response) {
+        return setError(err.response.data.msg);
+      }
+      return setError('There has been an error.');
     }
   };
 
@@ -49,7 +57,7 @@ const Createboard = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-       <h1>{error}</h1>
+      
         <button
           type="submit" 
           onClick={Create}
@@ -57,6 +65,7 @@ const Createboard = () => {
         >
           Submit
         </button>
+        <h1 className='text-black py-[200px] mb-[80px]' >{error}</h1>
       </form>
     </div>
    </div>

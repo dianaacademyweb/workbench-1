@@ -7,6 +7,9 @@ from api.dashboard.viewset import (
     BoardCreateAPIViewset,
     TaskCreateAPIViewSet,
     ProjectEmployeLinkViewSet,
+    MonitoringViewSet,
+    ProfileViewSet,
+    ImageUploadView,
     
 )
 from rest_framework import routers
@@ -32,6 +35,12 @@ router.register(r"createemploye", EmployeeCreateAPIView, basename="create_Employ
 router.register(r"createboard",BoardCreateAPIViewset , basename="create_Employe")
 
 router.register(r"projectlinker",ProjectEmployeLinkViewSet , basename="projectlinker")
+
+router.register(r"Monitoring",MonitoringViewSet , basename="Monitoring")
+
+router.register(r"Profile", ProfileViewSet, basename="Profile")
+
+router.register(r"imageupload", ImageUploadView, basename="upload")
 
 
 

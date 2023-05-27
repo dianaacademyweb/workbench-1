@@ -78,9 +78,9 @@ function Employe() {
             <li className='justify-center flex mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2' key={employeeData.id}>
               <h1 className='justify-center'>{employeeData.id}</h1>
               <h1 className='justify-center'>{employeeData.e_name}</h1>
-              <h2>Addres = {employeeData.e_address}</h2>
-              <h3>Contact ={employeeData.e_contact}</h3>
-              <h3>gender ={employeeData.e_gender}</h3>
+              <h2 className='block'>Addres = {employeeData.e_address}</h2>
+              <h3 className='bloack'>Contact ={employeeData.e_contact}</h3>
+              <h3 className='block'>gender ={employeeData.e_gender}</h3>
             </li>
           )}
         </ul>
