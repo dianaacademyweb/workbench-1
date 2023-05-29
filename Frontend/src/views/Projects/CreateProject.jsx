@@ -25,7 +25,8 @@ const CreateProject = () => {
         project_name,
         peoject_description,
         organization_id,
-      }); // Replace 'API_URL' with your actual API endpoint
+      });
+      // console.log(response) // Replace 'API_URL' with your actual API endpoint
       if (response.data && response.statusText === "Created") {
         return setError("project created succesfullly");
       } // Handle the response as needed

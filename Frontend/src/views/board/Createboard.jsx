@@ -65,7 +65,7 @@ const Createboard = () => {
         >
           Submit
         </button>
-        <h1 className='text-black py-[200px] mb-[80px]' >{error}</h1>
+        <h1 className='text-black  mb-[80px]' >{error}</h1>
       </form>
     </div>
    </div>

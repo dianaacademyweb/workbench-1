@@ -60,7 +60,7 @@ const upload = async (event) => {
   
   return (
     <div>
-        <Card extra={"items-center w-full h-full p-[16px] bg-cover"}></Card>
+        <Card extra={"items-center w-full h-full p-[16px] bg-cover"}>
        <div
                className="relative mt-1 flex h-32 w-full justify-center rounded-xl bg-cover"
                style={{ backgroundImage: `url(${banner})` }}
@@ -73,10 +73,15 @@ const upload = async (event) => {
        </div>
       )}
                </div>
-     <form  encType="multipart/form-data">
-      <div>
-        <label htmlFor="image">Select Image:</label>
+               
+    
+             </div>
+             </Card>
+             <form  encType="multipart/form-data">
+      <div className='flex justify-center mt-20'>
+        <label className="text-navy-800 dark:text-white" htmlFor="image">Select Image:</label>
         <input
+        
           type="file"
           id="image"
           name="image"
@@ -87,10 +92,10 @@ const upload = async (event) => {
           }}
         />
       </div>
-      <button type="submit" onClick={upload}>Upload</button>
+      <button className='flex justify-center' type="submit" onClick={upload}>Upload</button>
+
+
     </form>
-             </div>
-             <Card/>
              {error && <p>{error.message}</p>}
     </div>
   )

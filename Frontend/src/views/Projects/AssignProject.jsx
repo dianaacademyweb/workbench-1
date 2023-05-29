@@ -72,7 +72,10 @@ function EmployeeProjectLinkerForm() {
         e_id,
         o_id,
       }); // Replace 'API_URL' with your actual API endpoint
-      console.log(response.data); // Handle the response as needed
+      console.log(response);
+      if (response.data && response.statusText === "Created") {
+        return setError("Employe assigned  succesfullly");
+      } // Handle the response as needed // Handle the response as needed
     } catch (error) {
       console.error(error);
     }
@@ -118,7 +121,7 @@ function EmployeeProjectLinkerForm() {
       </label>
       <br />
       <button className='border-2 rounded px-4 py-4 shadow-sm' type="submit" onClick={Create}> Create</button>
-      <h1>{error}</h1>
+      <h1 className='mb-[100px]'>{error}</h1>
     </form>
   );
 };

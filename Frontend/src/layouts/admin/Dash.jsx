@@ -30,7 +30,8 @@ function Dash() {
             />
          
 
-         <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">        <h1 className=' text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
+         <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">        
+         <h1 className=' mt-4 text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
      <ScreenshotsRow/>
      <Employe/>
      <div className='mt-[500px]'> hello </div>

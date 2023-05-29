@@ -35,7 +35,8 @@ function Profiledetail() {
   }, []); // Empty dependency array for the initial effect
 
   return (
-    <div className="" >
+    <div className=" bg-lightPrimary  dark:bg-navy-900 h-full w-full py-[100px]" >
+
        <ProfileImage/>
      
       <div className="">
@@ -53,7 +54,7 @@ function Profiledetail() {
              </div>
        
              {/* Post followers */}
-             <div className="mt-6 mb-3 flex gap-4 md:!gap-14">
+             <div className="mt-6 mb-3 flex gap-4 md:!gap-14 justify-center">
                <div className="flex flex-col items-center justify-center">
                  <p className="text-2xl font-bold text-navy-700 dark:text-white">17</p>
                  <p className="text-sm font-normal text-gray-600">Manager</p>
@@ -71,21 +72,21 @@ function Profiledetail() {
                  <p className="text-sm font-normal text-gray-600">Connect </p>
                </div>
              </div>
-           <div className="mb-6 flex justify-center">
-          <p className="text-navy-700 dark:text-white">
-            <span className="font-bold">Website:</span>{profiles.website}
+           <div className="mb-6  grid grid-flow-row grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 justify-between ">
+          <p className="text-navy-700 dark:text-white text-sm sm:text-lg md:text-lg xl:text-xl flex justify-center">
+            <span className="font-bold text-navy-800 dark:text-white"><p className='text-black dark:text-cyan-900'>Website:</p>   </span>{profiles.website}
           </p>
-          <p className="text-navy-700 dark:text-white">
-            <span className="font-bold">Location:</span> {profiles.location}
+          <p className="text-navy-700 dark:text-white text-sm sm:text-lg md:text-lg xl:text-xl flex justify-center">
+            <span className="font-bold text-navy-800 dark:text-white"><p className='text-black dark:text-cyan-900'>Location:</p>    </span> {profiles.location}
           </p>
-          <p className="text-navy-700 dark:text-white">
-            <span className="font-bold">Contact:</span> {profiles.contact}
+          <p className="text-navy-700 dark:text-white text-sm sm:text-lg md:text-lg xl:text-xl flex justify-center">
+            <span className="font-bold text-navy-800 dark:text-white"><p className='text-black dark:text-cyan-900'>Contact:</p>    </span> {profiles.contact}
           </p>
-          <p className="text-navy-700 dark:text-white">
-            <span className="font-bold">Address:</span> {profiles.address}
+          <p className="text-navy-700 dark:text-white text-sm sm:text-lg md:text-lg xl:text-xl flex justify-center">
+            <span className="font-bold text-navy-800 dark:text-white"><p className='text-black dark:text-cyan-900'>Address:</p>  </span> {profiles.address}
           </p>
-          <p className="text-navy-700 dark:text-white">
-            <span className="font-bold">Gender:</span>{profiles.Gender}
+          <p className="text-navy-700 dark:text-white text-sm sm:text-lg md:text-lg xl:text-xl flex justify-center ">
+            <span className="font-bold text-navy-800 dark:text-white"><p className='text-black dark:text-cyan-900'>Gender:</p>  </span>{profiles.Gender}
           </p>
         </div>
        </div>
