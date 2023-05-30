@@ -47,7 +47,7 @@ const Addemploye = () => {
         e_address,
       });
       if (response.data && response.statusText === "Created") {
-        return setError("project created succesfullly");
+        return setError("employe created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
       console.log(response.data); // Handle the response as needed
     } catch (error) {

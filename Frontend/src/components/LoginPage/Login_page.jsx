@@ -205,7 +205,16 @@ function Login_page() {
         </div>
       </div>
 
-      {/* <div className=" grid grid-cols-2 justify-center  bg-primary gap-4  h-[500px] shadow-2xl rounded-2xl ">
+      
+    </div>
+  );
+}
+
+export default Login_page;
+
+
+
+{/* <div className=" grid grid-cols-2 justify-center  bg-primary gap-4  h-[500px] shadow-2xl rounded-2xl ">
         <div className=" mt-8 justify-center text-white grid grid-cols-1 grid-flow-row ">
           <h1 className="text-3xl flex  justify-center pt-8 ">workwarden</h1>
 
@@ -296,8 +305,3 @@ function Login_page() {
             </div>
           </div>
         )} */}
-    </div>
-  );
-}
-
-export default Login_page;

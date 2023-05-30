@@ -85,7 +85,7 @@ function Employe() {
           <div className="mt-8  text-xl border-2 dark:border-white border-navy-400 rounded-md h-full">
             {employeeData && (
               <div
-                className="justify-center flex mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
+                className=" grid grid-flow-row justify-center  mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
                 key={employeeData.id}
               >
                 <h1 className="justify-center text-navy-900 dark:text-white">
