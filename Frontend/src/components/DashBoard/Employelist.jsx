@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
+import Card from '../card/index'
 
 function Employe() {
   const [error, setError] = useState(undefined);
@@ -42,30 +43,33 @@ function Employe() {
   }; // Empty dependency array for the initial effect
 
   return (
-    <div>
-       <div className=" mt-4 flex h-16 items-center  text-navy-700 rounded-full dark:bg-navy-700 py-2 ">
+    <div className="mx-4">
+       <div className="  mt-4 flex h-16 items-center  text-navy-700 rounded-full dark:bg-navy-700 py-2 ">
+       <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
             <p className="pl-3 pr-2 text-xl  flex">
               <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
             </p>
             <input
               type="text"
               placeholder="Search employe"
-              className="px-4 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-800 dark:text-white dark:placeholder:!text-white sm:w-fit"
+              className="px-4 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
             />
             </div>
+           </div> 
 
 
 
 
-      <div className="flex gap-1">
-        <div className="h-full   w-1/5 ">
-          <div className=" mt-8 justify-center flex border-2 dark:border-white border-navy-400 rounded-md w-full h-full">
+      <div className="flex gap-1 mt-5">
+        <div className=" w-1/5 mt-5 ">
+      <Card extra=" p-[20px]">
+        <div className=" mt-2 justify-center flex  dark:border-white border-navy-500 rounded-md w-full h-full">
             <div className=" text-xl flex ">
               <button className="justify-center  ">
                 {" "}
                 {employees.map((employee) => (
                   <li
-                    className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700  border-2 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
+                    className=" my-2 justify-center flex  items-center   text-navy-700 dark:bg-navy-900  border-sm px-6 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-white "
                     key={employee.id}
                     onClick={() => handleEmployeeClick(employee.id)}
                   >
@@ -78,11 +82,15 @@ function Employe() {
                 ))}
               </button>
             </div>
+
+
           </div>
+          </Card>
         </div>
 
-        <div className=" h-[300px] w-4/5 ml-5 ">
-          <div className="mt-8  text-xl border-2 dark:border-white border-navy-400 rounded-md h-full">
+        <div className=" w-4/5 ml-5 mt-5 ">
+        <Card extra=" p-[20px]">
+        <div className="mt-8  text-xl  dark:border-white border-navy-400 rounded-md h-full">
             {employeeData && (
               <div
                 className=" grid grid-flow-row justify-center  mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
@@ -104,6 +112,7 @@ function Employe() {
               </div>
             )}
           </div>
+          </Card>
         </div>
       </div>
     </div>

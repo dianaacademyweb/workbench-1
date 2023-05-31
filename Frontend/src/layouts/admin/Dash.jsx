@@ -5,6 +5,7 @@ import Navbar from "../../components/navbar/index";
 import { useAuth } from "../../context/AuthContext";
 import ScreenshotsRow from '../../components/DashBoard/Screen';
 import Employe from "../../components/DashBoard/Employelist";
+import TaskCard from "../../views/components/TaskCard";
 
 function Dash() {
   let {id }= useAuth()
@@ -34,12 +35,14 @@ function Dash() {
          <h1 className=' mt-4 text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
      <ScreenshotsRow/>
      <Employe/>
-     <div className='mt-[500px]'> hello </div>
-     <div className='mt-[600px]'>2nd part</div>
-          {/* Routes */}
+     <TaskCard/>
+     <div className=" flex ">
+     
+     </div>
         </div>
         </div>
         </main>
+        
       </div>
     </div>
   );

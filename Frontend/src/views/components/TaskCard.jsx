@@ -1,12 +1,12 @@
-import CardMenu from "components/card/CardMenu";
+import CardMenu from '../../components/card/CardMenu';
 import React from "react";
-import Checkbox from "components/checkbox";
+import Checkbox from "../../components/checkbox/index";
 import { MdDragIndicator, MdCheckCircle } from "react-icons/md";
-import Card from "components/card";
+import Card from "../../components/card/index";
 
 const TaskCard = () => {
   return (
-    <Card extra="pb-7 p-[20px]">
+    <Card extra="pb-7 p-[20px] mt-5 mx-4">
       {/* task header */}
       <div className="relative flex flex-row justify-between">
         <div className="flex items-center">

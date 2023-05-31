@@ -20,7 +20,10 @@ import  Allboard  from "./views/board/Allboard";
 import CreateProject from "./views/Projects/CreateProject";
 import Listproject from "./views/Projects/Listproject";
 import Profiledetail from './components/profile/SeeProfile';
-import CreateProfile from './components/profile/Profilepage'
+import CreateProfile from './components/profile/Profilepage';
+import Addtask from "./views/tasks/task";
+import Task from "./views/tasks";
+import AllTask from "./views/tasks/AllTask";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -52,6 +55,15 @@ function App() {
                <Route path="projects" element={<CreateProject/>}/>
                <Route path="listprojects" element={<Listproject/>}></Route>
              </Route>
+             <Route path="/task" element={<Task/>}>
+               <Route index element={<AllTask/>}/>
+               <Route path="task" element={<AllTask/>}/>
+               <Route path="addtask" element={<Addtask/>}></Route>
+             </Route>
+
+            
+            
+             
 
           </Route>
           <Route  path="*" element={<NotFound />} />
