@@ -175,6 +175,70 @@ class Seeprofile(APIView):
         serializer = ProfileSerializer(queryset, many = True)
         return Response(serializer.data)    
         
+        
+        
+        
+        
+# class TaskdetailsViews(APIView):
+    
+#     def get(self, request, organization_id, formate =None ):
+#         organization_id = self.kwargs['organization_id'] 
+#         task  = Task.objects.get(orgnisation_id=organization_id)
+#         projectid = task.project_id
+#         employeid = task.employe_id
+#         boardid = task.board_id
+#         employer = Employe.objects.get(id=employeid.id)
+#         projects = Project.objects.get(id=projectid.id)
+#         boards = Board.objects.get(id=boardid.id)
+#         data = {
+#             'task_name': task.task_name,
+#             'task_desc': task.task_desc,
+#             'task_assign_date': task.task_assign_date,
+#             'task_deadline_date': task.task_deadline_date,
+#             'task_update_date': task.task_update_date,
+#             'task_status': task.task_status,
+#             'project_name': projects.project_name,
+#             'employee_name': employer.e_name,
+#             'board_name': boards.board_name,
+#             "msg": "The user details are as",
+#         }
+    
+        
+#         return Response(data,
+#                             status=status.HTTP_201_CREATED,
+#                         )    
+        
+class TaskdetailsViews(APIView):    
+    def get(self, request, organization_id, format=None):
+        tasks = Task.objects.filter(orgnisation_id=organization_id)
+        task_data = []
+        
+        for task in tasks:
+            project = Project.objects.get(id=task.project_id.id)
+            employee = Employe.objects.get(id=task.employe_id.id)
+            board = Board.objects.get(id=task.board_id.id)
+            
+            data = {
+                'task_name': task.task_name,
+                'task_desc': task.task_desc,
+                'task_assign_date': task.task_assign_date,
+                'task_deadline_date': task.task_deadline_date,
+                'task_update_date': task.task_update_date,
+                'task_status': task.task_status,
+                'project_name': project.project_name,
+                'employee_name': employee.e_name,
+                'board_name': board.board_name,
+            }
+            
+            task_data.append(data)
+        
+        response_data = {
+            'tasks': task_data,
+            'msg': 'Task details retrieved successfully.',
+        }
+        
+        return Response(response_data)      
+          
     
     
        

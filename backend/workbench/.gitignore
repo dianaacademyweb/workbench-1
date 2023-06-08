@@ -17,8 +17,12 @@ db.sqlite3
 # Virtual Environment
 venv/
 .env/
-creatorai/
+.env
+env/
 
 # Media files
 media/
-.creatorai/
+.db.sqlite3
+/db.sqlite3
+db.sqlite3/
+db.sqlite3

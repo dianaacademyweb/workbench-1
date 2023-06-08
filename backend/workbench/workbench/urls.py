@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
@@ -22,20 +22,11 @@ urlpatterns = [
     path('api/dashboard/<int:organization_id>/monitor/<int:e_id>/details/',  employewiseMonitoring.as_view(), name = 'monitoringdetails' ),
     path('api/dashboard/seeimage/<int:id>/', Seeimage.as_view(), name = 'seeimage' ),
     path('api/dashboard/seeprofile/<int:id>/', Seeprofile.as_view(), name = 'Seeprofile' ),
-
-
-    
-    
-   
-
-    
-    
-    
-
+    path('api/dashboard/taskdetail/<int:organization_id>/', TaskdetailsViews.as_view(), name = 'seeimage' ),
     
     path('admin/', admin.site.urls),
 ]
 
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
  

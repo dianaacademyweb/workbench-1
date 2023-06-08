@@ -61,7 +61,22 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ImageModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageModel
-        fields = ('id', 'organization_id', 'image')             
+        fields = ('id', 'organization_id', 'image')  
+        
+        
+# class TaskdetailsSerializer(serializers.ModelSerializer):
+#     task_name = serializers.CharField(read_only=True)
+#     task_desc = serializers.CharField(read_only=True)
+#     task_assign_date = serializers.CharField(read_only=True)
+#     task_deadline_date = serializers.CharField(read_only=True)
+#     task_update_date = serializers.CharField(read_only=True)
+#     task_status = serializers.CharField(read_only=True)
+#     employee_name = serializers.CharField(read_only=True)
+#     project_name = serializers.CharField(read_only=True)
+#     board_name = serializers.CharField(read_only=True)
+    
+#     class Meta:
+#         fields = ['task_name', 'task_desc', 'task_assign_date','task_deadline_date', 'task_update_date','task_status','employee_name','project_name', 'board_name'  ]                   
     
         
         

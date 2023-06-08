@@ -10,7 +10,7 @@ function Home() {
       <Navbar/>
       <div className=''> 
       <div className="flex flex-col items-center justify-center min-h-screen text-white dark:text-navy-700 dark:bg-navy-900 bg-gradient-to-r from-navy-600  bg-navy-800">
-      <header className="text-4xl font-bold mb-8 mt-10">Employee Management Software</header>
+      <header className="text-4xl font-bold mb-8 mt-10">Diana Sentinal</header>
       <section className="flex flex-col items-center text-center">
         <h2 className="text-2xl font-bold mb-4">Streamline Your Workforce</h2>
         <p className="text-lg mb-8">

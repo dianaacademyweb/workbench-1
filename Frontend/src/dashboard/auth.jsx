@@ -24,6 +24,16 @@ class DashApi {
       },
     });
   };
+  static createTask = (data) => {
+    const token = localStorage.getItem("token");
+    return axios.post(`${base2}/task`, data,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+
+
   static projectsdetails = (id) => {
     const token = localStorage.getItem("token");
     return axios.get(`${base2}/createemploye/${id}`,{
@@ -112,6 +122,18 @@ static uploadimage = (data) => {
     },
   });
 };
+static Taskdetails = (data) => {
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/taskdetail/${id}/`, data,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
+
 static MonitoringList = (id) => {
   const od = localStorage.getItem("id");
   const token = localStorage.getItem("token");

@@ -17,7 +17,7 @@ class Employe(models.Model):
     # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
-        return f'{self.organization_id} {self.e_name}'
+        return f'{self.e_name}'
 
     class Meta:
         db_table = "employee"
@@ -73,10 +73,9 @@ class Task(models.Model):
     task_deadline_date = models.CharField(max_length=55)
     task_update_date = models.CharField(max_length=55, null=True)
     board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='boardids')
-    Project_id = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projectids')
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='projectids')
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    Employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE, related_name='employeeids')
-    
+    employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE, related_name='employeeids')
     class Meta:
         db_table = "task"     
         

@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-8=o+(vmwuzdvt!9do1%ymf#coq%ru6uvvzw29%ysgw2$zo-u8i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['45.80.181.104','127.0.0.1', 'sentinel.www.dianasentinel.com']
+
 
 
 # Application definition
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     "corsheaders",
-    "django_rename_app",
+    'django.contrib.staticfiles',
     "django_extensions",
     "api",
     "api.user",
@@ -139,8 +140,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'your_database_name',
+#         'USER': 'your_username',
+#         'PASSWORD': 'your_password',
+#         'HOST': 'your_host',
+#         'PORT': 'your_port',
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -182,7 +191,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'https://dianasentinal.web.app',
+    'https://www.dianasentinal.web.app',
+]
 
 # Allow credentials to be sent with requests.
 CORS_ALLOW_CREDENTIALS = True
@@ -204,6 +219,7 @@ GRAPH_MODELS = {
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:5173',
     'https://work-warden.web.app',
+    'https://www.dianasentinel.com',
     # Replace with your client application's origin
 ]
 CORS_ALLOW_METHODS = [
