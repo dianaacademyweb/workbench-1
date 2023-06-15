@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import DashApi from '../../dashboard/auth';
 
 const Createboard = () => {
@@ -21,12 +20,12 @@ const Createboard = () => {
         orgnisation_id,
       }); 
       console.log(response);
-      if (response.data && response.statusText === "Created") {
+      if (response.data && response.status === 201) {
         return setError("Board created succesfullly");
       } // Handle the response as needed// Replace 'API_URL' with your actual API endpoint
        // Handle the response as needed
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       if (error.response) {
         return setError(err.response.data.msg);
       }
@@ -44,7 +43,7 @@ const Createboard = () => {
       <h1 className="text-2xl font-bold mb-4">create board</h1>
       <form action='POST '>
         <div className="mb-4">
-          <label htmlFor="e_name">Name:</label>
+          <label for = "board_name" >Name:</label>
           <input
             type="text"
             id="board_name"
@@ -57,7 +56,7 @@ const Createboard = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-      
+        <h1 className='text-green-500 ' >{error}</h1> 
         <button
           type="submit" 
           onClick={Create}
@@ -65,7 +64,7 @@ const Createboard = () => {
         >
           Submit
         </button>
-        <h1 className='text-black  mb-[80px]' >{error}</h1>
+        
       </form>
     </div>
    </div>

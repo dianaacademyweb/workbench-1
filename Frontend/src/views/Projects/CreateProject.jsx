@@ -26,8 +26,8 @@ const CreateProject = () => {
         peoject_description,
         organization_id,
       });
-      // console.log(response) // Replace 'API_URL' with your actual API endpoint
-      if (response.data && response.statusText === "Created") {
+      console.log(response) // Replace 'API_URL' with your actual API endpoint
+      if (response.data && response.status === 201 ) {
         return setError("project created succesfullly");
       } // Handle the response as needed
     } catch (error) {
@@ -77,7 +77,7 @@ const CreateProject = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-        <h1>{error}</h1>
+        <h1 className='text-green-500'>{error}</h1>
         <button
           type="submit" 
           onClick={Create}

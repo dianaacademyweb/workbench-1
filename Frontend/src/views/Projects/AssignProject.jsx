@@ -18,7 +18,7 @@ function EmployeeProjectLinkerForm() {
         let response = await DashApi.ListProject({});
         setProjects(response.data);
         console.log(response);
-        if (response.data && response.statusText === "Created") {
+        if (response.data && response.status === 201 ) {
           return setError("employee assigned succesfully");
         }
       } catch (err) {
@@ -120,8 +120,9 @@ function EmployeeProjectLinkerForm() {
         </select>
       </label>
       <br />
+      <h1 className='text-green-500'>{error}</h1>
       <button className='border-2 rounded px-4 py-4 shadow-sm' type="submit" onClick={Create}> Create</button>
-      <h1 className='mb-[100px]'>{error}</h1>
+      
     </form>
   );
 };

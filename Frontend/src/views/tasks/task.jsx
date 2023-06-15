@@ -151,7 +151,7 @@ const Addtask = () => {
        
        
       });
-      if (response.data && response.statusText === "Created") {
+      if (response.data && response.status === 201 ) {
         return setError("task created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
       console.log(response.data); // Handle the response as needed

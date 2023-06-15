@@ -46,7 +46,7 @@ const Addemploye = () => {
         e_contact,
         e_address,
       });
-      if (response.data && response.statusText === "Created") {
+      if (response.data && response.status === 201 ) {
         return setError("employe created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
       console.log(response.data); // Handle the response as needed
@@ -61,6 +61,7 @@ const Addemploye = () => {
   return (
    
    <div>
+
     <div className='flex justify-end'>
     </div>
      <div className="max-w-md mx-auto mt-20">
@@ -153,7 +154,7 @@ const Addemploye = () => {
             
             className="border border-gray-300 p-2 rounded"
           />
-          <h1>{error}</h1>
+          <h1 className='text-green-500'>{error}</h1>
         </div>
         <button
           type="submit" 

@@ -9,7 +9,7 @@ function Navbar()  {
   return (
         <nav className=" top-2 z-40 flex flex-row flex-wrap items-center justify-between bg-navy-900">
         <img  src={Avatar} alt="WorkWarden" className="w-[100px] h-[px] text-white rounded-[100px]"   />
-        <ul className="list-none sm:flex hidden justify-center items-center flex-1">
+        <ul className="list-none sm:flex  justify-center items-center flex-1">
          <li className="font-poppins font-normal cursor-pointer text-[16px] text-white px-5 py-5">
          <Link to="/" >Home</Link>
          </li>
