@@ -7,6 +7,12 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import mixins
 from rest_framework.permissions import AllowAny
 from api.user.serializers import RegisterSerializer
+from api.user.serializers import MyTokenObtainPairSerializer
+
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 class UserViewSet(
     viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.UpdateModelMixin
@@ -62,5 +68,13 @@ class RegisterViewSet(viewsets.ModelViewSet):
                 "msg": "The user was successfully registered",
             },
             status=status.HTTP_201_CREATED,
-        )    
+        ) 
+        
+        
+class CustomTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer   
+    
+    
+class CustomTokenRefereshview(TokenRefreshView):
+    serializer_class = MyTokenObtainPairSerializer              
                

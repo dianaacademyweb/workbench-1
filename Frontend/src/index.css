@@ -108,3 +108,126 @@ input:checked.defaultCheckbox::before {
 .navbar{
   position: fixed;
 }
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('assets/Images/loginimage/back.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.container {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.user-selection-box {
+  flex: 1;
+  border: 1px solid rgb(69, 69, 69);
+  box-shadow: rgb(69, 69, 69) 0 12px 12px ;
+  border-radius: 5px;
+  padding: 57px;
+  margin-right: 20px; 
+  width: 100px;
+  transition: opacity 0.5s ease;
+  background-image: url('assets/Images/loginimage/lg.jpg');
+  
+  
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.login-interface-box {
+  flex: 1;
+  border: 1px solid rgb(69, 69, 69);
+  box-shadow: rgb(69, 69, 69) 0 12px 12px ;
+  border-radius: 5px;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  
+}
+
+.user-selection-box h2 {
+  margin-bottom: 10px;
+}
+
+.user-selection-box button {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.login-interface-box {
+  flex: 1;
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.login-interface-box h2 {
+  margin-bottom: 20px;
+}
+
+.login-interface-box form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-interface-box label {
+  margin-bottom: 5px;
+}
+
+.login-interface-box input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.login-interface-box button[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.login-interface-box button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.btn{
+  font-size: 18px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+}
+img{
+  width: 63px;
+  
+}
+.logo-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.company-name{
+  font-size: 45px;
+  padding-left: 10px;
+}

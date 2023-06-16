@@ -18,9 +18,7 @@ import DashApi from '../../dashboard/auth';
 const Navbar = (props) => {
   const navigate = useNavigate()
   const {onOpenSidenav, brandtext}= props;
-  let {user}= useAuth()
-  let{id}= useAuth()
-  let {token}= useAuth()
+  const  {type} = useAuth();
   const {setUser}= useAuth()
   const{setToken}= useAuth()
   const{setId} = useAuth()
@@ -263,6 +261,7 @@ useEffect(() => {
           children={
             <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
               <div className="mt-3 ml-4">
+                
                  {profiles && (
                 <div className="flex items-center gap-2"  key={profiles.id}>
                   <p className="text-sm font-bold text-navy-700 dark:text-white">
@@ -271,6 +270,8 @@ useEffect(() => {
                 </div>
                  )}
               </div>
+
+              <h1 className='flex'>{type} </h1>
               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 
               <div className="mt-3 ml-4 flex flex-col">
