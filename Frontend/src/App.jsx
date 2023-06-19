@@ -24,6 +24,8 @@ import CreateProfile from './components/profile/Profilepage';
 import Addtask from "./views/tasks/task";
 import Task from "./views/tasks";
 import AllTask from "./views/tasks/AllTask";
+import NewLogin from "./components/LoginPage/NewLogin";
+import NewHome from "./components/NewHome";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -33,7 +35,7 @@ function App() {
       <BrowserRouter>
         <AuthProvider userData={user}>
           <Routes> 
-          <Route element={<Home />}   path="/"  exact />
+          <Route element={<NewHome />}   path="/"  exact />
           <Route  path="/login" element={<Login_page />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
