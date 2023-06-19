@@ -3,6 +3,7 @@ import Home from "./Home";
 import Login_page from "./LoginPage/Login_page";
 import Data from "./Data";
 import NotFound from "./NotFound";
+import NewHome from "./Newhome";
 
 export{
     Navbar,
@@ -10,5 +11,6 @@ export{
     Login_page,
     Data,
     NotFound,
+    NewHome,
 
 }

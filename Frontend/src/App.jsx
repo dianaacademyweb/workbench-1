@@ -1,5 +1,5 @@
 import React  from "react";
-import {  Home, Login_page, NotFound } from "./components";
+import { NewHome,  Home, Login_page, NotFound } from "./components";
 import Navbar from "./components/navbar/index";
 import { AuthProvider } from "./context/AuthContext";
 import styles from "../Style";
@@ -34,7 +34,7 @@ function App() {
       <BrowserRouter>
         <AuthProvider userData={user}>
           <Routes> 
-          <Route element={<Home />}   path="/"  exact />
+          <Route element={<NewHome />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
