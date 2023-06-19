@@ -26,6 +26,7 @@ import Task from "./views/tasks";
 import AllTask from "./views/tasks/AllTask";
 import NewLogin from "./components/LoginPage/NewLogin";
 import NewHome from "./components/NewHome";
+import Newloginpage from "./components/LoginPage/newloginpage";
 
 function App() {
   let user = localStorage.getItem("user");
@@ -37,6 +38,8 @@ function App() {
           <Routes> 
           <Route element={<NewHome />}   path="/"  exact />
           <Route  path="/login" element={<Login_page />} />
+          <Route element={<Home />}   path="/"  exact />
+          <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>

@@ -5,15 +5,16 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+# from rest_framework_simplejwt.views import (
+#     TokenObtainPairView,
+#     TokenRefreshView,
+# )
+from api.user.viewsets import CustomTokenObtainPairView , CustomTokenRefereshview
 
 urlpatterns = [
     path("api/users/", include(("api.routers", "api"), namespace="api")),
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', CustomTokenRefereshview.as_view(), name='token_refresh'),
   
     path('api/dashboard/employelist/<int:id>/', EmployeListAPIView.as_view(), name = 'employe' ),  
     path('api/dashboard/boardlist/<int:id>/', BoardlistApi.as_view(), name = 'board' ),

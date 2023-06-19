@@ -2,6 +2,23 @@ from api.user.models import User
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+import json
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, User):
+        token = super().get_token(User)
+
+        # Add custom claims
+        token['name'] = User.username
+        token['type']= User.user_type
+        # ...
+
+        return token
+
+
+
 
 class UserSerializer(serializers.ModelSerializer):
     date = serializers.DateTimeField(read_only=True)
