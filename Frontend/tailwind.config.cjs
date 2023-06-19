@@ -4,6 +4,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      letterSpacing: {
+        'custom-wide': '0.4em',
+      },
+    
       width: {
         "1p": "1%",
         "2p": "2%",
@@ -108,6 +112,9 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         dm: ["DM Sans", "sans-serif"],
+        'bernard': ['Bernard MT Condensed', 'sans-serif'],
+        calibri: ['Calibri', 'Arial', 'sans-serif'],
+        'arial-rounded': ['Arial Rounded MT Bold', 'Arial', 'sans-serif'],
       },
       boxShadow: {
         "3xl": "14px 17px 40px 4px",
@@ -326,3 +333,4 @@ module.exports = {
   },
   plugins: [require("tailwindcss-rtl")],
 };
+

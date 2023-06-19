@@ -1,5 +1,5 @@
 import React  from "react";
-import { NewHome,  Home, Login_page, NotFound } from "./components";
+import { Home, Login_page, NotFound } from "./components";
 import Navbar from "./components/navbar/index";
 import { AuthProvider } from "./context/AuthContext";
 import styles from "../Style";
@@ -24,6 +24,7 @@ import CreateProfile from './components/profile/Profilepage';
 import Addtask from "./views/tasks/task";
 import Task from "./views/tasks";
 import AllTask from "./views/tasks/AllTask";
+import Newhome from "./components/Newhome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 
 function App() {
@@ -34,8 +35,11 @@ function App() {
       <BrowserRouter>
         <AuthProvider userData={user}>
           <Routes> 
-          <Route element={<NewHome />}   path="/"  exact />
+          <Route element={<Newhome />}   path="/"  exact />
+
           <Route  path="/login" element={<Newloginpage />} />
+          <Route element={<Home />}   path="/"  exact />
+                    <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>

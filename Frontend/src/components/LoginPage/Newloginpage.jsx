@@ -5,8 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import backgroundimage from '../../assets/Images/loginimage/back.jpg'
-import sideimage from '../../assets/Images/loginimage/lg.jpg'
+// import backgroundimage from '../../assets/Images/loginimage/back.jpg'
+// import sideimage from '../../assets/Images/loginimage/lg.jpg'
 
 function Newloginpage() {
   const navigate = useNavigate();
