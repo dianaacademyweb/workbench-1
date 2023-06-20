@@ -18,7 +18,7 @@ function CreateProfile() {
   const [organization_id, setOrganisation] = useState(id);
 
   const [error, setError] = useState(undefined);
-  const [buttonText, setButtonText] = useState("Sign up");
+  const [buttonText, setButtonText] = useState("Create profile");
   const Profile = async (event) => {
     if (event) {
       event.preventDefault();
@@ -27,7 +27,7 @@ function CreateProfile() {
       return setError("You must enter your name.");
     }
     try {
-      setButtonText("adding up ");
+      setButtonText("Done");
       let response = await DashApi.Profile({
         name,
         contact,
@@ -89,9 +89,9 @@ function CreateProfile() {
                   setGender(event.target.value);
                   setError(undefined);
                 }} />
-                <h1>{error}</h1>
+                <h1 className='text-green-600'>{error}</h1>
 
-                <button className='flex mt-10 '  type= "submit"onClick={Profile}> {buttonText}</button>
+                <button className='flex mt-10 bg-navy-800 px-4 py-2  rounded-full text-white '  type= "submit"onClick={Profile}> {buttonText} </button>
       
       </form>
     </div>

@@ -133,7 +133,7 @@ body {
   margin-right: 20px; 
   width: 100px;
   transition: opacity 0.5s ease;
-  background-image: url('./assets/Images/loginimage/lg.jpg');
+  background-image: url('./assets/Images/layouts/bgroup.jpeg');
   
   
   background-size: cover;
@@ -188,7 +188,7 @@ body {
   border-radius: 3px;
 }
 
-.login-interface-box button {
+.login-interface-box button[type="submit"] {
   padding: 10px;
   background-color: #007bff;
   color: #fff;
@@ -231,8 +231,9 @@ img{
 }
 
 .backimage{
+
   background-size: cover;
   background-position: center;
-  background-image: url('./assets/Images/loginimage/bck.jpg');
+  background-image: url('./assets/Images/layouts/bgroup.jpeg');
 
 }

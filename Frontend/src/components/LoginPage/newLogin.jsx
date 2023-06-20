@@ -34,7 +34,7 @@ const NewLogin = () => {
             <form>
               {selectedUser === 'admin' && (
                 <>
-                  <label htmlFor="adminUsername">Admin Username:</label>
+                  <label htmlFor="adminUsername">Admin email</label>
                   <input type="text" id="adminUsername" />
 
                   <label htmlFor="adminPassword">Admin Password:</label>

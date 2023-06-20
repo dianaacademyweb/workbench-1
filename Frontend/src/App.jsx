@@ -28,7 +28,7 @@ import NewHome from "./components/NewHome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 import NewLogin from "./components/LoginPage/NewLogin";
 function App() {
-  let user = localStorage.getItem("user");
+  let user = localStorage.getItem("id");
   user = JSON.parse(user);
   return (
     <div className="App ">
@@ -37,7 +37,7 @@ function App() {
           <Routes> 
           <Route element={<NewHome/>}   path="/"  exact />
 
-          <Route  path="/login" element={<NewLogin />} />
+          <Route  path="/login" element={<Newloginpage />} />
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
