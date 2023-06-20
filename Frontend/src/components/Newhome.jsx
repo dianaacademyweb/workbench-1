@@ -8,8 +8,8 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 const Newhome = () => {
   return (
     <div className="min-h-screen bg-cover bg-no-repeat " style={{ backgroundImage: `url(${homeimage})` }}>
-      <div className="logo w-16 h-18 pt-2 pb-4 ">
-          <img src={logo} alt="Logo"/>
+      <div className="logo w-16 h-18 pt-6 pb-4 ml-10  ">
+        <a href="http://www.dianaadvancedtechacademy.uk/"><img src={logo} alt="Logo"/></a>
       </div>
       <div className="box mx-auto pt-2 ml-12 mr-12 shadow-2xl bg-cover bg-no-repeat   py-3" style={{ backgroundImage: `url(${home2})` }}  >
 
