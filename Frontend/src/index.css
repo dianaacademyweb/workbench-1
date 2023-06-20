@@ -188,7 +188,7 @@ body {
   border-radius: 3px;
 }
 
-.login-interface-box button[type="submit"] {
+.login-interface-box button {
   padding: 10px;
   background-color: #007bff;
   color: #fff;

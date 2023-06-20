@@ -28,7 +28,7 @@ import NewHome from "./components/NewHome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 import NewLogin from "./components/LoginPage/NewLogin";
 function App() {
-  let user = localStorage.getItem("id");
+  let user = localStorage.getItem("user");
   user = JSON.parse(user);
   return (
     <div className="App ">
