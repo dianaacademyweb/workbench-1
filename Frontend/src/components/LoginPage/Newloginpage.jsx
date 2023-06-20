@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/Images/loginimage/logo.png";
+import group from "../../assets/Images/layouts/group.jpg";
 import AuthApi from "../../auth/auth";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -87,26 +88,25 @@ function Newloginpage() {
     setRememberMe(!rememberMe);
   };
   return (
-   <div className="backimage bg-cover h-screen">
 
-<div className="container">
-      <div className="user-selection-box  h-[21rem]">
-        <div>
+    <div className="min-h-screen bg-cover bg-no-repeat bg-blur-2xl" style={{ backgroundImage: `url(${group})` }}>
+      <div className="mx-auto py-24 grid grid-cols-2">
+      <div className="py-2 mx-auto bg-cover bg-no-repeat" style={{ backgroundImage: `url(${group})` }}>
           <div className="logo-container">
             <img src={logo} alt="Logo" className="logo" />
           </div>
-
-          <button className="btn" onClick={() => handleUserSelection("admin")}>
+          <div className="flex flex-col">
+          <button onClick={() => handleUserSelection("admin")}>
             Admin
           </button>
           <button
-            className="btn"
+            
             onClick={() => handleUserSelection("manager")}
           >
             Manager
           </button>
           <button
-            className="btn"
+            
             onClick={() => handleUserSelection("employee")}
           >
             Employee

@@ -1,9 +1,10 @@
+import '/src/App.jsx'
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+
 import '/src/App.css';
 import logo from '/src/assets/Images/loginimage/logo.png';
-
-
+import group from '/src/assets/Images/layouts/group.jpg';
+import bgroup from '/src/assets/Images/layouts/bgroup.jpeg';
 const NewLogin = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [rememberMe, setRememberMe] = useState(false);
@@ -19,18 +20,15 @@ const NewLogin = () => {
   };
 
   return (
-  
+    <div className=" bg-cover bg-no-repeat " style={{ backgroundImage: `url(${bgroup})` }}>
     <div className="container">
-      
-      <div className=" a ">DIANA ADVANCED TECH ACADEMY</div>
-      <div className='b'>
-      <div className='user-selection-box custom-width'>
-        <img src={logo} alt="Logo" className="logo" />
-        <button className='btn' onClick={() => handleUserSelection('admin')}>Admin</button>
-        <button className='btn' onClick={() => handleUserSelection('manager')}>Manager</button>
-        <button className='btn' onClick={() => handleUserSelection('employee')}>Employee</button>
+      <div className="user-selection-box custom-width bg-cover bg-no-repeat " style={{ backgroundImage: `url(${group})` }}>
+        <img src={logo} alt="Logo" className="logo pb-7" />
+        <button className='text-white btn pb-8 pt-2' onClick={() => handleUserSelection('admin')}>Admin</button>
+        <button className='text-white btn pb-8 pt-2' onClick={() => handleUserSelection('manager')}>Manager</button>
+        <button className='text-white btn pb-8 pt-2' onClick={() => handleUserSelection('employee')}>Employee</button>
       </div>
-
+      
       <div className={`login-interface-box ${showLoginInterface ? 'show' : ''}`}>
             <h2>Login as {selectedUser}</h2>
             <form>
@@ -109,9 +107,10 @@ const NewLogin = () => {
             </form>
         </div>
         </div>
-    </div>
+        </div>
    
   );
 };
 
 export default NewLogin;
+
