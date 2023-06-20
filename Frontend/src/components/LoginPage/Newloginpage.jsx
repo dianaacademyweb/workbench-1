@@ -213,12 +213,8 @@ function Newloginpage() {
         <div className="mt-4">
             <span className=" text-sm font-medium text-navy-700 dark:text-gray-600">
               Not registered yet?
-            </span>
-            
-              
+            </span>  
        <Link className= " flex float-right ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white" to= "/register">Create an account</Link>
-              
-            
           </div>
 
       </div>
