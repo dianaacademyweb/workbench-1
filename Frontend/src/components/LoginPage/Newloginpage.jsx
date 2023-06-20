@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import divideUtilities from "tailwindcss-rtl/src/divideUtilities";
 // import backgroundimage from '../../assets/Images/loginimage/back.jpg'
 // import sideimage from '../../assets/Images/loginimage/lg.jpg'
 
@@ -21,12 +22,12 @@ function Newloginpage() {
   const [buttonText, setButtonText] = useState("Sign in");
   const [selectedUser, setSelectedUser] = useState("admin");
   const [rememberMe, setRememberMe] = useState(false);
-  const [showLoginInterface, setShowLoginInterface] = useState(false);
+  const [showLoginInterface, setShowLoginInterface] = useState("admin");
   const login = async (event) => {
     if (event) {
       event.preventDefault();
     }
-    if (user && id ) {
+    if (user ) {
       return navigate("/dashboard");
     }
     if (email === "") {
@@ -41,8 +42,8 @@ function Newloginpage() {
         email,
         password,
       });
-      if (response.data && response.data.success === true) {
-        return setError(response.data.msg);
+      if (response.data && response.status === 200) {
+        return navigate("/dashboard");
       }
       console.log(response);
       return setProfile(response);
@@ -64,18 +65,18 @@ function Newloginpage() {
     console.log(decode.type);
     let id = decode.user_id;
     let usertype = decode.type;
-    user = JSON.stringify(usertype);
+    usertype = JSON.stringify(usertype);
     
     localStorage.setItem("id", id);
+    localStorage.setItem("user",user)
     localStorage.setItem("token", token);
-    localStorage.setItem("usertype", user);
+    localStorage.setItem("usertype", usertype);
 
 
     setUser(user);
     setId(id);
     setToken(token);
     setType(user);
-    return navigate("/dashboard");
   };
   const handleUserSelection = (userType) => {
     setSelectedUser(userType);
@@ -86,8 +87,10 @@ function Newloginpage() {
     setRememberMe(!rememberMe);
   };
   return (
-    <div className="container">
-      <div className="user-selection-box">
+   <div className="backimage bg-cover h-screen">
+
+<div className="container">
+      <div className="user-selection-box  h-[21rem]">
         <div>
           <div className="logo-container">
             <img src={logo} alt="Logo" className="logo" />
@@ -152,7 +155,7 @@ function Newloginpage() {
               </div>
               <h1>{error}</h1>
               <button type="submit" onClick={login}>
-                Login as Admin
+              {buttonText} as Admin
               </button>
             </>
           )}
@@ -207,9 +210,21 @@ function Newloginpage() {
             </>
           )}
         </form>
+        <div className="mt-4">
+            <span className=" text-sm font-medium text-navy-700 dark:text-gray-600">
+              Not registered yet?
+            </span>
+            
+              
+       <Link className= " flex float-right ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white" to= "/register">Create an account</Link>
+              
+            
+          </div>
+
       </div>
     </div>
-    // </div>
+
+   </div>
   );
 }
 

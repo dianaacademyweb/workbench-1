@@ -39,7 +39,7 @@ function App() {
 
           <Route  path="/login" element={<Newloginpage />} />
           <Route element={<Home />}   path="/"  exact />
-                    <Route  path="/login" element={<Newloginpage />} />
+          <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>

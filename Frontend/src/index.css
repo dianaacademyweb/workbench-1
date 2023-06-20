@@ -111,10 +111,8 @@ input:checked.defaultCheckbox::before {
 body {
   margin: 0;
   padding: 0;
-  background-image: url('assets/Images/loginimage/back.jpg');
   background-size: cover;
   background-position: center;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .container {
@@ -135,7 +133,7 @@ body {
   margin-right: 20px; 
   width: 100px;
   transition: opacity 0.5s ease;
-  background-image: url('assets/Images/loginimage/lg.jpg');
+  background-image: url('./assets/Images/loginimage/lg.jpg');
   
   
   background-size: cover;
@@ -230,4 +228,11 @@ img{
 .company-name{
   font-size: 45px;
   padding-left: 10px;
+}
+
+.backimage{
+  background-size: cover;
+  background-position: center;
+  background-image: url('./assets/Images/loginimage/bck.jpg');
+
 }
