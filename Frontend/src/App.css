@@ -1,0 +1,18 @@
+
+.inner-box{
+    background-color: rgb(26,145,209);
+    
+    font-size: 16px;
+    text-indent: 0px;
+    line-height: 20px;
+}
+.box{
+    padding: 20px;
+    background-color: rgb(98, 96, 96);
+}
+.marquee{
+    font-size: 14px;
+}
+.footer{
+    font-size: 10px;
+}

@@ -24,7 +24,7 @@ import CreateProfile from './components/profile/Profilepage';
 import Addtask from "./views/tasks/task";
 import Task from "./views/tasks";
 import AllTask from "./views/tasks/AllTask";
-import Newhome from "./components/Newhome"
+import NewHome from "./components/NewHome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 
 function App() {
@@ -35,7 +35,7 @@ function App() {
       <BrowserRouter>
         <AuthProvider userData={user}>
           <Routes> 
-          <Route element={<Newhome />}   path="/"  exact />
+          <Route element={<NewHome/>}   path="/"  exact />
 
           <Route  path="/login" element={<Newloginpage />} />
           <Route element={<Home />}   path="/"  exact />

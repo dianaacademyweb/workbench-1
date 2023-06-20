@@ -4,8 +4,22 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      animation: {
+        marquee: 'marquee 30s linear infinite',
+        marquee2: 'marquee2 30s linear infinite'
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' }
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' }
+        }
+      },
       letterSpacing: {
-        'custom-wide': '0.4em',
+        'custom-wide': '0.3em',
       },
     
       width: {
