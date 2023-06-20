@@ -27,7 +27,7 @@ function Newloginpage() {
     if (event) {
       event.preventDefault();
     }
-    if (user && user.token) {
+    if (user && id ) {
       return navigate("/dashboard");
     }
     if (email === "") {
