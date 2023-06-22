@@ -27,6 +27,16 @@ import AllTask from "./views/tasks/AllTask";
 import NewHome from "./components/NewHome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 import NewLogin from "./components/LoginPage/NewLogin";
+import Team from "./components/team";
+import Leader from "./components/teams/Leader";
+import Hr from "./components/teams/Hr";
+import Administration from "./components/teams/Administration";
+import Manager from "./components/teams/Manager";
+import Sales from "./components/teams/Sales";
+import Creative from "./components/teams/Creative";
+// import EmployeeOnboarding from "./components/EmployeeOnboarding";
+
+import Technical from "./components/teams/Technical";
 function App() {
   let user = localStorage.getItem("id");
   user = JSON.parse(user);
@@ -36,11 +46,20 @@ function App() {
         <AuthProvider userData={user}>
           <Routes> 
           <Route element={<NewHome/>}   path="/"  exact />
+          <Route element={<Leader/>}   path="/leader"  exact />
+          <Route element={<Hr/>}   path="/hr"  exact />
+          <Route element={<Administration/>}   path="/administration"  exact />
+          <Route element={<Sales />}   path="/sales"  exact />
+          <Route element={<Creative/>}   path="/creative"  exact />
 
+          {/* <Route element={<EmployeeOnboarding/>}   path="/employee-onboarding"  exact /> */}
+          <Route element={<Technical/>}   path="/technical"  exact />
+          <Route element={<Manager/>}   path="/manager"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
+          <Route  path="/team" element={<Team />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>
              <Route path="/Profile" element={<Profile/>}>
