@@ -37,10 +37,8 @@ class Profile(models.Model):
     
 class ImageModel(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')  
+    image = models.FileField(upload_to='images/')  
       
-        
-   
 
 
 class Project(models.Model):
@@ -77,7 +75,16 @@ class Task(models.Model):
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
     employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE, related_name='employeeids')
     class Meta:
-        db_table = "task"     
+        db_table = "task"  
+        
+        
+class Team(models.Model):
+    board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='boardids' )
+    team_name = models.CharField(max_length=55)
+    team_desc = models.CharField(max_length= 300)
+    class Meta:
+        db_table = "team" 
+               
         
         
 class Monitoring(models.Model):

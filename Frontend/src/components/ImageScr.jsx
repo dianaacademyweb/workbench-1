@@ -1,16 +1,16 @@
 import React from "react";
 import Marquee from 'react-fast-marquee';
 import '/src/App.jsx';
-import img1 from '/src/assets/scrimg/img1.png';
-import img2 from '/src/assets/scrimg/img2.png';
-import img3 from '/src/assets/scrimg/img3.png';
-import img4 from '/src/assets/scrimg/img4.png';
-import img5 from '/src/assets/scrimg/img5.png';
-import img6 from '/src/assets/scrimg/img6.png';
-import img7 from '/src/assets/scrimg/img7.png';
-import img8 from '/src/assets/scrimg/img8.png';
-import img9 from '/src/assets/scrimg/img9.png';
-import img10 from '/src/assets/scrimg/img10.png';
+import img1 from '../assets/scrimg/img1.png';
+import img2 from '../assets/scrimg/img2.png';
+import img3 from '../assets/scrimg/img3.png';
+import img4 from '../assets/scrimg/img4.png';
+import img5 from '../assets/scrimg/img5.png';
+import img6 from '../assets/scrimg/img6.png';
+import img7 from '../assets/scrimg/img7.png';
+import img8 from '../assets/scrimg/img8.png';
+import img9 from '../assets/scrimg/img9.png';
+import img10 from '../assets/scrimg/img10.png';
 
 function ImageScr(){
     return(

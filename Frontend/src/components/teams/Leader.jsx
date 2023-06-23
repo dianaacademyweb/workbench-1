@@ -4,13 +4,15 @@ import LeftNav from './LeftNav';
 import home from '/src/assets/Images/layouts/home.jpg'
 import '/src/App.jsx';
 
+import Pro from "../../assets/Images/layouts/pro.jpg"
+
 function Leader(){
   const cardData = [
-    { image: '/src/assets/Images/layouts/pro.jpg', name: 'John Doe', designation: 'FNCM' },
-    { image: '/src/assets/Images/layouts/pro.jpg', name: 'Jane Smith', designation: 'CEO' },
-    { image: '/src/assets/Images/layouts/pro.jpg', name: 'Alex Johnson', designation: 'Director' },
-    { image: '/src/assets/Images/layouts/pro.jpg', name: 'Sarah Thompson', designation: 'C.T.O' },
-    { image: '/src/assets/Images/layouts/pro.jpg', name: 'Michael Brown', designation: 'Director' }
+    { image: `${Pro}`, name: 'John Doe', designation: 'FNCM' },
+    { image: `${Pro}`, name: 'Jane Smith', designation: 'CEO' },
+    { image: `${Pro}` , name: 'Alex Johnson', designation: 'Director' },
+    { image: `${Pro}`, name: 'Sarah Thompson', designation: 'C.T.O' },
+    { image: `${Pro}`, name: 'Michael Brown', designation: 'Director' }
   ];
   return (
     <div className="bg-cover " style={{ backgroundImage: `url(${home})` }}>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import DashApi from '../../dashboard/auth';
 import Navbar  from '../../components/navbar/index'
 
-const Addemploye = () => {
+const TeamsAdd = () => {
   const id = localStorage.getItem("id");
   const [organization_id, setOrgnization] = useState(id);
   const [error, setError] = useState(undefined);
@@ -57,7 +57,6 @@ const Addemploye = () => {
    
    <div>
     <div className='flex justify-end'>
-    <Navbar/>
     </div>
      <div className="max-w-md mx-auto mt-20">
       <h1 className="text-2xl font-bold mb-4">Employee Form</h1>
@@ -164,5 +163,5 @@ const Addemploye = () => {
   );
 };
 
-export default Addemploye;
+export default TeamsAdd;
 

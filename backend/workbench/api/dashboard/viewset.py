@@ -5,8 +5,8 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
 
@@ -237,7 +237,14 @@ class TaskdetailsViews(APIView):
             'msg': 'Task details retrieved successfully.',
         }
         
-        return Response(response_data)      
+        return Response(response_data)    
+    
+    
+    
+    
+class TeamsViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer          
           
     
     

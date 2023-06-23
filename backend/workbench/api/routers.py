@@ -10,6 +10,7 @@ from api.dashboard.viewset import (
     MonitoringViewSet,
     ProfileViewSet,
     ImageUploadView,
+    TeamsViewSet,
     
 )
 from rest_framework import routers
@@ -39,6 +40,9 @@ router.register(r"projectlinker",ProjectEmployeLinkViewSet , basename="projectli
 router.register(r"Monitoring",MonitoringViewSet , basename="Monitoring")
 
 router.register(r"Profile", ProfileViewSet, basename="Profile")
+
+
+router.register(r"teams", TeamsViewSet, basename="teams")
 
 router.register(r"imageupload", ImageUploadView, basename="upload")
 

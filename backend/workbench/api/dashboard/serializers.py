@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
-from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel
+from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
 from api.user.models import User
 
 
@@ -62,6 +62,17 @@ class ImageModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageModel
         fields = ('id', 'organization_id', 'image')  
+        
+        
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = '__all__'       
+                
+        
+        
+        
+        
         
         
 # class TaskdetailsSerializer(serializers.ModelSerializer):
