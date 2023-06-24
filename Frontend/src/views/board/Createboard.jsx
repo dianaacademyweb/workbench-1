@@ -43,7 +43,7 @@ const Createboard = () => {
       <h1 className="text-2xl font-bold mb-4">create board</h1>
       <form action='POST '>
         <div className="mb-4">
-          <label for = "board_name" >Name:</label>
+          <label htmlFor = "board_name" >Name:</label>
           <input
             type="text"
             id="board_name"

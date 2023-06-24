@@ -79,7 +79,8 @@ class Task(models.Model):
         
         
 class Team(models.Model):
-    board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='boardids' )
+    organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
+    board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='board' )
     team_name = models.CharField(max_length=55)
     team_desc = models.CharField(max_length= 300)
     class Meta:

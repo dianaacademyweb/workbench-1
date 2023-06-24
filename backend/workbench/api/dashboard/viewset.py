@@ -244,7 +244,62 @@ class TaskdetailsViews(APIView):
     
 class TeamsViewSet(viewsets.ModelViewSet):
     queryset = Team.objects.all()
-    serializer_class = TeamSerializer          
+    serializer_class = TeamSerializer      
+    
+ 
+ 
+ 
+class Seeteams(APIView):    
+    def get(self, request, organization_id, format=None):
+        teams = Team.objects.filter(organization_id=organization_id)
+        teams_data = []
+        
+        for teams in teams:
+            board = Board.objects.get(id=teams.board_id.id)
+            
+            data = {
+                'team_name': teams.team_name,
+                'team_desc': teams.team_desc,
+                'board_name': board.board_name,
+            }
+            
+            teams_data.append(data)
+        
+        response_data = {
+            'tasks': teams_data,
+            'msg': 'Teams details retrieved successfully.',
+        }
+        
+        return Response(response_data)    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+    
+class boardwiseteams(APIView):
+    def get(self, request, organization_id, board_id, formate =None ):
+        organization_id = self.kwargs['organization_id']
+        board_id = self.kwargs['board_id'] 
+        queryset =  queryset = Team.objects.filter(organization_id=organization_id, board_id=board_id).all()
+        serializer = TeamSerializer(queryset, many=True)
+        return Response(serializer.data)   
+    
+    
+    
+    
+
+class TeamlistApi(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = Team.objects.filter(organization_id = id )
+        serializer = TeamSerializer(queryset, many = True)
+        return Response(serializer.data)     
+       
           
     
     
