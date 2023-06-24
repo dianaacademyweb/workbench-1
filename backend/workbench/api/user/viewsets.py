@@ -7,7 +7,12 @@ from rest_framework.exceptions import ValidationError
 from rest_framework import mixins
 from rest_framework.permissions import AllowAny
 from api.user.serializers import RegisterSerializer
-from api.user.serializers import MyTokenObtainPairSerializer
+from api.user.serializers import MyTokenObtainPairSerializer , EmailVerificationSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from rest_framework.views import APIView
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
@@ -60,6 +65,15 @@ class RegisterViewSet(viewsets.ModelViewSet):
 
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
+        
+        token = RefreshToken.for_user(user).access_token
+        relative_link = reverse('email-verify')
+        abs_url = 'https://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
+
+        # Send verification email
+        email_subject = 'Verify your email'
+        email_body = f'Hi {user.username},\nPlease use the link below to verify your email:\n{abs_url}'
+        send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [user.email], fail_silently=False,)
 
         return Response(
             {
@@ -76,5 +90,47 @@ class CustomTokenObtainPairView(TokenObtainPairView):
     
     
 class CustomTokenRefereshview(TokenRefreshView):
-    serializer_class = MyTokenObtainPairSerializer              
+    serializer_class = MyTokenObtainPairSerializer 
+    
+    
+class EmailVerificationView(APIView):
+    serializer_class = EmailVerificationSerializer
+
+    def get(self, request):
+        token = request.GET.get('token')
+        serializer = self.serializer_class(data ={'token':token})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data
+        return Response({'detail': 'Email successfully verified.'}, status=status.HTTP_200_OK)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # serializer_class = EmailVerificationSerializer
+    # def post(self, request):
+    #     serializer = self.serializer_class(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #     user = serializer.validated_data
+    #     return Response({'detail': 'Email successfully verified.'}, status=status.HTTP_200_OK)    
+    
+    
+    
+    
+    
+                 
                

@@ -9,9 +9,12 @@ from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , Boardlis
 #     TokenObtainPairView,
 #     TokenRefreshView,
 # )
-from api.user.viewsets import CustomTokenObtainPairView , CustomTokenRefereshview
+from api.user.viewsets import CustomTokenObtainPairView , CustomTokenRefereshview, EmailVerificationView
 
 urlpatterns = [
+    
+    
+   
     path("api/users/", include(("api.routers", "api"), namespace="api")),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', CustomTokenRefereshview.as_view(), name='token_refresh'),
@@ -28,8 +31,7 @@ urlpatterns = [
     
     path('api/dashboard/boardwiseteams/<int:organization_id>/board/<int:board_id>/',boardwiseteams.as_view(), name = 'boardwiseteams' ),
     path('api/dashboard/teamlist/<int:id>/', TeamlistApi.as_view(), name = 'teamlist' ),
-
-
+    path('api/verify-email/', EmailVerificationView.as_view(), name='email-verify'),
     path('admin/', admin.site.urls),
 ]
 

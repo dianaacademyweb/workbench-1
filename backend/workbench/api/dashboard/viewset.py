@@ -10,6 +10,12 @@ from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer,
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
 
+from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from rest_framework_simplejwt.tokens import RefreshToken
+
+
 
 from api.user.models import User
 
@@ -58,11 +64,58 @@ class ProjectListAPIView(APIView):
         return Response(serializer.data)    
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
+    http_method_names = ["post"]
     authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
+    # permission_classes =[IsOrganizationPermission]
     
-    queryset = Employe.objects.all()
+
     serializer_class = EmployeSerializer
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        
+        token = RefreshToken.for_user(user).access_token
+        relative_link = reverse('email-verify')
+        abs_url = 'https://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
+
+        # Send verification email
+        email_subject = 'Verify your email'
+        email_body = f'Hi {user.username},\nPlease use the link below to verify your email:\n{abs_url}'
+        send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [user.email], fail_silently=False,)
+
+        return Response(
+            {
+                "success": True,
+                "userID": user.id,
+                "msg": "employee created succesfully",
+            },
+            status=status.HTTP_201_CREATED,
+        ) 
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     # def create(self, request, format=None, *args ,**kwargs):
     #     user_serializer = RegisterSerializer(data=request.data)  # Assuming you have a UserSerializer for creating users

@@ -7,20 +7,21 @@ from api.user.models import User
  
           
 class Employe(models.Model):
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    e_name = models.CharField(max_length=100)
-    e_email = models.EmailField()
-    e_password = models.CharField(max_length=32)
+    user = models.OneToOneField(User, related_name='employe', on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, related_name='orgid', on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    email = models.EmailField()
+    password = models.CharField(max_length=32)
     e_gender = models.CharField(max_length=25)
     e_contact = models.CharField(max_length=100)
     e_address = models.CharField(max_length=150)
     # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
-        return f'{self.e_name}'
+        return f'{self.user.username}'
 
     class Meta:
-        db_table = "employee"
+        db_table = "employe"
 
 class Profile(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
