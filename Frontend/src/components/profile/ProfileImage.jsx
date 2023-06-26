@@ -52,7 +52,7 @@ const handleUpload = async (event) => {
     formData.append('organization_id', organization_id);
 
     axios
-      .post('http://127.0.0.1:8001/api/users/imageupload', formData, {
+      .post('https://sentinel.www.dianasentinel.com/api/users/imageupload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -119,7 +119,7 @@ const handleUpload = async (event) => {
                {profileImage && (
                 
        <div key={profileImage.id}>
-         <img className='rounded-[80px]' src={`http://127.0.0.1:8001/${profileImage.image}`} alt="Profile Image" />
+         <img className='rounded-[80px]' src={`https://sentinel.www.dianasentinel.com/${profileImage.image}`} alt="Profile Image" />
        </div>
       )}
                </div>

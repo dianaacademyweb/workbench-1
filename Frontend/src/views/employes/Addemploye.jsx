@@ -6,9 +6,9 @@ const Addemploye = () => {
   const id = localStorage.getItem("id");
   const [organization_id, setOrgnization] = useState(id);
   const [error, setError] = useState(undefined);
-  const [e_name, setName] = useState("");
-  const [e_email, setEmail] = useState("");
-  const [e_password, setPassword] = useState("");
+  const [username, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [e_gender, setGender] = useState("");
   const [e_contact, setcontact] = useState("");
   const [e_address, setAddres] = useState("");
@@ -18,13 +18,13 @@ const Addemploye = () => {
     if (e){
       e.preventDefault();
     }
-    if (e_name === "") {
+    if (username === "") {
       return setError("You must enter your first name.");
     }
-    if (e_email === "") {
+    if (email === "") {
       return setError("You must enter your email.");
     }
-    if (e_password === "") {
+    if (password === "") {
       return setError("You must enter a password.");
     }
     if (e_gender === "") {
@@ -39,16 +39,18 @@ const Addemploye = () => {
     try {
       let  response = await DashApi.createEmploye({
         organization_id,
-        e_name,
-        e_email,
-        e_password,
+        username,
+        email,
+        password,
         e_gender,
         e_contact,
         e_address,
       });
+      console.log(response)
       if (response.data && response.status === 201 ) {
         return setError("employe created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
+      
       console.log(response.data); // Handle the response as needed
     } catch (error) {
       if (error.response) {
@@ -68,12 +70,12 @@ const Addemploye = () => {
       <h1 className="text-2xl font-bold mb-4">Employee Form</h1>
       <form action='POST '>
         <div className="mb-4">
-          <label htmlFor="e_name">Name:</label>
+          <label htmlFor="username">username</label>
           <input
             type="text"
-            id="e_name"
-            name="e_name"
-            value={e_name}
+            id="username"
+            name="username"
+            value={username}
             onChange={(event) => {
               setName(event.target.value);
               setError(undefined);}
@@ -85,9 +87,9 @@ const Addemploye = () => {
           <label htmlFor="e_email">Email:</label>
           <input
             type="email"
-            id="e_email"
-            name="e_email"
-            value={e_email}
+            id="email"
+            name="email"
+            value={email}
             onChange={(event) => {
               setEmail(event.target.value);
               setError(undefined);}
@@ -96,12 +98,12 @@ const Addemploye = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="e_password">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
             type="password"
-            id="e_password"
-            name="e_password"
-            value={e_password}
+            id="e_papasswordssword"
+            name="password"
+            value={password}
             onChange={(event) => {
               setPassword(event.target.value);
               setError(undefined);}

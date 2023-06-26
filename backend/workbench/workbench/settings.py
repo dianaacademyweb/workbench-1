@@ -272,9 +272,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.elasticemail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 2525
-EMAIL_HOST_USER = 'ashishrohilla510@gmail.com'
-EMAIL_HOST_PASSWORD = '5FF07347C4A570F948668495967067C48600'
-DEFAULT_FROM_EMAIL = 'ashishrohilla510@gmail.com'
+EMAIL_HOST_USER = 'dianaacademyweb@gmail.com'
+EMAIL_HOST_PASSWORD = '8E167C8CE354E60067D14C0DB62CF6AC8AC7'
+DEFAULT_FROM_EMAIL = 'dianaacademyweb@gmail.com'
 
 # try:
 #     server = smtplib.SMTP(smtp_server, smtp_port)

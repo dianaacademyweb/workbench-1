@@ -252,7 +252,7 @@ useEffect(() => {
           {profileImage &&   (
              
     <div key={profileImage.id}>
-      <img className='rounded-[200px]' src={`http://127.0.0.1:8001${profileImage.image}`} alt={avatar} />
+      <img className='rounded-[200px]' src={`https://sentinel.www.dianasentinel.com/${profileImage.image}`} alt={avatar} />
     </div>
    )}
             </div>

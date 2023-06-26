@@ -75,22 +75,22 @@ class EmployeeCreateAPIView(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
 
         serializer.is_valid(raise_exception=True)
-        user = serializer.save()
+        employe  = serializer.save()
         
-        token = RefreshToken.for_user(user).access_token
-        relative_link = reverse('email-verify')
-        abs_url = 'https://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
+        # token = RefreshToken.for_user(employe).access_token
+        # relative_link = reverse('email-verify')
+        # abs_url = 'http://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
 
-        # Send verification email
-        email_subject = 'Verify your email'
-        email_body = f'Hi {user.username},\nPlease use the link below to verify your email:\n{abs_url}'
-        send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [user.email], fail_silently=False,)
+        # # Send verification email
+        # email_subject = 'Verify your email'
+        # email_body = f'Hi {employe.username},\nPlease use the link below to verify your email:\n{abs_url}'
+        # send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [employe.email], fail_silently=False,)
 
         return Response(
             {
                 "success": True,
-                "userID": user.id,
                 "msg": "employee created succesfully",
+                "data": serializer.data
             },
             status=status.HTTP_201_CREATED,
         ) 

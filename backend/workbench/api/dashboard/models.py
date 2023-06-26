@@ -7,8 +7,8 @@ from api.user.models import User
  
           
 class Employe(models.Model):
-    user = models.OneToOneField(User, related_name='employe', on_delete=models.CASCADE)
-    organization_id = models.ForeignKey(User, related_name='orgid', on_delete=models.CASCADE)
+    users = models.ForeignKey(User, related_name='employe', on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, related_name='org_id', on_delete=models.CASCADE)
     username = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=32)
@@ -18,7 +18,7 @@ class Employe(models.Model):
     # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
-        return f'{self.user.username}'
+        return f'{self.username}'
 
     class Meta:
         db_table = "employe"

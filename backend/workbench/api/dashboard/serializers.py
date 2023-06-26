@@ -34,7 +34,7 @@ class EmployeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employe
-        fields = ["id", "organization_id" ,"username", "email", "password", "e_gender", "e_contact" ,"e_address"]
+        fields = [ "organization_id" ,"username", "email", "password", "e_gender", "e_contact" ,"e_address"]
 
     def validate_username(self, value):
         try:
@@ -69,12 +69,12 @@ class EmployeSerializer(serializers.ModelSerializer):
         # creating employe insatnce
         
         
-        employe = Employe.objects.create( organization_id =organization_id,  user=user, username=username, email=email, password=password, e_gender=e_gender, e_contact=e_contact, e_address=e_address)
+        employe = Employe.objects.create( organization_id =organization_id,  users=user,  username=username, email=email, password=password, e_gender=e_gender, e_contact=e_contact, e_address=e_address)
         
         
         email_subject = 'here your credential'
-        email_body = f'Hi {Employe.username},\nPlease use the link below to verify your email:\n{Employe.password}\n {Employe.email}'
-        send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [Employe.email], fail_silently=False,)
+        email_body = f'Hi {employe.username},\nPlease use the link below to verify your email:\n  your email :-{employe.email}\n your username :- {employe.username}\n your password:-{employe.password}\n '
+        send_mail(email_subject, email_body, 'dianaacademyweb@gmail.com', [employe.email], fail_silently=False,)
         
         
         

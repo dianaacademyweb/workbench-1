@@ -72,7 +72,7 @@ function Employe() {
                       onClick={() => handleEmployeeClick(employee.id)}
                     >
                       <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
-                        {employee.e_name}{" "}
+                        {employee.username}{" "}
                       </h1>
                       {/* <span>{employee.e_email}</span> */}
                     </li>
@@ -95,7 +95,7 @@ function Employe() {
                   </h1>
                   <h1 className="justify-center text-navy-900 dark:text-white ">
                     {" "}
-                    DAte ={employeeData.e_name}
+                    DAte ={employeeData.username}
                   </h1>
                   <h2 className="block text-navy-900 dark:text-white">
                     title = {employeeData.e_address}
