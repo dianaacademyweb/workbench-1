@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import os
+import smtplib
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -34,8 +35,9 @@ ALLOWED_HOSTS = ['45.80.181.104','127.0.0.1', 'sentinel.www.dianasentinel.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -52,11 +54,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -88,6 +90,20 @@ REST_FRAMEWORK = {
     )
 
 }
+
+
+
+# django backend
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+
+
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=800),
@@ -249,6 +265,27 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+# email verification settings   
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.elasticemail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'dianaacademyweb@gmail.com'
+EMAIL_HOST_PASSWORD = '8E167C8CE354E60067D14C0DB62CF6AC8AC7'
+DEFAULT_FROM_EMAIL = 'dianaacademyweb@gmail.com'
+
+# try:
+#     server = smtplib.SMTP(smtp_server, smtp_port)
+#     server.ehlo()
+#     server.starttls()
+#     server.login(email, password)
+#     print('SMTP server connection successful')
+# except Exception as e:
+#     print(f'SMTP server connection error: {str(e)}')
+# finally:
+#     server.quit()
 
 
 

@@ -3,8 +3,10 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
-from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel
+from django.core.exceptions import ObjectDoesNotExist
+from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
 from api.user.models import User
+from django.core.mail import send_mail
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -20,9 +22,79 @@ class ProjectSerializer(serializers.ModelSerializer):
     
     
 class EmployeSerializer(serializers.ModelSerializer):
+    organization_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
+    username = serializers.CharField(max_length=255, required=True)
+    email = serializers.EmailField(required=True)
+    password =serializers.CharField(required=True, )
+    e_gender = serializers.CharField(max_length=255, )
+    e_contact = serializers.CharField(max_length=255, )
+    e_address = serializers.CharField(max_length=255, )
+    
+
     class Meta:
         model = Employe
-        fields = '__all__'
+        fields = [ "organization_id" ,"username", "email", "password", "e_gender", "e_contact" ,"e_address"]
+
+    def validate_username(self, value):
+        try:
+            Employe.objects.get(username=value)
+        except ObjectDoesNotExist:
+            return value
+        raise ValidationError({"success": False, "msg": "Username already taken."})
+
+    def validate_email(self, value):
+        try:
+            
+            Employe.objects.get(email=value)
+        except ObjectDoesNotExist:
+            return value
+        raise ValidationError({"success": False, "msg": "Email already taken."})
+ 
+    def create(self, validated_data):
+        organization_id = validated_data.get("organization_id")
+        username = validated_data.get("username")
+        email = validated_data.get("email")
+        password = validated_data.get("password")
+        e_gender = validated_data.get("e_gender")
+        e_contact = validated_data.get("e_contact")
+        e_address = validated_data.get("e_address")
+        
+        
+        
+        # creating user instance
+        user = User.objects.create_user(username=username, email=email, user_type="employe", password=password)
+         
+        
+        # creating employe insatnce
+        
+        
+        employe = Employe.objects.create( organization_id =organization_id,  users=user,  username=username, email=email, password=password, e_gender=e_gender, e_contact=e_contact, e_address=e_address)
+        
+        
+        email_subject = 'here your credential'
+        email_body = f'Hi {employe.username},\nPlease use the link below to verify your email:\n  your email :-{employe.email}\n your username :- {employe.username}\n your password:-{employe.password}\n '
+        send_mail(email_subject, email_body, 'dianaacademyweb@gmail.com', [employe.email], fail_silently=False,)
+        
+        
+        
+        return employe
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
 class BoardSerializer(serializers.ModelSerializer):
     class Meta:
@@ -62,6 +134,17 @@ class ImageModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageModel
         fields = ('id', 'organization_id', 'image')  
+        
+        
+class TeamSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = '__all__'       
+                
+        
+        
+        
+        
         
         
 # class TaskdetailsSerializer(serializers.ModelSerializer):

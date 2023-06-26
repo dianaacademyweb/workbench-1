@@ -6,9 +6,9 @@ const Addemploye = () => {
   const id = localStorage.getItem("id");
   const [organization_id, setOrgnization] = useState(id);
   const [error, setError] = useState(undefined);
-  const [e_name, setName] = useState("");
-  const [e_email, setEmail] = useState("");
-  const [e_password, setPassword] = useState("");
+  const [username, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [e_gender, setGender] = useState("");
   const [e_contact, setcontact] = useState("");
   const [e_address, setAddres] = useState("");
@@ -18,13 +18,13 @@ const Addemploye = () => {
     if (e){
       e.preventDefault();
     }
-    if (e_name === "") {
+    if (username === "") {
       return setError("You must enter your first name.");
     }
-    if (e_email === "") {
+    if (email === "") {
       return setError("You must enter your email.");
     }
-    if (e_password === "") {
+    if (password === "") {
       return setError("You must enter a password.");
     }
     if (e_gender === "") {
@@ -39,16 +39,18 @@ const Addemploye = () => {
     try {
       let  response = await DashApi.createEmploye({
         organization_id,
-        e_name,
-        e_email,
-        e_password,
+        username,
+        email,
+        password,
         e_gender,
         e_contact,
         e_address,
       });
+      console.log(response)
       if (response.data && response.status === 201 ) {
         return setError("employe created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
+      
       console.log(response.data); // Handle the response as needed
     } catch (error) {
       if (error.response) {
@@ -59,18 +61,17 @@ const Addemploye = () => {
   };
 
   return (
-   
    <div className='flex items-center justify-center min-h-screen w-full bg-teal-200'>
     <div className=' sm:w-1/2   bg-white rounded shawdow-lg p-8 m-4 lg:m-12'>
       <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">EMPLOYEE FORM</h1>
       <form className="mb-4 md:flex flex-col md:justify-between " action='POST '>
         <div className='flex flex-col mb-4  lg:w-full'>
-          <label  htmlFor="e_name" className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Name</label>
+          <label  htmlFor="username" className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>username</label>
           <input
             type="text"
-            id="e_name"
-            name="e_name"
-            value={e_name}
+            id="username"
+            name="username"
+            value={username}
             onChange={(event) => {
               setName(event.target.value);
               setError(undefined);}
@@ -82,9 +83,9 @@ const Addemploye = () => {
           <label htmlFor="e_email" className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Email</label>
           <input
             type="email"
-            id="e_email"
-            name="e_email"
-            value={e_email}
+            id="email"
+            name="email"
+            value={email}
             onChange={(event) => {
               setEmail(event.target.value);
               setError(undefined);}
@@ -93,12 +94,12 @@ const Addemploye = () => {
           />
         </div>
         <div className="flex flex-col mb-4  lg:w-full">
-          <label htmlFor="e_password" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Password</label>
+          <label htmlFor="password" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Password</label>
           <input
             type="password"
-            id="e_password"
-            name="e_password"
-            value={e_password}
+            id="e_papasswordssword"
+            name="password"
+            value={password}
             onChange={(event) => {
               setPassword(event.target.value);
               setError(undefined);}

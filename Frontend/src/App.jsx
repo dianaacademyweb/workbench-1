@@ -15,7 +15,7 @@ import Employe from "./layouts/employe";
 import ListEmploy from './views/employes/AllEmpplyee'
 import Addemploye  from "./views/employes/Addemploye";
 import Board from "./views/board/Board";
-import Createboard from "./views/board/createboard";
+import Createboard from "./views/board/Createboard";
 import  Allboard  from "./views/board/Allboard";
 import CreateProject from "./views/Projects/CreateProject";
 import Listproject from "./views/Projects/Listproject";
@@ -38,6 +38,9 @@ import Contact from "./components/Contact";
 import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 
 import Technical from "./components/teams/Technical";
+import Teams from "./views/teams";
+import TeamsAdd from "./views/teams/Teamadd";
+import AllTeams from "./views/teams/AllTeams";
 
 
 function App() {
@@ -62,13 +65,14 @@ function App() {
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
-          <Route  path="/team" element={<Team />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>
+            <Route  path="/team" element={<Team />} />
              <Route path="/Profile" element={<Profile/>}>
                <Route index element={<Profiledetail/>}/>
                <Route path="profilepage" element={<Profiledetail/>}/>
                <Route path="Updateprofile" element={<CreateProfile/>}></Route>
+               
              </Route>
              <Route path="/employe" element={<Employe/>}>
                <Route index element={<ListEmploy/>}/>
@@ -82,10 +86,19 @@ function App() {
                <Route path="projects" element={<CreateProject/>}/>
                <Route path="listprojects" element={<Listproject/>}></Route>
              </Route>
+
+
+
              <Route path="/task" element={<Task/>}>
                <Route index element={<AllTask/>}/>
                <Route path="task" element={<AllTask/>}/>
                <Route path="addtask" element={<Addtask/>}></Route>
+             </Route>
+
+             <Route path="/teams" element={<Teams/>}>
+               <Route index element={<AllTeams/>}/>
+               <Route path="/teams" element={<AllTeams/>}/>
+               <Route path="addteams" element={<TeamsAdd/>}></Route>
              </Route>
 
             

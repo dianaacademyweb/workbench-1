@@ -76,6 +76,16 @@ class DashApi {
       },
     });
   };
+
+
+static createteam = (data) => {
+    const token = localStorage.getItem("token");
+    return axios.post(`${base2}/teams`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   
 static boardlist = (data) => {
   const id = localStorage.getItem("id");
@@ -86,6 +96,18 @@ static boardlist = (data) => {
     },
   });
 };
+
+static Teamlist = (data) => {
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/teamlist/${id}/`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
 static Getimage = (data) => {
   const id = localStorage.getItem("id");
   const token = localStorage.getItem("token");
@@ -131,6 +153,15 @@ static Taskdetails = (data) => {
     },
   });
 };
+static Teamsdetail = (data) => {
+  const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/seeteams/${id}/`, data,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 
 
@@ -143,7 +174,29 @@ static MonitoringList = (id) => {
     },
   });
 };
+
+
+static Teamsdetails = (id) => {
+  const od = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/boardwiseteams/${od}/board/${id}/`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+
+
+
+
+
+
 }
+
+
+
+
 
 let base = "dashboard";
 let base2 = "users"

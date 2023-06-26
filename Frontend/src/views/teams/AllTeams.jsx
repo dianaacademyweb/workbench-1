@@ -3,21 +3,20 @@ import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from "../../components/card";
 
-function Allboard() {
+function AllTeams() {
   const [error, setError] = useState(undefined);
-  const [board, setBoard] = useState([]);
-  const [board_id, setSelectedBoard] = useState('');
+  const [Team, setTeam] = useState([]);
+  const [team_id, setSelectdteam] = useState('');
   const [teamsdata, setTeamsdata] = useState(null);
 
   useEffect(() => {
-    const Boardlist = async (event) => {
+    const Teamlists = async (event) => {
       if (event) {
-        +
         event.preventDefault();
       }
       try {
-        let response = await DashApi.boardlist({});
-        setBoard(response.data);
+        let response = await DashApi.Teamlist();
+        setTeam(response.data);
         console.log(response);
         if (response.data && response.data.success === false) {
           return setError(response.data.msg);
@@ -31,15 +30,15 @@ function Allboard() {
       }
     };
 
-    Boardlist(); // Call the function here
+    Teamlists(); // Call the function here
   }, []); // Empty dependency array for the initial effect
 
-  const handleboardclick = async (boardId) => {
+  const handleteamselect = async (teamid) => {
     try {
-      let response = await DashApi.Teamsdetails(boardId);
+      let response = await DashApi.Teamsdetails(teamid);
       console.log(response);
       setTeamsdata(response.data);
-      setSelectedBoard(event.target.value);
+      setSelectdteam(event.target.value);
     } catch (error) {
       console.error("Error retrieving employee data:", error);
     }
@@ -67,11 +66,11 @@ function Allboard() {
     <div>
   
   <label>
-          boards
-          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
+          Teams
+          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={team_id} onChange={(event) => handleteamselect(event.target.value)}>
             <option value=""></option>
-            {board.map(board => (
-              <option key={board.id} value={board.id}>{board.board_name}</option>
+            {Team.map(Team => (
+              <option key={Team.id} value={Team.id}>{Team.team_name}</option>
             ))}
           </select>
         </label>
@@ -157,4 +156,88 @@ function Allboard() {
   );
 }
 
-export default Allboard;
+export default AllTeams;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import TaskCard from '../components/TaskCard';
+// import DashApi from '../../dashboard/auth';
+// import Card from "../../components/card/index";
+
+// function AllTeams() {
+//   const [error, setError] = useState(undefined);
+//   const [allTeams, setAllTeams] = useState([]);
+
+//   useEffect(() => {
+//     const fetchTeams = async () => {
+//       try {
+//         const response = await DashApi.Teamsdetail();
+//         setAllTeams(response.data.tasks);
+//         console.log(response.data.tasks)
+//         if (response.data && response.data.success === false) {
+//           setError(response.data.msg);
+//         }
+//       } catch (err) {
+//         console.log(err);
+//         if (err.response) {
+//           setError(err.response.data.msg);
+//         } else {
+//           setError('There has been an error.');
+//         }
+//       }
+//     };
+
+//     fetchTeams();
+//   }, []);
+
+//   return (
+//       <Card extra="pb-7 p-[20px] mt-5 mx-4">
+//       <div className='py-56'>
+//         {allTeams.length > 0 && (
+//           <table className='table-auto w-full'>
+//             <thead className='border-2'>
+//               <tr>
+//               <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Team Name</th>
+//               <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '> team desc</th>
+//                 <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Board_name</th>
+//               </tr>
+//             </thead>
+//             <tbody className='border-2 '>
+//               {allTeams.map((team, index) => (
+//                 <tr key={index} className='border-2 justify-center'>
+//                   <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{team.team_name}</td>
+//                   <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{team.team_desc}</td>
+//                   <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{team.board_name}</td>
+//                 </tr>
+//               ))}
+//             </tbody>
+//           </table>
+//         )}
+//       </div>
+//       </Card>
+//   );
+// }
+
+// export default AllTeams;

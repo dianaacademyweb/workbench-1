@@ -23,3 +23,8 @@ creatorai/
 media/
 .env
 env/
+
+/migrations
+.migrations
+migrations/
+migrations

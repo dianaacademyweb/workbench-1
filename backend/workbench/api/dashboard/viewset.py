@@ -5,10 +5,16 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
+
+from django.core.mail import send_mail
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 
 from api.user.models import User
@@ -58,11 +64,58 @@ class ProjectListAPIView(APIView):
         return Response(serializer.data)    
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
+    http_method_names = ["post"]
     authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
+    # permission_classes =[IsOrganizationPermission]
     
-    queryset = Employe.objects.all()
+
     serializer_class = EmployeSerializer
+    
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+
+        serializer.is_valid(raise_exception=True)
+        employe  = serializer.save()
+        
+        # token = RefreshToken.for_user(employe).access_token
+        # relative_link = reverse('email-verify')
+        # abs_url = 'http://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
+
+        # # Send verification email
+        # email_subject = 'Verify your email'
+        # email_body = f'Hi {employe.username},\nPlease use the link below to verify your email:\n{abs_url}'
+        # send_mail(email_subject, email_body, 'ashishrohilla510@gmail.com', [employe.email], fail_silently=False,)
+
+        return Response(
+            {
+                "success": True,
+                "msg": "employee created succesfully",
+                "data": serializer.data
+            },
+            status=status.HTTP_201_CREATED,
+        ) 
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     # def create(self, request, format=None, *args ,**kwargs):
     #     user_serializer = RegisterSerializer(data=request.data)  # Assuming you have a UserSerializer for creating users
@@ -237,7 +290,69 @@ class TaskdetailsViews(APIView):
             'msg': 'Task details retrieved successfully.',
         }
         
-        return Response(response_data)      
+        return Response(response_data)    
+    
+    
+    
+    
+class TeamsViewSet(viewsets.ModelViewSet):
+    queryset = Team.objects.all()
+    serializer_class = TeamSerializer      
+    
+ 
+ 
+ 
+class Seeteams(APIView):    
+    def get(self, request, organization_id, format=None):
+        teams = Team.objects.filter(organization_id=organization_id)
+        teams_data = []
+        
+        for teams in teams:
+            board = Board.objects.get(id=teams.board_id.id)
+            
+            data = {
+                'team_name': teams.team_name,
+                'team_desc': teams.team_desc,
+                'board_name': board.board_name,
+            }
+            
+            teams_data.append(data)
+        
+        response_data = {
+            'tasks': teams_data,
+            'msg': 'Teams details retrieved successfully.',
+        }
+        
+        return Response(response_data)    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+    
+    
+class boardwiseteams(APIView):
+    def get(self, request, organization_id, board_id, formate =None ):
+        organization_id = self.kwargs['organization_id']
+        board_id = self.kwargs['board_id'] 
+        queryset =  queryset = Team.objects.filter(organization_id=organization_id, board_id=board_id).all()
+        serializer = TeamSerializer(queryset, many=True)
+        return Response(serializer.data)   
+    
+    
+    
+    
+
+class TeamlistApi(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = Team.objects.filter(organization_id = id )
+        serializer = TeamSerializer(queryset, many = True)
+        return Response(serializer.data)     
+       
           
     
     

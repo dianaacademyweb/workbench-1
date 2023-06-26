@@ -7,20 +7,21 @@ from api.user.models import User
  
           
 class Employe(models.Model):
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    e_name = models.CharField(max_length=100)
-    e_email = models.EmailField()
-    e_password = models.CharField(max_length=32)
+    users = models.ForeignKey(User, related_name='employe', on_delete=models.CASCADE)
+    organization_id = models.ForeignKey(User, related_name='org_id', on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
+    email = models.EmailField()
+    password = models.CharField(max_length=32)
     e_gender = models.CharField(max_length=25)
     e_contact = models.CharField(max_length=100)
     e_address = models.CharField(max_length=150)
     # user_type =models.CharField(max_length=120 , default="employee")
     
     def __str__(self):
-        return f'{self.e_name}'
+        return f'{self.username}'
 
     class Meta:
-        db_table = "employee"
+        db_table = "employe"
 
 class Profile(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -37,10 +38,8 @@ class Profile(models.Model):
     
 class ImageModel(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='images/')  
+    image = models.FileField(upload_to='images/')  
       
-        
-   
 
 
 class Project(models.Model):
@@ -77,7 +76,17 @@ class Task(models.Model):
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
     employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE, related_name='employeeids')
     class Meta:
-        db_table = "task"     
+        db_table = "task"  
+        
+        
+class Team(models.Model):
+    organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
+    board_id = models.ForeignKey(Board, on_delete=models.CASCADE, related_name='board' )
+    team_name = models.CharField(max_length=55)
+    team_desc = models.CharField(max_length= 300)
+    class Meta:
+        db_table = "team" 
+               
         
         
 class Monitoring(models.Model):
