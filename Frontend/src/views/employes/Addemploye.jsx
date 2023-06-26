@@ -60,15 +60,12 @@ const Addemploye = () => {
 
   return (
    
-   <div>
-
-    <div className='flex justify-end'>
-    </div>
-     <div className="max-w-md mx-auto mt-20">
-      <h1 className="text-2xl font-bold mb-4">Employee Form</h1>
-      <form action='POST '>
-        <div className="mb-4">
-          <label htmlFor="e_name">Name:</label>
+   <div className='flex items-center justify-center min-h-screen w-full bg-teal-200'>
+    <div className=' sm:w-1/2   bg-white rounded shawdow-lg p-8 m-4 lg:m-12'>
+      <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">EMPLOYEE FORM</h1>
+      <form className="mb-4 md:flex flex-col md:justify-between " action='POST '>
+        <div className='flex flex-col mb-4  lg:w-full'>
+          <label  htmlFor="e_name" className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Name</label>
           <input
             type="text"
             id="e_name"
@@ -78,11 +75,11 @@ const Addemploye = () => {
               setName(event.target.value);
               setError(undefined);}
             }
-            className="border border-gray-300 p-2 rounded"
+            className="border py-2 px-3 text-grey-darkest md:mr-2"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="e_email">Email:</label>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_email" className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Email</label>
           <input
             type="email"
             id="e_email"
@@ -92,11 +89,11 @@ const Addemploye = () => {
               setEmail(event.target.value);
               setError(undefined);}
             }
-            className="border border-gray-300 p-2 rounded"
+            className="border border-gray-300 p-2 rounded "
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="e_password">Password:</label>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_password" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Password</label>
           <input
             type="password"
             id="e_password"
@@ -109,8 +106,8 @@ const Addemploye = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="e_gender">Gender:</label>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_gender" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Gender</label>
           <input
             type="text"
             id="e_gender"
@@ -123,8 +120,8 @@ const Addemploye = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="e_contact">Contact:</label>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_contact" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Contact</label>
           <input
             type="text"
             id="e_contact"
@@ -136,11 +133,11 @@ const Addemploye = () => {
 
             }
             }
-            className="border border-gray-300 p-2 rounded"
+            className="border border-gray-300 p-2 rounded "
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="e_address">Address:</label>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_address" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Address</label>
           <input
             type="text"
             id="e_address"
@@ -154,17 +151,18 @@ const Addemploye = () => {
             
             className="border border-gray-300 p-2 rounded"
           />
-          <h1 className='text-green-500'>{error}</h1>
+          <h1 className='text-red-500'>{error}</h1>
         </div>
         <button
           type="submit" 
           onClick={Add}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 rounded"
         >
           Submit
         </button>
       </form>
     </div>
+ 
    </div>
   );
 };

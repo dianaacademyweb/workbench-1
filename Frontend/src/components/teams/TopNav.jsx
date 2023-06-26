@@ -3,12 +3,12 @@ import '/src/App.jsx';
 function TopNav(){
   
     return(
-        <div>
+        <div className="items-center flex justify-center ">
         {/* Top Navbar */}
-        <nav className=" text-white pt-2 nav ">
-          <ul className="flex justify-between top p-4 font-poppins m-3 ">
+        <nav className="pt-2">
+          <ul className="flex flex-wrap w-1/3 justify-between md:w-full lg:gap-8 md:text-2xl font-poppins m-3 gap-4">
             <button><li className=" topnav">
-              <a href="http://www.dianaadvancedtechacademy.uk/">Diana's</a>
+              <a href="https://dianaadvancedtechacademy.uk/">Diana's</a>
             </li>
             </button>
             <button><li className="topnav ">
@@ -16,11 +16,11 @@ function TopNav(){
             </li>
             </button>
             <button><li className="topnav ">
-              <a href="#employee-onboarding">Employee Onboarding</a>
+              <a href="/employee-onboarding">Employee Onboarding</a>
             </li>
             </button>
             <button><li className="topnav ">
-              <a href="#contact-us">Contact Us</a>
+              <a href="/contact">Contact Us</a>
             </li>
             </button>
           </ul>

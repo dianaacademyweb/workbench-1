@@ -41,15 +41,12 @@ const CreateProject = () => {
 
   return (
    
-   <div>
-    <div className='flex justify-end'>
-   
-    </div>
-     <div className="max-w-md mx-auto mt-20">
-      <h1 className="text-2xl font-bold mb-4">create Project</h1>
-      <form action='POST '>
-        <div className="mb-4">
-          <label htmlFor="e_name">Project Name</label>
+   <div className='flex flex-col items-center justify-center min-h-screen w-full bg-teal-200'>
+    <div className='sm:w-1/3 bg-white rounded shawdow-lg p-8 m-4 lg:m-12'>
+      <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">CREATE PROJECT</h1>
+      <form className="mb-4 md:flex flex-col md:justify-between" action='POST '>
+        <div className="flex flex-col mb-4  lg:w-full">
+          <label htmlFor="e_name"className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Project Name</label>
           <input
             type="text"
             id="project_name"
@@ -59,12 +56,11 @@ const CreateProject = () => {
               setName(event.target.value);
               setError(undefined);}
             }
-            className="border border-gray-300 p-2 rounded"
+            className="border py-2 px-3 text-grey-darkest md:mr-2"
           />
-         
         </div>
-        <div>
-        <label htmlFor="e_name">Project Description</label>
+        <div  className="flex flex-col mb-4  lg:w-full">
+        <label className='mb-2 uppercase  font-bold text-lg text-grey-darkest' htmlFor="e_name">Project Description</label>
           <input
             type="text"
             id="peoject_description"
@@ -77,18 +73,20 @@ const CreateProject = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-        <h1 className='text-green-500'>{error}</h1>
+        <h1 className='text-red-500'>{error}</h1>
         <button
           type="submit" 
           onClick={Create}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 rounded"
         >
           Submit
         </button>
       </form>
+      
     </div>
     <EmployeeProjectLinkerForm/>
    </div>
+
   );
 };
 

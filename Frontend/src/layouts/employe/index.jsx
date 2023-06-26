@@ -13,7 +13,7 @@ function Employe() {
        <div className='flex justify-end mx-5 '>
        <button className='px-3 py-3 bg-gray-300 mx-10 dark:text-white text-navy-900 dark:bg-navy-800 rounded-lg'>     
       <Link className='mx-5 px-5 py -5 text-navy-800 dark:text-white' to="addemploye">Add Employe</Link>
-</button>  
+</button>  +
        </div>
          <Outlet/>
    

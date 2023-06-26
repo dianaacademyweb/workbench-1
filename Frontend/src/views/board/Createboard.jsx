@@ -36,14 +36,12 @@ const Createboard = () => {
   return (
    
    <div>
-    <div className='flex justify-end'>
-   
-    </div>
-     <div className="max-w-md mx-auto mt-20">
-      <h1 className="text-2xl font-bold mb-4">create board</h1>
+    <div className='flex items-center justify-center mx-auto bg-teal-200 h-screen'>
+     <div className="w-1/4 rounded shadow-lg bg-white p-8 m-4">
+      <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">CREATE BOARD</h1>
       <form action='POST '>
-        <div className="mb-4">
-          <label for = "board_name" >Name:</label>
+        <div className="mb-4 flex flex-col ">
+          <label for = "board_name" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Name</label>
           <input
             type="text"
             id="board_name"
@@ -56,7 +54,7 @@ const Createboard = () => {
             className="border border-gray-300 p-2 rounded"
           />
         </div>
-        <h1 className='text-green-500 ' >{error}</h1> 
+        <h1 className='text-red-500 ' >{error}</h1> 
         <button
           type="submit" 
           onClick={Create}
@@ -67,6 +65,7 @@ const Createboard = () => {
         
       </form>
     </div>
+   </div>
    </div>
   );
 };

@@ -22,8 +22,11 @@
     "react-icons": "^4.9.0",
     "react-particles": "^2.9.3",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.13.0",
+    "react-router-dom": "^6.14.0",
+    "react-switch": "^7.0.0",
     "react-tsparticles": "^2.9.3",
+    "rsuite": "^5.35.1",
+    "switch": "^0.0.0",
     "tailwindcss-rtl": "^0.9.0",
     "tsparticles": "^2.9.3"
   },

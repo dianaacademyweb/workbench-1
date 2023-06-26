@@ -34,9 +34,12 @@ import Administration from "./components/teams/Administration";
 import Manager from "./components/teams/Manager";
 import Sales from "./components/teams/Sales";
 import Creative from "./components/teams/Creative";
-// import EmployeeOnboarding from "./components/EmployeeOnboarding";
+import Contact from "./components/Contact";
+import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 
 import Technical from "./components/teams/Technical";
+
+
 function App() {
   let user = localStorage.getItem("id");
   user = JSON.parse(user);
@@ -51,8 +54,8 @@ function App() {
           <Route element={<Administration/>}   path="/administration"  exact />
           <Route element={<Sales />}   path="/sales"  exact />
           <Route element={<Creative/>}   path="/creative"  exact />
-
-          {/* <Route element={<EmployeeOnboarding/>}   path="/employee-onboarding"  exact /> */}
+          <Route element={<Contact/>}   path="/contact"  exact />
+          <Route element={<EmployeeOnboarding/>}   path="/employee-onboarding"  exact />
           <Route element={<Technical/>}   path="/technical"  exact />
           <Route element={<Manager/>}   path="/manager"  exact />
           <Route  path="/login" element={<Newloginpage />} />
