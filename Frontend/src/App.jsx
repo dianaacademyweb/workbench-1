@@ -1,5 +1,5 @@
 import React  from "react";
-import { Home, Login_page, NotFound } from "./components";
+import { Home, NotFound , DashApi } from "./components";
 import Navbar from "./components/navbar/index";
 import { AuthProvider } from "./context/AuthContext";
 import styles from "../Style";
@@ -27,7 +27,6 @@ import AllTask from "./views/tasks/AllTask";
 import NewHome from "./components/NewHome"
 import Newloginpage from "./components/LoginPage/newloginpage";
 import NewLogin from "./components/LoginPage/NewLogin";
-import Team from "./components/team";
 import Leader from "./components/teams/Leader";
 import Hr from "./components/teams/Hr";
 import Administration from "./components/teams/Administration";
@@ -41,6 +40,7 @@ import Technical from "./components/teams/Technical";
 import Teams from "./views/teams";
 import TeamsAdd from "./views/teams/Teamadd";
 import AllTeams from "./views/teams/AllTeams";
+import Team from "./components/team";
 
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
             <Route element ={<Dash/>} path="/dashboard"/>
-            <Route  path="/team" element={<Team />} />
+            <Route  path="/our-team" element={<Team/>} />
              <Route path="/Profile" element={<Profile/>}>
                <Route index element={<Profiledetail/>}/>
                <Route path="profilepage" element={<Profiledetail/>}/>

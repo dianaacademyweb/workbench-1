@@ -1,5 +1,5 @@
 import React from "react";
-import Employe from "./layouts/Employe";
+// import Employe from "./layouts/Employe";
 import {
   MdHome,
   MdOutlineShoppingCart,

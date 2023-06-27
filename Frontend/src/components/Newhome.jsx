@@ -16,7 +16,7 @@ const NewHome = () => {
             <div className="company-name ml-6 sm:mb-0"><a href="http://www.dianaadvancedtechacademy.uk/" className="hover:text-gray-900">DIANA'S</a></div>
             <ul className="flex">
               <li className="mr-8"><a href="" className=" hover:text-gray-900">HOME</a></li>
-              <li className="mr-8"><a href="/team"  className=" hover:text-gray-900">OUR TEAM</a></li>
+              <li className="mr-8"><a href="/our-team"  className=" hover:text-gray-900">OUR TEAM</a></li>
               <li className="mr-8"><a href="/login"  className=" hover:text-gray-900">LOGIN</a></li>
               <li className="mr-8"><a href=""  className=" hover:text-gray-900">CONTACT US</a></li>
               <li className="mr-8"><a href=""  className=" hover:text-gray-900">&#8801;</a></li>
