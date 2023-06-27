@@ -2,7 +2,7 @@ import React from 'react';
 import Leader from './teams/Leader';
 
 
-const Team = () => {
+const OurTeam = () => {
   return (
     <div>
       <Leader/>
@@ -11,4 +11,4 @@ const Team = () => {
   );
 };
 
-export default Team;
+export default OurTeam;

@@ -26,7 +26,7 @@ import React from 'react'
             </li>
             </button>
             <button><li className="topnav ">
-              <a href="/contact">Contact Us</a>
+              <a href="/contactus">Contact Us</a>
             </li>
             </button>
           </ul>

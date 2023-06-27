@@ -33,14 +33,15 @@ import Administration from "./components/teams/Administration";
 import Manager from "./components/teams/Manager";
 import Sales from "./components/teams/Sales";
 import Creative from "./components/teams/Creative";
-import Contact from "./components/Contact";
-import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 
+import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 import Technical from "./components/teams/Technical";
 import Teams from "./views/teams";
 import TeamsAdd from "./views/teams/Teamadd";
 import AllTeams from "./views/teams/AllTeams";
-import Team from "./components/team";
+
+import ContactUs from "./components/ContactUs";
+import OurTeam from "./components/OurTeam";
 
 
 function App() {
@@ -52,12 +53,13 @@ function App() {
         <AuthProvider userData={user}>
           <Routes> 
           <Route element={<NewHome/>}   path="/"  exact />
+          <Route element={<OurTeam/>}   path="/ourteam"  exact />
           <Route element={<Leader/>}   path="/leader"  exact />
           <Route element={<Hr/>}   path="/hr"  exact />
           <Route element={<Administration/>}   path="/administration"  exact />
           <Route element={<Sales />}   path="/sales"  exact />
           <Route element={<Creative/>}   path="/creative"  exact />
-          <Route element={<Contact/>}   path="/contact"  exact />
+          <Route element={<ContactUs/>}   path="/contactus"  exact />
           <Route element={<EmployeeOnboarding/>}   path="/employee-onboarding"  exact />
           <Route element={<Technical/>}   path="/technical"  exact />
           <Route element={<Manager/>}   path="/manager"  exact />
@@ -66,12 +68,12 @@ function App() {
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
-            <Route element ={<Dash/>} path="/dashboard"/>
-            <Route  path="/our-team" element={<Team/>} />
-             <Route path="/Profile" element={<Profile/>}>
-               <Route index element={<Profiledetail/>}/>
-               <Route path="profilepage" element={<Profiledetail/>}/>
-               <Route path="Updateprofile" element={<CreateProfile/>}></Route>
+          <Route element ={<Dash/>} path="/dashboard"/>
+       
+          <Route path="/Profile" element={<Profile/>}>
+          <Route index element={<Profiledetail/>}/>
+          <Route path="profilepage" element={<Profiledetail/>}/>
+          <Route path="Updateprofile" element={<CreateProfile/>}></Route>
                
              </Route>
              <Route path="/employe" element={<Employe/>}>
