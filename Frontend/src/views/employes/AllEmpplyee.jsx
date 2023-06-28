@@ -43,8 +43,10 @@ function Employe() {
   }; // Empty dependency array for the initial effect
 
   return (
-    <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
+    <div className=" bg-teal-200 py-10 dark:bg-navy-900 mb-[200px] h-full ">
+    
       <div className=" mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
+      
         <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
           <p className="pl-3 pr-2 text-xl  flex">
             <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />

@@ -1,12 +1,7 @@
-
 import '/src/App.jsx';
 import React from 'react'
 
-// const TopNav = (e) => {
-  // if (e){
-  //   e.preventDefault();
-  // }
-  function TopNav(){
+const TopNav=()=>{
   return (
     <div>
         <div className="items-center flex justify-center ">

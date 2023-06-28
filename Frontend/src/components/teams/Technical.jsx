@@ -2,7 +2,7 @@ import React from 'react';
 import TopNav from './TopNav';
 import LeftNav from './LeftNav';
 import home from '../../assets/Images/layouts/home.jpg'
-function Technical(){
+const Technical=()=>{
   const cardData = [
     { image: '/src/assets/Images/layouts/pro.jpg', name: 'John Doe', designation: 'GM' },
     { image: '/src/assets/Images/layouts/pro.jpg', name: 'Jane Smith', designation: 'HR Manager' },

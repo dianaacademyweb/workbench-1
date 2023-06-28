@@ -1,38 +1,35 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {useAuth} from '../context/AuthContext'
-import Logout from './LoginPage/logout'
-import Avatar from '../assets/Images/avatars/avatar10.png'
+import React, { useState } from 'react'
 
-function Navbar()  {
- const {user} = useAuth();
+
+const Navbar = () => {
+    let Links =[
+      {name:"HOME",link:"/"},
+      {name:"OUR TEAM",link:"/ourteam"},
+      {name:"LOGIN",link:"/login"},
+      {name:"CONTACT US",link:"/contactus"},
+    ];
+    let [open,setOpen]=useState(false);
   return (
-        <nav className=" top-2 z-30 flex flex-row flex-wrap items-center justify-between bg-navy-900">
-        <img  src={Avatar} alt="WorkWarden" className="w-[100px] h-[px] text-white rounded-[100px]"   />
-        <ul className="list-none sm:flex  justify-center items-center flex-1">
-         <li className="font-poppins font-normal cursor-pointer text-[16px] text-white px-5 py-5">
-         <Link to="/" >Home</Link>
-           </li>
-         <span> <span></span></span>
-         <li className="font-poppins font-normal cursor-pointer text-[16px]  text-white px-5 py-5">
-         <Link to= "/dashboard">Dashboard</Link>
-         </li>
-         <span> <span></span></span>
-         <li className="font-poppins font-normal cursor-pointer text-[16px] text-white px-5 py-5 ">
-         {user ? ( 
-        <p onClick={Logout}>logout</p>
-
-      ):(
-        <Link to= "/login">Login </Link>
-      )
+    <div className='shadow-md w-full fixed '>
+      <div className='md:flex items-center justify-between bg-white py-4 md:px-10 px-7'>
       
-    }
-         </li>
-         <span> <span></span></span>
+      
+      <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer md:hidden'>
+      <ion-icon name={open ? 'close':'menu'}></ion-icon>
+      </div>
 
-        </ul>
-      </nav>
+      <ul className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-20 ':'top-[-490px]'}`}>
+        {
+          Links.map((link)=>(
+            <li key={link.name} className='md:ml-8 text-xl md:my-0 my-7'>
+              <a href={link.link} className='text-gray-800 hover:text-gray-400 duration-500'>{link.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+      </div>
+    </div>
   )
 }
 
-export default Navbar
+export default Navbar;

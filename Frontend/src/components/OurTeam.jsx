@@ -3,6 +3,7 @@ import Leader from './teams/Leader';
 
 
 const OurTeam = () => {
+  
   return (
     <div>
       <Leader/>

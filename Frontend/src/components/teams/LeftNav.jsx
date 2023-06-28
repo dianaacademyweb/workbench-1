@@ -1,6 +1,6 @@
 import React from "react";
 
-function LeftNav() {
+const LeftNav=()=>{
     return (
         <div>
         <nav className="min-h-screen text-center text-white">

@@ -6,7 +6,7 @@ import '/src/App.jsx';
 
 import Pro from "../../assets/Images/layouts/pro.jpg"
 
-function Leader(){
+const Leader=()=>{
   const cardData = [
     { image: `${Pro}`, name: 'John Doe', designation: 'FNCM' },
     { image: `${Pro}`, name: 'Jane Smith', designation: 'CEO' },

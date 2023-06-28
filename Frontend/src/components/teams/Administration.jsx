@@ -3,7 +3,7 @@ import TopNav from './TopNav';
 import LeftNav from './LeftNav';
 import home from '/src/assets/Images/layouts/home.jpg'
 import '/src/App.css'
-function Administration(){
+const Administration=()=>{
   const cardData = [
     { image: '/src/assets/Images/layouts/pro.jpg', name: 'John Doe', designation: 'Admin' },
     { image: '/src/assets/Images/layouts/pro.jpg', name: 'Jane Smith', designation: 'Security Officer' },
