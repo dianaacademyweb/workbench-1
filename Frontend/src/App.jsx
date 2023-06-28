@@ -11,7 +11,7 @@ import PrivateRoutes from "./utils/PrivateRoutes";
 import ProfilePage from "./components/profile/Profilepage";
 import UpdateProfile from "./components/profile/UpdateProfile";
 import Profile from "./components/profile/Profile";
-import Employe from "./layouts/employe";
+import Employe from "./views/employes";
 import ListEmploy from './views/employes/AllEmpplyee'
 import Addemploye  from "./views/employes/Addemploye";
 import Board from "./views/board/Board";
@@ -42,6 +42,7 @@ import AllTeams from "./views/teams/AllTeams";
 
 import ContactUs from "./components/ContactUs";
 import OurTeam from "./components/OurTeam";
+import Reports from "./views/reports/Reports";
 
 
 function App() {
@@ -69,6 +70,8 @@ function App() {
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
           <Route element ={<Dash/>} path="/dashboard"/>
+
+          <Route element ={<Reports/>}path="/reports" />
        
           <Route path="/Profile" element={<Profile/>}>
           <Route index element={<Profiledetail/>}/>
