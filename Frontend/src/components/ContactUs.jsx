@@ -2,7 +2,7 @@ import React , {useState}from "react";
 import homeimage from "../assets/Images/layouts/home.jpg";
 
 import '/src/App.jsx';
-const Contact =()=>{
+const ContactUs =()=>{
     const [selectedItem, setSelectedItem] = useState('');
     const [selectedSubItem, setSelectedSubItem] = useState('');
     
@@ -322,4 +322,4 @@ const Contact =()=>{
     )
 }
 
-export default Contact;
+export default ContactUs;

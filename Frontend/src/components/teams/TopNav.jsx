@@ -1,8 +1,14 @@
-import React from "react";
+
 import '/src/App.jsx';
-function TopNav(){
-  
-    return(
+import React from 'react'
+
+// const TopNav = (e) => {
+  // if (e){
+  //   e.preventDefault();
+  // }
+  function TopNav(){
+  return (
+    <div>
         <div className="items-center flex justify-center ">
         {/* Top Navbar */}
         <nav className="pt-2">
@@ -20,13 +26,14 @@ function TopNav(){
             </li>
             </button>
             <button><li className="topnav ">
-              <a href="/contact">Contact Us</a>
+              <a href="/contactus">Contact Us</a>
             </li>
             </button>
           </ul>
         </nav>
         </div>
-    )
+    </div>
+  )
 }
 
 export default TopNav;

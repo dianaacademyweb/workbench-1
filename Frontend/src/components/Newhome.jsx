@@ -9,16 +9,16 @@ const NewHome = () => {
   return (
     <div className=" bg-cover bg-no-repeat " style={{ backgroundImage: `url(${homeimage})` }}>
           <div className="logo w-16 h-18 pt-6 pb-4 ml-10  ">
-            <a href="http://www.dianaadvancedtechacademy.uk/"><img src={logo} alt="Logo"/></a>
+            <a href="https://www.dianaadvancedtechacademy.uk/"><img src={logo} alt="Logo"/></a>
           </div>
       <div className="box mx-auto pt-2 ml-24 mr-24 shadow-2xl bg-cover bg-no-repeat py-3" style={{ backgroundImage: `url(${homeimage})` }}  >
           <nav className="flex m-4 pt-2 text-white   text-3xl items-center justify-between font-bernard">
-            <div className="company-name ml-6 sm:mb-0"><a href="http://www.dianaadvancedtechacademy.uk/" className="hover:text-gray-900">DIANA'S</a></div>
+            <div className="company-name ml-6 sm:mb-0"><a href="https://www.dianaadvancedtechacademy.uk/" className="hover:text-gray-900">DIANA'S</a></div>
             <ul className="flex">
               <li className="mr-8"><a href="" className=" hover:text-gray-900">HOME</a></li>
-              <li className="mr-8"><a href="/team"  className=" hover:text-gray-900">OUR TEAM</a></li>
+              <li className="mr-8"><a href="/ourteam"  className=" hover:text-gray-900">OUR TEAM</a></li>
               <li className="mr-8"><a href="/login"  className=" hover:text-gray-900">LOGIN</a></li>
-              <li className="mr-8"><a href=""  className=" hover:text-gray-900">CONTACT US</a></li>
+              <li className="mr-8"><a href="/contactus"  className=" hover:text-gray-900">CONTACT US</a></li>
               <li className="mr-8"><a href=""  className=" hover:text-gray-900">&#8801;</a></li>
             </ul>
           </nav>
