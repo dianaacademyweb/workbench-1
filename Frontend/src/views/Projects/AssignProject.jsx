@@ -40,7 +40,7 @@ function EmployeeProjectLinkerForm() {
       }
       try {
         let response = await DashApi.Employelist({});
-        setEmployees(response.data);
+        setEmployees(response.data.employes);
         
         if (response.data && response.data.success === true) {
             console.log(response);
@@ -118,7 +118,7 @@ function EmployeeProjectLinkerForm() {
         <select className="border ml-3 border-gray-300 p-2 rounded " value={e_id} onChange={handleEmployeeChange}>
           <option value="">Select Employee</option>
           {employees.map(employee => (
-            <option key={employee.id} value={employee.id}>{employee.e_name}</option>
+            <option key={employee.id} value={employee.id}>{employee.username}</option>
           ))}
         </select>
       </label>

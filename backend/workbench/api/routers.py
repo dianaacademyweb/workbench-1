@@ -11,6 +11,9 @@ from api.dashboard.viewset import (
     ProfileViewSet,
     ImageUploadView,
     TeamsViewSet,
+    screenshotsViewset,
+    AttendanceViewset,
+    
     
 )
 from rest_framework import routers
@@ -45,6 +48,12 @@ router.register(r"Profile", ProfileViewSet, basename="Profile")
 router.register(r"teams", TeamsViewSet, basename="teams")
 
 router.register(r"imageupload", ImageUploadView, basename="upload")
+
+
+router.register(r"screenshots", screenshotsViewset, basename="screenshots")
+
+router.register(r"attendance", AttendanceViewset, basename="attendance")
+
 
 
 

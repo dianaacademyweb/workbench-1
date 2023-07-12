@@ -14,14 +14,14 @@ function Employe() {
         event.preventDefault();
       }
       try {
-        let response = await DashApi.Employelist({});
-        setEmployees(response.data);
+        let response = await DashApi.Employelist();
+        setEmployees(response.data.employes);
 
         if (response.data && response.data.success === true) {
           console.log(response);
           return setError(response.data.msg);
         }
-      } catch (err) {
+      } catch (error) {
         console.log(err);
         if (err.response) {
           return setError(err.response.data.msg);
@@ -109,6 +109,7 @@ function Employe() {
                 </div>
               )}
             </div>
+            {error}
           </Card>
         </div>
       </div>

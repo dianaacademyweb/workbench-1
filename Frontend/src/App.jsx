@@ -84,6 +84,10 @@ function App() {
                <Route path="employe" element={<ListEmploy/>}/>
                <Route path="addemploye" element={<Addemploye/>}></Route>
              </Route>
+
+
+
+             
              <Route path="/Board" element={<Board/>}>
                <Route index element={<Allboard/>}/>
                <Route path="allboard" element={<Allboard/>}/>
