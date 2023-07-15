@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TaskCard from '../components/TaskCard';
 import DashApi from '../../dashboard/auth';
 import Card from "../../components/card/index";
+import TaskBox from './TasksBox';
 
 function AllTask() {
   const [error, setError] = useState(undefined);
@@ -30,6 +31,20 @@ function AllTask() {
   }, []);
 
   return (
+
+    <div>
+      {/* <div className='flex gap-4 m-4 '>
+      <div className='box w-1/3 bg-white rounded-3xl'>
+        <h1>CLIENTS</h1>
+      </div>
+      <div className='box w-1/3 bg-white rounded-3xl'>
+        <h1>PROJECTS</h1>     
+      </div>
+      <div className='box w-1/3 bg-white rounded-3xl'>
+        <h1>TASKS</h1>
+      </div> */}
+      {/* </div> */}
+      <TaskBox/>
       <Card extra="pb-7 p-[20px] mt-5 mx-4">
       <div className='py-56'>
         {allTasks.length > 0 && (
@@ -64,6 +79,7 @@ function AllTask() {
         )}
       </div>
       </Card>
+      </div>
   );
 }
 

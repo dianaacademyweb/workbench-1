@@ -43,8 +43,7 @@ function Employe() {
   }; // Empty dependency array for the initial effect
 
   return (
-    <div className=" bg-teal-200 py-10 dark:bg-navy-900 mb-[200px] h-full ">
-    
+    <div className="min-h-screen bg-blue-100 py-10 mx-4 dark:bg-navy-900 mb-[200px] h-full ">
       <div className=" mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
       
         <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
@@ -61,11 +60,11 @@ function Employe() {
 
 
       <div className="flex gap-1">
-        <div className="mt-5   w-1/5 ">
-          <Card extra=" p-[20px]">
+        <div className="mt-5 w-1/5 ">
+          <Card extra="p-[20px]">
             <div className=" mt-8 justify-center flex  dark:border-white border-navy-400 rounded-md w-full h-full">
               <div className=" text-xl flex ">
-                <button className="justify-center  ">
+                <button className="justify-center">
                   {" "}
                   {employees.map((employee) => (
                     <li
@@ -97,7 +96,7 @@ function Employe() {
                   </h1>
                   <h1 className="justify-center text-navy-900 dark:text-white ">
                     {" "}
-                    DAte ={employeeData.username}
+                    Date ={employeeData.username}
                   </h1>
                   <h2 className="block text-navy-900 dark:text-white">
                     title = {employeeData.e_address}

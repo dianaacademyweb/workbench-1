@@ -43,6 +43,11 @@ import AllTeams from "./views/teams/AllTeams";
 import ContactUs from "./components/ContactUs";
 import OurTeam from "./components/OurTeam";
 import Reports from "./views/reports/Reports";
+import TopActivity from "./views/reports/TopActivity";
+import EmployeeReports from "./views/reports/EmployeeReports";
+import ActivityPattern from "./views/reports/ActivityPattern";
+import AdvancedReport from "./views/reports/AdvancedReport";
+
 
 
 function App() {
@@ -56,6 +61,7 @@ function App() {
           <Route element={<NewHome/>}   path="/"  exact />
           <Route element={<OurTeam/>}   path="/ourteam"  exact />
           <Route element={<Leader/>}   path="/leader"  exact />
+          <Route element ={<AdvancedReport/>}path="/advancedreport" />
           <Route element={<Hr/>}   path="/hr"  exact />
           <Route element={<Administration/>}   path="/administration"  exact />
           <Route element={<Sales />}   path="/sales"  exact />
@@ -70,9 +76,11 @@ function App() {
           <Route  path="/register" element={<Register />} />
           <Route element={<PrivateRoutes/>}>
           <Route element ={<Dash/>} path="/dashboard"/>
-
+          <Route element ={<TopActivity/>} path="/topactivity"/>
+          <Route element ={<EmployeeReports/>} path="/employeereports"/>
           <Route element ={<Reports/>}path="/reports" />
-       
+          <Route element ={<ActivityPattern/>}path="/activitypattern" />
+         
           <Route path="/Profile" element={<Profile/>}>
           <Route index element={<Profiledetail/>}/>
           <Route path="profilepage" element={<Profiledetail/>}/>
