@@ -5,8 +5,8 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer,Screenshotserilizer, AttendanceSerilizer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
 
@@ -14,6 +14,8 @@ from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework import status
+from datetime import datetime
 
 
 
@@ -127,16 +129,55 @@ class EmployeeCreateAPIView(viewsets.ModelViewSet):
 
     #     return Response(employee_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+# class EmployeListAPIView(APIView):
+#     # authentication_classes = [JWTAuthentication]
+#     # permission_classes =[IsOrganizationPermission]
+#     def get(self , request, id,  format=None ):
+#         # queryset = Employe.objects.all()
+#         # emp_details = Employe.objects.filter(id = Organization_id)
+#         queryset = Employe.objects.filter(organization_id = id )
+#         # print(emp_details.query)
+#         serializer = EmployeSerializer(queryset, many = True)
+#         return Response(serializer.data)
+
+
 class EmployeListAPIView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
+    
+    
+    
     def get(self , request, id,  format=None ):
-        # queryset = Employe.objects.all()
-        # emp_details = Employe.objects.filter(id = Organization_id)
-        queryset = Employe.objects.filter(organization_id = id )
-        # print(emp_details.query)
-        serializer = EmployeSerializer(queryset, many = True)
-        return Response(serializer.data)
+        employe = Employe.objects.filter(organization_id = id)
+        employe_data =[]
+        for employes in employe:
+            user = User.objects.get(username =employes.username)
+            
+            
+            data ={
+                'id':employes.id,
+                'username':employes.username,
+                'e_addres':employes.e_address,
+                'employeid':user.id,
+                'e_contact':employes.e_contact,
+                'e_address':employes.e_address,
+                'email':employes.email,
+            }
+            
+            
+            employe_data.append(data)
+        
+        response_data = {
+            'employes': employe_data,
+            'msg':'employes retrieved succesfully',
+        }  
+        
+        return Response(response_data)  
+            
+        
+        
+    
+    
+    
+    
     
     
 class BoardCreateAPIViewset(viewsets.ModelViewSet):
@@ -279,7 +320,7 @@ class TaskdetailsViews(APIView):
                 'task_update_date': task.task_update_date,
                 'task_status': task.task_status,
                 'project_name': project.project_name,
-                'employee_name': employee.e_name,
+                'employee_name': employee.username,
                 'board_name': board.board_name,
             }
             
@@ -351,7 +392,47 @@ class TeamlistApi(APIView):
     def get(self ,request , id , formate =None):
         queryset = Team.objects.filter(organization_id = id )
         serializer = TeamSerializer(queryset, many = True)
-        return Response(serializer.data)     
+        return Response(serializer.data) 
+    
+    
+    
+    
+class screenshotsViewset(viewsets.ModelViewSet):
+    queryset = screenshotsModel.objects.all()
+    serializer_class = Screenshotserilizer
+    filterset_fields = ['organization_id']   
+    
+    
+         
+class Seescreenshots(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = screenshotsModel.objects.filter(organization_id = id ).order_by('-id')[:6]
+        serializer = Screenshotserilizer(queryset, many = True)
+        return Response(serializer.data)   
+    
+    
+    
+    
+class AttendanceViewset(viewsets.ModelViewSet):
+     queryset = AttendanceLogs.objects.all()
+     serializer_class =  AttendanceLogs
+     
+     
+     
+class Attendancelist(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = AttendanceLogs.objects.filter(user = id )
+        serializer = AttendanceSerilizer(queryset, many = True)
+        return Response(serializer.data)   
+         
+     
+     
+     
+     
+ 
+    
+    
+             
        
           
     

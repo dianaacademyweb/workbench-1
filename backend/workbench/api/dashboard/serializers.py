@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team
+from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs
 from api.user.models import User
 from django.core.mail import send_mail
 
@@ -23,7 +23,6 @@ class ProjectSerializer(serializers.ModelSerializer):
     
 class EmployeSerializer(serializers.ModelSerializer):
     organization_id = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
-
     username = serializers.CharField(max_length=255, required=True)
     email = serializers.EmailField(required=True)
     password =serializers.CharField(required=True, )
@@ -34,7 +33,7 @@ class EmployeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Employe
-        fields = [ "organization_id" ,"username", "email", "password", "e_gender", "e_contact" ,"e_address"]
+        fields = ["id", "organization_id" ,"username", "email", "password", "e_gender", "e_contact" ,"e_address"]
 
     def validate_username(self, value):
         try:
@@ -162,7 +161,15 @@ class TeamSerializer(serializers.ModelSerializer):
 #         fields = ['task_name', 'task_desc', 'task_assign_date','task_deadline_date', 'task_update_date','task_status','employee_name','project_name', 'board_name'  ]                   
     
         
+class Screenshotserilizer(serializers.ModelSerializer):
+    class Meta:
+        model = screenshotsModel
+        fields = '__all__' 
         
+class AttendanceSerilizer(serializers.ModelSerializer):
+    class Meta:
+        model = AttendanceLogs
+        fields = '__all__'                 
         
 
         

@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist
 # from rest_framework_simplejwt.views import (
 #     TokenObtainPairView,
 #     TokenRefreshView,
@@ -12,9 +12,6 @@ from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , Boardlis
 from api.user.viewsets import CustomTokenObtainPairView , CustomTokenRefereshview, EmailVerificationView
 
 urlpatterns = [
-    
-    
-   
     path("api/users/", include(("api.routers", "api"), namespace="api")),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', CustomTokenRefereshview.as_view(), name='token_refresh'),
@@ -32,9 +29,13 @@ urlpatterns = [
     path('api/dashboard/boardwiseteams/<int:organization_id>/board/<int:board_id>/',boardwiseteams.as_view(), name = 'boardwiseteams' ),
     path('api/dashboard/teamlist/<int:id>/', TeamlistApi.as_view(), name = 'teamlist' ),
     path('api/verify-email/', EmailVerificationView.as_view(), name='email-verify'),
+    
+    path('api/dashboard/Seescreenshots/<int:id>/', Seescreenshots.as_view(), name = 'seeimage' ),
+    path('api/dashboard/attendancelist/<int:id>/', Attendancelist.as_view(), name='attendance_list'),
     path('admin/', admin.site.urls),
 ]
-
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
  

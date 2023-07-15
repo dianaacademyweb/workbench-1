@@ -42,6 +42,17 @@ class DashApi {
       },
     });
   };
+
+
+
+  static screenimages = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/Seescreenshots/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static createProject = (data) => {
     const token = localStorage.getItem("token");
     return axios.post(`${base2}/projects`, data,{

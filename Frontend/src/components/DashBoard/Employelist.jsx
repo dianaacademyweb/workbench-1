@@ -14,11 +14,11 @@ function Employe() {
         event.preventDefault();
       }
       try {
-        let response = await DashApi.Employelist({});
-        setEmployees(response.data);
+        let response = await DashApi.Employelist();
+        console.log(response)
+        setEmployees(response.data.employes);
 
         if (response.data && response.data.success === true) {
-          console.log(response);
           return setError(response.data.msg);
         }
       } catch (err) {
@@ -36,7 +36,7 @@ function Employe() {
     try {
       let response = await DashApi.MonitoringList(employeeId);
       console.log(response);
-      setEmployeeData(response.data[0]);
+      setEmployeeData(response.data.employes);
     } catch (error) {
       console.error("Error retrieving employee data:", error);
     }
@@ -75,9 +75,9 @@ function Employe() {
                   >
 
                     <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
-                    {employee.e_name}{" "}
+                    {employee.username}{" "}
                     </h1>
-                    {/* <span>{employee.e_email}</span> */}
+                    
                   </li>
                 ))}
               </button>
