@@ -149,37 +149,37 @@ const Sidebar = ({ open, onClose }) => {
               General
             </Link>
             <Link
-              to="/reports/finance"
+              to="/designation"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Designation
             </Link>
             <Link
-              to="/reports/finance"
+              to="/activity"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
              Activity
             </Link>
             <Link
-              to="/reports/finance"
+              to="/activityset"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Activity Set 
             </Link>
             <Link
-              to="/reports/finance"
+              to="/shifts"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Shifts
             </Link>
             <Link
-              to="/reports/finance"
+              to="/emaildigest"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Email Digest
             </Link>
             <Link
-              to="/reports/finance"
+              to="/Timezone"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               Timezone

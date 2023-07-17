@@ -47,6 +47,12 @@ import TopActivity from "./views/reports/TopActivity";
 import EmployeeReports from "./views/reports/EmployeeReports";
 import ActivityPattern from "./views/reports/ActivityPattern";
 import AdvancedReport from "./views/reports/AdvancedReport";
+import Designation from "./views/settings/designation";
+import Activity from "./views/settings/activity";
+import ActivitySet from "./views/settings/ActivitySet";
+import Shifts from "./views/settings/Shifts";
+import Timezone from "./views/settings/Timezone";
+import EmailDigest from "./views/settings/EmailDigest";
 
 
 
@@ -63,6 +69,12 @@ function App() {
           <Route element={<Leader/>}   path="/leader"  exact />
           <Route element ={<AdvancedReport/>}path="/advancedreport" />
           <Route element={<Hr/>}   path="/hr"  exact />
+          <Route element={<Designation/>}   path="/designation"  exact />
+          <Route element={<Activity/>}   path="/activity"  exact />
+          <Route element={<ActivitySet/>}   path="/activityset"  exact />
+          <Route element={<Shifts/>}   path="/shifts"  exact />
+          <Route element={<Timezone/>}   path="/timezone"  exact />
+          <Route element={<EmailDigest/>}   path="/emaildigest"  exact />
           <Route element={<Administration/>}   path="/administration"  exact />
           <Route element={<Sales />}   path="/sales"  exact />
           <Route element={<Creative/>}   path="/creative"  exact />
