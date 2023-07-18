@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import screen from "../../assets/Images/screen.png";
 import DashApi from "../../dashboard/auth";
 
 const ScreenshotsRow = () => {
@@ -92,7 +91,7 @@ const ScreenshotsRow = () => {
     <img
       className=" mx-3 mr-3 my-5  w-[200px] h-[100px]"
       key={item.id}
-      src={`http://127.0.0.1:8001${item.image}`}
+      src={`https://sentinel.www.dianasentinel.com${item.image}`}
       alt={`Image ${item.id}`}
     />
   ));
@@ -125,7 +124,7 @@ const ScreenshotsRow = () => {
    
       <img className="mx-auto px-2 py-2  w-full h-auto"
         
-        src={`http://127.0.0.1:8001${item.image}`}
+        src={`https://sentinel.www.dianasentinel.com${item.image}`}
         alt={`Image ${item.id}`} 
       />
    </div>

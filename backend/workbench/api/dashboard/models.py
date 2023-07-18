@@ -59,8 +59,6 @@ class Board(models.Model):
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE) 
     def __str__(self):
         return f'{self.board_name}'
-    
-
     class Meta:
         db_table = "board"
         

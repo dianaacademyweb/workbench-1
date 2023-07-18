@@ -1,5 +1,6 @@
-import React,{useState} from 'react'
+import React,{useState , useEffect} from 'react'
 import Top from './Top'
+import DashApi from '../../dashboard/auth';
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import { format, addMonths, subMonths, startOfWeek, addDays, subDays, getDay } from 'date-fns';
 const EmployeeReports = () => { 
@@ -7,21 +8,81 @@ const EmployeeReports = () => {
     const [selectedMonth, setSelectedMonth] = useState(new Date());
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [selectedItem, setSelectedItem] = useState('');
+    const [employeid, setSelecteemployeid] = useState([]);
+    const [images, setImages] = useState([]);
+    const [employees, setEmployees] = useState([]);
+
+
+
+
+    useEffect(() => {
+      // Fetch initial data
+      fetchImages();
   
+      // Call the API every minute
+      const intervalId = setInterval(fetchImages, 60000); // 1 minute in milliseconds
   
-    const employees = [
-      { id: 1, name: 'Employee 1' },
-      { id: 2, name: 'Employee 2' },
-      { id: 3, name: 'Employee 3' },
-    ];
+      // Clear the interval when the component is unmounted
+      return () => clearInterval(intervalId);
+    }, []);
   
-    const handlePrevEmployee = () => {
-      setSelectedEmployeeIndex((prevIndex) => (prevIndex - 1 + employees.length) % employees.length);
+    useEffect(() => {
+      const Employelist = async (event) => {
+        if (event) {
+          event.preventDefault();
+        }
+        try {
+          let response = await DashApi.Employelist();
+          setEmployees(response.data.employes);
+          console.log(response);
+  
+          if (response.data && response.data.success === true) {
+            console.log(response);
+            return setError(response.data.msg);
+          }
+        } catch (error) {
+          console.log(err);
+          if (err.response) {
+            return setError(err.response.data.msg);
+          }
+          return setError("There has been an error.");
+        }
+      };
+  
+      Employelist(); // Call the function here
+    }, []);
+  
+    const fetchImages = async () => {
+      try {
+        let response = await DashApi.screenimages(employeid);
+        console.log(response);
+        setImages(response.data);
+      } catch (error) {
+        console.error("Error retrieving employee data:", error);
+      }
     };
   
-    const handleNextEmployee = () => {
-      setSelectedEmployeeIndex((prevIndex) => (prevIndex + 1) % employees.length);
+    const handleEmployeeClick = async (employeid) => {
+      try {
+        let response = await DashApi.screenimages(employeid);
+        console.log(response);
+        setImages(response.data);
+        setSelecteemployeid(event.target.value);
+        console.log(employeid);
+      } catch (error) {
+        console.error("Error retrieving employee data:", error);
+      }
     };
+  
+    images.map((item) => (
+      <img
+        className=" mx-3 mr-3 my-5  w-[200px] h-[100px]"
+        key={item.id}
+        src={`https://sentinel.www.dianasentinel.com${item.image}`}
+        alt={`Image ${item.id}`}
+      />
+    ));
+  
   
     const handlePrevMonth = () => {
       setSelectedMonth((prevMonth) => subMonths(prevMonth, 1));
@@ -62,7 +123,38 @@ const EmployeeReports = () => {
             <h1 className='text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl'>EMPLOYEE REPORTS</h1>
         </div>
         <div className="flex  gap-4 p-4">
-      <div className="box bg-white rounded-3xl w-1/3">
+
+
+
+        <div className='box bg-white rounded-3xl w-1/3 dark:bg-navy-800 dark:text-white'>
+        <label className='flex justify-center items-center '>
+          <select
+            className="  my-1 px-14 py-3 bg-navy-800  dark:bg-white dark:text-navy-900 rounded-md text-white text-sm"
+            value={employeid}
+            onChange={(event) => handleEmployeeClick(event.target.value)}
+          >
+            <option className='w-16' value="emplo">select employe</option>
+            {employees.map((employee) => (
+              <option key={employee.id} value={employee.employeid}>
+                {employee.username}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <div className="box bg-white rounded-3xl w-1/3">
         <div className="flex items-center justify-between bg-gray-100 p-4">
           <button
             onClick={handlePrevEmployee}
@@ -78,7 +170,12 @@ const EmployeeReports = () => {
             {'>'}
           </button>
         </div>
-      </div>
+      </div>  */}
+
+
+
+
+
 
       <div className="box bg-white rounded-3xl w-1/3">
         <div className="flex items-center justify-between bg-gray-100 p-4">
@@ -196,6 +293,26 @@ const EmployeeReports = () => {
           </li>
         </ul>
         <hr className='m-6' />
+
+
+        <div>
+        <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
+        {images.map((item) => (
+          <div key={item.id}>
+            <p className="flex text-xl text-navy-800 dark:text-gray-200">
+              {item.time}
+            </p>
+            <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg">
+              <img
+                className="mx-auto px-2 py-2  w-full h-auto"
+                src={`https://sentinel.www.dianasentinel.com${item.image}`}
+                alt={`Image ${item.id}`}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+        </div>
       </div>
     </div>
     </div>

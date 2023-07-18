@@ -68,7 +68,7 @@ class RegisterViewSet(viewsets.ModelViewSet):
         
         token = RefreshToken.for_user(user).access_token
         relative_link = reverse('email-verify')
-        abs_url = 'http://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
+        abs_url = 'https://' + get_current_site(request).domain + relative_link + '?token=' + str(token)
 
         # Send verification email
         email_subject = 'Verify your email'
