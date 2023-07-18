@@ -86,7 +86,7 @@ useEffect(() => {
   return (
     <nav className=" top-4 z-40 flex flex-row flex-wrap items-center justify-between rounded-xl bg-white/10 p-2 backdrop-blur-xl dark:bg-[#2626334d]">
       <div className="ml-[6px]">
-        <div className="h-6 w-[224px] pt-1">
+        <div className=" w-[224px] pt-1">
           <a
             className="text-lg font-normal text-navy-700 hover:underline dark:text-white py-1 px-2 text-center dark:hover:text-white border border-white rounded-3xl "
             href="/dashboard"

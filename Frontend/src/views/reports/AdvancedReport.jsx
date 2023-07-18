@@ -36,9 +36,9 @@ const AdvancedReport = () => {
     if (selectedOption === 'teams') {
       return (
         <div>
-          <label className="block mb-2">Choose a team:</label>
+          <label className="block mb-2 dark:text-white dark:bg-navy-900">Choose a team:</label>
           <select
-            className="border border-gray-300 rounded p-2"
+            className="border border-gray-300 dark:text-white dark:bg-navy-900 rounded p-2"
             value={selectedTeam}
             onChange={handleTeamChange}
           >
@@ -50,9 +50,9 @@ const AdvancedReport = () => {
     } else if (selectedOption === 'employees') {
       return (
         <div>
-          <label className="block mb-2">Choose an employee:</label>
+          <label className="block dark:text-white dark:bg-navy-900 mb-2">Choose an employee:</label>
           <select
-            className="border border-gray-300 rounded p-2"
+            className="border border-gray-300 dark:text-white dark:bg-navy-900 rounded p-2"
             value={selectedEmployee}
             onChange={handleEmployeeChange}
           >
@@ -72,9 +72,9 @@ const AdvancedReport = () => {
           ADVANCED REPORT
         </h1>
       </div>
-      <div className='bg-white m-4 rounded-3xl  min-h-screen'>
+      <div className='bg-white dark:text-white dark:bg-navy-900 m-4 rounded-3xl  min-h-screen'>
       <div className='m-8 mt-4'>
-      <div className="flex items-center mb-4">
+      <div className="md:flex items-center mb-4">
      
         <input
           type="radio"
@@ -83,7 +83,7 @@ const AdvancedReport = () => {
           checked={selectedOption === 'teams'}
           onChange={handleOptionChange}
         />
-        <label htmlFor="teams" className="ml-2 mr-4">
+        <label htmlFor="teams" className="ml-2 dark:text-white dark:bg-navy-900 mr-4">
           Teams
         </label>
         <input
@@ -92,6 +92,7 @@ const AdvancedReport = () => {
           value="employees"
           checked={selectedOption === 'employees'}
           onChange={handleOptionChange}
+          className='dark:text-white dark:bg-navy-900'
         />
         <label htmlFor="employees" className="ml-2">
           Employees
@@ -102,7 +103,7 @@ const AdvancedReport = () => {
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="block md:w-full border-gray-300 rounded-md dark:text-white dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
             />
           </label>
 
@@ -112,7 +113,7 @@ const AdvancedReport = () => {
               type="date"
               value={endDate}
               onChange={handleEndDateChange}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
+              className="block md:w-full border-gray-300 rounded-md dark:text-white dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
             />
           </label>
 

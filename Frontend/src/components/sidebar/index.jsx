@@ -49,68 +49,68 @@ const Sidebar = ({ open, onClose }) => {
         </li>
         {reportsExpanded && (
           <div
-            className={` right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10 ${
+            className={` right-0 mt-2 py-2 w-48 bg-white dark:bg-navy-900 dark:text-white rounded-md shadow-lg z-10 ${
               dropdownMenuOpen ? "" : "hidden"
             }`}
           >
             {/* Dropdown menu items */}
             <Link
               to="/topactivity"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               TOP ACTIVITY
             </Link>
             <Link
               to="/employeereports"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               EMPLOYEE REPORTS
             </Link>
             <Link
               to="/activitypattern"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
              ACTIVITY PATTERN
             </Link>
             <Link
               to="/advancedreport"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               ADVANCED REPORT
             </Link>
             <Link
-              to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to="/attendancereport"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               ATTENDANCE REPORT
             </Link>
             <Link
-              to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to="/timelog"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               TIME LOG SUMMARY
             </Link>
             <Link
-              to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to="/dormantemployee"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               DORMANT EMPLOYEES
             </Link>
             <Link
-              to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to="/highidlehours"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               HIGH IDLE HOURS
             </Link>
             <Link
               to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               CLIENT APP ACTIVITY
             </Link>
             <Link
               to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               OT REPORT
             </Link>
@@ -137,56 +137,56 @@ const Sidebar = ({ open, onClose }) => {
         </li>
         {settingsExpanded && (
           <div
-            className={` right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg z-10 ${
+            className={` right-0 mt-2 py-2 w-48 bg-white rounded-md dark:bg-navy-900 dark:text-white shadow-lg z-10 ${
               dropdownOpen ? "" : "hidden"
             }`}
           >
             {/* Dropdown menu items */}
             <Link
-              to="/reports/sales"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              to="/general"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               General
             </Link>
             <Link
               to="/designation"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Designation
             </Link>
             <Link
               to="/activity"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
              Activity
             </Link>
             <Link
               to="/activityset"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Activity Set 
             </Link>
             <Link
               to="/shifts"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Shifts
             </Link>
             <Link
               to="/emaildigest"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Email Digest
             </Link>
             <Link
               to="/Timezone"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Timezone
             </Link>
             <Link
               to="/reports/finance"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
               Holiday Defination
             </Link>

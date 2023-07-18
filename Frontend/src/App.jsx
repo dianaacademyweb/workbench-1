@@ -53,6 +53,11 @@ import ActivitySet from "./views/settings/ActivitySet";
 import Shifts from "./views/settings/Shifts";
 import Timezone from "./views/settings/Timezone";
 import EmailDigest from "./views/settings/EmailDigest";
+import General from "./views/settings/general";
+import DormantEmployee from "./views/reports/DormantEmployee";
+import HighIdleHours from "./views/reports/HighIdleHours";
+import AttendanceReport from "./views/reports/AttendanceReport";
+import TimeLog from "./views/reports/TimeLog";
 
 
 
@@ -75,6 +80,7 @@ function App() {
           <Route element={<Shifts/>}   path="/shifts"  exact />
           <Route element={<Timezone/>}   path="/timezone"  exact />
           <Route element={<EmailDigest/>}   path="/emaildigest"  exact />
+          <Route element={<General/>}   path="/general"  exact />
           <Route element={<Administration/>}   path="/administration"  exact />
           <Route element={<Sales />}   path="/sales"  exact />
           <Route element={<Creative/>}   path="/creative"  exact />
@@ -92,7 +98,10 @@ function App() {
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
           <Route element ={<Reports/>}path="/reports" />
           <Route element ={<ActivityPattern/>}path="/activitypattern" />
-         
+          <Route element ={<DormantEmployee/>}path="/dormantemployee" />
+          <Route element ={<HighIdleHours/>}path="/highidlehours" />
+          <Route element ={<AttendanceReport/>}path="/attendancereport" />
+          <Route element ={<TimeLog/>}path="/timelog" />
           <Route path="/Profile" element={<Profile/>}>
           <Route index element={<Profiledetail/>}/>
           <Route path="profilepage" element={<Profiledetail/>}/>

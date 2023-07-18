@@ -39,7 +39,7 @@ const ActivitySet = () => {
         </h1>
         
       </div>
-    <div className="bg-white m-4 p-4 min-h-screen rounded-3xl">
+    <div className="bg-white dark:text-white dark:bg-navy-900 m-4 p-4 min-h-screen rounded-3xl">
       <div className=" mb-4">
         <div className="mb-4">
             <div className='flex'>
@@ -48,7 +48,7 @@ const ActivitySet = () => {
             <select
                 value={selectedOption}
                 onChange={handleOptionChange}
-                className="border border-gray-300 p-2 w-full rounded-3xl"
+                className="border border-gray-300 dark:text-white dark:bg-navy-900 p-2 w-full rounded-3xl"
             >
                 <option value="">Select an option</option>
                 <option value="activity">Activity</option>
@@ -78,7 +78,7 @@ const ActivitySet = () => {
         
       </div>
       <div>
-        
+      <div >
         <label htmlFor="groupName" className=" mb-2 font-bold">
           Group Name
         </label>
@@ -88,7 +88,7 @@ const ActivitySet = () => {
           name="groupName"
           value={groupName}
           onChange={handleInputChange}
-          className="border border-gray-300 p-2 w-full rounded-3xl"
+          className="border border-gray-300 p-2 dark:text-white dark:bg-navy-900 w-full rounded-3xl"
         />
         </div>
       <div className="mb-4">
@@ -100,7 +100,7 @@ const ActivitySet = () => {
           name="description"
           value={description}
           onChange={handleInputChange}
-          className="border border-gray-300 p-2 w-full rounded-3xl"
+          className="border border-gray-300 dark:text-white dark:bg-navy-900 p-2 w-full rounded-3xl"
         ></input>
       </div>
       </div>
@@ -118,6 +118,7 @@ const ActivitySet = () => {
         <div className="w-1/3 bg-red-200 p-4 rounded">
           <h3 className="font-bold text-xl">Distractive</h3>
           {/* Content for the Distractive box */}
+        </div>
         </div>
       </div>
     </div>

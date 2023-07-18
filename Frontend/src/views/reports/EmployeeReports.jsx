@@ -61,12 +61,12 @@ const EmployeeReports = () => {
         <div className='flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border'>
             <h1 className='text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl'>EMPLOYEE REPORTS</h1>
         </div>
-        <div className="flex  gap-4 p-4">
-      <div className="box bg-white rounded-3xl w-1/3">
-        <div className="flex items-center justify-between bg-gray-100 p-4">
+        <div className="lg:flex gap-4 p-4">
+      <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
+        <div className="flex items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
           <button
             onClick={handlePrevEmployee}
-            className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="p-2 bg-blue-500 text-white  rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             {'<'}
           </button>
@@ -80,8 +80,8 @@ const EmployeeReports = () => {
         </div>
       </div>
 
-      <div className="box bg-white rounded-3xl w-1/3">
-        <div className="flex items-center justify-between bg-gray-100 p-4">
+      <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
+        <div className="flex items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
           <button
             onClick={handlePrevMonth}
             className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -98,21 +98,21 @@ const EmployeeReports = () => {
         </div>
       </div>
 
-      <div className="box bg-white rounded-3xl w-1/3">
-      <div className="flex items-center justify-between bg-gray-100 p-4">
+      <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
+      <div className="flex items-center justify-between dark:bg-navy-900 dark:text-white bg-gray-100 p-4">
           
-          <div className="flex items-center">
+         
             <button
               onClick={handlePrevWeek}
               className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
               {'<'}
             </button>
-            <div className="flex gap-2">
+            <div className="flex text-sm ">
             {getWeekDates().map((date, index) => (
               <div key={index}>
                 {format(date, 'dd/MM')}
-                <div className="text-xs">{format(date, 'eee')}</div>
+                <div className="text-xs ">{format(date, 'eee')}</div>
               </div>
             ))}
           </div>
@@ -122,13 +122,13 @@ const EmployeeReports = () => {
             >
               {'>'}
             </button>
-          </div>
+        
         </div>
       </div>
     </div>
-    <div className='bg-white min-h-screen rounded-3xl m-4'>
+    <div className='bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4'>
       <div>
-        <ul className='flex justify-between m-6 text-xl pt-4'>
+        <ul className='md:flex justify-center md:justify-between m-6 text-xl pt-4'>
           <li>
             <a
               href=''

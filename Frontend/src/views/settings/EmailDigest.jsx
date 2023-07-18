@@ -12,7 +12,7 @@ const EmailDigest = () => {
         <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
           EMAIL DIGEST
         </h1>
-        <div className="relative flex flex-col items-center justify-center  overflow-hidden">
+        <div className="relative flex flex-col dark:text-white dark:bg-navy-900 items-center justify-center  overflow-hidden">
             <div className="flex">
                 <label class="inline-flex relative items-center mr-5 cursor-pointer">
                     <input

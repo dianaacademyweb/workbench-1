@@ -13,7 +13,7 @@ const Designation = () => {
            + Add Designation
         </button>
       </div>
-      <div className='bg-white m-4 min-h-screen rounded-3xl'>
+      <div className='bg-white dark:text-white dark:bg-navy-900 m-4 min-h-screen rounded-3xl'>
         <div className='p-6'>
             <input
             type="text"

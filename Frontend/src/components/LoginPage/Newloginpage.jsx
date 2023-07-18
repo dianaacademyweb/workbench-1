@@ -89,7 +89,7 @@ function Newloginpage() {
   };
   return (
    <div className="backimage">
-    <div className="container  ">
+    <div className="container ">
       <div className="user-selection-box   ">
         <div>
           <div className="logo-container">

@@ -34,14 +34,14 @@ const TopActivity = () => {
         <div className='flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border'>
         <h1 className='text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl'>TOP ACTIVITY</h1>
         </div>
-    <div className='bg-white m-4 min-h-screen rounded-3xl'>
-    <form onSubmit={handleSubmit} className="p-4 flex gap-8">
-      <label className="block mb-2">
+    <div className='bg-white m-4 min-h-screen  rounded-3xl dark:text-white dark:bg-navy-900'>
+    <form onSubmit={handleSubmit} className="p-4 sm:flex  gap-8">
+      <label className="block mb-2 dark:text-white dark:bg-navy-900">
         Choose a Team *
         <select
           value={selectedTeam}
           onChange={handleTeamChange}
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+          className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
         >
           <option value="">-- Select Team --</option>
           <option value="team1">Diana advanced tech academy</option>
@@ -50,23 +50,23 @@ const TopActivity = () => {
         </select>
       </label>
 
-      <label className="block mb-2">
+      <label className="block mb-2 dark:text-white dark:bg-navy-900">
         Start Date:
         <input
           type="date"
           value={startDate}
           onChange={handleStartDateChange}
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+          className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
         />
       </label>
 
-      <label className="block mb-2 ">
+      <label className="block mb-2 dark:text-white dark:bg-navy-900">
         End Date:
         <input
           type="date"
           value={endDate}
           onChange={handleEndDateChange}
-          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
+          className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
         />
         
       </label>
@@ -78,7 +78,7 @@ const TopActivity = () => {
         Submit
       </button>
     </form>
-    <div className='min-h-screen bg-lightPrimary m-4 rounded-3xl shadow-2xl'>
+    <div className='min-h-screen bg-lightPrimary m-4 rounded-3xl shadow-2xl dark:text-white dark:bg-navy-800'>
 
     </div>
 

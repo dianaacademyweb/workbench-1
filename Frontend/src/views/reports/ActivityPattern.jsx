@@ -56,14 +56,14 @@ const ActivityPattern = () => {
           ACTIVITY PATTERN
         </h1>
       </div>
-      <div className="bg-white m-4 min-h-screen rounded-3xl">
-        <form onSubmit={handleSubmit} className="p-4 flex gap-8">
-          <label className="block mb-2">
+      <div className="bg-white m-4 min-h-screen rounded-3xl dark:text-white dark:bg-navy-900">
+        <form onSubmit={handleSubmit} className="p-4 md:flex gap-8">
+          <label className="block mb-2 bg-white dark:text-white dark:bg-navy-900">
             Employee
             <select
               value={selectedEmployee}
               onChange={handleEmployeeChange}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900 "
             >
               <option value="">-- Select Employee --</option>
               <option value="employee1">Employee 1</option>
@@ -72,23 +72,23 @@ const ActivityPattern = () => {
             </select>
           </label>
 
-          <label className="block mb-2">
+          <label className="block mb-2 dark:text-white dark:bg-navy-900">
             Start Date:
             <input
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
             />
           </label>
 
-          <label className="block mb-2 ">
+          <label className="block mb-2 dark:text-white dark:bg-navy-900">
             End Date:
             <input
               type="date"
               value={endDate}
               onChange={handleEndDateChange}
-              className="block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
+              className="block md:w-full border-gray-300  rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
             />
           </label>
 
@@ -101,7 +101,7 @@ const ActivityPattern = () => {
         </form>
 
         {submitted && (
-          <div className="bg-white min-h-screen m-8 shadow-2xl rounded-3xl">
+          <div className="bg-white min-h-screen m-8 shadow-2xl rounded-3xl dark:text-white dark:bg-navy-900">
             
             <p className='text-xl justify-center text-center'>{employeeReport}</p>
             <EmployeeActivityReport/>
