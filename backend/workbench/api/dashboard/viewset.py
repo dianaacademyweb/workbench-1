@@ -415,7 +415,7 @@ class Seescreenshots(APIView):
     
 class AttendanceViewset(viewsets.ModelViewSet):
      queryset = AttendanceLogs.objects.all()
-     serializer_class =  AttendanceLogs
+     serializer_class =  AttendanceSerilizer
      
      
      
