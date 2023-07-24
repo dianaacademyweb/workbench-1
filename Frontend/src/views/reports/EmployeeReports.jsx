@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import Top from "./Top";
-import DashApi from "../../dashboard/auth";
-=======
+
+
 import React,{useState , useEffect} from 'react'
 import Top from './Top'
 import DashApi from '../../dashboard/auth';
 import { IMAGE_API } from '../../config/constant';
->>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
+
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import {
   format,
@@ -53,11 +50,10 @@ const EmployeeReports = () => {
           return setError(response.data.msg);
         }
       } catch (error) {
-<<<<<<< HEAD
         console.log(err);
         if (err.response) {
           return setError(err.response.data.msg);
-=======
+
         console.error("Error retrieving employee data:", error);
       }
     };
@@ -114,7 +110,7 @@ const EmployeeReports = () => {
         const dates = [];
         for (let i = 0; i < 7; i++) {
           dates.push(addDays(startOfWeekDate, i));
->>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
+
         }
         return setError("There has been an error.");
       }
@@ -189,11 +185,11 @@ const EmployeeReports = () => {
   return (
     <div>
       <Top />
-      <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl">
-          EMPLOYEE REPORTS
-        </h1>
-      </div>
+        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
+          <h1 className="text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl">
+            EMPLOYEE REPORTS
+          </h1>
+        </div>
 
       <div className="lg:flex gap-4 p-4">
         <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
@@ -217,9 +213,9 @@ const EmployeeReports = () => {
           </div>
         </div>
 
-<<<<<<< HEAD
+
         {/* <div className="box bg-white rounded-3xl w-1/3">
-=======
+
         <div className="lg:flex gap-4 p-4">
       <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
       <div className="items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
@@ -287,6 +283,7 @@ const EmployeeReports = () => {
             </button>
           </div>
         </div>
+        
 
         <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-2/3">
           <div className="flex items-center justify-between dark:bg-navy-900 dark:text-white bg-gray-100 p-4">
@@ -314,8 +311,6 @@ const EmployeeReports = () => {
         </div>
       </div>
       <div className=" bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4">
-        <div>
-<<<<<<< HEAD
           <ul className="md:flex justify-center md:justify-between m-6 text-xl pt-4">
             <li>
               <a
@@ -383,9 +378,10 @@ const EmployeeReports = () => {
               </a>
             </li>
           </ul>
+          
           <hr className="m-6" />
-
-          <div>
+          
+         
             <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
               {images.map((item) => (
                 <div key={item.id}>
@@ -401,7 +397,10 @@ const EmployeeReports = () => {
                   </div>
                 </div>
               ))}
-=======
+              </div>
+
+
+
         <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
         {images.map((item) => (
           <div key={item.id}>
@@ -414,12 +413,14 @@ const EmployeeReports = () => {
                 src={`${IMAGE_API}${item.image}`}
                 alt={`Image ${item.id}`}
               />
->>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
             </div>
           </div>
-        </div>
-      </div>
+        ))}
+       </div>
+       </div>
     </div>
+       
+    
   );
 };
 
