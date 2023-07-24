@@ -293,7 +293,7 @@ const EmployeeReports = () => {
             >
               {"<"}
             </button>
-            <div className="flex text-md gap-4 ">
+            <div className="flex lg:text-md lg:gap-4 ">
               {getWeekDates().map((date, index) => (
                 <div key={index}>
                   {format(date, "dd/MM")}
