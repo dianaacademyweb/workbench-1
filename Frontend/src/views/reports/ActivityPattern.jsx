@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import Top from './Top';
-import EmployeeActivityReport from './EmployeeActivityReport';
+import React, { useState } from "react";
+import Top from "./Top";
+import EmployeeActivityReport from "./EmployeeActivityReport";
 
 const ActivityPattern = () => {
-  const [selectedEmployee, setSelectedEmployee] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [selectedEmployee, setSelectedEmployee] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const [employeeReport, setEmployeeReport] = useState('');
+  const [employeeReport, setEmployeeReport] = useState("");
 
   const handleEmployeeChange = (event) => {
     setSelectedEmployee(event.target.value);
@@ -24,9 +24,9 @@ const ActivityPattern = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Perform any necessary actions with the selected team, start date, and end date
-    console.log('Selected Employee:', selectedEmployee);
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
+    console.log("Selected Employee:", selectedEmployee);
+    console.log("Start Date:", startDate);
+    console.log("End Date:", endDate);
 
     // Generate the dummy report based on the selected employee
     const report = generateReport(selectedEmployee);
@@ -38,14 +38,14 @@ const ActivityPattern = () => {
   const generateReport = (employee) => {
     // Generate the dummy report based on the employee
     // Replace this with your actual report generation logic
-    if (employee === 'employee1') {
-      return 'This is the employee report for Employee 1';
-    } else if (employee === 'employee2') {
-      return 'This is the employee report for Employee 2';
-    } else if (employee === 'employee3') {
-      return 'This is the employee report for Employee 3';
+    if (employee === "employee1") {
+      return "This is the employee report for Employee 1";
+    } else if (employee === "employee2") {
+      return "This is the employee report for Employee 2";
+    } else if (employee === "employee3") {
+      return "This is the employee report for Employee 3";
     }
-    return '';
+    return "";
   };
 
   return (
@@ -102,9 +102,10 @@ const ActivityPattern = () => {
 
         {submitted && (
           <div className="bg-white min-h-screen m-8 shadow-2xl rounded-3xl dark:text-white dark:bg-navy-900">
-            
-            <p className='text-xl justify-center text-center'>{employeeReport}</p>
-            <EmployeeActivityReport/>
+            <p className="text-xl justify-center text-center">
+              {employeeReport}
+            </p>
+            <EmployeeActivityReport />
           </div>
         )}
       </div>
