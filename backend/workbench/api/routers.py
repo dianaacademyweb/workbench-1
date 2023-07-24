@@ -13,6 +13,10 @@ from api.dashboard.viewset import (
     TeamsViewSet,
     screenshotsViewset,
     AttendanceViewset,
+    monitoringviewset,
+    logoutviewset,
+    desktopfileupload,
+    idealtimeviewSet,
     
     
 )
@@ -53,6 +57,12 @@ router.register(r"imageupload", ImageUploadView, basename="upload")
 router.register(r"screenshots", screenshotsViewset, basename="screenshots")
 
 router.register(r"attendance", AttendanceViewset, basename="attendance")
+router.register(r"monitorscreen", monitoringviewset, basename="screenmonitor")
+router.register(r"loggingout", logoutviewset, basename="loggingout")
+router.register(r"desktopapp", desktopfileupload, basename="desktoapp")
+router.register(r"idealtime", idealtimeviewSet, basename="ideltime")
+
+
 
 
 

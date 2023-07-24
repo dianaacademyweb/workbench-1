@@ -1,4 +1,5 @@
 from api.user.serializers import UserSerializer
+from django.shortcuts import render
 from api.user.models import User
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
@@ -12,12 +13,16 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
+from django.views.generic import TemplateView
+
 from rest_framework.views import APIView
 
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
+
+
 
 class UserViewSet(
     viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.UpdateModelMixin
@@ -103,6 +108,9 @@ class EmailVerificationView(APIView):
         user = serializer.validated_data
         return Response({'detail': 'Email successfully verified.'}, status=status.HTTP_200_OK)
     
+  
+    
+
     
     
     

@@ -15,6 +15,15 @@ class DashApi {
       },
     });
   };
+  static activities = (employeid) => {
+    const token = localStorage.getItem("token");
+    const id = localStorage.getItem("id");
+    return axios.get(`${base}/screenlist/${employeid}/`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   static createEmploye = (data) => {
     const token = localStorage.getItem("token");

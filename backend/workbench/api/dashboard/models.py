@@ -90,11 +90,9 @@ class Team(models.Model):
         
         
 class Monitoring(models.Model):
-    monitoring_title = models.CharField(max_length=200, null=True)
-    monitaring_log_ts = models.CharField(max_length=200)
-    Employe_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
+    screen_count = models.CharField(max_length=200, null=True)
+    screen_name = models.CharField(max_length=200)
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
-
     class Meta:
         db_table = "monitoring"          
             
@@ -103,7 +101,6 @@ class MonitoringDetails(models.Model):
     md_title = models.CharField(max_length=200)
     md_total_time_seconds = models.CharField(max_length=200)
     md_date = models.CharField(max_length=200)
-    e_id = models.ForeignKey(Employe, on_delete=models.CASCADE)
     orgnisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
@@ -145,10 +142,17 @@ class AttendanceLogs(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField( auto_now_add=True)
     login_time = models.DateTimeField(  auto_now_add=True )
-    logout_time = models.DateTimeField( auto_now_add=True)
     work_status= models.CharField(max_length=120) 
     class Meta:
         db_table = "AttendanceLogs"    
+        
+class logginout(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField( auto_now_add=True)
+    logout_time = models.DateTimeField( auto_now_add=True)
+    endreport = models.CharField(max_length=500, default=True) 
+    class Meta:
+        db_table = "loggingout"           
         
         
         
@@ -157,3 +161,20 @@ class screenshotsModel(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.FileField(upload_to='images/' )     
     time =  models.TimeField( auto_now=True, auto_now_add=False)                        
+
+
+
+
+class desktopfile(models.Model):
+    file = models.FileField(upload_to='desktopapp/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    
+    
+ 
+ 
+ 
+class ideltime(models.Model):
+    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateField(auto_now=False, auto_now_add=False)  
+    idealtime =  models.CharField( max_length=50)     
+    

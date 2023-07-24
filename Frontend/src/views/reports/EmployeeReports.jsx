@@ -1,6 +1,7 @@
 import React,{useState , useEffect} from 'react'
 import Top from './Top'
 import DashApi from '../../dashboard/auth';
+import { IMAGE_API } from '../../config/constant';
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import { format, addMonths, subMonths, startOfWeek, addDays, subDays, getDay } from 'date-fns';
 const EmployeeReports = () => { 
@@ -63,11 +64,12 @@ const EmployeeReports = () => {
     };
   
     const handleEmployeeClick = async (employeid) => {
+      setSelecteemployeid(employeid);
       try {
         let response = await DashApi.screenimages(employeid);
         console.log(response);
         setImages(response.data);
-        setSelecteemployeid(event.target.value);
+        
         console.log(employeid);
       } catch (error) {
         console.error("Error retrieving employee data:", error);
@@ -78,7 +80,7 @@ const EmployeeReports = () => {
       <img
         className=" mx-3 mr-3 my-5  w-[200px] h-[100px]"
         key={item.id}
-        src={`https://sentinel.www.dianasentinel.com${item.image}`}
+        src={`${IMAGE_API}${item.image}`}
         alt={`Image ${item.id}`}
       />
     ));
@@ -129,7 +131,6 @@ const EmployeeReports = () => {
         <label className='flex justify-center items-center '>
           <select
             className="  my-1 px-14 py-3 bg-navy-800  dark:bg-white dark:text-navy-900 rounded-md text-white text-sm"
-            value={employeid}
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
             <option className='w-16' value="emplo">select employe</option>
@@ -306,7 +307,7 @@ const EmployeeReports = () => {
             <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg">
               <img
                 className="mx-auto px-2 py-2  w-full h-auto"
-                src={`https://sentinel.www.dianasentinel.com${item.image}`}
+                src={`${IMAGE_API}${item.image}`}
                 alt={`Image ${item.id}`}
               />
             </div>

@@ -5,10 +5,12 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer,Screenshotserilizer, AttendanceSerilizer
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs, Monitoring, logginout, desktopfile,ideltime
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer,Screenshotserilizer, AttendanceSerilizer, monitoringserializer, logoutserializer,DesktopFileSerializer,ideltimeSerializer
 from rest_framework import generics
 from api.user.serializers import RegisterSerializer
+from django.shortcuts import render
+
 
 from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
@@ -417,6 +419,10 @@ class AttendanceViewset(viewsets.ModelViewSet):
      queryset = AttendanceLogs.objects.all()
      serializer_class =  AttendanceSerilizer
      
+class logoutviewset(viewsets.ModelViewSet):
+     queryset = logginout.objects.all()
+     serializer_class =  logoutserializer    
+     
      
      
 class Attendancelist(APIView):
@@ -424,7 +430,60 @@ class Attendancelist(APIView):
         queryset = AttendanceLogs.objects.filter(user = id )
         serializer = AttendanceSerilizer(queryset, many = True)
         return Response(serializer.data)   
+    
+class monitoringviewset(viewsets.ModelViewSet):
+    queryset =    Monitoring.objects.all()
+    serializer_class = monitoringserializer
+    
+    
+    
+class screenlist(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = Monitoring.objects.filter(orgnisation_id = id ).order_by('-id')[:6]
+        serializer = monitoringserializer(queryset, many = True)
+        return Response(serializer.data)       
          
+         
+class desktopfileupload(viewsets.ModelViewSet):
+    queryset =    desktopfile.objects.all()
+    serializer_class = DesktopFileSerializer  
+    
+    
+    
+    
+class FileDownloadView(APIView):
+    def get(self, request, id, format=None):
+        try:
+            file_instance = desktopfile.objects.get(id=id)
+        except desktopfile.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        try:
+            file_content = file_instance.file.read()
+            response = Response(file_content, content_type='application/octet-stream')
+            response['Content-Disposition'] = f'attachment; filename="{file_instance.file.name}"'
+            return response
+        except Exception as e:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+        
+def desktop_app_download(request):
+    links = desktopfile.objects.all()
+     
+    return render(request, 'templates/downlaod.html' ,{'links':links})  
+
+
+class idealtimeviewSet(viewsets.ModelViewSet):
+    queryset =    ideltime.objects.all()
+    serializer_class = ideltimeSerializer    
+    
+class idetimellist(APIView):
+    def get(self ,request , id , formate =None):
+        queryset = ideltime.objects.filter(orgnisation_id = id ).order_by('-id')[:6]
+        serializer = ideltimeSerializer(queryset, many = True)
+        return Response(serializer.data)     
+        
+
+          
      
      
      
