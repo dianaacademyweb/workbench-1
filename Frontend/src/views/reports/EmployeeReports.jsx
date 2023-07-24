@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import Top from "./Top";
 import DashApi from "../../dashboard/auth";
+=======
+import React,{useState , useEffect} from 'react'
+import Top from './Top'
+import DashApi from '../../dashboard/auth';
+import { IMAGE_API } from '../../config/constant';
+>>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import {
   format,
@@ -46,9 +53,68 @@ const EmployeeReports = () => {
           return setError(response.data.msg);
         }
       } catch (error) {
+<<<<<<< HEAD
         console.log(err);
         if (err.response) {
           return setError(err.response.data.msg);
+=======
+        console.error("Error retrieving employee data:", error);
+      }
+    };
+  
+    const handleEmployeeClick = async (employeid) => {
+      setSelecteemployeid(employeid);
+      try {
+        let response = await DashApi.screenimages(employeid);
+        console.log(response);
+        setImages(response.data);
+        
+        console.log(employeid);
+      } catch (error) {
+        console.error("Error retrieving employee data:", error);
+      }
+    };
+  
+    images.map((item) => (
+      <img
+        className=" mx-3 mr-3 my-5  w-[200px] h-[100px]"
+        key={item.id}
+        src={`${IMAGE_API}${item.image}`}
+        alt={`Image ${item.id}`}
+      />
+    ));
+  
+  
+    const handlePrevMonth = () => {
+      setSelectedMonth((prevMonth) => subMonths(prevMonth, 1));
+    };
+  
+    const handleNextMonth = () => {
+      setSelectedMonth((prevMonth) => addMonths(prevMonth, 1));
+    };
+  
+    const getDatesOfMonth = () => {
+      const startOfMonth = startOfWeek(selectedMonth);
+      const dates = [];
+      for (let i = 0; i < 7; i++) {
+        dates.push(addDays(startOfMonth, i));
+      }
+      return dates;
+    };
+    const handlePrevWeek = () => {
+        setSelectedDate(subDays(selectedDate, 7));
+      };
+    
+      const handleNextWeek = () => {
+        setSelectedDate(addDays(selectedDate, 7));
+      };
+    
+      const getWeekDates = () => {
+        const startOfWeekDate = startOfWeek(selectedDate);
+        const dates = [];
+        for (let i = 0; i < 7; i++) {
+          dates.push(addDays(startOfWeekDate, i));
+>>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
         }
         return setError("There has been an error.");
       }
@@ -151,7 +217,41 @@ const EmployeeReports = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* <div className="box bg-white rounded-3xl w-1/3">
+=======
+        <div className="lg:flex gap-4 p-4">
+      <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
+      <div className="items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
+        <label className='flex justify-center items-center '>
+          <select
+            className="  my-1 px-14 py-3 bg-navy-800  dark:bg-white dark:text-navy-900 rounded-md text-white text-sm"
+            onChange={(event) => handleEmployeeClick(event.target.value)}
+          >
+            <option className='w-16' value="emplo">select employe</option>
+            {employees.map((employee) => (
+              <option key={employee.id} value={employee.employeid}>
+                {employee.username}
+              </option>
+            ))}
+          </select>
+        </label>
+      </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <div className="box bg-white rounded-3xl w-1/3">
+>>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
         <div className="flex items-center justify-between bg-gray-100 p-4">
 >>>>>>> 06fcd44c0393d4a8d01e88abae5208fb203f57c2
           <button
@@ -215,6 +315,7 @@ const EmployeeReports = () => {
       </div>
       <div className=" bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4">
         <div>
+<<<<<<< HEAD
           <ul className="md:flex justify-center md:justify-between m-6 text-xl pt-4">
             <li>
               <a
@@ -300,6 +401,20 @@ const EmployeeReports = () => {
                   </div>
                 </div>
               ))}
+=======
+        <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
+        {images.map((item) => (
+          <div key={item.id}>
+            <p className="flex text-xl text-navy-800 dark:text-gray-200">
+              {item.time}
+            </p>
+            <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg">
+              <img
+                className="mx-auto px-2 py-2  w-full h-auto"
+                src={`${IMAGE_API}${item.image}`}
+                alt={`Image ${item.id}`}
+              />
+>>>>>>> 527f9ec9561e7b8c170ecd3ae7d3fb9f545969e7
             </div>
           </div>
         </div>

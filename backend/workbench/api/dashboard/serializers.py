@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs
+from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs,Monitoring, logginout, desktopfile,ideltime
 from api.user.models import User
 from django.core.mail import send_mail
 
@@ -169,9 +169,31 @@ class Screenshotserilizer(serializers.ModelSerializer):
 class AttendanceSerilizer(serializers.ModelSerializer):
     class Meta:
         model = AttendanceLogs
-        fields = '__all__'                 
+        fields = '__all__'      
         
-
+class logoutserializer(serializers.ModelSerializer):
+    class Meta:
+        model = logginout
+        fields = '__all__'           
+        
+        
+        
+class monitoringserializer(serializers.ModelSerializer):
+    class Meta:
+        model = Monitoring
+        fields = '__all__' 
+        
+class DesktopFileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = desktopfile
+        fields = '__all__'        
+                        
+        
+class ideltimeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ideltime
+        fields = '__all__'        
+                        
         
         
     

@@ -51,12 +51,9 @@ const Addemploye = () => {
         return setError("employe created succesfullly");
       }  // Replace 'API_URL' with your actual API endpoint
       
-      console.log(response.data); // Handle the response as needed
-    } catch (error) {
-      if (error.response) {
-        return setError(err.response.data.msg);
-      }
-      return setError('There has been an error.');
+      return setError("email and password already used"); // Handle the response as needed
+    } catch (err) {
+      return setError('email or password already used', err);
     }
   };
 
