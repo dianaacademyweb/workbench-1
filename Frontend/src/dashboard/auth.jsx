@@ -15,6 +15,15 @@ class DashApi {
       },
     });
   };
+    
+  static Employedata = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/employedetails/${id}/`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static activities = (employeid) => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("id");
@@ -164,6 +173,18 @@ static uploadimage = (data) => {
     },
   });
 };
+static Deleteemploye = (id) => {
+  const token = localStorage.getItem("token");
+  return axios.delete(`${base2}/register/${id}`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+
+    },
+  });
+};
+
+
+
 static Taskdetails = (data) => {
   const id = localStorage.getItem("id");
   const token = localStorage.getItem("token");

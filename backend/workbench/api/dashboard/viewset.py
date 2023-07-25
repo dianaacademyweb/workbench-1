@@ -480,7 +480,39 @@ class idetimellist(APIView):
     def get(self ,request , id , formate =None):
         queryset = ideltime.objects.filter(orgnisation_id = id ).order_by('-id')[:6]
         serializer = ideltimeSerializer(queryset, many = True)
-        return Response(serializer.data)     
+        return Response(serializer.data)   
+    
+    
+    
+    
+    
+    
+class employedetails(APIView):    
+    def get(self, request, id, format=None):
+        employee = Employe.objects.filter(users=id)
+        task_data = []    
+        
+        
+        for employees in employee:
+            data = {
+                    'id': employees.id,
+                    'username': employees.username,
+                    'email': employees.email,
+                    'password': employees.password,
+                    'gender': employees.e_gender,
+                    'contact': employees.e_contact,
+                    'addres': employees.e_address,
+                
+                }
+                
+            task_data.append(data)
+        
+        response_data = {
+            'tasks': task_data,
+            'msg': 'employe details retrieved successfuly',
+        }
+        
+        return Response(response_data)        
         
 
           

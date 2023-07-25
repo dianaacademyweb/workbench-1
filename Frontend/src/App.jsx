@@ -59,6 +59,8 @@ import HighIdleHours from "./views/reports/HighIdleHours";
 import AttendanceReport from "./views/reports/AttendanceReport";
 import TimeLog from "./views/reports/TimeLog";
 
+import Employepage from "./views/employes/Employepage";
+
 
 
 function App() {
@@ -92,10 +94,19 @@ function App() {
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
+
+          {/* these are the privates routes no one can enter in these with out authentication  */}
+
+
           <Route element={<PrivateRoutes/>}>
           <Route element ={<Dash/>} path="/dashboard"/>
           <Route element ={<TopActivity/>} path="/topactivity"/>
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
+
+          <Route exact path="employe/:id" element={<Employepage/>} />
+
+
+    
           <Route element ={<Reports/>}path="/reports" />
           <Route element ={<ActivityPattern/>}path="/activitypattern" />
           <Route element ={<DormantEmployee/>}path="/dormantemployee" />

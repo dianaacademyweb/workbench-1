@@ -61,9 +61,10 @@ class UserViewSet(
 
 
 class RegisterViewSet(viewsets.ModelViewSet):
-    http_method_names = ["post"]
+    http_method_names = ["post", "delete"]
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+    queryset = User.objects.all()
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -88,6 +89,15 @@ class RegisterViewSet(viewsets.ModelViewSet):
             },
             status=status.HTTP_201_CREATED,
         ) 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(
+            {
+                "success": True,
+                "msg": "The user was successfully deleted",
+            }
+        )    
         
         
 class CustomTokenObtainPairView(TokenObtainPairView):

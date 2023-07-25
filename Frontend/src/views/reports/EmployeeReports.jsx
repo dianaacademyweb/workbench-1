@@ -2,6 +2,7 @@ import React,{useState , useEffect} from 'react'
 import Top from './Top'
 import DashApi from '../../dashboard/auth';
 import { IMAGE_API } from '../../config/constant';
+import Card from '../../components/card';
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import { format, addMonths, subMonths, startOfWeek, addDays, subDays, getDay } from 'date-fns';
 const EmployeeReports = () => { 
@@ -143,6 +144,9 @@ const EmployeeReports = () => {
         </label>
       </div>
       </div>
+      
+
+     
 
 
 
@@ -225,6 +229,16 @@ const EmployeeReports = () => {
         </div>
       </div>
     </div>
+
+
+    
+    <Card>
+    <div>
+        hello
+      </div>
+    </Card>
+  
+
     <div className='bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4'>
       <div>
         <ul className='md:flex justify-center md:justify-between m-6 text-xl pt-4'>
@@ -314,6 +328,7 @@ const EmployeeReports = () => {
           </div>
         ))}
       </div>
+     
         </div>
       </div>
     </div>

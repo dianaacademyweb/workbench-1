@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from "../../components/card";
+import { Link } from "react-router-dom";
 
 function Employe() {
   const [error, setError] = useState(undefined);
@@ -33,6 +34,7 @@ function Employe() {
     Employelist(); // Call the function here
   }, []);
   const handleEmployeeClick = async (employeeId) => {
+    console.log(employeeId)
     try {
       let response = await DashApi.projectsdetails(employeeId);
       console.log(response);
@@ -64,22 +66,33 @@ function Employe() {
           <Card extra="p-[20px]">
             <div className=" mt-8 justify-center flex  dark:border-white border-navy-400 rounded-md w-full h-full">
               <div className=" text-xl flex ">
+             
                 <button className="justify-center">
                   {" "}
                   {employees.map((employee) => (
-                    <li
+                    
+                
+
+                  
+                    <Link
                       className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
                       key={employee.id}
-                      onClick={() => handleEmployeeClick(employee.id)}
+                      onClick={() => handleEmployeeClick(employee.employeid)}
+                      to={`${employee.employeid}`}
+                    
                     >
                       <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
                         {employee.username}{" "}
                       </h1>
                       {/* <span>{employee.e_email}</span> */}
-                    </li>
+                    </Link>
+                  
+                  
                   ))}
                 </button>
-              </div>
+                </div>
+
+               
             </div>
           </Card>
         </div>{" "}

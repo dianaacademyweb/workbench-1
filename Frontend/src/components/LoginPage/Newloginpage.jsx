@@ -63,20 +63,20 @@ function Newloginpage() {
     var token = response.data.access;
     var decode = jwtDecode(token);
     let id = decode.user_id;
-    let usertype = decode.type;
-    console.log(usertype);
+    let name = decode.name;
+    console.log(name);
     user = JSON.stringify(user);
 
     localStorage.setItem("user",user)
     localStorage.setItem("id", id);
     localStorage.setItem("token", token);
-    localStorage.setItem("usertype", usertype);
+    localStorage.setItem("name", name);
 
 
     setUser(user);
     setId(id);
     setToken(token);
-    setType(usertype);
+    setType(name);
     return navigate("/dashboard");
   };
   const handleUserSelection = (userType) => {
