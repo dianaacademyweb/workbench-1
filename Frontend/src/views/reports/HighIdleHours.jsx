@@ -18,7 +18,7 @@ const HighIdleHours = () => {
             className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700  outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit border border-navy-500"
           />
           </div>
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 ">
     <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
       <div class="overflow-hidden">
         <table class="min-w-full text-left text-sm font-light">

@@ -58,6 +58,9 @@ import DormantEmployee from "./views/reports/DormantEmployee";
 import HighIdleHours from "./views/reports/HighIdleHours";
 import AttendanceReport from "./views/reports/AttendanceReport";
 import TimeLog from "./views/reports/TimeLog";
+import HolidayDefinition from "./views/settings/HolidayDefinition";
+import OtReport from "./views/reports/OtReport";
+import ClientAppActivity from "./views/reports/ClientAppActivity";
 
 import Employepage from "./views/employes/Employepage";
 
@@ -113,16 +116,19 @@ function App() {
           <Route element ={<HighIdleHours/>}path="/highidlehours" />
           <Route element ={<AttendanceReport/>}path="/attendancereport" />
           <Route element ={<TimeLog/>}path="/timelog" />
+          <Route element ={<HolidayDefinition/>}path="/holidaydefinition" />
+          <Route element ={<OtReport/>}path="/otreport" />
+          <Route element ={<ClientAppActivity/>}path="/clientappactivity" />
           <Route path="/Profile" element={<Profile/>}>
           <Route index element={<Profiledetail/>}/>
           <Route path="profilepage" element={<Profiledetail/>}/>
           <Route path="Updateprofile" element={<CreateProfile/>}></Route>
                
              </Route>
-             <Route path="/employe" element={<Employe/>}>
+             <Route path="/employee" element={<Employe/>}>
                <Route index element={<ListEmploy/>}/>
                <Route path="employe" element={<ListEmploy/>}/>
-               <Route path="addemploye" element={<Addemploye/>}></Route>
+               <Route path="addemployee" element={<Addemploye/>}></Route>
              </Route>
 
 

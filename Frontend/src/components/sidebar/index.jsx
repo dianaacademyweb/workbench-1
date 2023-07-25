@@ -103,13 +103,13 @@ const Sidebar = ({ open, onClose }) => {
               HIGH IDLE HOURS
             </Link>
             <Link
-              to="/reports/finance"
+              to="/clientappactivity"
               className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               CLIENT APP ACTIVITY
             </Link>
             <Link
-              to="/reports/finance"
+              to="/otreport"
               className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
             >
               OT REPORT
@@ -120,7 +120,7 @@ const Sidebar = ({ open, onClose }) => {
         
       <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to ="/teams" >Teams</Link></li>
        <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/board" >Board</Link></li>
-      <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/employe" >Employees</Link></li>
+      <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/employee" >Employees</Link></li>
       
       <li className="  text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/task" >Tasks</Link></li>
       
@@ -185,10 +185,10 @@ const Sidebar = ({ open, onClose }) => {
               Timezone
             </Link>
             <Link
-              to="/reports/finance"
+              to="/holidaydefinition"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-white  dark:hover:bg-navy-600"
             >
-              Holiday Defination
+              Holiday Definition
             </Link>
             
             {/* Add more dropdown menu items as needed */}
