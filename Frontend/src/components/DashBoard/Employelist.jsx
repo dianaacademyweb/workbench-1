@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from '../card/index'
+import {DOAMINAPI} from "../../config/constant"
+import { Link, useNavigate } from "react-router-dom";
 
 function Employe() {
   const [error, setError] = useState(undefined);
   const [employees, setEmployees] = useState([]);
   const [employeeData, setEmployeeData] = useState(null);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const Employelist = async (event) => {
@@ -32,14 +36,21 @@ function Employe() {
 
     Employelist(); // Call the function here
   }, []);
-  const handleEmployeeClick = async (employeeId) => {
-    try {
-      let response = await DashApi.MonitoringList(employeeId);
-      console.log(response);
-      setEmployeeData(response.data.employes);
-    } catch (error) {
-      console.error("Error retrieving employee data:", error);
+  const handleEmployeeClick = async (employeeId ) => {
+    if(employeeId == null){
+      try {
+        let response = await DashApi.MonitoringList(employeeId);
+        console.log(response);
+        setEmployeeData(response.data.employes);
+      } catch (error) {
+        console.error("Error retrieving employee data:", error);
+      }
+
     }
+    else{
+      console.log("select")
+    }
+   
   }; // Empty dependency array for the initial effect
 
   return (
@@ -68,17 +79,18 @@ function Employe() {
               <button className="justify-center  ">
                 {" "}
                 {employees.map((employee) => (
-                  <li
+                  <Link
                     className=" my-2 justify-center flex  items-center   text-navy-700 dark:bg-navy-900  border-sm px-6 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-white "
                     key={employee.id}
                     onClick={() => handleEmployeeClick(employee.id)}
+                    // to={`${DOAMINAPI}/employee/${employee.employeid}`}
                   >
 
                     <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
                     {employee.username}{" "}
                     </h1>
                     
-                  </li>
+                  </Link>
                 ))}
               </button>
             </div>

@@ -2,12 +2,18 @@ import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from "../../components/card";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import DeleteConfirmation from "../../components/DeleteConfirmation";
 
 function AllTeams() {
+  const navigate = useNavigate();
   const [error, setError] = useState(undefined);
   const [Team, setTeam] = useState([]);
-  const [team_id, setSelectdteam] = useState('');
-  const [teamsdata, setTeamsdata] = useState(null);
+  const [team_id, setSelectdteam] = useState();
+  const [teamsdata, setTeamsdata] = useState([]);
+  const [showConfirmation, setShowConfirmation] = useState(null);
+
 
   useEffect(() => {
     const Teamlists = async (event) => {
@@ -16,9 +22,9 @@ function AllTeams() {
       }
       try {
         let response = await DashApi.Teamlist();
-        setTeam(response.data);
-        console.log(response);
-        if (response.data && response.data.success === false) {
+        setTeamsdata(response.data)
+        console.log(response.data);
+        if (response.data && response.data.success === 200) {
           return setError(response.data.msg);
         }
       } catch (err) {
@@ -33,16 +39,42 @@ function AllTeams() {
     Teamlists(); // Call the function here
   }, []); // Empty dependency array for the initial effect
 
-  const handleteamselect = async (teamid) => {
+  const handleteamselect = async (id) => {
+    console.log(id)
+    setSelectdteam(id);
     try {
-      let response = await DashApi.Teamsdetails(teamid);
+      let response = await DashApi.Teamsdetails(id);
       console.log(response);
-      setTeamsdata(response.data);
-      setSelectdteam(event.target.value);
+      setTeam(response.data);
+      
     } catch (error) {
       console.error("Error retrieving employee data:", error);
     }
   };
+
+  const handleDelete = async (id) => {
+    try {
+        let response = await DashApi.DeleteTeam(team_id);
+        console.log(response);
+        setError("employe deleted succesfully")
+        return navigate("/dashboard");
+      } catch (error) {
+        setError("error in deleting the employe")
+        console.error("Error in deleting the employe", error);
+      }
+    // Your delete logic here...
+    // For demonstration purposes, let's just toggle the confirmation window.
+    setShowConfirmation(false);
+  };
+  const handleShowConfirmation = () => {
+    setShowConfirmation(true);
+  };
+
+  const handleBothFunctions = (teamid) => {
+    setSelectdteam(teamid);
+    handleShowConfirmation();
+  };
+    
 
   return (
     <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
@@ -59,17 +91,14 @@ function AllTeams() {
       </div>
     </div>
 
-
-
-
-
     <div>
   
   <label>
           Teams
-          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={team_id} onChange={(event) => handleteamselect(event.target.value)}>
-            <option value=""></option>
-            {Team.map(Team => (
+          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={Team.id} onChange={(event) => handleteamselect(event.target.value)}  >
+          
+            <option value="" ></option>
+            {teamsdata.map(Team => (
               <option key={Team.id} value={Team.id}>{Team.team_name}</option>
             ))}
           </select>
@@ -121,28 +150,50 @@ function AllTeams() {
         <div className=" w-4/5 ml-5  mt-5  ">
           <Card extra=" p-[20px]">
             <div className="py-56">
+
               {teamsdata && teamsdata.length > 0 && (
                 <table className="table-auto w-full">
-                  <thead className="border-2">
+                  <thead className="">
                     <tr>
-                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                      <th className=" py-2 px-2 justify-center  text-navy-800 ">
                         Teams Name
                       </th>
-                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                      <th className=" py-2 px-2 justify-center  text-navy-800 ">
                         
                         teams desc
                       </th>
+                      <th className=" py-2 px-2 justify-center text-navy-800 dark:text-white ">
+                        
+                        Edit
+                      </th>
                     </tr>
                   </thead>
-                  <tbody className="border-2 ">
-                    {teamsdata.map((team, index) => (
-                      <tr key={index} className="border-2 justify-center">
-                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                  <tbody className=" ">
+                    {teamsdata.map((team, id) => (
+                      <tr key={id} className=" justify-center">
+                      <Link to={`${team.id}`}>
+                        <td className=" py-2 px-2 justify-center text-navy-800 ">
                           {team.team_name}
                         </td>
-                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                        </Link>
+                        <td className=" py-2 px-2 justify-center  text-navy-800 ">
                           {team.team_desc}
                         </td>
+                        <h1 className=" py-2 px-2 justify-center  text-navy-800 flex  ">
+                          <button  onClick={() => handleBothFunctions(team.id)} className="rounded-xl bg-navy-800 px-2 py-2 text-white">
+                            Delete Team
+                          </button>
+
+                          {showConfirmation !== null && (
+        <DeleteConfirmation
+          show={showConfirmation}
+          onCancel={() => setShowConfirmation(false)}
+          onConfirm={() => handleDelete()}
+        />
+      )}
+                         
+                        </h1>
+
                       </tr>
                     ))}
                   </tbody>

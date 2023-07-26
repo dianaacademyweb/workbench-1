@@ -8,7 +8,7 @@ import Card from '../../components/card';
 
 
 
-const Employepage = () => {
+const Teamspage = () => {
   const navigate = useNavigate();
   const [employees, setEmployees] = useState([]);
   const [error, setError] = useState([]);
@@ -42,25 +42,12 @@ const Employepage = () => {
 
     Employedata(); // Call the function here
   }, []);
-
-    const DeleteEmploye= async () => {
-      try {
-        let response = await DashApi.Deleteemploye(id);
-        console.log(response);
-        setError("employe deleted succesfully")
-        return navigate("/employee");
-      } catch (error) {
-        setError("error in deleting the employe")
-        console.error("Error in deleting the employe", error);
-      }
-    }; 
-
-  return (
+return (
     <div>
     <Navbar/>   
 
     <p>
-      Employes details
+      Employes working on this teams
     </p>
     <Card extra="  mx-4">
       <div className=''>
@@ -95,7 +82,7 @@ const Employepage = () => {
 
     delete the employe
 
-    <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' onClick={DeleteEmploye}>
+    <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' >
     delete
 
     </button>
@@ -106,6 +93,6 @@ const Employepage = () => {
   )
 }
 
-export default Employepage
+export default Teamspage
 
 

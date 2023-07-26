@@ -13,6 +13,7 @@ import {
 } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import DashApi from '../../dashboard/auth';
+import { IMAGE_API } from '../../config/constant';
 
 
 const Navbar = (props) => {
@@ -253,7 +254,7 @@ useEffect(() => {
           {profileImage &&   (
              
     <div key={profileImage.id}>
-      <img className='rounded-[200px]' src={`https://sentinel.www.dianasentinel.com/${profileImage.image}`} alt={avatar} />
+      <img className='rounded-[200px]' src={`${IMAGE_API}${profileImage.image}`} alt={avatar} />
     </div>
    )}
             </div>
@@ -270,7 +271,7 @@ useEffect(() => {
     </>
   ) : (
     <>
-      👋 Hey, {name}
+      👋 Hey, span{name}
     </>
   )}
 </p>

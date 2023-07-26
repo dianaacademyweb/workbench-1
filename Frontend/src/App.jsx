@@ -64,6 +64,10 @@ import ClientAppActivity from "./views/reports/ClientAppActivity";
 
 import Employepage from "./views/employes/Employepage";
 
+import Boardpage from "./views/board/Boardpage";
+import Projectspage from "./views/Projects/Projectspage";
+import Teamspage from "./views/teams/Teampage";
+
 
 
 function App() {
@@ -106,7 +110,14 @@ function App() {
           <Route element ={<TopActivity/>} path="/topactivity"/>
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
 
-          <Route exact path="employe/:id" element={<Employepage/>} />
+          <Route exact path="employee/:id" element={<Employepage/>} />
+          <Route exact path="board/:id" element={<Boardpage/>} />
+          <Route exact path="board/allboard/:id" element={<Boardpage/>} />
+
+          <Route exact path="board/listprojects/:id" element={<Projectspage/>} />
+          <Route exact path="teams/:id" element={<Teamspage/>} />
+
+
 
 
     

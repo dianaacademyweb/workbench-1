@@ -79,6 +79,22 @@ class DashApi {
       },
     });
   };
+  static deleteproject = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.delete(`${base2}/projects/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static deleteboard = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.delete(`${base2}/createboard/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static ListProject = (data) => {
     const id = localStorage.getItem("id");
     const token = localStorage.getItem("token");
@@ -176,6 +192,15 @@ static uploadimage = (data) => {
 static Deleteemploye = (id) => {
   const token = localStorage.getItem("token");
   return axios.delete(`${base2}/register/${id}`,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+
+    },
+  });
+};
+static DeleteTeam = (id) => {
+  const token = localStorage.getItem("token");
+  return axios.delete(`${base2}/teams/${id}`,{
     headers: {
       Authorization: `Bearer ${token}`,
 

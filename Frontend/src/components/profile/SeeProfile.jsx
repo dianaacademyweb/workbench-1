@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DashApi from '../../dashboard/auth';
 import ProfileImage from './ProfileImage';
+import { IMAGE_API } from '../../config/constant';
 
 
 

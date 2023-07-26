@@ -30,7 +30,9 @@ const UserActivity = (props) => {
 
     // Call the API every 2 seconds
     const intervalId = setInterval(() => {
-      getActivity();
+        getActivity();
+
+      
     }, 4000); // 2 seconds in milliseconds
 
     // Clear the interval when the component is unmounted

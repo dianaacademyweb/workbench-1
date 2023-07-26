@@ -1,13 +1,17 @@
 let BACKEND_SERVER = null;
 let IMAGE_SERVER  = null;
-BACKEND_SERVER = "https://sentinel.www.dianasentinel.com/api/";
+let DOMAIN = null;
+// BACKEND_SERVER = "https://sentinel.www.dianasentinel.com/api/";
 
 
-IMAGE_SERVER  ="https://sentinel.www.dianasentinel.com";
+// IMAGE_SERVER  ="https://sentinel.www.dianasentinel.com";
 
-// BACKEND_SERVER = "http://127.0.0.1:8001/api/";
+// DOMAIN = "https://www.dianasentinel.com"
 
-// IMAGE_SERVER  ="http://127.0.0.1:8001";
+BACKEND_SERVER = "http://127.0.0.1:8001/api/";
+
+IMAGE_SERVER  ="http://127.0.0.1:8001";
+DOMAIN = "http://localhost:5173"
 
 
 
@@ -20,3 +24,4 @@ IMAGE_SERVER  ="https://sentinel.www.dianasentinel.com";
 
 export const API_SERVER = BACKEND_SERVER;
 export const IMAGE_API = IMAGE_SERVER;
+export const DOAMINAPI = DOMAIN;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiSearch } from 'react-icons/fi';
 import DashApi from '../../dashboard/auth';
+import { Link } from 'react-router-dom';
 
 function Listproject() {
   const[error, setError] = useState(undefined);
@@ -46,14 +47,16 @@ function Listproject() {
       <div className="mx-5 border-2 dark:border-white border-navy-400 rounded-md w-[300px] h-[450px]">
         <ul className=" text-xl justify-center">
           <button className='justify-center ' >  {project.map((project) => (
-             <li  className='justify-center flex mx-[70px] items-center   text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2'  key={project.id}>
+
+             <Link  className='justify-center flex mx-[70px] items-center   text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2'  key={project.id}
+             to={`${project.id}`}>
              <h1 className=' justify-center '>{project.id}</h1>
              <span className=' justify-center'>{project.project_name}, </span>
              <span className=' justify-center'>{project.peoject_description}</span>
 
              {error}
              {/* <span>{employee.e_email}</span> */}
-           </li>
+           </Link>
           ))}</button>
         
         </ul>

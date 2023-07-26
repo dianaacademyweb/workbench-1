@@ -9,10 +9,10 @@ function Board() {
         <Navbar/>
       <div className='text-black '>
         <div className='mt-24'>
-          <button className='mx-5 mt-5 px-5 py-5'><Link to="allboard">all board</Link></button>
-          <button className='mx-5 mt-5 px-5 py-5'> <Link to="createboard">create Board</Link></button>
-          <button className='mx-5 mt-5 px-5 py-5'> <Link to="projects">projects</Link></button>
-          <button className='mx-5 mt-5 px-5 py-5'> <Link to="listprojects">list Projects</Link></button>
+          <button className='mx-5 mt-5 px-5 py-5  bg-navy-800 text-white dark:bg-white dark:text-navy-800 rounded-xl'><Link to="allboard">ALL Board</Link></button>
+          <button className='mx-5 mt-5 px-5 py-5 bg-navy-800 text-white dark:bg-white dark:text-navy-800 rounded-xl'> <Link to="createboard">Create Board</Link></button>
+          <button className='mx-5 mt-5 px-5 py-5 bg-navy-800 text-white dark:bg-white dark:text-navy-800 rounded-xl'> <Link to="projects">Projects</Link></button>
+          <button className='mx-5 mt-5 px-5 py-5 bg-navy-800 text-white dark:bg-white dark:text-navy-800 rounded-xl'> <Link to="listprojects">List Projects</Link></button>
          </div>
          <Outlet/>
         </div>

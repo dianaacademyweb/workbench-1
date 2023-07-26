@@ -39,7 +39,7 @@ class Profile(models.Model):
         return f'{self.name}'
     
 class ImageModel(models.Model):
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    organization_id = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.FileField(upload_to='images/')  
       
 

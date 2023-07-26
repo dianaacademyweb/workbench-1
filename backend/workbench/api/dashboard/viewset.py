@@ -399,6 +399,7 @@ class TeamlistApi(APIView):
     
     
     
+    
 class screenshotsViewset(viewsets.ModelViewSet):
     queryset = screenshotsModel.objects.all()
     serializer_class = Screenshotserilizer

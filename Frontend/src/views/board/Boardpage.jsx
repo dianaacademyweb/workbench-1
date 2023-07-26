@@ -8,7 +8,7 @@ import Card from '../../components/card';
 
 
 
-const Employepage = () => {
+const Boardpage = () => {
   const navigate = useNavigate();
   const [employees, setEmployees] = useState([]);
   const [error, setError] = useState([]);
@@ -45,10 +45,10 @@ const Employepage = () => {
 
     const DeleteEmploye= async () => {
       try {
-        let response = await DashApi.Deleteemploye(id);
+        let response = await DashApi.deleteboard(id);
         console.log(response);
         setError("employe deleted succesfully")
-        return navigate("/employee");
+        return navigate("/board/allboard")
       } catch (error) {
         setError("error in deleting the employe")
         console.error("Error in deleting the employe", error);
@@ -93,7 +93,7 @@ const Employepage = () => {
       </div>
       </Card>
 
-    delete the employe
+    delete the Board
 
     <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' onClick={DeleteEmploye}>
     delete
@@ -106,6 +106,6 @@ const Employepage = () => {
   )
 }
 
-export default Employepage
+export default Boardpage
 
 

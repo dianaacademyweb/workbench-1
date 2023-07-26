@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from "../../components/card";
+import { Link } from "react-router-dom";
 
 function Allboard() {
   const [error, setError] = useState(undefined);
@@ -88,31 +89,7 @@ function Allboard() {
 
 
 
-      {/* <div className="flex gap-1">
-        <div className="mt-5   w-1/5 ">
-          <Card extra=" p-[20px]">
-            <div className=" mt-8 justify-center flex  dark:border-white border-navy-400 rounded-md w-full h-full">
-              <div className=" text-xl flex ">
-                <button className="justify-center  ">
-                  {" "}
-                  {board.map((board) => (
-                    <li
-                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
-                      key={board.id}
-                      onClick={() => handleboardclick(board.id)}
-                    >
-                      <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
-                        {board.board_name}{" "}
-                      </h1> */}
-                      {/* <span>{employee.e_email}</span> */}
-                    {/* </li>
-                  ))}
-                </button>
-              </div>
-            </div>
-          </Card>
-        </div>{" "} */}
-
+      
 
 
 
@@ -151,9 +128,36 @@ function Allboard() {
               )}
             </div>
           </Card>
+          <div className="flex gap-1">
+        <div className="mt-5   w-1/5 ">
+          <Card extra=" p-[20px]">
+            <div className=" mt-8 justify-center flex  dark:border-white border-navy-400 rounded-md w-full h-full">
+              <div className=" text-xl flex ">
+                <button className="justify-center  ">
+                  {" "}
+                  {board.map((board) => (
+                    
+                    <Link
+                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
+                      key={board.id}
+                      onClick={() => handleboardclick(board.id)}
+                      to={`${board.id}`}
+                    >
+                      <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
+                        {board.board_name}{" "}
+                      </h1> 
+                      {/* <span>{employee.e_email}</span> */}
+                     </Link>
+                  ))}
+                </button>
+              </div>
+            </div>
+          </Card>
+        </div>{" "}
+
         </div>
       </div>
-    // </div>
+    </div>
   );
 }
 
