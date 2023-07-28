@@ -104,8 +104,8 @@ const ScreenshotsRow = () => {
   return (
     <div>
       <div>
-        <label>
-          Select employee
+        <label className="">
+          <span className="mr-2 text-white text-xl"> select Employe</span>
           <select
             className="my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm"
             onChange={(event) => handleEmployeeClick(event.target.value)}
