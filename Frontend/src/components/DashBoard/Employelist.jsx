@@ -55,7 +55,7 @@ function Employe() {
 
   return (
     <div className="mx-4">
-       <div className="  mt-4 flex h-16 items-center  text-navy-700 rounded-full dark:bg-navy-700 py-2 ">
+       <div className="  mt-4 flex h-16 items-center  text-navy-700 rounded-full dark:bg-navy-800 py-2 ">
        <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
             <p className="pl-3 pr-2 text-xl  flex">
               <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />

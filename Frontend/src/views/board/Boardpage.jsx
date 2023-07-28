@@ -10,23 +10,22 @@ import Card from '../../components/card';
 
 const Boardpage = () => {
   const navigate = useNavigate();
-  const [employees, setEmployees] = useState([]);
   const [error, setError] = useState([]);
+  const [boardId, setboardId] = useState(null); // To store the fetched project ID
+  const [orgnisation_id, setOrgnization] = localStorage.getItem("id");
 
-
-
+  const [board_name, setName] = useState('');
   const { id } = useParams();
-
-
-    useEffect(() => {
-    const Employedata = async (event) => {
+  useEffect(() => {
+    const boardsdata = async (event) => {
       if (event) {
         event.preventDefault();
       }
       try {
-        let response = await DashApi.Employedata(id);
-        console.log(response)
-        setEmployees(response.data.tasks);
+        let response = await DashApi.getboard(id);
+        console.log(response);
+        setboardId(response.data.id)
+        setName(response.data.board_name)
 
         if (response.data && response.data.success === true) {
           return setError(response.data.msg);
@@ -36,14 +35,37 @@ const Boardpage = () => {
         if (err.response) {
           return setError(err.response.data.msg);
         }
-        return setError("There has been an error.");
+        return setError('There has been an error.');
       }
     };
 
-    Employedata(); // Call the function here
+    boardsdata();
   }, []);
+  const updateBoard = async (e) => {
+    if (e){
+      e.preventDefault();
+    }
+    try {
+      let response = await DashApi.updateBoard( boardId,  {
+        board_name,
+        orgnisation_id,
+      });
+      console.log(response) // Replace 'API_URL' with your actual API endpoint
+      if (response.data && response.status === 201 ) {
+        return setError("project update succesfullly");
+      } // Handle the response as needed
+    } catch (error) {
+      console.error(error);
+      if (error.response) {
+        return setError(err.response.data.msg);
+      }
+      return setError('There has been an error.');
+    }
+  };
 
-    const DeleteEmploye= async () => {
+
+
+    const DeleteBoard= async () => {
       try {
         let response = await DashApi.deleteboard(id);
         console.log(response);
@@ -62,40 +84,30 @@ const Boardpage = () => {
     <p>
       Employes details
     </p>
-    <Card extra="  mx-4">
-      <div className=''>
-        {employees.length > 0 && (
-          <table className='table-auto w-full'>
-            <thead className='border-2'>
-              <tr>
-              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>id</th>
-              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '> username</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>password</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>email</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>gender</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>contact</th>
-              </tr>
-            </thead>
-            <tbody className='border-2 '>
-              {employees.map((task, index) => (
-                <tr key={index} className='border-2 justify-center'>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.id}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.username}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.password}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.email}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.gender}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.contact}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+    <Card extra='mx-4'>
+      <div>
+        <label className='text-lg font-semibold'>Edit Project Name:</label>
+        <input
+          type='text'
+          value={board_name}
+          onChange={(e) => setName(e.target.value)}
+          className='block w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600'
+        />
+
+    
+
+        <button
+          onClick={updateBoard}
+          className='btn mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50'
+        >
+          Update Project
+        </button>
       </div>
-      </Card>
+    </Card>
 
     delete the Board
 
-    <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' onClick={DeleteEmploye}>
+    <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' onClick={DeleteBoard}>
     delete
 
     </button>

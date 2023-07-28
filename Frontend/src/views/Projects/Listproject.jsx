@@ -50,9 +50,9 @@ function Listproject() {
 
              <Link  className='justify-center flex mx-[70px] items-center   text-navy-700 dark:bg-navy-900 px-2 py-2 border-2 dark:border-white border-navy-400 rounded-md my-2'  key={project.id}
              to={`${project.id}`}>
-             <h1 className=' justify-center '>{project.id}</h1>
+             {/* <h1 className=' justify-center '>{project.id}</h1> */}
              <span className=' justify-center'>{project.project_name}, </span>
-             <span className=' justify-center'>{project.peoject_description}</span>
+             {/* <span className=' justify-center'>{project.peoject_description}</span> */}
 
              {error}
              {/* <span>{employee.e_email}</span> */}

@@ -233,18 +233,22 @@ useEffect(() => {
           className="cursor-pointer text-gray-600"
           onClick={() => {
             if (darkmode) {
-              document.body.classList.remove("dark");
               setDarkmode(false);
+              document.body.classList.remove("dark");
+              
+             
             } else {
+              setDarkmode(true);
               document.body.classList.add("dark");
-              setDarkmode(true);    
+                  
             }
           }}
         >
           {darkmode ? (
-            <RiSunFill className="h-4 w-4 text-gray-600 dark:text-white" />
-          ) : (
+            
             <RiMoonFill className="h-4 w-4 text-gray-600 dark:text-white" />
+          ) : (
+            <RiSunFill className="h-4 w-4 text-gray-600 dark:text-white" />
           )}
         </div>
         {/* Profile & Dropdown */}
@@ -271,7 +275,7 @@ useEffect(() => {
     </>
   ) : (
     <>
-      👋 Hey, span{name}
+      👋 Hey, {name}
     </>
   )}
 </p>

@@ -79,6 +79,22 @@ class DashApi {
       },
     });
   };
+  static getProject = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base2}/projects/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  }; 
+  static updateproject = (id , data) => {
+    const token = localStorage.getItem("token");
+    return axios.put(`${base2}/projects/${id}`,data , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static deleteproject = (id) => {
     const token = localStorage.getItem("token");
     return axios.delete(`${base2}/projects/${id}`,{
@@ -90,6 +106,22 @@ class DashApi {
   static deleteboard = (id) => {
     const token = localStorage.getItem("token");
     return axios.delete(`${base2}/createboard/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static getboard = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base2}/createboard/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static updateBoard = (id, data) => {
+    const token = localStorage.getItem("token");
+    return axios.put(`${base2}/createboard/${id}`,data,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
