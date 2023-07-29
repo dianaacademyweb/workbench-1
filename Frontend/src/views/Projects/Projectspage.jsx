@@ -69,7 +69,7 @@ const Projectspage = () => {
         organization_id,
       });
       console.log(response) // Replace 'API_URL' with your actual API endpoint
-      if (response.data && response.status === 201 ) {
+      if (response.status === 200 ) {
         return setError("project update succesfullly");
       } // Handle the response as needed
     } catch (error) {

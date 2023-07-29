@@ -33,7 +33,6 @@ import Administration from "./components/teams/Administration";
 import Manager from "./components/teams/Manager";
 import Sales from "./components/teams/Sales";
 import Creative from "./components/teams/Creative";
-
 import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 import Technical from "./components/teams/Technical";
 import Teams from "./views/teams";

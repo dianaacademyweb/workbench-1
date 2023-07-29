@@ -132,7 +132,6 @@ const ScreenshotsRow = () => {
         alt={`Image ${item.id}`} 
       />
    </div>
-      
     </div>
   ))}
 </div>

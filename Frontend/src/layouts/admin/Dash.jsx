@@ -6,9 +6,12 @@ import { useAuth } from "../../context/AuthContext";
 import ScreenshotsRow from '../../components/DashBoard/Screen';
 import Employe from "../../components/DashBoard/Employelist";
 import TaskCard from "../../views/components/TaskCard";
+import Employesidebar from "../../components/sidebar/Employesidebar";
 
 function Dash() {
-  let {id }= useAuth()
+  let {id }= useAuth();
+  const {type} = localStorage.getItem("type")
+  const {usertype} = useAuth();
   const[open, setOpen]= React.useState(true);
   React.useEffect(() => {
     window.addEventListener("resize", () =>
@@ -17,7 +20,9 @@ function Dash() {
   }, []);
   return (
     <div className="flex h-full w-full">
-      <Sidebar open={open} onClose={() => setOpen(false)} />
+    {usertype === 'organization' &&  <Sidebar open={open} onClose={() => setOpen(false)} />}
+    {usertype === 'employe' &&  <Employesidebar open={open} onClose={() => setOpen(false)} />}
+      
       {/* Navbar & Main Content */}
       <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}
@@ -33,9 +38,14 @@ function Dash() {
 
          <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">        
          <h1 className=' mt-4 text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
-     <ScreenshotsRow/>
-     <Employe/>
-     <TaskCard/>
+      {/* {usertype === 'employe' && <HomeEmployee />} */}
+      {usertype === 'organization' && <ScreenshotsRow/>}
+      {usertype === 'organization' &&  <Employe/>}
+      {usertype === 'organization' &&    <TaskCard/>}
+     
+     
+    
+   
      <div className=" flex ">
      
      </div>

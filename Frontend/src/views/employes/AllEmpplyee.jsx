@@ -70,10 +70,6 @@ function Employe() {
                 <button className="justify-center">
                   {" "}
                   {employees.map((employee) => (
-                    
-                
-
-                  
                     <Link
                       className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
                       key={employee.id}

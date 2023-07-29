@@ -1,8 +1,6 @@
 import React , {useState} from "react";
 import { HiX } from "react-icons/hi";
 import { IoIosArrowDown} from 'react-icons/io';
-import Sidedata from "./components/Sidedata";
-import SidebarCard from "./components/sidebarcard";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -14,7 +12,6 @@ const Sidebar = ({ open, onClose }) => {
   const [dropdownMenuOpen, setDropdownMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [settingsExpanded, setSettingsExpanded] = useState(false);
-  const {usertype} = useAuth()
 
   return (
     <div
@@ -38,92 +35,9 @@ const Sidebar = ({ open, onClose }) => {
 
       <div className="relative mb-3 hover:cursor-pointer overflow-y-auto max-h-[calc(100vh-250px)] ">
       <li className="  text-[20px]  font-liolipins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to= "/dashboard">Dashboard</Link></li>
-        <li
-          className="text-[20px] font-liolipins text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"
-          onClick={() => {
-            setReportsExpanded(!reportsExpanded);
-            setDropdownMenuOpen(!dropdownMenuOpen);
-          }}
-        >
-          Reports <IoIosArrowDown className=" w-5 h-5" />
-
-          
-        </li>
-        {reportsExpanded && (
-          <div
-            className={` right-0 mt-2 py-2 w-48 bg-white dark:bg-navy-900 dark:text-white rounded-md shadow-lg z-10 ${
-              dropdownMenuOpen ? "" : "hidden"
-            }`}
-          >
-            {/* Dropdown menu items */}
-            <Link
-              to="/topactivity"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              TOP ACTIVITY
-            </Link>
-            <Link
-              to="/employeereports"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              EMPLOYEE REPORTS
-            </Link>
-            <Link
-              to="/activitypattern"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-             ACTIVITY PATTERN
-            </Link>
-            <Link
-              to="/advancedreport"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              ADVANCED REPORT
-            </Link>
-            <Link
-              to="/attendancereport"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              ATTENDANCE REPORT
-            </Link>
-            <Link
-              to="/timelog"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              TIME LOG SUMMARY
-            </Link>
-            <Link
-              to="/dormantemployee"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              DORMANT EMPLOYEES
-            </Link>
-            <Link
-              to="/highidlehours"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              HIGH IDLE HOURS
-            </Link>
-            <Link
-              to="/clientappactivity"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              CLIENT APP ACTIVITY
-            </Link>
-            <Link
-              to="/otreport"
-              className="block px-4 py-2 text-sm text-gray-700 dark:text-white hover:bg-gray-100 dark:hover:bg-navy-600"
-            >
-              OT REPORT
-            </Link>
-            {/* Add more dropdown menu items as needed */}
-          </div>
-        )}
         
       <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to ="/teams" >Teams</Link></li>
-       <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/board" >Board</Link></li>
-      <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/employee" >Employees</Link></li>
-      
+       <li className="   text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/board" >Board</Link></li>      
       <li className="  text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/task" >Tasks</Link></li>
       
       <li
