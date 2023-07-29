@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails, logouttimelist
 # from rest_framework_simplejwt.views import (
 #     TokenObtainPairView,
 #     TokenRefreshView,
@@ -37,6 +37,8 @@ urlpatterns = [
     path('api/dashboard/downloaddesktop/', desktop_app_download, name='desktopdownload'),
     path('api/dashboard/ideltime/<int:id>/', idetimellist.as_view(), name='ideltime'),
     path('api/dashboard/employedetails/<int:id>/', employedetails.as_view(), name='employedetails'),
+    path('api/dashboard/logoutlist/<int:id>/', logouttimelist.as_view(), name='logout_list'),
+
 
     path('admin/', admin.site.urls),
 ]

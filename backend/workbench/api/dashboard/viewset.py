@@ -427,10 +427,27 @@ class logoutviewset(viewsets.ModelViewSet):
      
      
 class Attendancelist(APIView):
-    def get(self ,request , id , formate =None):
-        queryset = AttendanceLogs.objects.filter(user = id )
-        serializer = AttendanceSerilizer(queryset, many = True)
-        return Response(serializer.data)   
+    http_method_names = ["post" , "get"]
+    def get(self, request, id , format=None):
+        
+        start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
+        end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
+        queryset = AttendanceLogs.objects.filter(user=id,date__range=[start_date, end_date])
+        serializer = AttendanceSerilizer(queryset, many=True)
+        return Response(serializer.data)
+    
+    
+    
+class logouttimelist(APIView):
+    http_method_names = ["post" , "get"]
+    def get(self, request, id , format=None):
+        
+        start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
+        end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
+        queryset = logginout.objects.filter(user=id,date__range=[start_date, end_date])
+        serializer = logoutserializer(queryset, many=True)
+        return Response(serializer.data)    
+   
     
 class monitoringviewset(viewsets.ModelViewSet):
     queryset =    Monitoring.objects.all()
