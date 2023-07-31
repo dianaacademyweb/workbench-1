@@ -101,11 +101,11 @@ const Projectspage = () => {
   return (
     <div className='dark:bg-navy-900 h-full w-full'>
     <Navbar />
-
-    <h2 className='text-3xl font-bold mt-4 mb-2'>Projects page</h2>
-    <Card extra='mx-4'>
+    <div className='flex flex-col justify-center items-center'>
+    <h2 className='block w-full text-center text-grey-darkest text-2xl font-bold mt-4 mb-2'>Projects Updating Page</h2>
+    <div className='mx-4 sm:w-2/3 bg-white m-4 p-8 rounded shadow-lg lg:m-12'>
       <div>
-        <label className='text-lg font-semibold'>Edit Project Name:</label>
+        <label className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Edit Project Name:</label>
         <input
           type='text'
           value={project_name}
@@ -113,7 +113,7 @@ const Projectspage = () => {
           className='block w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600'
         />
 
-        <label className='text-lg font-semibold mt-4'>Edit project description:</label>
+        <label className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Edit project description:</label>
         <textarea
           value={peoject_description}
           onChange={(e) => setProject(e.target.value)}
@@ -123,17 +123,17 @@ const Projectspage = () => {
 
         <button
           onClick={updateProject}
-          className='btn mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50'
+          className='text-white px-4 py-2 rounded bg-blueSecondary mt-2'
         >
           Update Project
         </button>
+     
       </div>
-    </Card>
+      </div>
 
-    <div className='mt-8'>
       <h2 className='text-2xl font-bold'>Delete the Employee</h2>
       <button
-        className='btn mt-4 px-6 py-2 bg-navy-800 text-white rounded-md hover:bg-navy-900 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:ring-opacity-50'
+        className='text-white px-4 py-2 rounded bg-blueSecondary mt-2'
         onClick={DeleteEmploye}
       >
         Delete

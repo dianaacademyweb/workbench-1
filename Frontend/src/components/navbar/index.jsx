@@ -90,7 +90,7 @@ useEffect(() => {
       <div className="ml-[6px]">
         <div className=" w-[224px] pt-1">
           <a
-            className="text-lg font-normal text-navy-700 hover:underline dark:text-black  py-1 px-2 text-center  border border-white rounded-3xl bg-white"
+            className="text-lg font-normal text-navy-700 hover:underline dark:text-black  py-1 px-2 text-center border border-white rounded-3xl bg-white"
             href="/dashboard"
           >
             Back

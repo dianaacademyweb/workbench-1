@@ -48,8 +48,8 @@ function Allboard() {
 
   return (
     <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
-    <div className=" mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
-      <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
+    <div className=" py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
+      <div className="flex  dark:bg-navy-900 rounded-full py-3 mx-2">
         <p className="pl-3 pr-2 text-xl  flex">
           <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
         </p>
@@ -59,17 +59,12 @@ function Allboard() {
           className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
         />
       </div>
-    </div>
-
-
-
-
-
+      
     <div>
   
-  <label>
+  <label className="text-blue-900">
           boards
-          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
+          <select className='my-1 mx-2 px-14 py-3 border border-blue-500 rounded-md text-blue-500 text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
             <option value=""></option>
             {board.map(board => (
               <option key={board.id} value={board.id}>{board.board_name}</option>
@@ -77,26 +72,9 @@ function Allboard() {
           </select>
         </label>
   </div>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-        
-        <div className=" w-4/5 ml-5  mt-5  ">
+        <div className="m-4">
           <Card extra=" p-[20px]">
             <div className="py-56">
               {teamsdata && teamsdata.length > 0 && (

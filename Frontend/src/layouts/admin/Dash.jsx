@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 import ScreenshotsRow from "../../components/DashBoard/Screen";
 import Employe from "../../components/DashBoard/Employelist";
 import TaskCard from "../../views/components/TaskCard";
+import dashgroup from '../../assets/Images/layouts/dashgroup.jpg'
 
 function Dash() {
   let { id } = useAuth();
@@ -22,7 +23,7 @@ function Dash() {
       <div className="h-full w-full   dark:!bg-navy-900">
         {/* Main Content */}
         <main
-          className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}
+          className={` h-full flex-none transition-all  xl:ml-[315px]`}
         >
           <div className="h-full mt-1">
             <Navbar
@@ -31,10 +32,19 @@ function Dash() {
               brandText={"work Warden"}
               // {...rest}
             />
-
+            <div className="flex flex-col justify-end h-[500px] w-full bg-cover bg-no-repeat rounded" style={{ backgroundImage: `url(${dashgroup})` }}>
+            <div className="opacity-80 flex gap-4 justify-between bg-white p-4">
+              <div>one</div>
+              <div>one</div>
+              <div>one</div>
+              <div>one</div>
+            </div>
+            </div>
+            
             <div className="pt-5 h-full min-h-screen m-8 md:pr-2">
               <div className="mx-auto rounded-xl  flex flex-col items-center bg-white">
-                <h1 className="text-2xl mt-4  font-bold">
+              
+                {/* <h1 className="text-2xl mt-4  font-bold">
                   Welcome to DianaSentinel
                 </h1>
                 <p className="m-6 text-justify">
@@ -48,7 +58,7 @@ function Dash() {
                   professional seeking new challenges or a fresh graduate eager
                   to kickstart your career, DianaSentinel is here to support you
                   every step of the way.
-                </p>
+                </p> */}
               </div>
               <div className="flex gap-4 mt-10 ">
                 <div className="w-1/3 bg-white  rounded">
@@ -85,7 +95,7 @@ function Dash() {
                     </div>
                 </div>
               </div>
-              {/* <ScreenshotsRow/> */}
+              <ScreenshotsRow/>
               {/* <Employe/> */}
               <TaskCard/>
               {/* <div className=" flex ">
