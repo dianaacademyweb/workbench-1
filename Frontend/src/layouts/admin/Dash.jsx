@@ -9,9 +9,7 @@ import TaskCard from "../../views/components/TaskCard";
 import Employesidebar from "../../components/sidebar/Employesidebar";
 
 function Dash() {
-  let {id }= useAuth();
-  const {type} = localStorage.getItem("type")
-  const {usertype} = useAuth();
+  const usertype = localStorage.getItem("type")
   const[open, setOpen]= React.useState(true);
   React.useEffect(() => {
     window.addEventListener("resize", () =>

@@ -4,6 +4,7 @@ import DashApi from '../../dashboard/auth';
 
 const Addtask = () => {
   const id = localStorage.getItem("id");
+  const usertype = localStorage.getItem("type")
 
 // storing all the projects ,employess and board in use states
 

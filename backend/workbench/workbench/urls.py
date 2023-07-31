@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails, logouttimelist
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails, logouttimelist,TaskdetailsEmployeView
 # from rest_framework_simplejwt.views import (
 #     TokenObtainPairView,
 #     TokenRefreshView,
@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/dashboard/seeimage/<int:id>/', Seeimage.as_view(), name = 'seeimage' ),
     path('api/dashboard/seeprofile/<int:id>/', Seeprofile.as_view(), name = 'Seeprofile' ),
     path('api/dashboard/taskdetail/<int:organization_id>/', TaskdetailsViews.as_view(), name = 'seeimage' ),
+    path('api/dashboard/emplyetask/<int:id>/', TaskdetailsEmployeView.as_view(), name = 'employestasks' ),
     path('api/dashboard/seeteams/<int:organization_id>/',Seeteams.as_view(), name = 'seeteams' ),
     
     path('api/dashboard/boardwiseteams/<int:organization_id>/board/<int:board_id>/',boardwiseteams.as_view(), name = 'boardwiseteams' ),
