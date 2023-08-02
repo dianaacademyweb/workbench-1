@@ -27,8 +27,8 @@ const Boardpage = () => {
         setboardId(response.data.id)
         setName(response.data.board_name)
 
-        if (response.data && response.data.success === true) {
-          return setError(response.data.msg);
+        if (response.data && response.data.success === 200) {
+          return setError(" board updated succusfully");
         }
       } catch (err) {
         console.log(err);
@@ -51,7 +51,7 @@ const Boardpage = () => {
         orgnisation_id,
       });
       console.log(response) // Replace 'API_URL' with your actual API endpoint
-      if (response.data && response.status === 201 ) {
+      if (response.status === 200 ) {
         return setError("project update succesfullly");
       } // Handle the response as needed
     } catch (error) {
@@ -111,7 +111,7 @@ const Boardpage = () => {
     delete
 
     </button>
-    {error}
+  <h1 className='text-navy-900 mt-3'> {error}</h1>
     
       
     </div>

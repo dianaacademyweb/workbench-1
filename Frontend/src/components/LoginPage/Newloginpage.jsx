@@ -14,6 +14,7 @@ function Newloginpage() {
   const { setUser } = useAuth();
   const { setId } = useAuth();
   const { setToken } = useAuth();
+  const {setusertype} = useAuth();
   const {setType} = useAuth()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -64,6 +65,7 @@ function Newloginpage() {
     var decode = jwtDecode(token);
     let id = decode.user_id;
     let name = decode.name;
+    let usertype = decode.type;
     console.log(name);
     user = JSON.stringify(user);
 
@@ -71,12 +73,14 @@ function Newloginpage() {
     localStorage.setItem("id", id);
     localStorage.setItem("token", token);
     localStorage.setItem("name", name);
+    localStorage.setItem("type", usertype)
 
 
     setUser(user);
     setId(id);
     setToken(token);
     setType(name);
+    setusertype(usertype);
     return navigate("/dashboard");
   };
   const handleUserSelection = (userType) => {

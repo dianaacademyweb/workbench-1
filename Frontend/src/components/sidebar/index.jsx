@@ -5,7 +5,7 @@ import Sidedata from "./components/Sidedata";
 import SidebarCard from "./components/sidebarcard";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-import Pro from "../../assets/Images/layouts/pro.jpg"
+import { useAuth } from "../../context/AuthContext";
 
 // import routes from "../../routes";
 
@@ -14,6 +14,7 @@ const Sidebar = ({ open, onClose }) => {
   const [dropdownMenuOpen, setDropdownMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [settingsExpanded, setSettingsExpanded] = useState(false);
+  const {usertype} = useAuth()
 
   return (
     <div
@@ -28,9 +29,9 @@ const Sidebar = ({ open, onClose }) => {
         <HiX />
       </span>
       <div className="flex flex-col bg-[#C2B9B0]  dark:bg-navy-900 justify-center items-center p-8">
-      <div>
+      {/* <div>
         <img src={Pro} alt="profile photo" className="w-[100px] rounded-full"/>
-      </div>
+      </div> */}
       <div className="text-xl font-bold">name</div>
       </div>
       <div className={`mx-[56px]  flex items-center`}>

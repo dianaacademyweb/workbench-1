@@ -33,7 +33,6 @@ import Administration from "./components/teams/Administration";
 import Manager from "./components/teams/Manager";
 import Sales from "./components/teams/Sales";
 import Creative from "./components/teams/Creative";
-
 import EmployeeOnboarding from "./components/onborad/EmployeeOnboarding";
 import Technical from "./components/teams/Technical";
 import Teams from "./views/teams";
@@ -110,7 +109,7 @@ function App() {
           <Route element ={<Dash/>} path="/dashboard"/>
           <Route element ={<TopActivity/>} path="/topactivity"/>
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
-          <Route element ={<EmployeeDash/>} path="/dash"/>
+          <Route element ={<EmployeeDash/>} path="/mysentinel"/>
           <Route exact path="employee/:id" element={<Employepage/>} />
           <Route exact path="board/:id" element={<Boardpage/>} />
           <Route exact path="board/allboard/:id" element={<Boardpage/>} />

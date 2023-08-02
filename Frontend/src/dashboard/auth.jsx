@@ -15,6 +15,23 @@ class DashApi {
       },
     });
   };
+
+  static attendanceReport = (id , params) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/attendancelist/${id}/`, params,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static logoutreports = (id , params) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/logoutlist/${id}/`, params,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
     
   static Employedata = (id) => {
     const token = localStorage.getItem("token");

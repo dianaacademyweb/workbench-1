@@ -8,16 +8,21 @@ import Employe from "../../components/DashBoard/Employelist";
 import TaskCard from "../../views/components/TaskCard";
 import dashgroup from '../../assets/Images/layouts/dashgroup.jpg'
 
+// function Dash() {
+//   let { id } = useAuth();
+//   const [open, setOpen] = React.useState(true);
+
+// }
 function Dash() {
-  let { id } = useAuth();
-  const [open, setOpen] = React.useState(true);
+  const usertype = localStorage.getItem("type")
+  const[open, setOpen]= React.useState(true);
   React.useEffect(() => {
     window.addEventListener("resize", () =>
       window.innerWidth < 1200 ? setOpen(false) : setOpen(true)
     );
   }, []);
   return (
-    <div className="flex h-ful bg-[#C2CAD0] w-full">
+    <div className="flex h-full bg-[#C2CAD0] w-full">
       <Sidebar open={open} onClose={() => setOpen(false)} />
       {/* Navbar & Main Content */}
       <div className="h-full w-full   dark:!bg-navy-900">
@@ -32,14 +37,14 @@ function Dash() {
               brandText={"work Warden"}
               // {...rest}
             />
-            <div className="flex flex-col justify-end h-[500px] w-full bg-cover bg-no-repeat rounded" style={{ backgroundImage: `url(${dashgroup})` }}>
+            {/* <div className="flex flex-col justify-end h-[500px] w-full bg-cover bg-no-repeat rounded" style={{ backgroundImage: `url(${dashgroup})` }}>
             <div className="opacity-80 flex gap-4 justify-between bg-white p-4">
               <div>one</div>
               <div>one</div>
               <div>one</div>
               <div>one</div>
             </div>
-            </div>
+            </div> */}
             
             <div className="pt-5 h-full min-h-screen m-8 md:pr-2">
               <div className="mx-auto rounded-xl  flex flex-col items-center bg-white">
@@ -59,8 +64,8 @@ function Dash() {
                   to kickstart your career, DianaSentinel is here to support you
                   every step of the way.
                 </p> */}
-              </div>
-              <div className="flex gap-4 mt-10 ">
+              {/* </div> */}
+              {/* <div className="flex gap-4 mt-10 ">
                 <div className="w-1/3 bg-white  rounded">
                     <h1 className="bg-[#E77170] text-white text-xl p-2">UPCOMING EVENTS</h1>
                     <div className="m-4">
@@ -73,8 +78,8 @@ function Dash() {
                       <li>event 6</li>
                      </ul>
                     </div>
-                </div>
-                <div className="w-1/3 bg-white text-xl rounded">
+                </div> */}
+                {/* <div className="w-1/3 bg-white text-xl rounded">
                     <h1 className="bg-[#E77170] text-white p-2">RECENT ACTIVITY</h1>
                     <div className="m-4">
                       <ul>
@@ -93,14 +98,14 @@ function Dash() {
                         
                       </ul>
                     </div>
-                </div>
+              </div> */}
               </div>
               <ScreenshotsRow/>
-              {/* <Employe/> */}
+              <Employe/>
               <TaskCard/>
-              {/* <div className=" flex ">
+              <div className=" flex ">
      
-     </div> */}
+     </div>
             </div>
           </div>
         </main>

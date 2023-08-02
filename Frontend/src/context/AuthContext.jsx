@@ -10,11 +10,12 @@ export const AuthProvider = ({ userData, children }) => {
   let [id, setId]= React.useState(userData); 
   let [token, setToken]= React.useState(userData);
   let [type, setType ] =React.useState(userData);
+  let [usertype,setusertype ] =React.useState(userData);
 
   // user = typeof user === "string" ? JSON.parse(user) : user;
 
  
-  return <AuthContext.Provider value={{ user, setUser, id, setId, token, setToken , type, setType}}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ user, setUser, id, setId, token, setToken , type, setType , usertype, setusertype}}>{children}</AuthContext.Provider>;
 };
 
 AuthProvider.propTypes = {

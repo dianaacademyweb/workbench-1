@@ -427,10 +427,27 @@ class logoutviewset(viewsets.ModelViewSet):
      
      
 class Attendancelist(APIView):
-    def get(self ,request , id , formate =None):
-        queryset = AttendanceLogs.objects.filter(user = id )
-        serializer = AttendanceSerilizer(queryset, many = True)
-        return Response(serializer.data)   
+    http_method_names = ["post" , "get"]
+    def get(self, request, id , format=None):
+        
+        start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
+        end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
+        queryset = AttendanceLogs.objects.filter(user=id,date__range=[start_date, end_date])
+        serializer = AttendanceSerilizer(queryset, many=True)
+        return Response(serializer.data)
+    
+    
+    
+class logouttimelist(APIView):
+    http_method_names = ["post" , "get"]
+    def get(self, request, id , format=None):
+        
+        start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
+        end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
+        queryset = logginout.objects.filter(user=id,date__range=[start_date, end_date])
+        serializer = logoutserializer(queryset, many=True)
+        return Response(serializer.data)    
+   
     
 class monitoringviewset(viewsets.ModelViewSet):
     queryset =    Monitoring.objects.all()
@@ -513,7 +530,40 @@ class employedetails(APIView):
             'msg': 'employe details retrieved successfuly',
         }
         
+        return Response(response_data)    
+    
+    
+    
+    
+    
+    
+class TaskdetailsEmployeView(APIView):    
+    def get(self, request, id, format=None):
+        tasks = Task.objects.filter(employe_id=id)
+        task_data = []
+        
+        for task in tasks:
+            project = Project.objects.get(id=task.project_id.id)
+            
+            data = {
+                'task_name': task.task_name,
+                'task_desc': task.task_desc,
+                'task_assign_date': task.task_assign_date,
+                'task_deadline_date': task.task_deadline_date,
+                'task_update_date': task.task_update_date,
+                'task_status': task.task_status,
+                'project_name': project.project_name,
+            }
+            
+            task_data.append(data)
+        
+        response_data = {
+            'tasks': task_data,
+            'msg': 'Task details retrieved successfully.',
+        }
+        
         return Response(response_data)        
+        
         
 
           
