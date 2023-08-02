@@ -172,6 +172,7 @@ module.exports = {
         700: "#707eae",
         800: "#FFF9E3",
         900: "#FFF9E3",
+
       },
       navy: {
         50: "#d0dcfb",

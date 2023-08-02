@@ -22,7 +22,7 @@ function Dash() {
     {usertype === 'employe' &&  <Employesidebar open={open} onClose={() => setOpen(false)} />}
       
       {/* Navbar & Main Content */}
-      <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900 dark:text-darktext">
+      <div className="h-full w-full bg-lightPrimary dark:!bg-navy-900">
         {/* Main Content */}
         <main className={`mx-[12px] h-full flex-none transition-all md:pr-2 xl:ml-[313px]`}>
           <div className="h-full">
@@ -35,7 +35,7 @@ function Dash() {
          
 
          <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">        
-         <h1 className=' mt-4 text-black text-white flex justify-center  dark:text-darktext dark:hover:text-white text-2xl'> Recent activity</h1>
+         <h1 className=' mt-4 text-black text-navy-700 flex justify-center  dark:text-white dark:hover:text-white text-2xl'> Recent activity</h1>
       {/* {usertype === 'employe' && <HomeEmployee />} */}
       {usertype === 'organization' && <ScreenshotsRow/>}
       {usertype === 'organization' &&  <Employe/>}

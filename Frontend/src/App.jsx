@@ -66,6 +66,7 @@ import Employepage from "./views/employes/Employepage";
 import Boardpage from "./views/board/Boardpage";
 import Projectspage from "./views/Projects/Projectspage";
 import Teamspage from "./views/teams/Teampage";
+import EmployeeDash from "./EmployeeDash/EmployeeDash";
 
 
 
@@ -108,7 +109,7 @@ function App() {
           <Route element ={<Dash/>} path="/dashboard"/>
           <Route element ={<TopActivity/>} path="/topactivity"/>
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
-
+          <Route element ={<EmployeeDash/>} path="/mysentinel"/>
           <Route exact path="employee/:id" element={<Employepage/>} />
           <Route exact path="board/:id" element={<Boardpage/>} />
           <Route exact path="board/allboard/:id" element={<Boardpage/>} />
