@@ -35,12 +35,24 @@ class DashApi {
     
   static Employedata = (id) => {
     const token = localStorage.getItem("token");
-    return axios.get(`${base}/employedetails/${id}/`,{
+    return axios.get(`${base}/employedetails/${id}/`,{    // https:/sentinel.www.dianasentinel/api/user/employedetails/10/
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
   };
+
+
+
+  static Employedetails = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/emplyetask/${id}/`,{    
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+
   static activities = (employeid) => {
     const token = localStorage.getItem("token");
     const id = localStorage.getItem("id");
@@ -204,6 +216,15 @@ static Teamlist = (data) => {
 
 static Getimage = (data) => {
   const id = localStorage.getItem("id");
+  const token = localStorage.getItem("token");
+  return axios.get(`${base}/seeimage/${id}/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+static employeimage = (id) => {
   const token = localStorage.getItem("token");
   return axios.get(`${base}/seeimage/${id}/`, {
     headers: {

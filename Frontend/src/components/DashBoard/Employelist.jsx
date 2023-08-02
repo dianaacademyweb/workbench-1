@@ -55,15 +55,15 @@ function Employe() {
 
   return (
     <div className="mx-4">
-       <div className="  mt-4 flex h-16 items-center  text-navy-700 rounded-full dark:bg-navy-800 py-2 ">
-       <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
-            <p className="pl-3 pr-2 text-xl  flex">
-              <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
+       <div className="  mt-4 flex h-16 items-center  text-white rounded-full bg-white dark:bg-navy-800 py-2 ">
+       <div className="flex dark:bg-navy-900 bg-white rounded-full  mx-2">
+            <p className="pl-3 py-2  pr-2 text-xl  flex">
+              <FiSearch className="h-4 w-4 text-lightPrimary dark:text-darktext  align-center flex  " />
             </p>
             <input
               type="text"
               placeholder="Search employe"
-              className="px-4 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+              className="px-4  py-2 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-white outline-none placeholder:!text-white  dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
             />
             </div>
            </div> 
@@ -80,13 +80,13 @@ function Employe() {
                 {" "}
                 {employees.map((employee) => (
                   <Link
-                    className=" my-2 justify-center flex  items-center   text-navy-700 dark:bg-navy-900  border-sm px-6 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-white "
+                    className=" my-2 justify-center flex  items-center   text-white dark:bg-navy-900  bg-lightPrimary border-sm px-2 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-darktext "
                     key={employee.id}
                     onClick={() => handleEmployeeClick(employee.id)}
                     // to={`${DOAMINAPI}/employee/${employee.employeid}`}
                   >
 
-                    <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
+                    <h1 className=" justify-center dark:text-darktext text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
                     {employee.username}{" "}
                     </h1>
                     
@@ -108,17 +108,17 @@ function Employe() {
                 className=" grid grid-flow-row justify-center  mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
                 key={employeeData.id}
               >
-                <h1 className="justify-center text-navy-900 dark:text-white">
+                <h1 className="justify-center text-navy-900 dark:text-darktext">
                   id = {employeeData.id}
                 </h1>
-                <h1 className="justify-center text-navy-900 dark:text-white ">
+                <h1 className="justify-center text-navy-900 dark:text-darktext ">
                   {" "}
                   DAte ={employeeData.md_date}
                 </h1>
-                <h2 className="block text-navy-900 dark:text-white">
+                <h2 className="block text-navy-900 dark:text-darktext">
                   title = {employeeData.md_title}
                 </h2>
-                <h3 className="bloack text-navy-900 dark:text-white">
+                <h3 className="bloack text-navy-900 dark:text-darktext">
                   Time ={employeeData.md_total_time_seconds}
                 </h3>
               </div>

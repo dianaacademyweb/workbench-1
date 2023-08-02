@@ -26,7 +26,7 @@ class Employe(models.Model):
         db_table = "employe"
 
 class Profile(models.Model):
-    organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    organization_id = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     # image = models.ImageField(upload_to='images/')
     contact = models.CharField(max_length=100, null=True, default=None)
@@ -107,15 +107,13 @@ class MonitoringDetails(models.Model):
         db_table = "MonitoringDetails"            
     
 class Meeting(models.Model):
-    m_name = models.CharField(max_length=55)
-    m_desc = models.CharField(max_length=200)
-    m_uuid = models.CharField(max_length=200)
-    m_start_date = models.CharField(max_length=55)
-    m_stop_date = models.CharField(max_length=55)
-    m_start_time = models.CharField(max_length=55)
-    m_stop_time = models.CharField(max_length=55)
-    p_id = models.ForeignKey(Project, on_delete=models.CASCADE)
-    o_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    meating_name = models.CharField(max_length=55)
+    meating_description = models.CharField(max_length=200)
+    meating_url = models.CharField(max_length=200)
+    project_name = models.CharField(max_length=250)
+    meating_start_time = models.CharField(max_length=55)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE)
+    organisation_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         db_table = "meeting"  
@@ -176,5 +174,15 @@ class desktopfile(models.Model):
 class ideltime(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField(auto_now=False, auto_now_add=False)  
-    idealtime =  models.CharField( max_length=50)     
+    idealtime =  models.CharField( max_length=50)   
+    
+    
+    
+    
+class Notification(models.Model):
+    organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
+    notification = models.CharField(max_length=600)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        db_table = "notification"       
     

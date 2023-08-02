@@ -1,90 +1,72 @@
-import CardMenu from '../../components/card/CardMenu';
-import React from "react";
-import Checkbox from "../../components/checkbox/index";
-import { MdDragIndicator, MdCheckCircle } from "react-icons/md";
+import React, { useState, useEffect } from 'react';
+import DashApi from '../../dashboard/auth';
 import Card from "../../components/card/index";
 
-const TaskCard = () => {
+function TaskCard() {
+  const [error, setError] = useState(undefined);
+  const [allTasks, setAllTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await DashApi.Taskdetails({});
+        setAllTasks(response.data.tasks);
+        console.log(response.data.tasks)
+        if (response.data && response.data.success === false) {
+          setError(response.data.msg);
+        }
+      } catch (err) {
+        console.log(err);
+        if (err.response) {
+          setError(err.response.data.msg);
+        } else {
+          setError('There has been an error.');
+        }
+      }
+    };
+
+    fetchTasks();
+  }, []);
+
   return (
-    <Card extra="pb-7 p-[20px] mt-5 mx-4">
-      {/* task header */}
-      <div className="relative flex flex-row justify-between">
-        <div className="flex items-center">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-100 dark:bg-white/5">
-            <MdCheckCircle className="h-6 w-6 text-brand-500 dark:text-white" />
-          </div>
-          <h4 className="ml-4 text-xl font-bold text-navy-700 dark:text-white">
-            Tasks
-          </h4>
-        </div>
-        <CardMenu />
+
+    <div>
+      <Card extra="pb-7 p-[20px] mt-5 mx-4">
+      <div className=''>
+        {allTasks.length > 0 && (
+          <table className='table-auto w-full'>
+            <thead className='border-2 border-white'>
+              <tr>
+              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Name</th>
+              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '> Name</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Project</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Board</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Description</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Assign Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Deadline Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Update Date</th>
+              </tr>
+            </thead>
+            <tbody className='border-2 border-white '>
+              {allTasks.map((task, index) => (
+                <tr key={index} className='border-2 justify-center'>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.employee_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.project_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.board_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_desc}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_assign_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_deadline_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_update_date}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
-
-      {/* task content */}
-
-      <div className="h-full w-full">
-        <div className="mt-5 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Mobile App Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Landing Page Design
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
-
-        <div className="mt-2 flex items-center justify-between p-2">
-          <div className="flex items-center justify-center gap-2">
-            <Checkbox />
-            <p className="text-base font-bold text-navy-700 dark:text-white">
-              Dashboard Builder
-            </p>
-          </div>
-          <div>
-            <MdDragIndicator className="h-6 w-6 text-navy-700 dark:text-white" />
-          </div>
-        </div>
+      </Card>
       </div>
-    </Card>
   );
-};
+}
 
 export default TaskCard;

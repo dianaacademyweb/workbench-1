@@ -105,9 +105,9 @@ const ScreenshotsRow = () => {
     <div>
       <div>
         <label className="">
-          <span className="mr-2 text-white text-xl"> select Employe</span>
+          <span className="mr-2 text-white text-xl dark:text-darktext "> select Employe</span>
           <select
-            className="my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm"
+            className="my-1 px-14 py-3 bg-white rounded-md text-lightPrimary  text-lg"
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
             <option value="">select employe</option>
@@ -123,7 +123,7 @@ const ScreenshotsRow = () => {
   {images.map((item) => (
     
     <div key={item.id}>
-    <p className="flex text-xl text-navy-800 dark:text-gray-200">{item.time}</p>
+    <p className="flex text-xl text-white dark:text-gray-200">{item.time}</p>
    <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg" >
    
       <img className="mx-auto px-2 py-2  w-full h-auto"

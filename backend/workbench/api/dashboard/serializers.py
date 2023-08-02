@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs,Monitoring, logginout, desktopfile,ideltime
+from .models import Project , Employe , Board ,Task,Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs,Monitoring, logginout, desktopfile,ideltime, Notification, Meeting
 from api.user.models import User
 from django.core.mail import send_mail
 
@@ -139,6 +139,13 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'       
+        
+        
+class MeetingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Meeting
+        fields = '__all__'       
+                        
                 
         
         
@@ -176,6 +183,11 @@ class logoutserializer(serializers.ModelSerializer):
         model = logginout
         fields = '__all__'           
         
+        
+class NotificationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Notification
+        fields = '__all__'              
         
         
 class monitoringserializer(serializers.ModelSerializer):

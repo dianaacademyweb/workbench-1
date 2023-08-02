@@ -90,7 +90,7 @@ useEffect(() => {
       <div className="ml-[6px]">
         <div className=" w-[224px] pt-1">
           <a
-            className="text-lg font-normal text-navy-700 hover:underline dark:text-white py-1 px-2 text-center dark:hover:text-white border border-white rounded-3xl "
+            className="text-lg font-normal text-white hover:underline dark:text-white py-1 px-2 text-center dark:hover:text-white border border-white rounded-3xl "
             href="/dashboard"
           >
             Back
@@ -121,12 +121,12 @@ useEffect(() => {
       <div className="  relative mt-[3px] flex h-[61px] w-[355px] flex-grow items-center justify-around gap-2 rounded-full bg-white px-2 py-2 shadow-xl shadow-shadow-500 dark:!bg-navy-800 dark:shadow-none md:w-[365px] md:flex-grow-0 md:gap-1 xl:w-[400px] xl:gap-2">
         <div className="  flex h-full items-center rounded-full bg-lightPrimary text-navy-700 dark:bg-navy-900 dark:text-white xl:w-[300px] ">
           <p className="pl-3 pr-2 text-xl">
-            <FiSearch className="h-4 w-4 text-gray-400 dark:text-white" />
+            <FiSearch className="h-4 w-4 text-white dark:text-white" />
           </p>
           <input
             type="text"
             placeholder="Search..."
-            className=" block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+            className=" block h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-white outline-none placeholder:!text-white dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
           />
         </div>
         <span
@@ -140,17 +140,17 @@ useEffect(() => {
         <Dropdown
           button={
             <p className="cursor-pointer">
-              <IoMdNotificationsOutline className="h-4 w-4 text-gray-600 dark:text-white" />
+              <IoMdNotificationsOutline className="h-4 w-4 text-lightPrimary dark:text-white" />
             </p>
           }
           animation="origin-[65%_0%] md:origin-top-right transition-all duration-300 ease-in-out"
           children={
             <div className="flex w-[360px] flex-col gap-3 rounded-[20px] bg-white p-4 shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none sm:w-[460px]">
               <div className="flex items-center justify-between">
-                <p className="text-base font-bold text-navy-700 dark:text-white">
+                <p className="text-base font-bold text-lightPrimary dark:text-white">
                   Notification
                 </p>
-                <p className="text-sm font-bold text-navy-700 dark:text-white">
+                <p className="text-sm font-bold text-lightPrimary dark:text-white">
                   Mark all read
                 </p>
               </div>
@@ -190,7 +190,7 @@ useEffect(() => {
         <Dropdown
           button={
             <p className="cursor-pointer">
-              <IoMdInformationCircleOutline className="h-4 w-4 text-gray-600 dark:text-white" />
+              <IoMdInformationCircleOutline className="h-4 w-4 text-lightPrimary dark:text-white" />
             </p>
           }
           children={
@@ -246,15 +246,15 @@ useEffect(() => {
         >
           {darkmode ? (
             
-            <RiMoonFill className="h-4 w-4 text-gray-600 dark:text-white" />
+            <RiMoonFill className="h-4 w-4 text-lightPrimary dark:text-white" />
           ) : (
-            <RiSunFill className="h-4 w-4 text-gray-600 dark:text-white" />
+            <RiSunFill className="h-4 w-4 text-lightPrimary dark:text-white" />
           )}
         </div>
         {/* Profile & Dropdown */}
         <Dropdown
           button={
-            <div className=" flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-pink-400 dark:!border-navy-700">
+            <div className=" flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
           {profileImage &&   (
              
     <div key={profileImage.id}>

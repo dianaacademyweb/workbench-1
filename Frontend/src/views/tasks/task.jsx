@@ -66,6 +66,7 @@ const Addtask = () => {
       try {
         let response = await DashApi.Employelist({});
         setEmployees(response.data.employes);
+        console.log(response)
         
         if (response.data && response.data.success === true) {
             console.log(response);
@@ -219,7 +220,7 @@ const Addtask = () => {
         <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={employe_id} onChange={handleEmployeeChange}>
           <option value="">Select Employee</option>
           {employees.map(employee => (
-            <option key={employee.id} value={employee.id}>{employee.username}</option>
+            <option key={employee.id} value={employee.employeid}>{employee.username}</option>
           ))}
         </select>
       </label>

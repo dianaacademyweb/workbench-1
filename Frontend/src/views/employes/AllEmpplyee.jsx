@@ -16,6 +16,7 @@ function Employe() {
       }
       try {
         let response = await DashApi.Employelist();
+        console.log(response);
         setEmployees(response.data.employes);
 
         if (response.data && response.data.success === true) {
@@ -45,17 +46,17 @@ function Employe() {
   }; // Empty dependency array for the initial effect
 
   return (
-    <div className="min-h-screen bg-blue-100 py-10 mx-4 dark:bg-navy-900 mb-[200px] h-full ">
+    <div className="min-h-screen bg-lightPrimary py-10 mx-4 dark:bg-navy-900 mb-[200px] h-full ">
       <div className=" mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
       
-        <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
+        <div className="flex dark:bg-navy-900  bg-lightPrimary rounded-full py-3 mx-2">
           <p className="pl-3 pr-2 text-xl  flex">
-            <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
+            <FiSearch className="h-4 w-4 text-white dark:text-white  align-center flex " />
           </p>
           <input
             type="text"
             placeholder="Search employe"
-            className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+            className="px-4 flex h-full w-full rounded-full  bg-lightPrimary text-sm font-medium text-lightPrimary outline-none placeholder:!text-white dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
           />
         </div>
       </div>
@@ -71,7 +72,7 @@ function Employe() {
                   {" "}
                   {employees.map((employee) => (
                     <Link
-                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
+                      className=" my-4 justify-center flex  items-center   text-white bg-lightPrimary dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
                       key={employee.id}
                       onClick={() => handleEmployeeClick(employee.employeid)}
                       to={`${employee.employeid}`}

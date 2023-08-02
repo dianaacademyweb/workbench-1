@@ -156,10 +156,11 @@ module.exports = {
       "4xl-max": { max: "1850px" },
     },
     colors: () => ({
-      white: "#ffffff",
-      lightPrimary: "#F4F7FE",
+      white: "#3A3A3A",
+      lightPrimary: "#F5F5F5",
       blueSecondary: "#4318FF",
       brandLinear: "#868CFF",
+      darktext: "#5F9EA0",
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",
@@ -169,8 +170,8 @@ module.exports = {
         500: "#adb5bd",
         600: "#a3aed0",
         700: "#707eae",
-        800: "#C2CAD0",
-        900: "#C2CAD0",
+        800: "#FFF9E3",
+        900: "#FFF9E3",
       },
       navy: {
         50: "#d0dcfb",
@@ -180,9 +181,9 @@ module.exports = {
         400: "#3652ba",
         500: "#1b3bbb",
         600: "#24388a",
-        700: "#C2CAD0",
-        800: "#C2CAD0",
-        900: "#E77170",
+        700: "#191970",
+        800: "#FFF9E3",
+        900: "#FFF9E3",
       },
       red: {
         50: "#ee5d501a",

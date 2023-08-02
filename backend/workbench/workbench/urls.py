@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 
-from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails, logouttimelist,TaskdetailsEmployeView
+from api.dashboard.viewset import ProjectAPIView , EmployeListAPIView , BoardlistApi,ProjectListAPIView,boardwisetask,employewiseMonitoring,Seeimage,Seeprofile,TaskdetailsViews, Seeteams, boardwiseteams, TeamlistApi,Seescreenshots,Attendancelist, screenlist,FileDownloadView,desktop_app_download,idetimellist, employedetails, logouttimelist,TaskdetailsEmployeView, allmeetings, allnotification,allscreenshots
 # from rest_framework_simplejwt.views import (
 #     TokenObtainPairView,
 #     TokenRefreshView,
@@ -32,6 +32,7 @@ urlpatterns = [
     path('api/verify-email/', EmailVerificationView.as_view(), name='email-verify'),
     
     path('api/dashboard/Seescreenshots/<int:id>/', Seescreenshots.as_view(), name = 'seeimage' ),
+    path('api/dashboard/allscreenshots/<int:id>/', allscreenshots.as_view(), name = 'allimages' ),
     path('api/dashboard/attendancelist/<int:id>/', Attendancelist.as_view(), name='attendance_list'),
     path('api/dashboard/screenlist/<int:id>/', screenlist.as_view(), name='screenlist'),
     path('api/dashboard/desktopapp/<int:id>/', FileDownloadView.as_view(), name='desktopapp'),
@@ -39,6 +40,10 @@ urlpatterns = [
     path('api/dashboard/ideltime/<int:id>/', idetimellist.as_view(), name='ideltime'),
     path('api/dashboard/employedetails/<int:id>/', employedetails.as_view(), name='employedetails'),
     path('api/dashboard/logoutlist/<int:id>/', logouttimelist.as_view(), name='logout_list'),
+    path('api/dashboard/meetings/<int:id>/', allmeetings.as_view(), name='meetinglist'),
+    path('api/dashboard/notifications/<int:id>/', allnotification.as_view(), name='notificationlist'),
+
+
 
 
     path('admin/', admin.site.urls),

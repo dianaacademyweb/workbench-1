@@ -5,9 +5,8 @@ from api.dashboard.serializers import  ProfileSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.permissions import BasePermission
-from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs, Monitoring, logginout, desktopfile,ideltime
-from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer,Screenshotserilizer, AttendanceSerilizer, monitoringserializer, logoutserializer,DesktopFileSerializer,ideltimeSerializer
-from rest_framework import generics
+from .models import Project, Employe, Board,Task, Project_Employee_Linker, MonitoringDetails, Profile, ImageModel, Team, screenshotsModel,AttendanceLogs, Monitoring, logginout, desktopfile,ideltime, Notification,Meeting
+from .serializers import ProjectSerializer , EmployeSerializer ,BoardSerializer, TaskSerializer, ProjectlinkerSerializer, monitoringdetailSerializer, ProfileSerializer, ImageModelSerializer , TeamSerializer,Screenshotserilizer, AttendanceSerilizer, monitoringserializer, logoutserializer,DesktopFileSerializer,ideltimeSerializer, NotificationSerializer, MeetingSerializer
 from api.user.serializers import RegisterSerializer
 from django.shortcuts import render
 
@@ -26,7 +25,7 @@ from api.user.models import User
 class IsEmployeePermission(BasePermission):
     def has_permission(self, request, view):
         user = request.user
-        return user.is_authenticated and user.user_type == 'employee'
+        return user.is_authenticated and user.user_type == 'employe'
     
 class IsOrganizationPermission(BasePermission):
     def has_permission(self, request, view):
@@ -36,6 +35,7 @@ class IsOrganizationPermission(BasePermission):
 class ProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = [JWTAuthentication]
     permission_classes =[IsOrganizationPermission]
+    permission_classes =[IsEmployeePermission]
     queryset = User.objects.all()
     http_method_names = ["post"]
     serializer_class = ProfileSerializer
@@ -62,15 +62,18 @@ class ProjectAPIView(viewsets.ModelViewSet):
     serializer_class = ProjectSerializer
     
 class ProjectListAPIView(APIView):
-     def get(self ,request , id , formate =None):
+    # permission_classes =[IsOrganizationPermission]
+    def get(self ,request , id , formate =None):
         queryset = Project.objects.filter(organization_id = id )
         serializer = ProjectSerializer(queryset, many = True)
         return Response(serializer.data)    
     
 class EmployeeCreateAPIView(viewsets.ModelViewSet):
-    http_method_names = ["post"]
     authentication_classes = [JWTAuthentication]
-    # permission_classes =[IsOrganizationPermission]
+    permission_classes =[IsOrganizationPermission]
+    
+    http_method_names = ["post"]
+    
     
 
     serializer_class = EmployeSerializer
@@ -144,9 +147,8 @@ class EmployeeCreateAPIView(viewsets.ModelViewSet):
 
 
 class EmployeListAPIView(APIView):
-    
-    
-    
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self , request, id,  format=None ):
         employe = Employe.objects.filter(organization_id = id)
         employe_data =[]
@@ -183,12 +185,16 @@ class EmployeListAPIView(APIView):
     
     
 class BoardCreateAPIViewset(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
     
     
     
 class BoardlistApi(APIView):
+    authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
     def get(self ,request , id , formate =None):
         queryset = Board.objects.filter(orgnisation_id = id )
         serializer = BoardSerializer(queryset, many = True)
@@ -198,10 +204,23 @@ class BoardlistApi(APIView):
     
     
 class TaskCreateAPIViewSet(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = Task.objects.all()
     serializer_class =TaskSerializer
     
+    
+    
+class NotificationCreateapi(viewsets.ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
+    queryset = Notification.objects.all()
+    serializer_class =NotificationSerializer
+        
+    
 class boardwisetask(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self, request, organization_id, board_id, formate =None ):
         organization_id = self.kwargs['organization_id']
         board_id = self.kwargs['board_id'] 
@@ -212,20 +231,22 @@ class boardwisetask(APIView):
     
     
 class ProjectEmployeLinkViewSet(viewsets.ModelViewSet):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes =[IsOrganizationPermission]
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = Project_Employee_Linker.objects.all()
     serializer_class = ProjectlinkerSerializer
     
     
 class MonitoringViewSet(viewsets.ModelViewSet):
-    # authentication_classes = [JWTAuthentication]
-    # permission_classes =[IsOrganizationPermission]
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = MonitoringDetails.objects.all()
     serializer_class = monitoringdetailSerializer   
     
     
 class employewiseMonitoring(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self, request, organization_id, e_id, formate =None ):
         organization_id = self.kwargs['organization_id']
         e_id = self.kwargs['e_id'] 
@@ -236,6 +257,9 @@ class employewiseMonitoring(APIView):
     
     
 class ProfileViewSet(viewsets.ModelViewSet):
+    permission_classes =[IsEmployeePermission]
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer     
     
@@ -253,12 +277,18 @@ class ProfileViewSet(viewsets.ModelViewSet):
 #         return Response({'message': 'Image uploaded successfully'})  
 
 class ImageUploadView(viewsets.ModelViewSet):
+    permission_classes =[IsEmployeePermission]
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = ImageModel.objects.all()
     serializer_class = ImageModelSerializer
     filterset_fields = ['organization_id']
     
     
 class Seeimage(APIView):
+    # permission_classes =[IsEmployeePermission]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
     def get(self ,request , id , formate =None):
         queryset = ImageModel.objects.filter(organization_id = id )
         serializer = ImageModelSerializer(queryset, many = True)
@@ -266,6 +296,9 @@ class Seeimage(APIView):
     
     
 class Seeprofile(APIView):
+    # permission_classes =[IsEmployeePermission]
+    # authentication_classes = [JWTAuthentication]
+    # permission_classes =[IsOrganizationPermission]
     def get(self ,request , id , formate =None):
         queryset = Profile.objects.filter(organization_id = id )
         serializer = ProfileSerializer(queryset, many = True)
@@ -304,7 +337,8 @@ class Seeprofile(APIView):
 #                             status=status.HTTP_201_CREATED,
 #                         )    
         
-class TaskdetailsViews(APIView):    
+class TaskdetailsViews(APIView): 
+    authentication_classes = [JWTAuthentication] 
     def get(self, request, organization_id, format=None):
         tasks = Task.objects.filter(orgnisation_id=organization_id)
         task_data = []
@@ -339,6 +373,8 @@ class TaskdetailsViews(APIView):
     
     
 class TeamsViewSet(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset = Team.objects.all()
     serializer_class = TeamSerializer      
     
@@ -346,6 +382,8 @@ class TeamsViewSet(viewsets.ModelViewSet):
  
  
 class Seeteams(APIView):    
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self, request, organization_id, format=None):
         teams = Team.objects.filter(organization_id=organization_id)
         teams_data = []
@@ -379,6 +417,8 @@ class Seeteams(APIView):
     
     
 class boardwiseteams(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self, request, organization_id, board_id, formate =None ):
         organization_id = self.kwargs['organization_id']
         board_id = self.kwargs['board_id'] 
@@ -391,6 +431,8 @@ class boardwiseteams(APIView):
     
 
 class TeamlistApi(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self ,request , id , formate =None):
         queryset = Team.objects.filter(organization_id = id )
         serializer = TeamSerializer(queryset, many = True)
@@ -401,17 +443,57 @@ class TeamlistApi(APIView):
     
     
 class screenshotsViewset(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
     queryset = screenshotsModel.objects.all()
     serializer_class = Screenshotserilizer
     filterset_fields = ['organization_id']   
     
     
+
+class meetingViewset(viewsets.ModelViewSet):
+    # authentication_classes = [JWTAuthentication]
+    queryset = Meeting.objects.all()
+    serializer_class = MeetingSerializer
+    filterset_fields = ['organization_id']       
+    
+    
          
 class Seescreenshots(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     def get(self ,request , id , formate =None):
         queryset = screenshotsModel.objects.filter(organization_id = id ).order_by('-id')[:6]
         serializer = Screenshotserilizer(queryset, many = True)
         return Response(serializer.data)   
+    
+    
+    
+class allscreenshots(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
+    def get(self ,request , id , formate =None):
+        queryset = screenshotsModel.objects.filter(organization_id = id ).order_by('-id')[:20]
+        serializer = Screenshotserilizer(queryset, many = True)
+        return Response(serializer.data)       
+    
+    
+
+class allmeetings(APIView):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes =[IsOrganizationPermission]
+    def get(self ,request , id , formate =None):
+        queryset = Meeting.objects.filter(organisation_id = id )
+        serializer = MeetingSerializer(queryset, many = True)
+        return Response(serializer.data) 
+    
+class allnotification(APIView):
+#     authentication_classes = [JWTAuthentication]
+#     permission_classes =[IsOrganizationPermission]
+    def get(self ,request , id , formate =None):
+        queryset = Notification.objects.filter(organization_id = id )
+        serializer = NotificationSerializer(queryset, many = True)
+        return Response(serializer.data) 
+          
     
     
     
@@ -460,9 +542,13 @@ class screenlist(APIView):
         queryset = Monitoring.objects.filter(orgnisation_id = id ).order_by('-id')[:6]
         serializer = monitoringserializer(queryset, many = True)
         return Response(serializer.data)       
+    
+    
          
          
 class desktopfileupload(viewsets.ModelViewSet):
+    authentication_classes = [JWTAuthentication]
+    permission_classes =[IsOrganizationPermission]
     queryset =    desktopfile.objects.all()
     serializer_class = DesktopFileSerializer  
     
@@ -537,7 +623,8 @@ class employedetails(APIView):
     
     
     
-class TaskdetailsEmployeView(APIView):    
+class TaskdetailsEmployeView(APIView):   
+    # permission_classes =[IsEmployeePermission] 
     def get(self, request, id, format=None):
         tasks = Task.objects.filter(employe_id=id)
         task_data = []

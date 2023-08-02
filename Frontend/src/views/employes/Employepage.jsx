@@ -5,14 +5,49 @@ import DashApi from '../../dashboard/auth';
 import { useNavigate } from 'react-router-dom';
 import Card from '../../components/card';
 
+import { IMAGE_API } from '../../config/constant';
+
 const Employepage = () => {
   const navigate = useNavigate();
   const [employees, setEmployees] = useState([]);
+  const [profileImage, setProfileImage] = useState(null);
+
   const [error, setError] = useState([]);
 
   const { id } = useParams();
+  console.log(id)
+
+
+
+
 
   useEffect(() => {
+        // Fetch the image URL or path from the API
+        const fetchProfileImage = async () => {
+          try {
+            const response = await DashApi.employeimage(id);
+            setProfileImage(response.data[0]);
+            console.log(response) // Assuming `message` contains the image URL
+            if (response.data && response.data.success === true) {
+                return setError(response.data.msg);
+              }
+            } catch (err) {
+              console.log(err);
+              if (err.response) {
+                return setError(err.response.data.msg);
+              }
+              return setError('There has been an error.');
+          }
+        };
+    
+        fetchProfileImage();
+      }, []);
+
+
+
+
+  useEffect(() => {
+
     const Employedata = async (event) => {
       if (event) {
         event.preventDefault();
@@ -52,9 +87,19 @@ const Employepage = () => {
   return (
     <div className="min-h-screen dark:bg-navy-900">
       <Navbar />
+      <div className="  flex  justify-center h-[200px] w-[200px] items-center rounded-full border-[4px] border-white dark:!border-navy-700">
+               {profileImage && (
+                
+       <div className='flex justify-center' key={profileImage.id}>
+         <img className='rounded-[100px] w-48 h-48 flex ' src={`${IMAGE_API}/${profileImage.image}`} alt="Profile Image" />
+       </div>
+      )}
+               </div>
 
       <div className="container mx-auto p-4">
+      
         <p className="text-2xl font-bold mb-4">Employees Details</p>
+      
         <Card extra="mx-4">
           <div className="">
             {employees.length > 0 && (

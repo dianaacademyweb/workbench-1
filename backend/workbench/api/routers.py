@@ -17,6 +17,8 @@ from api.dashboard.viewset import (
     logoutviewset,
     desktopfileupload,
     idealtimeviewSet,
+    NotificationCreateapi,
+    meetingViewset,
     
     
 )
@@ -57,10 +59,21 @@ router.register(r"imageupload", ImageUploadView, basename="upload")
 router.register(r"screenshots", screenshotsViewset, basename="screenshots")
 
 router.register(r"attendance", AttendanceViewset, basename="attendance")
+
 router.register(r"monitorscreen", monitoringviewset, basename="screenmonitor")
+\
 router.register(r"loggingout", logoutviewset, basename="loggingout")
+
 router.register(r"desktopapp", desktopfileupload, basename="desktoapp")
+
 router.register(r"idealtime", idealtimeviewSet, basename="ideltime")
+
+router.register(r"notification", NotificationCreateapi, basename="notification")
+
+
+router.register(r"meeting", meetingViewset, basename="meeting")
+
+
 
 
 
