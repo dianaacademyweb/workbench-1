@@ -161,6 +161,7 @@ module.exports = {
       blueSecondary: "#4318FF",
       brandLinear: "#868CFF",
       darktext: "#F5F5F5",
+      lightgray: "#4f4f504d",
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",

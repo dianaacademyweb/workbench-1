@@ -36,18 +36,19 @@ function Allboard() {
   }, []); // Empty dependency array for the initial effect
 
   const handleboardclick = async (boardId) => {
+    setSelectedBoard(event.target.value);
     try {
       let response = await DashApi.Teamsdetails(boardId);
       console.log(response);
       setTeamsdata(response.data);
-      setSelectedBoard(event.target.value);
+      
     } catch (error) {
       console.error("Error retrieving employee data:", error);
     }
   };
 
   return (
-    <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
+    <div className=" bg-lightPriamry py-10 dark:bg-navy-900 mb-[200px] h-full ">
     <div className=" py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
       <div className="flex  dark:bg-navy-900 rounded-full py-3 mx-2">
         <p className="pl-3 pr-2 text-xl  flex">
@@ -56,15 +57,15 @@ function Allboard() {
         <input
           type="text"
           placeholder="Search employe"
-          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
         />
       </div>
       
     <div>
   
-  <label className="text-blue-900">
+  <label className="text-darktext dark:bg-darktext">
           boards
-          <select className='my-1 mx-2 px-14 py-3 border border-blue-500 rounded-md text-blue-500 text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
+          <select className='my-1 mx-2 px-14 py-3 border dark:border-blue-500 rounded-md dark:text-blue-500 text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
             <option value=""></option>
             {board.map(board => (
               <option key={board.id} value={board.id}>{board.board_name}</option>
@@ -75,7 +76,7 @@ function Allboard() {
     </div>
 
         <div className="m-4">
-          <Card extra=" p-[20px]">
+          <Card extra=" p-[20px] ">
             <div className="py-56">
               {teamsdata && teamsdata.length > 0 && (
                 <table className="table-auto w-full">

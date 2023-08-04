@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DashApi from '../../dashboard/auth';
+import Card from '../../components/card';
 
 const Createboard = () => {
   const id = localStorage.getItem("id");
@@ -36,12 +37,14 @@ const Createboard = () => {
   return (
    
    <div>
-    <div className='flex items-center justify-center mx-auto bg-teal-200 h-screen'>
-     <div className="w-1/4 rounded shadow-lg bg-white p-8 m-4">
-      <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">CREATE BOARD</h1>
+
+   <Card>
+   <div className='flex w-2/3 items-center justify-center mx-auto  rounded-xl shadow-xs py-2 '>
+     <div className="rounded w-full shadow-lg p-8 m-4">
+      <h1 className=" w-full text-center text-grey-darkest mb-6 text-2xl">CREATE BOARD</h1>
       <form action='POST '>
         <div className="mb-4 flex flex-col ">
-          <label for = "board_name" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Name</label>
+          <label htmlFor = "board_name" className='mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest'>Name</label>
           <input
             type="text"
             id="board_name"
@@ -58,7 +61,7 @@ const Createboard = () => {
         <button
           type="submit" 
           onClick={Create}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-white text-lightPrimary hover:bg-lightPrimary hover:text-white  px-4 py-2 rounded"
         >
           Submit
         </button>
@@ -66,6 +69,12 @@ const Createboard = () => {
       </form>
     </div>
    </div>
+
+   </Card>
+
+
+   
+   
    </div>
   );
 };
