@@ -5,17 +5,17 @@ const Shifts = () => {
     <div>
         <SetTop/>
         <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           SHIFTS
         </h1>
         
       </div>
-      <div className='bg-white dark:text-white dark:bg-navy-900 m-4 min-h-screen rounded-3xl'>
+      <div className='bg-white text-lightPrimary  dark:bg-navy-900 m-4 min-h-screen rounded-3xl'>
         <div className='p-6'>
             <input
             type="text"
             placeholder="Search employee"
-            className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit border border-navy-500"
+            className="p-2 flex h-full w-full text-lightPrimary rounded-full  bg-white text-sm font-medium  outline-none placeholder:!text-gray-400 dark:bg-navy-900  dark:placeholder:!text-white sm:w-fit border border-navy-500"
           />
           </div>
           <div class="flex flex-col">

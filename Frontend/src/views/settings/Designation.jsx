@@ -4,21 +4,21 @@ const Designation = () => {
   return (
     <div>
         <SetTop/>
-        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white ">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary dark:bg-navy-900 rounded-3xl">
           DESIGNATION
         </h1>
-        <button className='my-4 px-2 rounded-3xl bg-white border-blue-400 border mx-4 dark:text-white text-navy-900 dark:bg-navy-800 '>     
-           {/* <Link className='px-4 text-blue-400 dark:text-white' to="">+ Add Designation</Link> */}
+        <button className='my-4 px-2 rounded-3xl bg-white border-blue-400 border mx-4  text-lightPrimary dark:bg-navy-800 '>     
+           {/* <Link className='px-4 text-blue-400 ' to="">+ Add Designation</Link> */}
            + Add Designation
         </button>
       </div>
-      <div className='bg-white dark:text-white dark:bg-navy-900 m-4 min-h-screen rounded-3xl'>
+      <div className='bg-white text-lightPrimary  dark:bg-navy-900 m-4 min-h-screen rounded-3xl'>
         <div className='p-6'>
             <input
             type="text"
             placeholder="Search employee"
-            className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit border border-navy-500"
+            className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-lightPrimary outline-none placeholder:!text-gray-400 dark:bg-navy-900  dark:placeholder:!text-white sm:w-fit border border-navy-500"
           />
           </div>
           <div class="flex flex-col">

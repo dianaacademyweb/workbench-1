@@ -34,11 +34,11 @@ const ActivitySet = () => {
     <div>
       <SetTop />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           ACTIVITY SET
         </h1>
       </div>
-      <div className="bg-white dark:text-white dark:bg-navy-900 m-4 p-4 min-h-screen rounded-3xl">
+      <div className="bg-white text-lightPrimary dark:bg-navy-900 m-4 p-4 min-h-screen rounded-3xl">
         <div className=" mb-4">
           <div className="mb-4">
             <div className="flex">
@@ -47,7 +47,7 @@ const ActivitySet = () => {
                 <select
                   value={selectedOption}
                   onChange={handleOptionChange}
-                  className="border border-gray-300 dark:text-white dark:bg-navy-900 p-2 w-full rounded-3xl"
+                  className="border border-gray-300 text-white dark:text-lightPrimary dark:bg-navy-900 p-2 w-full rounded-3xl"
                 >
                   <option value="">Select an option</option>
                   <option value="activity">Activity</option>
@@ -86,7 +86,7 @@ const ActivitySet = () => {
                 name="groupName"
                 value={groupName}
                 onChange={handleInputChange}
-                className="border border-gray-300 p-2 dark:text-white dark:bg-navy-900 w-full rounded-3xl"
+                className="border border-gray-300 p-2  dark:bg-navy-900 w-full rounded-3xl"
               />
             </div>
             <div className="mb-4">
@@ -98,22 +98,22 @@ const ActivitySet = () => {
                 name="description"
                 value={description}
                 onChange={handleInputChange}
-                className="border border-gray-300 dark:text-white dark:bg-navy-900 p-2 w-full rounded-3xl"
+                className="border border-gray-300  dark:bg-navy-900 p-2 w-full rounded-3xl"
               ></input>
             </div>
           </div>
           <div className="flex">
-            <div className="w-1/3 bg-blue-200 p-4 rounded">
+            <div className="w-1/3 bg-blue-400 p-4 rounded">
               <h3 className="font-bold text-xl">Activity</h3>
               {/* Content for the Activity box */}
             </div>
 
-            <div className="w-1/3 bg-yellow-200 p-4 rounded mx-2">
+            <div className="w-1/3 bg-yellow-400 p-4 rounded mx-2">
               <h3 className="font-bold text-xl">Productivity</h3>
               {/* Content for the Productivity box */}
             </div>
 
-            <div className="w-1/3 bg-red-200 p-4 rounded">
+            <div className="w-1/3 bg-red-400 p-4 rounded">
               <h3 className="font-bold text-xl">Distractive</h3>
               {/* Content for the Distractive box */}
             </div>

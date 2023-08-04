@@ -8,10 +8,10 @@ const EmailDigest = () => {
     <div>
       <SetTop />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           EMAIL DIGEST
         </h1>
-        <div className="relative flex flex-col dark:text-white dark:bg-navy-900 items-center justify-center  overflow-hidden">
+        <div className="relative flex flex-col text-lightPrimary  dark:bg-navy-900 items-center justify-center  overflow-hidden">
           <div className="flex">
             <label class="inline-flex relative items-center mr-5 cursor-pointer">
               <input
@@ -33,7 +33,7 @@ const EmailDigest = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white m-4 p-4 rounded-3xl max-h-screen flex flex-col">
+      <div className="bg-white dark:bg-navy-800 m-4 p-4 text-lightPrimary rounded-3xl max-h-screen flex flex-col">
         <h1 className="font-bold text-lg">COMPANY</h1>
         <p className="pb-4">
           Get Company wide report on employee activities, dormant employees and
@@ -44,7 +44,7 @@ const EmailDigest = () => {
           <div className="flex">
             <input type="radio" />
             <span className="font-bold">DAILY</span>
-            <p className="pl-10 flex text-right text-gray-700">
+            <p className="pl-10 flex text-right ">
               Get report every day
             </p>
           </div>
@@ -53,14 +53,14 @@ const EmailDigest = () => {
           <div className="flex">
             <input type="radio" />
             <span className="font-bold">WEEKLY</span>
-            <p className="pl-10 flex text-right text-gray-700">
+            <p className="pl-10 flex text-right ">
               Get report every WEEK
             </p>
           </div>
         </div>
         </div>
       </div>
-      <div className="bg-white m-4 p-4 rounded-3xl max-h-screen flex flex-col mb-4">
+      <div className="bg-white dark:bg-navy-800 m-4 p-4 text-lightPrimary rounded-3xl max-h-screen flex flex-col mb-4">
         <h1 className="font-bold text-lg">MANAGER</h1>
         <p className="pb-4">
           Get associated team wide report on employee's activities dormant employees and more.
@@ -69,7 +69,7 @@ const EmailDigest = () => {
           <div className="flex">
             <input type="radio" />
             <span className="font-bold">DAILY</span>
-            <p className="pl-10 flex text-right text-gray-700">
+            <p className="pl-10 flex text-right text-lightPrimary">
               Get report every day
             </p>
           </div>

@@ -21,11 +21,11 @@ const General = () => {
     <div>
       <SetTop />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           GENERAL (GLOBAL)
         </h1>
       </div>
-      <div className="bg-white m-4 min-h-screen dark:text-white dark:bg-navy-900 rounded-3xl">
+      <div className="bg-white text-lightPrimary m-4 min-h-screen  dark:bg-navy-900 rounded-3xl">
         <div className="flex">
           <div className="flex gap-4">
             <div className="flex p-5 gap-3">
@@ -65,7 +65,7 @@ const General = () => {
         </div>
         <div className="flex gap-3 m-4">
           <p>LOG AS IDLE IF NO ACTIVITY/INPUTS FOR MORE THAN</p>
-          <input type="text" value={inputValue} onChange={handleInputChange} className="w-10 border border-gray-800 rounded"/>
+          <input type="text" value={inputValue} onChange={handleInputChange} className="w-10 border text-white  rounded"/>
           <p>mins</p>
         </div>
         <div className="flex gap-3 m-4">
