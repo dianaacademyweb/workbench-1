@@ -52,18 +52,18 @@ const ActivityPattern = () => {
     <div>
       <Top />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           ACTIVITY PATTERN
         </h1>
       </div>
-      <div className="bg-white m-4 min-h-screen rounded-3xl dark:text-white dark:bg-navy-900">
+      <div className="bg-white m-4 text-lightPrimary min-h-screen rounded-3xl dark:text-white dark:bg-navy-900">
         <form onSubmit={handleSubmit} className="p-4 md:flex gap-8">
-          <label className="block mb-2 bg-white dark:text-white dark:bg-navy-900">
+          <label className="block mb-2 bg-white dark:text-lightPrimary dark:bg-navy-900">
             Employee
             <select
               value={selectedEmployee}
               onChange={handleEmployeeChange}
-              className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900 "
+              className="block md:w-full text-white dark:text-lightPrimary border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:border dark:bg-navy-900 "
             >
               <option value="">-- Select Employee --</option>
               <option value="employee1">Employee 1</option>
@@ -72,29 +72,29 @@ const ActivityPattern = () => {
             </select>
           </label>
 
-          <label className="block mb-2 dark:text-white dark:bg-navy-900">
+          <label className="block mb-2  dark:text-lightPrimary dark:bg-navy-900">
             Start Date:
             <input
               type="date"
               value={startDate}
               onChange={handleStartDateChange}
-              className="block md:w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
+              className="block md:w-full text-white dark:text-lightPrimary dark:border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50  dark:bg-navy-900"
             />
           </label>
 
-          <label className="block mb-2 dark:text-white dark:bg-navy-900">
+          <label className="block mb-2 dark:text-lightPrimary dark:bg-navy-900">
             End Date:
             <input
               type="date"
               value={endDate}
               onChange={handleEndDateChange}
-              className="block md:w-full border-gray-300  rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
+              className="block md:w-full text-white border-gray-300  rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-lightPrimary dark:border dark:bg-navy-900"
             />
           </label>
 
           <button
             type="submit"
-            className="px-6 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+            className="px-6 py-1 border rounded-full hover:bg-lightPrimary hover:text-white dark:bg-lightPrimary dark:hover:bg-navy-800 dark:hover:text-lightPrimary dark:text-navy-800"
           >
             Submit
           </button>

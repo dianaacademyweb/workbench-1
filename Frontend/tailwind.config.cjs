@@ -156,11 +156,11 @@ module.exports = {
       "4xl-max": { max: "1850px" },
     },
     colors: () => ({
-      white: "#3A3A3A",
-      lightPrimary: "#F5F5F5",
+      white: "#3A3A3A",//text color 
+      lightPrimary: "#F5F5F5", //lightmode
       blueSecondary: "#4318FF",
       brandLinear: "#868CFF",
-      darktext: "#F5F5F5",
+      darktext: "#F5F5F5", // darkmode text color
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",

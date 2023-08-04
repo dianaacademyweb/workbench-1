@@ -35,7 +35,7 @@ function Dash() {
          
 
          <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">   
-   {usertype === 'organization' &&           <h1 className=' mt-4 text-black text-white flex justify-center  dark:text-lightPrimary dark:hover:text-white text-2xl'> Recent activity</h1>}
+   {usertype === 'organization' &&           <h1 className=' mt-4 text-white flex justify-center  dark:text-lightPrimary dark:hover:text-white text-lg sm:text-3xl font-sans'> Recent activity</h1>}
      
       {/* {usertype === 'employe' && <HomeEmployee />} */}
       {usertype === 'employe' &&    <EmployeeDash/>}

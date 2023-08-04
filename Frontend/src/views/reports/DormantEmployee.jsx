@@ -5,21 +5,21 @@ const DormantEmployee = () => {
     <div>
         <Top/>
         <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary dark:bg-navy-900 rounded-3xl">
           DORMANT EMPLOYESS 
         </h1>
-        <p className='py-6 px-4 text-gray-700 dark:text-white dark:bg-navy-900 rounded-3xl'>employees who have not logged in for last 7 days </p>
+        <p className='py-6 px-4 text-lightPrimary dark:text-white dark:bg-navy-900 rounded-3xl'>employees who have not logged in for last 7 days </p>
       </div>
       <div className="bg-white m-4 dark:text-white dark:bg-navy-900 min-h-screen rounded-3xl">
       <div className='p-6'>
             <input
             type="text"
             placeholder="Search employee"
-            className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit border border-navy-500"
+            className="p-2 flex h-full w-full rounded-full  bg-white text-sm font-medium text-lightPrimary outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-lightPrimary sm:w-fit border "
           />
           </div>
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+    <div class="inline-block min-w-full text-lightPrimary py-2 sm:px-6 lg:px-8">
       <div class="overflow-hidden">
         <table class="min-w-full text-left text-sm font-light">
           <thead class="border-b font-medium dark:border-neutral-500">
