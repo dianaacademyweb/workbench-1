@@ -55,15 +55,15 @@ function Employe() {
 
   return (
     <div className="mx-4">
-       <div className="  mt-4 flex h-16 items-center  text-white rounded-full bg-white dark:bg-navy-800 py-2 ">
-       <div className="flex dark:bg-navy-900 bg-white rounded-full  mx-2">
+       <div className="  mt-4 flex h-16 items-center  text-white rounded-full dark:bg-[#4f4f504d] bg-lightgray py-2 ">
+       <div className="flex dark:bg-navy-900  rounded-full  py-2 mx-2">
             <p className="pl-3 py-2  pr-2 text-xl  flex">
               <FiSearch className="h-4 w-4 text-lightPrimary dark:text-darktext  align-center flex  " />
             </p>
             <input
               type="text"
               placeholder="Search employe"
-              className="px-4  py-2 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-white outline-none placeholder:!text-white  dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
+              className="px-4  py-3 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-white outline-none placeholder:!text-white  dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
             />
             </div>
            </div> 

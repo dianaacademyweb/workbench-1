@@ -72,8 +72,9 @@ const AttendanceReport = () => {
   return (
     <div>
       <Top />
-      <div className="md:flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-lightPrimary dark:bg-navy-900 rounded-3xl">
+
+      <div className="md:flex mx-4 my-4 rounded-3xl justify-betwee bg-lightgray dark:bg-navy-900 dark:border-white dark:border">
+        <h1 className="text-2xl py-6 px-4 text-white dark:bg-navy-900 rounded-3xl">
           ATTENDANCE REPORT
         </h1>
 
@@ -97,7 +98,7 @@ const AttendanceReport = () => {
           />
         </label>
       </div>
-      <div className="bg-white m-4 min-h-screen  dark:bg-navy-900 rounded-3xl">
+      <div className="bg-lightgray  m-4 min-h-screen  dark:bg-navy-900 rounded-3xl">
         <div>
           <label className="">
             <span className="m-4 text-lightPrimary text-xl"> Select Employee</span>

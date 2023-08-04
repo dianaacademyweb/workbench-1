@@ -40,8 +40,8 @@ const   UserActivity = (props) => {
   }, [employeid]);
 
   return (
-    <div>
-      <Card extra=" mx-1 mt-5  dark:bg-[#4f4f504d] ">
+    <div className="mt-4">
+      <Card extra="  h-full dark:bg-[#4f4f504d] ">
           <h1 className=" mt-2 text-lightPrimary font-bold text-xl text-center">USER ACTIVITY</h1>
         <div className="py-4 px-8 ">
           {activiti.length > 0 ? ( // Check if activiti has data before rendering the table
