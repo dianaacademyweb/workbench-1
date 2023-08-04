@@ -102,7 +102,7 @@ const ScreenshotsRow = () => {
   ));
 
   return (
-    <div>
+    <div className="pt-4">
       <div className="dark:bg-[#4f4f504d] rounded-lg">
         <label className=" ml-4">
           <span className="mr-2 text-white sm:text-xl dark:text-darktext  "> Select Employee</span>
@@ -123,7 +123,7 @@ const ScreenshotsRow = () => {
   {images.map((item) => (
     
     <div key={item.id}>
-    <p className="flex text-xl text-white dark:text-navy-700">{item.time}</p>
+    <p className="flex text-lg text-white dark:text-darktext ">{item.time}</p>
    <div className="flex  border-navy-800 border-2 dark:border-navy-700 rounded-lg" >
    
       <img className="mx-auto px-2 py-2  w-full h-auto"

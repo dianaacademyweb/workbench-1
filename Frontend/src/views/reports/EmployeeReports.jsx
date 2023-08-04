@@ -4,6 +4,7 @@ import React,{useState , useEffect} from 'react'
 import Top from './Top'
 import DashApi from '../../dashboard/auth';
 import { IMAGE_API } from '../../config/constant';
+import Card from '../../components/card';
 
 // import EmployeesDropdown from './EmployeesDropdown'; // Assume this file provides employee data
 import {
@@ -184,15 +185,24 @@ const EmployeeReports = () => {
   };
   return (
     <div>
+
+
+    
       <Top />
-        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white text-lightPrimary dark:bg-navy-900 dark:border-white dark:border">
+      <Card>
+      <div className="flex mx-4 my-4 rounded-3xl justify-between dark:border-white dark:border">
           <h1 className="text-2xl py-6 px-4 text-black  dark:text-lightPrimary dark:bg-navy-900 rounded-3xl">
             EMPLOYEE REPORTS
           </h1>
         </div>
+    </Card>
+        
 
       <div className="lg:flex gap-4 p-4">
-        <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
+
+
+      
+      <div className="box  bg-lightgray rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
           <div className="items-center justify-between  dark:bg-navy-900 dark:text-lightPrimary p-4">
             <label className="flex justify-center items-center ">
               <select
@@ -213,6 +223,9 @@ const EmployeeReports = () => {
           </div>
         </div>
 
+
+      
+       
 
         {/* <div className="box bg-white rounded-3xl w-1/3">
 
@@ -269,7 +282,7 @@ const EmployeeReports = () => {
         </div>
       </div>  */}
 
-        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
+        <div className="box bg-lightgray rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
           <div className="flex items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-lightPrimary p-4">
             <button
               onClick={handlePrevMonth}
@@ -288,7 +301,7 @@ const EmployeeReports = () => {
         </div>
         
 
-        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-2/3">
+        <div className="box bg-lightgray rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-2/3">
           <div className="flex items-center justify-between dark:bg-navy-900 dark:text-lightPrimary bg-gray-100 p-4">
             <button
               onClick={handlePrevWeek}
@@ -313,7 +326,7 @@ const EmployeeReports = () => {
           </div>
         </div>
       </div>
-      <div className=" bg-white min-h-screen text-lightPrimary dark:bg-navy-900 dark:text-lightPrimary rounded-3xl m-4">
+      <div className=" bg-lightgray min-h-screen text-white dark:bg-navy-900 dark:text-lightPrimary rounded-3xl m-4">
           <ul className="md:flex justify-center md:justify-between m-6 text-xl pt-4">
             <li>
               <a
