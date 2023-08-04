@@ -3,7 +3,7 @@ import DashApi from "../../dashboard/auth";
 import { useState, useEffect } from "react";
 import Card from "../../components/card/index";
 
-const UserActivity = (props) => {
+const   UserActivity = (props) => {
   const [activiti, setActivity] = useState([]);
   let employeid = props.employeid;
     
@@ -41,16 +41,16 @@ const UserActivity = (props) => {
 
   return (
     <div>
-      <Card extra=" mx-1 mt-5">
-        <div className="py-14 px-8">
+      <Card extra=" mx-1 mt-5  dark:bg-[#4f4f504d] ">
+        <div className="py-14 px-8 ">
           {activiti.length > 0 ? ( // Check if activiti has data before rendering the table
-            <table className="table-auto w-full">
-              <thead className="border-2">
-                <tr>
-                  <th className="border-2 py-2 px-2 justify-center bg-lightPrimary text-white">
+            <table className="table-auto w-full rounded-lg ">
+              <thead className="border-2 border-navy-600 ">
+                <tr className="rounded-lg">
+                  <th className="border-2 rounded-lg border-navy-600 py-2 px-2 justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
                     screen count no
                   </th>
-                  <th className="border-2 py-2 px-2 justify-center bg-lightPrimary text-white">
+                  <th className="border-2 border-navy-600 py-2 px-2 justify-center bg-lightPrimary text-white dark:bg-navy-800 dark:text-darktext">
                     {" "}
                     screen name
                   </th>
@@ -58,11 +58,11 @@ const UserActivity = (props) => {
               </thead>
               <tbody className="border-2 ">
                 {activiti.map((task, index) => (
-                  <tr key={index} className="border-2 justify-center">
-                    <td className="border-2 py-2 px-2 justify-center bg-lightPrimary text-white">
+                  <tr key={index} className="border-2 border-navy-600 justify-center">
+                    <td className="border-2 py-2 px-2  border-navy-600 justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
                       {task.screen_count}
                     </td>
-                    <td className="border-2 py-2 px-2 justify-center bg-lightPrimary text-white">
+                    <td className="border-2 py-2 px-2 border-navy-600  justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
                       {task.screen_name}
                     </td>
                   </tr>

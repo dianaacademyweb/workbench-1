@@ -7,7 +7,6 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import Calendar from "react-calendar";
 // import '/src/calendar.css'
 import Notifications from "./Notifications";
-
 const EmployeeDash = () => {
 
   const notifications = [
@@ -54,11 +53,27 @@ const EmployeeDash = () => {
   return (
     <div className="min-h-screen bg-navy-800">
       <div className="md:flex">
-        <div
+
+
+
+      
+
+
+        {/* <div
           className="bg-white flex flex-col md:justify-between items-center p-10 md:w-1/4 shadow-md  mb-4 md:min-h-screen bg-cover bg-no-repeat "
           style={{ backgroundImage: `url(${blur})` }}
         >
+
+        
+
+
+
+
+
+
           <div className="flex gap-2 flex-col justify-center items-center">
+
+
             <h1 className="text-3xl">
               My<span className="text-orange-900">S</span>entinel
             </h1>
@@ -67,13 +82,19 @@ const EmployeeDash = () => {
             <p className="text-black  font-bold text-2xl mb-1">
               Name: John Doe
             </p>
-            <p className="text-black  text-xl mb-1">
-              Position: Software Engineer
-            </p>
             <p className="text-black font-thin text-lg mb-1">
               Email: john.doe@example.com
             </p>
+          
+          
+          
+          
           </div>
+
+
+
+
+          
           <div className="flex gap-8">
             <div className="flex flex-col items-center">
               <button>
@@ -95,9 +116,13 @@ const EmployeeDash = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col  md:w-3/4">
+ */}
+
+
+
+        <div className="flex flex-col">
           <div
-            className="flex justify-between p-4  bg-cover  max-h-screen h-3/4"
+            className="flex justify-between p-4 h-[450px]  bg-cover  max-h-screen "
             style={{ backgroundImage: `url(${dashgroup})` }}
           >
             <div className="bg-navy-500 text-white bg-opacity-40 p-2 w-1/4 h-1/4 shadow-md rounded-md mb-4">
@@ -119,7 +144,7 @@ const EmployeeDash = () => {
             </div>
            
           </div>
-          <div className="md:flex gap-4">
+          <div className="md:flex gap-4 mt-30">
             <div className="bg-gradient-to-r from-blue-100 to-purple-100 p-4 shadow-md rounded-md mb-4">
               <h2 className="text-2xl font-bold mb-4 text-blue-900">Bulletin Board</h2>
               <ul className="list-none">

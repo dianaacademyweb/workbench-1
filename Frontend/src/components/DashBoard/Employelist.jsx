@@ -76,11 +76,11 @@ function Employe() {
       <Card extra=" p-[20px]">
         <div className=" mt-2 justify-center flex  dark:border-white border-navy-500 rounded-md w-full h-full">
             <div className=" text-xl flex ">
-              <button className="justify-center  ">
+              <button className="justify-center dark:bg-navy-800 px-2 py-2 rounded-lg ">
                 {" "}
                 {employees.map((employee) => (
                   <Link
-                    className=" my-2 justify-center flex  items-center   text-white dark:bg-navy-900  bg-lightPrimary border-sm px-2 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-darktext "
+                    className=" my-2 justify-center flex  items-center   text-white   bg-lightPrimary  dark:bg-[#4f4f504d] border-sm px-2 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-darktext "
                     key={employee.id}
                     onClick={() => handleEmployeeClick(employee.id)}
                     // to={`${DOAMINAPI}/employee/${employee.employeid}`}

@@ -103,28 +103,28 @@ const ScreenshotsRow = () => {
 
   return (
     <div>
-      <div>
-        <label className="">
-          <span className="mr-2 text-white text-xl dark:text-darktext "> select Employe</span>
+      <div className="dark:bg-[#4f4f504d] rounded-lg">
+        <label className=" ml-4">
+          <span className="mr-2 text-white text-lg dark:text-darktext  "> select Employe</span>
           <select
-            className="my-1 px-14 py-3 bg-white rounded-md text-lightPrimary  text-lg"
+            className="my-1 px-14 py-1  bg-white  rounded-md text-lightPrimary dark:bg-[#000] border-2 border-navy-700 text-lg"
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
-            <option value="">select employe</option>
+            <option className="dark:bg-[#4f4f504d] dark:text-navy-700" value="">select employe</option>
             {employees.map((employee) => (
-              <option key={employee.id} value={employee.employeid}>
+              <option key={employee.id} value={employee.employeid} className="text-navy-700">
                 {employee.username}
               </option>
             ))}
           </select>
         </label>
       </div>
-      <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4  ">
+      <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-4  ">
   {images.map((item) => (
     
     <div key={item.id}>
-    <p className="flex text-xl text-white dark:text-gray-200">{item.time}</p>
-   <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg" >
+    <p className="flex text-xl text-white dark:text-navy-700">{item.time}</p>
+   <div className="flex  border-navy-800 border-2 dark:border-navy-700 rounded-lg" >
    
       <img className="mx-auto px-2 py-2  w-full h-auto"
         

@@ -73,6 +73,7 @@ import EmployeeDash from "./EmployeeDash/EmployeeDash";
 function App() {
   let user = localStorage.getItem("id");
   user = JSON.parse(user);
+  const usertype = localStorage.getItem("type")
   return (
     <div className="App ">
       <BrowserRouter>
@@ -106,16 +107,35 @@ function App() {
 
 
           <Route element={<PrivateRoutes/>}>
+
           <Route element ={<Dash/>} path="/dashboard"/>
+
+
+          
+          {usertype === 'employe' &&  <Route element ={<Dash/>} path="/dashboard"/>}
           <Route element ={<TopActivity/>} path="/topactivity"/>
           <Route element ={<EmployeeReports/>} path="/employeereports"/>
           <Route element ={<EmployeeDash/>} path="/mysentinel"/>
-          <Route exact path="employee/:id" element={<Employepage/>} />
-          <Route exact path="board/:id" element={<Boardpage/>} />
-          <Route exact path="board/allboard/:id" element={<Boardpage/>} />
 
-          <Route exact path="board/listprojects/:id" element={<Projectspage/>} />
-          <Route exact path="teams/:id" element={<Teamspage/>} />
+
+
+
+          {usertype === 'organization' &&  <Route exact path="employee/:id" element={<Employepage/>} />}
+
+          {usertype === 'organization' &&            <Route exact path="board/:id" element={<Boardpage/>} />
+}
+
+          {usertype === 'organization' &&            <Route exact path="board/allboard/:id" element={<Boardpage/>} />
+}
+
+          {usertype === 'organization' &&            <Route exact path="board/listprojects/:id" element={<Projectspage/>} />
+}
+
+          {usertype === 'organization' &&            <Route exact path="teams/:id" element={<Teamspage/>} />
+}
+
+          
+
 
 
 
@@ -136,11 +156,14 @@ function App() {
           <Route path="Updateprofile" element={<CreateProfile/>}></Route>
                
              </Route>
+
+             {usertype === 'organization' &&  
              <Route path="/employee" element={<Employe/>}>
                <Route index element={<ListEmploy/>}/>
                <Route path="employe" element={<ListEmploy/>}/>
                <Route path="addemployee" element={<Addemploye/>}></Route>
-             </Route>
+             </Route>}
+
 
 
 

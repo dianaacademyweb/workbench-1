@@ -160,7 +160,7 @@ module.exports = {
       lightPrimary: "#F5F5F5",
       blueSecondary: "#4318FF",
       brandLinear: "#868CFF",
-      darktext: "#5F9EA0",
+      darktext: "#F5F5F5",
       gray: {
         50: "#f8f9fa",
         100: "#edf2f7",
@@ -170,8 +170,8 @@ module.exports = {
         500: "#adb5bd",
         600: "#a3aed0",
         700: "#707eae",
-        800: "#FFF9E3",
-        900: "#FFF9E3",
+        800: "#F5F5F5",
+        900: "#F5F5F5",
 
       },
       navy: {
@@ -183,8 +183,8 @@ module.exports = {
         500: "#1b3bbb",
         600: "#24388a",
         700: "#191970",
-        800: "#FFF9E3",
-        900: "#FFF9E3",
+        800: "#000000",
+        900: "#000000",
       },
       red: {
         50: "#ee5d501a",
