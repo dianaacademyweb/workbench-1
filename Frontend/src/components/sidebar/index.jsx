@@ -1,8 +1,6 @@
 import React , {useState} from "react";
 import { HiX } from "react-icons/hi";
 import { IoIosArrowDown} from 'react-icons/io';
-import Sidedata from "./components/Sidedata";
-import SidebarCard from "./components/sidebarcard";
 import { Link } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
@@ -61,61 +59,61 @@ const Sidebar = ({ open, onClose }) => {
             {/* Dropdown menu items */}
             <Link
               to="/topactivity"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               TOP ACTIVITY
             </Link>
             <Link
               to="/employeereports"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               EMPLOYEE REPORTS
             </Link>
             <Link
               to="/activitypattern"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
              ACTIVITY PATTERN
             </Link>
             <Link
               to="/advancedreport"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               ADVANCED REPORT
             </Link>
             <Link
               to="/attendancereport"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               ATTENDANCE REPORT
             </Link>
             <Link
               to="/timelog"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               TIME LOG SUMMARY
             </Link>
             <Link
               to="/dormantemployee"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               DORMANT EMPLOYEES
             </Link>
             <Link
               to="/highidlehours"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               HIGH IDLE HOURS
             </Link>
             <Link
               to="/clientappactivity"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               CLIENT APP ACTIVITY
             </Link>
             <Link
               to="/otreport"
-              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-gray-100 dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary dark:text-darktext hover:bg-white dark:hover:bg-navy-600"
             >
               OT REPORT
             </Link>
@@ -149,49 +147,49 @@ const Sidebar = ({ open, onClose }) => {
             {/* Dropdown menu items */}
             <Link
               to="/general"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               General
             </Link>
             <Link
               to="/designation"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Designation
             </Link>
             <Link
               to="/activity"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
              Activity
             </Link>
             <Link
               to="/activityset"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Activity Set 
             </Link>
             <Link
               to="/shifts"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Shifts
             </Link>
             <Link
               to="/emaildigest"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Email Digest
             </Link>
             <Link
               to="/Timezone"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Timezone
             </Link>
             <Link
               to="/holidaydefinition"
-              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-gray-100 dark:text-darktext  dark:hover:bg-navy-600"
+              className="block px-4 py-2 text-sm text-lightPrimary hover:bg-white dark:text-darktext  dark:hover:bg-navy-600"
             >
               Holiday Definition
             </Link>

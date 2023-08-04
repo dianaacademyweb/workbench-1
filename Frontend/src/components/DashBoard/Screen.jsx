@@ -112,7 +112,7 @@ const ScreenshotsRow = () => {
           >
             <option className="dark:bg-[#4f4f504d] dark:text-navy-700" value="">select employe</option>
             {employees.map((employee) => (
-              <option key={employee.id} value={employee.employeid} className="text-navy-700">
+              <option key={employee.id} value={employee.employeid} className="dark:text-navy-700">
                 {employee.username}
               </option>
             ))}
