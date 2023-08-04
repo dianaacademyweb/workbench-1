@@ -35,11 +35,11 @@ const AdvancedReport = () => {
     if (selectedOption === "teams") {
       return (
         <div>
-          <label className="block mb-2 dark:text-white dark:bg-navy-900">
+          <label className="block mb-2 dark:text-lightPrimary dark:bg-navy-900">
             Choose a team:
           </label>
           <select
-            className="border border-gray-300 dark:text-white dark:bg-navy-900 rounded p-2"
+            className="border text-white  dark:text-lightPrimary dark:bg-navy-900 rounded p-2"
             value={selectedTeam}
             onChange={handleTeamChange}
           >
@@ -51,11 +51,11 @@ const AdvancedReport = () => {
     } else if (selectedOption === "employees") {
       return (
         <div>
-          <label className="block dark:text-white dark:bg-navy-900 mb-2">
+          <label className="block dark:text-lightPrimary dark:bg-navy-900 mb-2">
             Choose an employee:
           </label>
           <select
-            className="border border-gray-300 dark:text-white dark:bg-navy-900 rounded p-2"
+            className="border text-white  dark:text-lightPrimary dark:bg-navy-900 rounded p-2"
             value={selectedEmployee}
             onChange={handleEmployeeChange}
           >
@@ -70,12 +70,12 @@ const AdvancedReport = () => {
   return (
     <div>
       <Top />
-      <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+      <div className="flex mx-4 my-4 rounded-3xl text-lightPrimary  justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
+        <h1 className="text-2xl py-6 px-4 text-black  dark:bg-navy-900 rounded-3xl">
           ADVANCED REPORT
         </h1>
       </div>
-      <div className="bg-white dark:text-white dark:bg-navy-900 m-4 rounded-3xl  min-h-screen">
+      <div className="bg-white text-lightPrimary  dark:bg-navy-900 m-4 rounded-3xl  min-h-screen">
         <div className="m-8 mt-4">
           <div className="md:flex items-center mb-4">
             <input
@@ -84,10 +84,11 @@ const AdvancedReport = () => {
               value="teams"
               checked={selectedOption === "teams"}
               onChange={handleOptionChange}
+             
             />
             <label
               htmlFor="teams"
-              className="ml-2 dark:text-white dark:bg-navy-900 mr-4"
+              className="ml-2  dark:bg-navy-900 mr-4"
             >
               Teams
             </label>
@@ -108,7 +109,7 @@ const AdvancedReport = () => {
                 type="date"
                 value={startDate}
                 onChange={handleStartDateChange}
-                className="block md:w-full border-gray-300 rounded-md dark:text-white dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="block md:w-full text-white dark:border dark:text-lightPrimary border-gray-300 rounded-md  dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
               />
             </label>
 
@@ -118,13 +119,13 @@ const AdvancedReport = () => {
                 type="date"
                 value={endDate}
                 onChange={handleEndDateChange}
-                className="block md:w-full border-gray-300 rounded-md dark:text-white dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
+                className="block md:w-full text-white border-gray-300 rounded-md dark:text-lightPrimary dark:border dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
               />
             </label>
 
             <button
               type="submit"
-              className="px-6 py-1 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+              className="px-6 py-1 border rounded-full hover:bg-lightPrimary hover:text-white dark:bg-lightPrimary dark:hover:bg-navy-800 dark:hover:text-lightPrimary dark:text-navy-800"
             >
               Submit
             </button>

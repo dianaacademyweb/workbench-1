@@ -76,13 +76,13 @@ const ClientAppActivity = () => {
     <div>
       <Top />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary   dark:bg-navy-900 rounded-3xl">
           CLIENT APP ACTIVITY REPORT
         </h1>
-        <div className="items-center justify-between  dark:bg-navy-900 dark:text-white p-4">
+        <div className="items-center justify-between  dark:bg-navy-900  p-4">
           <label className="flex justify-center items-center ">
             <select 
-              className="  my-1 px-14 py-3 border border-gray-500 dark:bg-navy-900 dark:text-white rounded-md text-sm"
+              className="  my-1 px-14 py-3 border border-gray-500 dark:bg-navy-900 dark:text-lightPrimary  rounded-md text-sm"
               value={employeid}
               onChange={(event) => handleEmployeeClick(event.target.value)}
             >
@@ -98,7 +98,7 @@ const ClientAppActivity = () => {
           </label>
         </div>
       </div>
-      <div className="bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4">
+      <div className="bg-white min-h-screen text-lightPrimary dark:bg-navy-900  rounded-3xl m-4">
         <div className="flex justify-center items-center p-4">
           EMPLOYEE NAME HERE
         </div>

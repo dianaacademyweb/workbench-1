@@ -185,18 +185,18 @@ const EmployeeReports = () => {
   return (
     <div>
       <Top />
-        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-          <h1 className="text-2xl py-6 px-4 text-black  dark:text-white dark:bg-navy-900 rounded-3xl">
+        <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white text-lightPrimary dark:bg-navy-900 dark:border-white dark:border">
+          <h1 className="text-2xl py-6 px-4 text-black  dark:text-lightPrimary dark:bg-navy-900 rounded-3xl">
             EMPLOYEE REPORTS
           </h1>
         </div>
 
       <div className="lg:flex gap-4 p-4">
-        <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
-          <div className="items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
+        <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
+          <div className="items-center justify-between  dark:bg-navy-900 dark:text-lightPrimary p-4">
             <label className="flex justify-center items-center ">
               <select
-                className="  my-1 px-14 py-3 bg-navy-800  dark:bg-white dark:text-navy-900 rounded-md text-white text-sm"
+                className="  my-1 px-10 py-3 dark:bg-white dark:text-lightPrimary rounded-md text-white text-sm"
                 value={employeid}
                 onChange={(event) => handleEmployeeClick(event.target.value)}
               >
@@ -217,8 +217,8 @@ const EmployeeReports = () => {
         {/* <div className="box bg-white rounded-3xl w-1/3">
 
         <div className="lg:flex gap-4 p-4">
-      <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
-      <div className="items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
+      <div className="box  bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
+      <div className="items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-lightPrimary p-4">
         <label className='flex justify-center items-center '>
           <select
             className="  my-1 px-14 py-3 bg-navy-800  dark:bg-white dark:text-navy-900 rounded-md text-white text-sm"
@@ -269,8 +269,8 @@ const EmployeeReports = () => {
         </div>
       </div>  */}
 
-        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-1/3">
-          <div className="flex items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-white p-4">
+        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-1/3">
+          <div className="flex items-center justify-between bg-gray-100 dark:bg-navy-900 dark:text-lightPrimary p-4">
             <button
               onClick={handlePrevMonth}
               className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -288,8 +288,8 @@ const EmployeeReports = () => {
         </div>
         
 
-        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-white lg:w-2/3">
-          <div className="flex items-center justify-between dark:bg-navy-900 dark:text-white bg-gray-100 p-4">
+        <div className="box bg-white rounded-3xl dark:bg-navy-900 dark:text-lightPrimary lg:w-2/3">
+          <div className="flex items-center justify-between dark:bg-navy-900 dark:text-lightPrimary bg-gray-100 p-4">
             <button
               onClick={handlePrevWeek}
               className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
@@ -313,7 +313,7 @@ const EmployeeReports = () => {
           </div>
         </div>
       </div>
-      <div className=" bg-white min-h-screen dark:bg-navy-900 dark:text-white rounded-3xl m-4">
+      <div className=" bg-white min-h-screen text-lightPrimary dark:bg-navy-900 dark:text-lightPrimary rounded-3xl m-4">
           <ul className="md:flex justify-center md:justify-between m-6 text-xl pt-4">
             <li>
               <a

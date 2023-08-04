@@ -33,6 +33,7 @@ function TaskCard() {
     <div>
       <Card extra="pb-7 p-[20px] mt-5 mx-4">
       <div className=''>
+        
         {allTasks.length > 0 && (
           <table className='table-auto w-full'>
             <thead className='border-2 border-white'>

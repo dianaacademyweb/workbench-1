@@ -72,10 +72,10 @@ function Employe() {
 
 
       <div className="flex gap-1 mt-5">
-        <div className=" w-1/5 mt-5 ">
-      <Card extra=" p-[20px]">
-        <div className=" mt-2 justify-center flex  dark:border-white border-navy-500 rounded-md w-full h-full">
-            <div className=" text-xl flex ">
+        <div className=" w-2/5 mt-5 ">
+      <Card extra="p-2">
+        <div className=" mt-2 justify-center flex  dark:border-white  rounded-md w-full h-full">
+            <div className=" text-lg flex ">
               <button className="justify-center dark:bg-navy-800 px-2 py-2 rounded-lg ">
                 {" "}
                 {employees.map((employee) => (

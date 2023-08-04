@@ -82,18 +82,18 @@ const OtReport = () => {
     <div>
       <Top />
       <div className="flex mx-4 my-4 rounded-3xl justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
-        <h1 className="text-2xl py-6 px-4 text-black dark:text-white dark:bg-navy-900 rounded-3xl">
+        <h1 className="text-2xl py-6 px-4 text-lightPrimary  dark:bg-navy-900 rounded-3xl">
           OVERTIME REPORT
         </h1>
       </div>
-      <div className="bg-white flex gap-10 dark:text-white dark:bg-navy-900 m-4 max-h-screen rounded-3xl">
+      <div className="bg-white flex gap-10  dark:bg-navy-900 m-4 max-h-screen rounded-3xl">
         <label className=" items-center p-4">
           <select
-            className="m-8 px-10 py-3  dark:bg-white dark:text-navy-900 rounded-md text-black border border-gray-700 text-sm"
+            className="m-8 px-10 py-3   dark:text-navy-900 rounded-md text-black border border-gray-700 text-sm"
             value={employeid}
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
-            <option className="w-16" value="emplo">
+            <option className="w-16 text-lightPrimary" value="emplo">
               select employe
             </option>
             {employees.map((employee) => (
@@ -104,13 +104,13 @@ const OtReport = () => {
           </select>
         </label>
 
-        <label className="block mb-2 m-9 dark:text-white dark:bg-navy-900">
+        <label className="block mb-2 m-9 text-lightPrimary dark:bg-navy-900">
           Start Date:
           <input
             type="date"
             value={startDate}
             onChange={handleStartDateChange}
-            className="block md:w-full border border-gray-700 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-white dark:bg-navy-900"
+            className="block md:w-full border text-white border-gray-700 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:text-lightPrimary  dark:bg-navy-900"
           />
         </label>
       </div>

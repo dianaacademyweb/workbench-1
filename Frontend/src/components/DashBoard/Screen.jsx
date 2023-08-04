@@ -105,9 +105,9 @@ const ScreenshotsRow = () => {
     <div>
       <div className="dark:bg-[#4f4f504d] rounded-lg">
         <label className=" ml-4">
-          <span className="mr-2 text-white text-lg dark:text-darktext  "> select Employe</span>
+          <span className="mr-2 text-white sm:text-xl dark:text-darktext  "> Select Employee</span>
           <select
-            className="my-1 px-14 py-1  bg-white  rounded-md text-lightPrimary dark:bg-[#000] border-2 border-navy-700 text-lg"
+            className="my-1 px-14 py-1  bg-white  rounded-md text-lightPrimary dark:bg-[#000] border-2 border-navy-700 sm:text-lg"
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
             <option className="dark:bg-[#4f4f504d] dark:text-navy-700" value="">select employe</option>

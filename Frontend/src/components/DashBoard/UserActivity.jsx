@@ -42,7 +42,8 @@ const   UserActivity = (props) => {
   return (
     <div>
       <Card extra=" mx-1 mt-5  dark:bg-[#4f4f504d] ">
-        <div className="py-14 px-8 ">
+          <h1 className=" mt-2 text-lightPrimary font-bold text-xl text-center">USER ACTIVITY</h1>
+        <div className="py-4 px-8 ">
           {activiti.length > 0 ? ( // Check if activiti has data before rendering the table
             <table className="table-auto w-full rounded-lg ">
               <thead className="border-2 border-navy-600 ">
