@@ -41,8 +41,8 @@ const CreateProject = () => {
 
   return (
    
-   <div className='flex flex-col items-center justify-center min-h-screen w-full bg-teal-200'>
-    <div className='sm:w-1/3 bg-white rounded shawdow-lg p-8 m-4 lg:m-12'>
+   <div className='flex flex-col items-center justify-center min-h-screen w-full bg-lightgray'>
+    <div className='sm:w-2/3 bg-lightgray  rounded shawdow-lg p-8 m-4 lg:m-12'>
       <h1 className="block w-full text-center text-grey-darkest mb-6 text-2xl">CREATE PROJECT</h1>
       <form className="mb-4 md:flex flex-col md:justify-between" action='POST '>
         <div className="flex flex-col mb-4  lg:w-full">
@@ -77,13 +77,14 @@ const CreateProject = () => {
         <button
           type="submit" 
           onClick={Create}
-          className="bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 rounded"
+          className="bg-white hover:bg-lightPrimary   hover:text-white shadow-lg text-lightPrimary px-4 py-2 rounded"
         >
           Submit
         </button>
       </form>
       
     </div>
+    <h1 className='flex dark:text-lightPrimary text-2xl '> Assign employee to a Project</h1>
     <EmployeeProjectLinkerForm/>
    </div>
 

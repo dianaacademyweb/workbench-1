@@ -99,7 +99,8 @@ function EmployeeProjectLinkerForm() {
   };
 
   return (
-    <div className=' sm:w-1/3  bg-white rounded shawdow-lg p-8 m-2 '>
+    <div className=' sm:w-2/3  bg-lightgray  rounded shawdow-lg p-8 m-2 '>
+ 
     <form className="mb-4 md:flex flex-col md:justify-between " onSubmit={handleSubmit}>
       <div className="flex flex-col mb-4  lg:w-full">
       <label className='mb-2 uppercase font-bold text-lg text-grey-darkest'>
@@ -124,7 +125,7 @@ function EmployeeProjectLinkerForm() {
       </label>
       <br />
       <h1 className='text-red-500'>{error}</h1>
-      <button className='bg-teal-400 hover:bg-teal-600 text-white px-4 py-2 rounded' type="submit" onClick={Create}> Create</button>
+      <button className='bg-white hover:bg-lightPrimary dark:hover:text-white dark:text-lightPrimary text-lightPrimary px-4 py-2 rounded' type="submit" onClick={Create}> Assign</button>
       
     </form>
     </div>

@@ -56,17 +56,17 @@ function Allboard() {
         </p>
         <input
           type="text"
-          placeholder="Search employe"
-          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+          placeholder="Search Board"
+          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
         />
       </div>
       
     <div>
   
-  <label className="text-darktext dark:bg-darktext">
+  <label className="text-darktext dark:bg-lightgray">
           boards
-          <select className='my-1 mx-2 px-14 py-3 border dark:border-blue-500 rounded-md dark:text-blue-500 text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
-            <option value=""></option>
+          <select className='my-1 mx-2 px-14 py-3 border dark:border-blue-500 rounded-md dark:text-lightPrimary  text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
+            <option className="dark:bg-lightgray" value=""></option>
             {board.map(board => (
               <option key={board.id} value={board.id}>{board.board_name}</option>
             ))}

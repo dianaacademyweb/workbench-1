@@ -78,39 +78,37 @@ const Boardpage = () => {
     }; 
 
   return (
-    <div>
+    <div className='dark:bg-navy-800 bg-lightgray  h-full pb-[400px]'>
     <Navbar/>   
 
-    <p>
-      Employes details
+    <p className='dark:text-darktext justify-center flex mb-5 mt-5'>
+      Board details
     </p>
-    <Card extra='mx-4'>
-      <div>
-        <label className='text-lg font-semibold'>Edit Project Name:</label>
+    <Card extra='mx-2 '>
+      <div className='py-4 h-[100px]'>
+        <label className='text-sm ml-6 mt-2 dark:text-lightPrimary'>Edit Project Name:</label>
         <input
           type='text'
           value={board_name}
           onChange={(e) => setName(e.target.value)}
-          className='block w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600'
+          className=' w-1/3   mx-4  px-4 py-2 mt-3 border rounded-lg focus:outline-none focus:ring focus:border-blue-500 dark:bg-lightgray dark:text-lightPrimary  dark:border-gray-600'
         />
-
-    
 
         <button
           onClick={updateBoard}
-          className='btn mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50'
+          className=' py-2 px-2 mx-10  dark:text-darktext bg-green-700  text-lightPrimary rounded-md  '
         >
-          Update Project
+        <span className='py-4 pb-5 '>Update Project
+</span>
         </button>
-      </div>
-    </Card>
-
-    delete the Board
-
-    <button className='btn w-20 h-20 bg-navy-800 flex justify-center  text-white' onClick={DeleteBoard}>
+        <button className='btn w-20 h-20 bg-red-700 mx-12  text-lightPrimary dak:text-white' onClick={DeleteBoard}>
     delete
 
     </button>
+      </div>
+    </Card>
+
+   
   <h1 className='text-navy-900 mt-3'> {error}</h1>
     
       
