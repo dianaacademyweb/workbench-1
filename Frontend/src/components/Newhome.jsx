@@ -23,38 +23,38 @@ const NewHome = () => {
         className="box mx-auto ml-6 mr-6 md:pt-2 md:ml-24 md:mr-24 shadow-2xl bg-cover bg-no-repeat md:py-3"
         style={{ backgroundImage: `url(${homeimage})` }}
       >
-        <nav className="md:flex md:m-4 md:pt-2 text-white md:items-center md:justify-between ">
+        <nav className="md:flex md:m-4 md:pt-2 text-lightPrimary md:items-center md:justify-between ">
           <div>
             {" "}
             <span className="md:ml-6 ">
               <a
                 href="https://www.dianaadvancedtechacademy.uk/"
-                className="hover:text-gray-900 md:text-3xl duration-500 font-bernard"
+                className="hover:text-navy-800 md:text-3xl duration-500 font-bernard"
               >
                 DIANA'S
               </a>
             </span>
           </div>
-          <ul className="md:flex items-center md:text-3xl text-white    transition-all ease-in duration-500 font-bernard">
+          <ul className="md:flex items-center md:text-3xl text-lightPrimary    transition-all ease-in duration-500 font-bernard">
             <li className="mx-2 my-6 md:my-0">
-              <a href="" className=" hover:text-gray-900 duration-500">
+              <a href="" className=" hover:text-navy-800 duration-500">
                 HOME
               </a>
             </li>
             <li className="mx-2 my-6 md:my-0">
-              <a href="/ourteam" className=" hover:text-gray-900 duration-500">
+              <a href="/ourteam" className=" hover:text-navy-800 duration-500">
                 OUR TEAM
               </a>
             </li>
             <li className="mx-2 my-6 md:my-0">
-              <a href="/login" className=" hover:text-gray-900 duration-500">
+              <a href="/login" className=" hover:text-navy-800 duration-500">
                 LOGIN
               </a>
             </li>
             <li className="mx-2 my-6 md:my-0">
               <a
                 href="/contactus"
-                className=" hover:text-gray-900 duration-500"
+                className=" hover:text-navy-800 duration-500"
               >
                 CONTACT US
               </a>
@@ -63,15 +63,15 @@ const NewHome = () => {
         </nav>
         <div className="flex  items-center justify-center">
           <Marquee>
-            <h2 className="md:text-3xl  mb-4 text-white font-arial-rounded">
+            <h2 className="md:text-3xl  mb-4 text-lightPrimary font-arial-rounded">
               WELCOME TO DIANA EMPLOYMENT PORTAL
             </h2>
           </Marquee>
         </div>
-        <div className="flex  text-white justify-center text-center tracking-custom-wide  font-poppins ">
+        <div className="flex  text-lightPrimary justify-center text-center tracking-custom-wide  font-poppins ">
           A TEAM WORK'S TOGETHER, STAY'S TOGETHER AND ACHIVE GREATNESS TOGETHER.
         </div>
-        <div className="flex flex-col gap-4 md:flex-row mt-4 m-4 justify-between text-white text-lg">
+        <div className="flex flex-col gap-4 md:flex-row mt-4 m-4 justify-between text-lightPrimary text-lg">
           <div className="box md:w-1/3   bg-gray-200 md:h-80 md:ml-8 shadow-2xl border border-gray-400">
             <p className="inner-box justify-center items-center font-calibri   p-2  text-justify h-full ">
               {" "}
@@ -124,7 +124,7 @@ const NewHome = () => {
         <ImageScr />
       </div>
 
-      <footer className="flex items-center justify-center text-white footer pt-4 pb-4">
+      <footer className="flex items-center justify-center text-lightPrimary footer pt-4 pb-4">
         @ 2023 DIANA ADVANCED TECH ACADEMY | Get the World's best IT Courses |
         Privacy Policy
       </footer>
