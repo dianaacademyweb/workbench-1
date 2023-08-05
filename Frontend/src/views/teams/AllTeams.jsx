@@ -78,24 +78,28 @@ function AllTeams() {
 
   return (
     <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
-    <div className=" mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
-      <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
+    <div className="justify-between mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-lightPrimary rounded-full">
+      <div className="flex dark:border  dark:bg-navy-900 rounded-full py-3 mx-2">
         <p className="pl-3 pr-2 text-xl  flex">
-          <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
+          <FiSearch className="h-4 w-4 text-gray-400   align-center flex " />
         </p>
         <input
           type="text"
           placeholder="Search employe"
-          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-gray-400 dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-lightPrimary outline-none placeholder:!text-gray-400 dark:bg-navy-900  dark:placeholder:!text-white sm:w-fit"
         />
       </div>
+      <div className='flex justify-end mx-5 '>
+       <button className='px-3 py-3 dark:border  bg-gray-300 mx-10  text-navy-900 dark:bg-navy-800 rounded-lg'>     
+      <Link className='mx-5 px-5 py -5 text-navy-800 dark:text-lightPrimary ' to="addteams">Add Teams</Link></button>  
+       </div>
     </div>
 
     <div>
   
-  <label>
+  <label className="dark:text-lightPrimary m-4">
           Teams
-          <select className='my-1 px-14 py-3 bg-navy-800 rounded-md text-white text-sm' value={Team.id} onChange={(event) => handleteamselect(event.target.value)}  >
+          <select className='my-1 mx-1 px-14 py-3 bg-gray-300 dark:bg-navy-800 dark:border dark:text-lightPrimary rounded-md text-navy-800 text-sm' value={Team.id} onChange={(event) => handleteamselect(event.target.value)}  >
           
             <option value="" ></option>
             {teamsdata.map(Team => (
@@ -125,11 +129,11 @@ function AllTeams() {
                   {" "}
                   {board.map((board) => (
                     <li
-                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
+                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md   "
                       key={board.id}
                       onClick={() => handleboardclick(board.id)}
                     >
-                      <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
+                      <h1 className=" justify-center  text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
                         {board.board_name}{" "}
                       </h1> */}
                       {/* <span>{employee.e_email}</span> */}
@@ -162,7 +166,7 @@ function AllTeams() {
                         
                         teams desc
                       </th>
-                      <th className=" py-2 px-2 justify-center text-navy-800 dark:text-white ">
+                      <th className=" py-2 px-2 justify-center text-navy-800  ">
                         
                         Edit
                       </th>

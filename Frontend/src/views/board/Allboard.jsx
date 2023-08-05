@@ -49,23 +49,23 @@ function Allboard() {
 
   return (
     <div className=" bg-lightPriamry py-10 dark:bg-navy-900 mb-[200px] h-full ">
-    <div className=" py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
-      <div className="flex  dark:bg-navy-900 rounded-full py-3 mx-2">
+    <div className=" py-2 flex sm:flex-row flex-col w-full h-30 sm:h-16 items-center bg-white dark:bg-navy-800  text-navy-700 rounded-full">
+      <div className="flex dark:bg-navy-900 rounded-full py-3 mx-2">
         <p className="pl-3 pr-2 text-xl  flex">
-          <FiSearch className="h-4 w-4 text-gray-400 dark:text-white  align-center flex " />
+          <FiSearch className="h-4 w-4 text-lightPrimary dark:text-lightPrimary  align-center flex " />
         </p>
         <input
           type="text"
           placeholder="Search employe"
-          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-white dark:placeholder:!text-white sm:w-fit"
+          className="px-4 flex h-full w-full text-lightPrimary rounded-full  bg-white text-sm font-medium  outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-lightPrimary dark:placeholder:!text-white sm:w-fit"
         />
       </div>
       
     <div>
   
-  <label className="text-darktext dark:bg-darktext">
+  <label className="text-darktext dark:bg-navy-800">
           boards
-          <select className='my-1 mx-2 px-14 py-3 border dark:border-blue-500 rounded-md dark:text-blue-500 text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
+          <select className='my-1 mx-2 px-14 py-3 border  rounded-md dark:text-black text-white text-sm' value={board_id} onChange={(event) => handleboardclick(event.target.value)}>
             <option value=""></option>
             {board.map(board => (
               <option key={board.id} value={board.id}>{board.board_name}</option>
@@ -117,12 +117,12 @@ function Allboard() {
                   {board.map((board) => (
                     
                     <Link
-                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-white "
+                      className=" my-4 justify-center flex  items-center   text-navy-700 dark:bg-navy-700 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-md  dark:text-lightPrimary "
                       key={board.id}
                       onClick={() => handleboardclick(board.id)}
                       to={`${board.id}`}
                     >
-                      <h1 className=" justify-center dark:text-white text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
+                      <h1 className=" justify-center dark:text-lightPrimary text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
                         {board.board_name}{" "}
                       </h1> 
                       {/* <span>{employee.e_email}</span> */}

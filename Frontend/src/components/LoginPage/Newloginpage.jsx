@@ -100,17 +100,17 @@ function Newloginpage() {
             <img src={logo} alt="Logo" className="logo" />
           </div>
 
-          <button className=" text-white bg-gray-700 py-2 px-2 rounded-lg" onClick={() => handleUserSelection("admin")}>
+          <button className=" text-lightPrimary bg-gray-700 py-2 px-2 rounded-lg" onClick={() => handleUserSelection("admin")}>
             Admin
           </button>
           <button
-            className=" text-white bg-gray-700 py-2 px-2 rounded-lg" 
+            className=" text-lightPrimary bg-gray-700 py-2 px-2 rounded-lg" 
             onClick={() => handleUserSelection("manager")}
           >
             Manager
           </button>
           <button
-            className=" text-white  bg-gray-700 py-2 px-2 rounded-lg"
+            className=" text-lightPrimary  bg-gray-700 py-2 px-2 rounded-lg"
             onClick={() => handleUserSelection("employee")}
           >
             Employee
@@ -233,7 +233,7 @@ function Newloginpage() {
             </span>
             
               
-       <Link className= " flex float-right ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-white" to= "/register">Create an account</Link>
+       <Link className= " flex float-right ml-1 text-sm font-medium text-brand-500 hover:text-brand-600 dark:text-lightPrimary" to= "/register">Create an account</Link>
               
             
           </div>
