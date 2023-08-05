@@ -277,9 +277,6 @@ class ProfileViewSet(viewsets.ModelViewSet):
 #         return Response({'message': 'Image uploaded successfully'})  
 
 class ImageUploadView(viewsets.ModelViewSet):
-    permission_classes =[IsEmployeePermission]
-    authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
     queryset = ImageModel.objects.all()
     serializer_class = ImageModelSerializer
     filterset_fields = ['organization_id']

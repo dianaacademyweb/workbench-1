@@ -25,6 +25,9 @@ const Navbar = (props) => {
   const { setId } = useAuth();
   // const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
+  const getInitial = (name) => {
+    return name ? name.charAt(0).toUpperCase() : 'U'; // 'U' stands for "User" if no name is available
+  };
   const Logout = async () => {
     // await AuthApi.Logout(user);
     await setUser(null);
@@ -244,21 +247,18 @@ const Navbar = (props) => {
         <Dropdown
           button={
             <div className=" flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
-              {profileImage && (
-                <div key={profileImage.id}>
-                  <img
-                    className="rounded-[200px]"
-                    src={`${IMAGE_API}${profileImage.image}`}
-                    alt={avatar}
-                  />
-                </div>
-              )}
+            {profileImage ? (
+        <img className="rounded-[200px]" src={`${IMAGE_API}${profileImage.image}`} alt="Profile" />
+      ) : (
+        <div className="initial">
+        <p className="text-[40px] font-poppins"> {getInitial(name)}</p></div>
+      )}
             </div>
           }
           children={
             <div className="flex h-48 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-lightPrimary dark:shadow-none">
               <div className="mt-3 ml-4">
-                <p className="text-sm font-bold text-navy-700 dark:text-lightPrimary">
+                <p className="text-sm font-bold text-lightPrimary  dark:text-lightPrimary">
                   {profiles ? (
                     <>👋 Hey, {profiles.name}</>
                   ) : (
