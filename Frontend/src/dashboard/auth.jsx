@@ -100,6 +100,14 @@ class DashApi {
       },
     });
   };
+  static allscreenimages = (id) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/allscreenshots/${id}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static createProject = (data) => {
     const token = localStorage.getItem("token");
     return axios.post(`${base2}/projects`, data,{

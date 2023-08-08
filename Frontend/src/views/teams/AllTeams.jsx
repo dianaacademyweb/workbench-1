@@ -78,15 +78,15 @@ function AllTeams() {
 
   return (
     <div className=" bg-lightPrimary py-10 dark:bg-navy-900 mb-[200px] h-full ">
-    <div className="justify-between mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-navy-800  text-lightPrimary rounded-full">
+    <div className="justify-between mt-4 py-2 flex w-full h-16 items-center bg-white dark:bg-lightgray  text-lightPrimary rounded-full">
       <div className="flex dark:border  dark:bg-navy-900 rounded-full py-3 mx-2">
         <p className="pl-3 pr-2 text-xl  flex">
           <FiSearch className="h-4 w-4 text-gray-400   align-center flex " />
         </p>
         <input
           type="text"
-          placeholder="Search employe"
-          className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-lightPrimary outline-none placeholder:!text-gray-400 dark:bg-navy-900  dark:placeholder:!text-white sm:w-fit"
+          placeholder="Search teams"
+          className="px-4 flex  dark:text-darktext h-full w-full rounded-full  bg-white text-sm font-medium text-lightPrimary outline-none placeholder:!text-gray-400 dark:bg-navy-900  dark:placeholder:!text-white sm:w-fit"
         />
       </div>
       <div className='flex justify-end mx-5 '>
@@ -101,7 +101,7 @@ function AllTeams() {
           Teams
           <select className='my-1 mx-1 px-14 py-3 bg-gray-300 dark:bg-navy-800 dark:border dark:text-lightPrimary rounded-md text-navy-800 text-sm' value={Team.id} onChange={(event) => handleteamselect(event.target.value)}  >
           
-            <option value="" ></option>
+            <option value="" > Select team</option>
             {teamsdata.map(Team => (
               <option key={Team.id} value={Team.id}>{Team.team_name}</option>
             ))}

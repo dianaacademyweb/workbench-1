@@ -157,7 +157,7 @@ const Navbar = (props) => {
                 </div>
                 <div className="ml-2 flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm">
                   <p className="mb-1 text-left text-base font-bold text-gray-900 dark:text-lightPrimary">
-                    this is workwarden
+                    this is Diana sentinell
                   </p>
                   <p className="font-base text-left text-xs text-gray-900 dark:text-lightPrimary">
                     updates are available of new client app
@@ -170,9 +170,6 @@ const Navbar = (props) => {
                   <BsArrowBarUp />
                 </div>
                 <div className="ml-2 flex h-full w-full flex-col justify-center rounded-lg px-1 text-sm">
-                  <p className="mb-1 text-left text-base font-bold text-gray-900 dark:text-lightPrimary">
-                    payment gate way activated
-                  </p>
                   <p className="font-base text-left text-xs text-gray-900 dark:text-lightPrimary">
                     A new update for your downloaded
                   </p>
@@ -204,7 +201,7 @@ const Navbar = (props) => {
                 href="https://horizon-ui.com/pro?ref=live-free-tailwind-react"
                 className="px-full linear flex cursor-pointer items-center justify-center rounded-xl bg-brand-500 py-[11px] font-bold text-white transition duration-200 hover:bg-brand-600 hover:text-white active:bg-brand-700 dark:bg-brand-400 dark:hover:bg-brand-300 dark:active:bg-brand-200"
               >
-                Buy Work warden pro
+                Welcome to diana sentinel
               </a>
               <a
                 target="blank"
@@ -218,7 +215,7 @@ const Navbar = (props) => {
                 href=""
                 className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-lightPrimary dark:hover:text-white"
               >
-                Try work warden free
+                Try  Diana sentinel 
               </a>
             </div>
           }

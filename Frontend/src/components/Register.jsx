@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthApi from "../auth/auth";
 import { useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import InputField from "./fields/InputField";
 import FixedPlugin from "./fixedPlugin/FixedPlugin";
-import Authimage from "../assets/Images/loginimage/debit.png";
+import Authimage from "../assets/Images/loginimage/logobg.png";
 
 function Register() {
   const navigate = useNavigate();
@@ -161,18 +160,22 @@ function Register() {
               Login Here
             </Link>
           </div>
+       
         </div>
+       
 
         <div className="relative float-right h-full min-h-screen w-full !bg-lightPrimary dark:!bg-navy-900 ">
           <FixedPlugin />
         </div>
-        <div className="mt-0 absolute right-0 hidden h-full min-h-screen md:block lg:w-[49vw] 2xl:w-[44vw]">
-          <div
-            className="absolute flex h-full w-full items-end justify-center bg-cover bg-center lg:rounded-bl-[120px] xl:rounded-bl-[200px]"
-            style={{ backgroundImage: `url(${Authimage})` }}
-          />
+        
+        <div className="mt-0 absolute right-0 sm:hidden h-full min-h-screen md:block lg:w-[49vw] 2xl:w-[44vw]">
+        <img
+  className=" flex h-full w-full items-end justify-center bg-cover bg-center  xl:rounded-bl-[200px]"
+  style={{ backgroundImage: `url(${Authimage})` }}
+/>
         </div>
       </div>
+     
     </div>
 
     // <div className='mt-28'>

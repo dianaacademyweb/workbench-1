@@ -137,7 +137,7 @@ class WorkProductivityDataset(models.Model):
         db_table = "WorkProductivityDataset"    
         
 class AttendanceLogs(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField( auto_now_add=True)
     login_time = models.DateTimeField(  auto_now_add=True )
     work_status= models.CharField(max_length=120) 
@@ -145,7 +145,7 @@ class AttendanceLogs(models.Model):
         db_table = "AttendanceLogs"    
         
 class logginout(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField( auto_now_add=True)
     logout_time = models.DateTimeField( auto_now_add=True)
     endreport = models.CharField(max_length=500, default=True) 
@@ -164,8 +164,10 @@ class screenshotsModel(models.Model):
 
 
 class desktopfile(models.Model):
+    name = models.CharField(null=True, max_length=50)
     file = models.FileField(upload_to='desktopapp/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
     
     
  
