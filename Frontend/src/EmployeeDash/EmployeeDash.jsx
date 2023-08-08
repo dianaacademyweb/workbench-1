@@ -125,14 +125,14 @@ const EmployeeDash = () => {
             className="flex justify-between p-4 h-[450px]  bg-cover  max-h-screen "
             style={{ backgroundImage: `url(${dashgroup})` }}
           >
-            <div className="bg-navy-500 text-white bg-opacity-40 p-2 w-1/4 h-1/4 shadow-md rounded-md mb-4">
+            <div className="bg-navy-500 text-lightPrimary bg-opacity-40 p-2 w-1/4 h-1/4 shadow-md rounded-md mb-4">
               <h2 className="text-xl font-bold mb-2">Location and Time</h2>
               <div>
                 <p className=" mb-1">Location: {currentLocation}</p>
                 <p className=" mb-1">Time: {currentTime}</p>
               </div>
             </div>
-            <div className="bg-navy-500 text-white flex flex-col  p-2 shadow-md rounded-md mb-4 h-1/2 w-1/3 bg-opacity-30">
+            <div className="bg-navy-500 text-lightPrimary flex flex-col  p-2 shadow-md rounded-md mb-4 h-1/2 w-1/3 bg-opacity-30">
               <h2 className="text-xl font-bold mb-2">My Logs</h2>
               <ul className="list-disc  text-md">
                 {logs.map((log) => (

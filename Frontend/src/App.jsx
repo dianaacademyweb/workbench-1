@@ -67,6 +67,7 @@ import Boardpage from "./views/board/Boardpage";
 import Projectspage from "./views/Projects/Projectspage";
 import Teamspage from "./views/teams/Teampage";
 import EmployeeDash from "./EmployeeDash/EmployeeDash";
+import ApiTesting from "./testing/ApiTesting";
 
 
 
@@ -102,7 +103,7 @@ function App() {
           <Route element={<Home />}   path="/"  exact />
           <Route  path="/login" element={<Newloginpage />} />
           <Route  path="/register" element={<Register />} />
-
+          <Route  path="/apitesting" element={<ApiTesting />} />
           {/* these are the privates routes no one can enter in these with out authentication  */}
 
 
