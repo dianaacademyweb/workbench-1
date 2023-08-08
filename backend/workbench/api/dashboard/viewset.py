@@ -511,7 +511,7 @@ class Attendancelist(APIView):
         
         start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
         end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
-        queryset = AttendanceLogs.objects.filter(user=id,date__range=[start_date, end_date])
+        queryset = AttendanceLogs.objects.filter(user_id=id,date__range=[start_date, end_date])
         serializer = AttendanceSerilizer(queryset, many=True)
         return Response(serializer.data)
     
@@ -523,7 +523,7 @@ class logouttimelist(APIView):
         
         start_date = request.GET.get('start_date')  # Get the start_date parameter from the query string
         end_date = request.GET.get('end_date')  # Get the end_date parameter from the query string
-        queryset = logginout.objects.filter(user=id,date__range=[start_date, end_date])
+        queryset = logginout.objects.filter(user_id=id,date__range=[start_date, end_date])
         serializer = logoutserializer(queryset, many=True)
         return Response(serializer.data)    
    

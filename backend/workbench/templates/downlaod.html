@@ -63,10 +63,13 @@ background: linear-gradient(to right, #A6CF1F 50%, #CF1512 100%);
 
     <h2>Download Our Desktop App</h2>
     <p>Click the button below to download our desktop app.</p>
-
+     
     {% comment %} <a href="{% url 'download_desktop_app' %}" download> {% endcomment %}
+        <div>
     {% for link in links %}
+            <h1>{{link.name}}</h1>
         <a  href="https://sentinel.www.dianasentinel.com//media/{{ link.file }}"><button>Download Desktop App</button></a>
     {% endfor %}
+</div>
 </body>
 </html>

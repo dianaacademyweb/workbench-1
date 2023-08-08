@@ -132,7 +132,7 @@ const EmployeeReports = () => {
 
   const handleEmployeeClick = async (employeid) => {
     try {
-      let response = await DashApi.screenimages(employeid);
+      let response = await DashApi.allscreenimages(employeid);
       console.log(response);
       setImages(response.data);
       setSelecteemployeid(event.target.value);

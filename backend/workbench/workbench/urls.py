@@ -15,7 +15,6 @@ urlpatterns = [
     path("api/users/", include(("api.routers", "api"), namespace="api")),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', CustomTokenRefereshview.as_view(), name='token_refresh'),
-  
     path('api/dashboard/employelist/<int:id>/', EmployeListAPIView.as_view(), name = 'employe' ),  
     path('api/dashboard/boardlist/<int:id>/', BoardlistApi.as_view(), name = 'board' ),
     path('api/dashboard/Projectlist/<int:id>/', ProjectListAPIView.as_view(), name = 'projectlist' ),
@@ -26,11 +25,9 @@ urlpatterns = [
     path('api/dashboard/taskdetail/<int:organization_id>/', TaskdetailsViews.as_view(), name = 'seeimage' ),
     path('api/dashboard/emplyetask/<int:id>/', TaskdetailsEmployeView.as_view(), name = 'employestasks' ),
     path('api/dashboard/seeteams/<int:organization_id>/',Seeteams.as_view(), name = 'seeteams' ),
-    
     path('api/dashboard/boardwiseteams/<int:organization_id>/board/<int:board_id>/',boardwiseteams.as_view(), name = 'boardwiseteams' ),
     path('api/dashboard/teamlist/<int:id>/', TeamlistApi.as_view(), name = 'teamlist' ),
     path('api/verify-email/', EmailVerificationView.as_view(), name='email-verify'),
-    
     path('api/dashboard/Seescreenshots/<int:id>/', Seescreenshots.as_view(), name = 'seeimage' ),
     path('api/dashboard/allscreenshots/<int:id>/', allscreenshots.as_view(), name = 'allimages' ),
     path('api/dashboard/attendancelist/<int:id>/', Attendancelist.as_view(), name='attendance_list'),
