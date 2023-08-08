@@ -71,43 +71,6 @@ const handleUpload = async (event) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if (event) {
-    //     event.preventDefault();
-    //   } 
-    //       // Make a POST request to the server
-    //       try{
-    //       const response = await DashApi.uploadimage({
-    //         image,
-    //         organization_id,
-    //       });
-    //       if (response.data && response.data.success === true) {
-    //         setButtonText("Signing  up");
-    //         setError(response.data.msg);
-    //       console.log('Image uploaded successfully:', response.data);
-    //       }
-    //     }
-    //      catch (error) {
-    //         setError(error)
-    //       console.error('Error uploading image:', error);
-    //     }
-    //   };
-    
-
   
   return (
     <div>
@@ -129,25 +92,11 @@ const handleUpload = async (event) => {
              </div>
              </Card>
              <form  encType="multipart/form-data">
-      {/* <div className='flex justify-center mt-20'> */}
-        {/* <label className="text-navy-800 dark:text-white" htmlFor="image">Select Image:</label>
-        <input
-        
-          type="file"
-          id="image"
-          name="image"
-          accept="image/*"
-          onChange={(event) => {
-            setimage(event.target.value);
-            setError(undefined);
-          }}
-        />
-      </div>
-      <button className='flex justify-center' type="submit" onClick={upload}>Upload</button> */}
+
 
       <div>
       <input type="file" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload Image</button>
+      <button className='border p-1 rounded-3xl border-navy-800' onClick={handleUpload}>Upload Image</button>
       </div>
     </form>
              {error && <p>{error.message}</p>}
