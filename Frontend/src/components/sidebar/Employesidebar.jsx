@@ -24,7 +24,7 @@ const Sidebar = ({ open, onClose }) => {
         event.preventDefault();
       }
       try{
-        let response = await DashApi.Employedata();
+        let response = await DashApi.Employedataforemploye();
         console.log(response)
         setEmail(response.data.tasks[0]);
 

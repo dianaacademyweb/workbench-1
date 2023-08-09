@@ -35,6 +35,14 @@ class DashApi {
     
   static Employedata = (id) => {
     const token = localStorage.getItem("token");  
+    return axios.get(`${base}/employedetails/${id}/`,{    // https:/sentinel.www.dianasentinel/api/user/employedetails/10/
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static Employedataforemploye = (id) => {
+    const token = localStorage.getItem("token");  
     const userid = localStorage.getItem("id");
     return axios.get(`${base}/employedetails/${userid}/`,{    // https:/sentinel.www.dianasentinel/api/user/employedetails/10/
       headers: {
