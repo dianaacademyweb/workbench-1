@@ -1,6 +1,9 @@
 import { Menu, Transition } from '@headlessui/react'
 import { DotsVerticalIcon } from '@heroicons/react/outline'
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
+// import { ChevronLeftIcon } from '@heroicons/react/solid/ChevronLeftIcon';
+
+
+import {ChevronLeftIcon , ChevronRightIcon } from '@heroicons/react/solid'; 
 import {
   add,
   eachDayOfInterval,
@@ -104,7 +107,9 @@ export default function Example() {
                 className="-my-1.5 flex flex-none items-center justify-center p-1.5 text-navy-400 hover:text-navy-500"
               >
                 <span className="sr-only">Previous month</span>
+
                 <ChevronLeftIcon className="w-5 h-5" aria-hidden="true" />
+
               </button>
               <button
                 onClick={nextMonth}

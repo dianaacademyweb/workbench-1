@@ -396,27 +396,6 @@ const EmployeeReports = () => {
           </ul>
           
           <hr className="m-6" />
-          
-         
-            <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
-              {images.map((item) => (
-                <div key={item.id}>
-                  <p className="flex text-xl text-navy-800 dark:text-gray-200">
-                    {item.time}
-                  </p>
-                  <div className="flex  border-navy-800 border-2 dark:border-gray-700 rounded-lg">
-                    <img
-                      className="mx-auto px-2 py-2  w-full h-auto"
-                      src={`https://sentinel.www.dianasentinel.com${item.image}`}
-                      alt={`Image ${item.id}`}
-                    />
-                  </div>
-                </div>
-              ))}
-              </div>
-
-
-
         <div className="grid grid-flow-row grid-cols-1 md:grid-cols-3 sm:grid-cols-1  lg:grid-cols-2 xl:grid-cols-3 gap-4  ">
         {images.map((item) => (
           <div key={item.id}>
