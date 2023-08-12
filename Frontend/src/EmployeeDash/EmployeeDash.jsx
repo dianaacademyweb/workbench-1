@@ -55,7 +55,7 @@ const EmployeeDash = () => {
     // Add more bulletin items as needed
   ];
   return (
-    <div className="min-h-screen ">
+    <div className="h-screen ">
       <div className="md:flex">
         <div className="flex flex-col">
           <div
