@@ -34,8 +34,6 @@ class IsOrganizationPermission(BasePermission):
 
 class ProfileViewSet(viewsets.ModelViewSet):
     authentication_classes = [JWTAuthentication]
-    permission_classes =[IsOrganizationPermission]
-    permission_classes =[IsEmployeePermission]
     queryset = User.objects.all()
     http_method_names = ["post"]
     serializer_class = ProfileSerializer
@@ -579,7 +577,7 @@ class idealtimeviewSet(viewsets.ModelViewSet):
     
 class idetimellist(APIView):
     def get(self ,request , id , formate =None):
-        queryset = ideltime.objects.filter(orgnisation_id = id ).order_by('-id')[:6]
+        queryset = ideltime.objects.filter(organization_id = id)
         serializer = ideltimeSerializer(queryset, many = True)
         return Response(serializer.data)   
     
