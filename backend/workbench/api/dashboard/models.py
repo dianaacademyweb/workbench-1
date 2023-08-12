@@ -138,8 +138,8 @@ class WorkProductivityDataset(models.Model):
         
 class AttendanceLogs(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateTimeField( auto_now_add=True)
-    login_time = models.DateTimeField(  auto_now_add=True )
+    date = models.DateTimeField( auto_now_add=True )
+    login_time = models.CharField( max_length=130)
     work_status= models.CharField(max_length=120) 
     class Meta:
         db_table = "AttendanceLogs"    
@@ -147,18 +147,19 @@ class AttendanceLogs(models.Model):
 class logginout(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateTimeField( auto_now_add=True)
-    logout_time = models.DateTimeField( auto_now_add=True)
+    logout_time = models.CharField(max_length=130)
+    total_time = models.CharField(max_length=180)
     endreport = models.CharField(max_length=500, default=True) 
     class Meta:
-        db_table = "loggingout"           
+        db_table = "loggingout"                 
         
         
         
         
 class screenshotsModel(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.FileField(upload_to='images/' )     
-    time =  models.TimeField( auto_now=True, auto_now_add=False)                        
+    image = models.FileField(upload_to='screenshots/' )     
+    time =  models.CharField( max_length=130)                       
 
 
 
@@ -175,8 +176,9 @@ class desktopfile(models.Model):
  
 class ideltime(models.Model):
     organization_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    date = models.DateField(auto_now=False, auto_now_add=False)  
-    idealtime =  models.CharField( max_length=50)   
+    date = models.DateField( auto_now_add=True)  
+    localtime = models.CharField(max_length=140 , default=False)
+    idealtime =  models.CharField( max_length=140)   
     
     
     
