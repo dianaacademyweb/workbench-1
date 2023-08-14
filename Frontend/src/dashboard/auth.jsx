@@ -192,6 +192,15 @@ class DashApi {
       },
     });
   };
+  static IdleTime = (id) => {
+  
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/ideltime/${id}/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static ProjectLinker = (data) => {
     const token = localStorage.getItem("token");
     return axios.post(`${base2}/projectlinker`, data,{
