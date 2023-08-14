@@ -128,6 +128,7 @@ const AttendanceReport = () => {
                           <tr>
                             <th class="px-4 py-2">Date</th>
                             <th class="px-4 py-2">Login Time</th>
+                           
                           </tr>
                         </thead>
                         <tbody>
@@ -137,6 +138,7 @@ const AttendanceReport = () => {
                               <td class="border px-4 py-2">
                                 {record.login_time}
                               </td>
+                            
                             </tr>
                           ))}
                         </tbody>
@@ -155,6 +157,7 @@ const AttendanceReport = () => {
                             <th class="px-4 py-2">Date</th>
                             <th class="px-4 py-2">Logout Time</th>
                             <th class="px-4 py-2">End Report</th>
+                            <th class="px-4 py-2">Total time </th>
                           </tr>
                         </thead>
                         <tbody>
@@ -168,6 +171,9 @@ const AttendanceReport = () => {
                               </td>
                               <td class="border px-4 py-2">
                                 {logoutrecords.endreport}
+                              </td>
+                              <td class="border px-4 py-2">
+                                {logoutrecords.total_time}
                               </td>
                             </tr>
                           ))}

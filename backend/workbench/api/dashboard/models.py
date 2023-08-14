@@ -165,7 +165,7 @@ class screenshotsModel(models.Model):
 
 
 class desktopfile(models.Model):
-    name = models.CharField(null=True, max_length=50)
+    desktopfile_name = models.CharField(null=True, max_length=50)
     file = models.FileField(upload_to='desktopapp/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

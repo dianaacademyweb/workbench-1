@@ -67,10 +67,6 @@ function Employe() {
             />
             </div>
            </div> 
-
-
-
-
       <div className="flex gap-1 mt-5">
         <div className=" w-2/5 mt-5 ">
       <Card extra="p-2">
