@@ -109,14 +109,14 @@ const ScreenshotsRow = () => {
             className="my-1 px-14 py-1  bg-lightgray  rounded-md text-white dark:text-lightPrimary dark:bg-[#000] border-2 border-navy-700 sm:text-lg"
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
-            <option className="dark:bg-[#4f4f504d] dark:text-navy-700" value="">
+            <option className="dark:bg-[#4f4f504d] " value="">
               select employe
             </option>
             {employees.map((employee) => (
               <option
                 key={employee.id}
                 value={employee.employeid}
-                className="dark:text-navy-700"
+                className=""
               >
                 {employee.username}
               </option>
