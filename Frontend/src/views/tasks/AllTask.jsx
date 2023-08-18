@@ -46,7 +46,7 @@ function AllTask() {
       {/* </div> */}
       <TaskBox/>
       <Card extra="pb-7 p-[20px] mt-5 mx-4">
-      <div className='py-56'>
+      <div className='overflow-x-auto  py-56'>
         {allTasks.length > 0 && (
           <table className='table-auto w-full'>
             <thead className='border-2'>
