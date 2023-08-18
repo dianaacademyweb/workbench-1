@@ -35,14 +35,14 @@ function Dash() {
          
 
          <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">   
-   {usertype === 'organization' &&           <h1 className=' mt-4 text-white flex justify-center  dark:text-lightPrimary  text-lg sm:text-3xl font-sans'> Recent activity</h1>}
+   {usertype === 'organization' &&  <h1 className=' mt-4 text-white flex justify-center  dark:text-lightPrimary  text-lg sm:text-3xl font-sans'> Recent activity</h1>}
      
       {/* {usertype === 'employe' && <HomeEmployee />} */}
       {usertype === 'employe' &&    <EmployeeDash/>}
 
       {usertype === 'organization' && <ScreenshotsRow/>}
       {usertype === 'organization' &&  <Employe/>}            
-      {usertype === 'organization' &&    <TaskCard/>}
+      {usertype === 'organization' &&  <TaskCard/>}
      
      
 

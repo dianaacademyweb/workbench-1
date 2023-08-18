@@ -93,6 +93,7 @@ const AttendanceReport = () => {
           <input
             type="date"
             value={end_date}
+            
             onChange={(e) => setEndDate(e.target.value)}
             className="block md:w-full border-gray-300 text-white dark:bg-navy-900 dark:border dark:text-lightPrimary rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
           />

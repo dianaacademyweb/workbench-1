@@ -32,8 +32,9 @@ function TaskCard() {
 
     <div>
       <Card extra="pb-7 p-[20px] mt-5 mx-1">
-      <div className=''>
-        
+      <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
         {allTasks.length > 0 && (
           <table className='table-auto w-full'>
             <thead className='border-2 border-white'>
@@ -64,6 +65,8 @@ function TaskCard() {
             </tbody>
           </table>
         )}
+        </div>
+        </div>
       </div>
       </Card>
       </div>

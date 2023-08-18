@@ -34,7 +34,7 @@ function Employe() {
       }
     };
 
-    Employelist(); 
+    Employelist();
   }, []);
   const handleEmployeeClick = async (Id) => {
     if (Id == null) {
@@ -49,10 +49,9 @@ function Employe() {
         console.error("Error retrieving employee data:", error);
       }
     }
-  }; 
+  };
 
   return (
-   
     <div className="mx-1">
       <div className="  mt-4 flex h-16 items-center  text-white rounded-full dark:bg-[#4f4f504d] bg-lightgray py-2 ">
         <div className="flex dark:bg-navy-900  rounded-full  py-2 mx-2">
@@ -73,7 +72,6 @@ function Employe() {
             <div className=" mt-2 justify-center flex  dark:border-white  rounded-md w-full h-full">
               <div className=" text-lg flex ">
                 <button className="justify-center  dark:bg-navy-800 px-2 py-2 rounded-lg ">
-             
                   {employees.map((employee) => (
                     <Link
                       className={`my-2 justify-center flex items-center text-white ${
@@ -103,8 +101,7 @@ function Employe() {
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
-                  {employeeData !== null ? ( 
-                
+                  {employeeData !== null ? (
                     <table class="min-w-full text-left text-sm dark:text-lightPrimary">
                       <thead class="border-b font-medium dark:border-neutral-500">
                         <tr>
@@ -140,20 +137,18 @@ function Employe() {
                           ))}
                       </tbody>
                     </table>
-                  
                   ) : (
-                    <p className="text-center dark:text-lightPrimary">Select the employe to show data</p> 
+                    <p className="text-center dark:text-lightPrimary">
+                      Select the employe to show data
+                    </p>
                   )}
                 </div>
               </div>
             </div>
           </Card>
-        
-        </div>
         </div>
       </div>
-  
-   
+    </div>
   );
 }
 
