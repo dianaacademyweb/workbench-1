@@ -122,9 +122,7 @@ const Sidebar = ({ open, onClose }) => {
         </li>
         {settingsExpanded && (
           <div
-            className={` right-0 mt-2 px-10 py-2 w-[300px]  bg-lightPrimary  rounded-md dark:bg-navy-900 dark:text-darktext  z-10 ${
-              dropdownOpen ? "" : "hidden"
-            }`}
+          className={`absolute right-0 mt-2 px-10 py-2 w-[300px] max-h-screen overflow-y-auto bg-lightPrimary rounded-md dark:bg-navy-900 dark:text-darktext z-10 ${dropdownOpen ? "" : "hidden"}`}
           >
             {/* Dropdown menu items */}
             <Link

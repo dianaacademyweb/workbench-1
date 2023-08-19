@@ -243,9 +243,9 @@ const Navbar = (props) => {
         {/* Profile & Dropdown */}
         <Dropdown
           button={
-            <div className=" flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
+            <div className="flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
             {profileImage ? (
-        <img className="rounded-[200px]" src={`${IMAGE_API}${profileImage.image}`} alt="Profile" />
+        <img className="rounded-full h-full w-full object-cover" src={`${IMAGE_API}${profileImage.image}`} alt="Profile" />
       ) : (
         <div className="initial">
         <p className="text-[40px] font-poppins"> {getInitial(name)}</p></div>

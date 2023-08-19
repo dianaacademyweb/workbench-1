@@ -148,13 +148,14 @@ function App() {
           <Route element ={<HighIdleHours/>}path="/highidlehours" />
           <Route element ={<AttendanceReport/>}path="/attendancereport" />
           <Route element ={<TimeLog/>}path="/timelog" />
+          <Route element ={<UpdateProfile/>} path="/profile/updateprofile" />
           <Route element ={<HolidayDefinition/>}path="/holidaydefinition" />
           <Route element ={<OtReport/>}path="/otreport" />
           <Route element ={<ClientAppActivity/>}path="/clientappactivity" />
           <Route path="/Profile" element={<Profile/>}>
           <Route index element={<Profiledetail/>}/>
           <Route path="profilepage" element={<Profiledetail/>}/>
-          <Route path="Updateprofile" element={<CreateProfile/>}></Route>
+          <Route path="createprofile" element={<CreateProfile/>}></Route>
                
              </Route>
 

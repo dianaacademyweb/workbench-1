@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
-import Card from '../card/index'
-import {DOAMINAPI} from "../../config/constant"
+import Card from "../card/index";
+import { DOAMINAPI } from "../../config/constant";
 import { Link, useNavigate } from "react-router-dom";
 
 function Employe() {
   const [error, setError] = useState(undefined);
   const [employees, setEmployees] = useState([]);
-  const [employeeData, setEmployeeData] = useState(null);
+  const [employeeData, setEmployeeData] = useState([]);
   const navigate = useNavigate();
-
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
 
   useEffect(() => {
     const Employelist = async (event) => {
@@ -19,7 +19,7 @@ function Employe() {
       }
       try {
         let response = await DashApi.Employelist();
-        console.log(response)
+        console.log(response);
         setEmployees(response.data.employes);
 
         if (response.data && response.data.success === true) {
@@ -36,21 +36,19 @@ function Employe() {
 
     Employelist(); // Call the function here
   }, []);
-  const handleEmployeeClick = async (employeeId ) => {
-    if(employeeId == null){
+  const handleEmployeeClick = async (Id) => {
+    if (Id == null) {
+      console.log("select");
+    } else {
       try {
-        let response = await DashApi.MonitoringList(employeeId);
-        console.log(response);
-        setEmployeeData(response.data.employes);
+        let response = await DashApi.IdleTime(Id);
+
+        setEmployeeData(response.data[0]);
+        console.log(employeeData);
       } catch (error) {
         console.error("Error retrieving employee data:", error);
       }
-
     }
-    else{
-      console.log("select")
-    }
-   
   }; // Empty dependency array for the initial effect
 
   return (
@@ -69,57 +67,52 @@ function Employe() {
            </div> 
       <div className="flex gap-1 mt-5">
         <div className=" w-2/5 mt-5 ">
-      <Card extra="p-2">
-        <div className=" mt-2 justify-center flex  dark:border-white  rounded-md w-full h-full">
-            <div className=" text-lg flex ">
-              <button className="justify-center dark:bg-navy-800 px-2 py-2 rounded-lg ">
-                {" "}
-                {employees.map((employee) => (
-                  <Link
-                    className=" my-2 justify-center flex  items-center   text-white   bg-lightPrimary  dark:bg-[#4f4f504d] border-sm px-2 sm:border-1 xs:border-0.5 dark:border-white border-navy-400 rounded-xl  dark:text-darktext "
-                    key={employee.id}
-                    onClick={() => handleEmployeeClick(employee.id)}
-                    // to={`${DOAMINAPI}/employee/${employee.employeid}`}
-                  >
-
-                    <h1 className=" justify-center dark:text-darktext text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2 ">
-                    {employee.username}{" "}
-                    </h1>
-                    
-                  </Link>
-                ))}
-              </button>
+          <Card extra="p-2">
+            <div className=" mt-2 justify-center flex  dark:border-white  rounded-md w-full h-full">
+              <div className=" text-lg flex ">
+                <button className="justify-center dark:bg-navy-800 px-2 py-2 rounded-lg ">
+                  {" "}
+                  {employees.map((employee) => (
+                    <Link
+                      className={`my-2 justify-center flex items-center text-white ${
+                        employee.employeid === selectedEmployeeId
+                          ? "bg-blue-500 border-blue-500 "
+                          : "bg-lightPrimary dark:bg-[#4f4f504d] border-navy-400 dark:border-white"
+                      } border-sm px-2 sm:border-1 xs:border-0.5 rounded-xl dark:text-darktext`}
+                      key={employee.employeid}
+                      onClick={() => {
+                        handleEmployeeClick(employee.employeid);
+                        setSelectedEmployeeId(employee.employeid);
+                      }}
+                    >
+                      <h1 className="justify-center dark:text-darktext text-xs sm:text-sm md:text-lg xl:text-2xl md:text-sx px-2 py-2">
+                        {employee.username}
+                      </h1>
+                    </Link>
+                  ))}
+                </button>
+              </div>
             </div>
-
-
-          </div>
           </Card>
         </div>
 
-        <div className=" w-4/5 ml-5 mt-5 ">
-        <Card extra=" p-[20px]">
-        <div className="mt-8  text-xl  dark:border-white border-navy-400 rounded-md h-full">
-            {employeeData && (
-              <div
-                className=" grid grid-flow-row justify-center  mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
-                key={employeeData.id}
-              >
-                <h1 className="justify-center text-navy-900 dark:text-darktext">
-                  id = {employeeData.id}
-                </h1>
-                <h1 className="justify-center text-navy-900 dark:text-darktext ">
-                  {" "}
-                  DAte ={employeeData.md_date}
-                </h1>
-                <h2 className="block text-navy-900 dark:text-darktext">
-                  title = {employeeData.md_title}
-                </h2>
-                <h3 className="bloack text-navy-900 dark:text-darktext">
-                  Time ={employeeData.md_total_time_seconds}
-                </h3>
-              </div>
-            )}
-          </div>
+        <div className="w-4/5 ml-5 mt-5">
+          <Card extra="p-[20px]">
+            <div className="text-xl dark:border-white border-navy-400 rounded-md h-full">
+              {employeeData && (
+                <div className="grid grid-flow-row justify-center items-center dark:bg-navy-900 px-2 space-y-2 border p-4 rounded-md">
+                  <h1 className="text-center text-navy-900 dark:text-darktext text-lg md:text-xl">
+                    Date: {employeeData.date}
+                  </h1>
+                  <h2 className="text-center text-navy-900 dark:text-darktext text-lg md:text-xl">
+                    Local Time: {employeeData.localtime}
+                  </h2>
+                  <h3 className="text-center text-navy-900 dark:text-darktext text-lg md:text-xl">
+                    Ideal Time: {employeeData.idealtime}
+                  </h3>
+                </div>
+              )}
+            </div>
           </Card>
         </div>
       </div>

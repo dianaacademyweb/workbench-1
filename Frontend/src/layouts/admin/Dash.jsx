@@ -30,7 +30,7 @@ function Dash() {
               logoText={"Work warden"}
               brandText={"work Warden"}
               // {...rest}
-            />
+            /> 
            
          
 
@@ -41,7 +41,7 @@ function Dash() {
       {usertype === 'employe' &&    <EmployeeDash/>}
 
       {usertype === 'organization' && <ScreenshotsRow/>}
-      {usertype === 'organization' &&  <Employe/>}
+      {usertype === 'organization' &&  <Employe/>}            
       {usertype === 'organization' &&    <TaskCard/>}
      
      

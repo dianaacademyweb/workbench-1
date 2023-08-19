@@ -141,6 +141,16 @@ class DashApi {
       },
     });
   };
+  static updateprofile = (id , formData) => {
+    const token = localStorage.getItem("token");
+    return axios.put(`${base2}/imageupload/${id}/`,formData , {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  };
+
   static deleteproject = (id) => {
     const token = localStorage.getItem("token");
     return axios.delete(`${base2}/projects/${id}`,{
@@ -177,6 +187,15 @@ class DashApi {
     const id = localStorage.getItem("id");
     const token = localStorage.getItem("token");
     return axios.get(`${base}/Projectlist/${id}/`, data,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static IdleTime = (id) => {
+  
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/ideltime/${id}/`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -338,13 +357,6 @@ static Teamsdetails = (id) => {
     },
   });
 };
-
-
-
-
-
-
-
 }
 
 
