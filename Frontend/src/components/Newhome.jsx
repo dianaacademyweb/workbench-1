@@ -37,7 +37,7 @@ const NewHome = () => {
           </div>
           <ul className="md:flex items-center md:text-3xl text-lightPrimary    transition-all ease-in duration-500 font-bernard">
             <li className="mx-2 my-6 md:my-0">
-              <a href="" className=" hover:text-navy-800 duration-500">
+              <a href="/" className=" hover:text-navy-800 duration-500">
                 HOME
               </a>
             </li>
@@ -57,6 +57,14 @@ const NewHome = () => {
                 className=" hover:text-navy-800 duration-500"
               >
                 CONTACT US
+              </a>
+            </li>
+            <li className="mx-2 my-6 md:my-0">
+              <a
+                href="/documentation"
+                className=" hover:text-navy-800 duration-500"
+              >
+                DOCS
               </a>
             </li>
           </ul>
