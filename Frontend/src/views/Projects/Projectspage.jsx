@@ -105,7 +105,7 @@ const Projectspage = () => {
     <h2 className='block w-full text-center text-grey-darkest text-2xl font-bold mt-4 mb-2'>Projects Updating Page</h2>
     <div className='mx-4 sm:w-2/3 bg-white m-4 p-8 rounded shadow-lg lg:m-12'>
       <div>
-        <label className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Edit Project Name:</label>
+        <label className='mb-2 uppercase  font-bold text-lg text-lightPrimary'>Edit Project Name:</label>
         <input
           type='text'
           value={project_name}
@@ -113,7 +113,7 @@ const Projectspage = () => {
           className='block w-full px-4 py-2 mt-1 border rounded-lg focus:outline-none focus:ring focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600'
         />
 
-        <label className='mb-2 uppercase  font-bold text-lg text-grey-darkest'>Edit project description:</label>
+        <label className='mb-2 uppercase  font-bold text-lg text-lightPrimary'>Edit project description:</label>
         <textarea
           value={peoject_description}
           onChange={(e) => setProject(e.target.value)}
@@ -123,7 +123,7 @@ const Projectspage = () => {
 
         <button
           onClick={updateProject}
-          className='text-white px-4 py-2 rounded bg-blueSecondary mt-2'
+          className='text-lightPrimary px-4 py-2 rounded bg-blueSecondary mt-2'
         >
           Update Project
         </button>
@@ -133,7 +133,7 @@ const Projectspage = () => {
 
       <h2 className='text-2xl font-bold'>Delete the Employee</h2>
       <button
-        className='text-white px-4 py-2 rounded bg-blueSecondary mt-2'
+        className='text-lightPrimary px-4 py-2 rounded bg-blueSecondary mt-2'
         onClick={DeleteEmploye}
       >
         Delete

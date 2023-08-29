@@ -173,16 +173,16 @@ const Addtask = () => {
       <Card>
         <div className="flex w-1/3 items-center justify-center mx-auto rounded-xl shadow-xs py-2">
           <div className=" rounded w-full shadow-lg p-8 m-4">
-            <h1 className=" w-full text-center text-grey-darkest mb-6 text-2xl">
+            <h1 className=" w-full text-center  mb-6 text-2xl">
               Add a task
             </h1>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="flex flex-col">
-                <label className="mb-2 uppercase tracking-wide font-bold text-lg text-grey-darkest">
+                <label className="mb-2 uppercase tracking-wide font-bold text-lg">
                   Project:
                 </label>
                 <select
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                   value={project_id}
                   onChange={handleProjectChange}
                 >
@@ -199,7 +199,7 @@ const Addtask = () => {
                   Board:
                 </label>
                 <select
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                   value={board_id}
                   onChange={handleBoardChange}
                 >
@@ -216,7 +216,7 @@ const Addtask = () => {
                   Employee:
                 </label>
                 <select
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                   value={employe_id}
                   onChange={handleEmployeeChange}
                 >
@@ -244,7 +244,7 @@ const Addtask = () => {
                     setName(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -263,7 +263,7 @@ const Addtask = () => {
                     setdesc(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -282,7 +282,7 @@ const Addtask = () => {
                     setstatus(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -301,7 +301,7 @@ const Addtask = () => {
                     setpriority(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -320,7 +320,7 @@ const Addtask = () => {
                     setassigndate(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -339,7 +339,7 @@ const Addtask = () => {
                     settaskdeadline(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <div className="flex flex-col">
@@ -358,14 +358,14 @@ const Addtask = () => {
                     setupdatedate(event.target.value);
                     setError(undefined);
                   }}
-                  className="my-1 px-14 py-3 bg-navy-800 rounded-md text-lightPrimary text-sm"
+                  className="my-1 px-14 py-3  text-navy-800 rounded-md  text-sm"
                 />
               </div>
               <h1 className='text-green-500 text-center"'>{error}</h1>
               <button
                 type="submit"
                 onClick={Add}
-                className="bg-white text-lightPrimary hover:bg-lightPrimary hover:text-white  px-4 py-2 rounded"
+                className="bg-white  hover:bg-lightPrimary hover:text-white  px-4 py-2 rounded"
               >
                 Submit
               </button>

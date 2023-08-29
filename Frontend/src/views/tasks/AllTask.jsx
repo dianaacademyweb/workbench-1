@@ -46,32 +46,32 @@ function AllTask() {
       {/* </div> */}
       <TaskBox/>
       <Card extra="pb-7 p-[20px] mt-5 mx-4">
-      <div className='py-56'>
+      <div className='overflow-x-auto  py-56'>
         {allTasks.length > 0 && (
           <table className='table-auto w-full'>
             <thead className='border-2'>
               <tr>
-              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Task Name</th>
-              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '> Name</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Project</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Board</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Task Description</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Task Assign Date</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Task Deadline Date</th>
-                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>Task Update Date</th>
+              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Task Name</th>
+              <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '> Name</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Project</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Board</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Task Description</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Task Assign Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Task Deadline Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>Task Update Date</th>
               </tr>
             </thead>
             <tbody className='border-2 '>
               {allTasks.map((task, index) => (
                 <tr key={index} className='border-2 justify-center'>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.task_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.employee_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.project_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.board_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.task_desc}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.task_assign_date}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.task_deadline_date}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-white '>{task.task_update_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.task_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.employee_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.project_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.board_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.task_desc}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.task_assign_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.task_deadline_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-navy-800   text-lightPrimary '>{task.task_update_date}</td>
                 </tr>
               ))}
             </tbody>

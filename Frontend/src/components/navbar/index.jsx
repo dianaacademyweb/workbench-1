@@ -26,7 +26,7 @@ const Navbar = (props) => {
   // const { onOpenSidenav, brandText } = props;
   const [darkmode, setDarkmode] = React.useState(false);
   const getInitial = (name) => {
-    return name ? name.charAt(0).toUpperCase() : 'U'; // 'U' stands for "User" if no name is available
+    return name ? name.charAt(0).toUpperCase() : "U"; // 'U' stands for "User" if no name is available
   };
   const Logout = async () => {
     // await AuthApi.Logout(user);
@@ -90,16 +90,13 @@ const Navbar = (props) => {
     <nav className="m-2 top-4 z-40 flex flex-row flex-wrap items-center bg-[#C2CAD0]] justify-between  bg-white/10 p-2 backdrop-blur-xl dark:bg-[#4f4f504d]">
       <div className="ml-[6px]">
         <div className=" w-[224px] pt-1">
-          <a
+          <Link
+            to="/dashboard"
             className="text-lg font-normal text-white hover:underline dark:text-lightPrimary py-1 px-2 text-center  border border-white rounded-3xl "
-            href="/dashboard"
           >
             Back
-            <span className="mx-1 text-sm text-navy-700 hover:text-navy-700 dark:text-lightPrimary">
-              {" "}
-            </span>
-          </a>
-          <ul></ul>
+          </Link>
+          
           <Link
             className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-lightPrimary dark:hover:text-white"
             to="/"
@@ -215,7 +212,7 @@ const Navbar = (props) => {
                 href=""
                 className="hover:bg-black px-full linear flex cursor-pointer items-center justify-center rounded-xl py-[11px] font-bold text-navy-700 transition duration-200 hover:text-navy-700 dark:text-lightPrimary dark:hover:text-white"
               >
-                Try  Diana sentinel 
+                Try Diana sentinel
               </a>
             </div>
           }
@@ -244,12 +241,20 @@ const Navbar = (props) => {
         <Dropdown
           button={
             <div className="flex h-[87px] w-[87px] items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
-            {profileImage ? (
-        <img className="rounded-full h-full w-full object-cover" src={`${IMAGE_API}${profileImage.image}`} alt="Profile" />
-      ) : (
-        <div className="initial">
-        <p className="text-[40px] font-poppins"> {getInitial(name)}</p></div>
-      )}
+              {profileImage ? (
+                <img
+                  className="rounded-full h-full w-full object-cover"
+                  src={`${IMAGE_API}${profileImage.image}`}
+                  alt="Profile"
+                />
+              ) : (
+                <div className="initial">
+                  <p className="text-[40px] font-poppins">
+                    {" "}
+                    {getInitial(name)}
+                  </p>
+                </div>
+              )}
             </div>
           }
           children={
@@ -264,7 +269,6 @@ const Navbar = (props) => {
                 </p>
               </div>
 
-              
               <div className="mt-3 h-px w-full bg-gray-200 dark:bg-white/20 " />
 
               <div className="mt-3 ml-4 flex flex-col">
@@ -293,6 +297,7 @@ const Navbar = (props) => {
         />
       </div>
     </nav>
-  )};
+  );
+};
 
 export default Navbar;

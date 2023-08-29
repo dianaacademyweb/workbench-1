@@ -95,7 +95,7 @@ const Employepage = () => {
         <p className="text-2xl text-lightPrimary text-center font-bold mb-4">Employees Details</p>
 
         <Card extra="mx-4">
-          <div className="">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             {employees.length > 0 && (
               <table className="table-auto w-full">
                 <thead className="border-2">

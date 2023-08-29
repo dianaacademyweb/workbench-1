@@ -31,39 +31,42 @@ function TaskCard() {
   return (
 
     <div>
-      <Card extra="pb-7 p-[20px] mt-5 mx-4">
-      <div className=''>
-        
+      <Card extra="pb-7 p-[20px] mt-5 mx-1">
+      <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
+        <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-hidden">
         {allTasks.length > 0 && (
           <table className='table-auto w-full'>
             <thead className='border-2 border-white'>
               <tr>
-              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Name</th>
-              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '> Name</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Project</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Board</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Description</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Assign Date</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Deadline Date</th>
-                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>Task Update Date</th>
+              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Task Name</th>
+              <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '> Name</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Project</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Board</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Task Description</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Task Assign Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Task Deadline Date</th>
+                <th className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>Task Update Date</th>
               </tr>
             </thead>
             <tbody className='border-2 border-white '>
               {allTasks.map((task, index) => (
                 <tr key={index} className='border-2 justify-center'>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.employee_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.project_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.board_name}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_desc}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_assign_date}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_deadline_date}</td>
-                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary   text-white '>{task.task_update_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.task_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.employee_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.project_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.board_name}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.task_desc}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.task_assign_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.task_deadline_date}</td>
+                  <td className='border-2 py-2 px-2 justify-center bg-lightPrimary dark:bg-navy-800 dark:text-lightPrimary   text-white '>{task.task_update_date}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         )}
+        </div>
+        </div>
       </div>
       </Card>
       </div>
