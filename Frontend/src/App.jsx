@@ -65,7 +65,14 @@ import Projectspage from "./views/Projects/Projectspage";
 import Teamspage from "./views/teams/Teampage";
 import EmployeeDash from "./EmployeeDash/EmployeeDash";
 import ApiTesting from "./testing/ApiTesting";
-import Documentation from "./components/Documentation";
+
+import ClientApp from "./components/docs/Clientapp";
+import Installation from "./components/docs/Installation";
+import DocsDashboard from "./components/docs/DocsDashboard";
+import DocsReports from "./components/docs/DocsReports";
+import DocsEmployees from "./components/docs/DocsEmployees";
+import DocsTeams from "./components/docs/DocsTeams";
+import DocsTasks from "./components/docs/DocsTasks";
 
 function App() {
   let user = localStorage.getItem("id");
@@ -95,7 +102,13 @@ function App() {
             <Route element={<EmployeeOnboarding />} path="/employee-onboarding" exact />
             <Route element={<Technical />} path="/technical" exact />
             <Route element={<Manager />} path="/manager" exact />
-            <Route element={<Documentation />} path="/documentation" exact />
+            <Route element={<Installation/>} path="/installation" exact />
+            <Route element={<DocsDashboard/>} path="/docsdashboard" exact />
+            <Route element={<DocsReports/>} path="/docsreports" exact />
+            <Route element={<DocsEmployees/>} path="/docsemployees" exact />
+            <Route element={<DocsTeams/>} path="/docsteams" exact />
+            <Route element={<DocsTasks/>} path="/docstasks" exact />
+            <Route element={<ClientApp />} path="/docsclientapp" exact />
             <Route path="/login" element={<Newloginpage />} />
             <Route element={<Home />} path="/" exact />
             <Route path="/login" element={<Newloginpage />} />

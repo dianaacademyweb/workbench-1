@@ -2,45 +2,47 @@ import React, { useState, useEffect } from "react";
 import { HiX } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
+
 import DashApi from "../../dashboard/auth";
 import { IMAGE_API } from "../../config/constant";
 
 // import routes from "../../routes";
 
 const Sidebar = ({ open, onClose }) => {
-  const [dropdownMenuOpen, setDropdownMenuOpen] = useState(false);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [docs, setDocs] = useState(false);
+  const [dropdocsOpen, setDocsOpen] = useState(false);
   const [settingsExpanded, setSettingsExpanded] = useState(false);
   const [profileImage, setProfileImage] = useState(null);
-  const [email,setEmail]=useState('');
+  const [email, setEmail] = useState("");
   const [error, setError] = useState(undefined);
-  const username = localStorage.getItem("name")
 
-  useEffect(()=>{
-    const Employedata = async(event)=>{
-      if (event){
+  const username = localStorage.getItem("name");
+
+  useEffect(() => {
+    const Employedata = async (event) => {
+      if (event) {
         event.preventDefault();
       }
-      try{
+      try {
         let response = await DashApi.Employedataforemploye();
-        console.log(response)
+        console.log(response);
         setEmail(response.data.tasks[0]);
 
-        if (response.data&&response.data.success===true){
+        if (response.data && response.data.success === true) {
           return setError(response.data.msg);
         }
-      } catch(err){
+      } catch (err) {
         console.log(err);
-        if(err.response){
+        if (err.response) {
           return setError(err.response.data.msg);
         }
-        return setError("there has been an error")
+        return setError("there has been an error");
       }
     };
     Employedata();
-  },[]);
+  }, []);
 
   useEffect(() => {
     // Fetch the image URL or path from the API
@@ -53,7 +55,6 @@ const Sidebar = ({ open, onClose }) => {
           return setError(response.data.msg);
         }
       } catch (err) {
-
         if (err.response) {
           return setError(err.response.data.msg);
         }
@@ -82,34 +83,37 @@ const Sidebar = ({ open, onClose }) => {
           Diana<span className="font-medium">Sentinel</span>
         </div>
       </div>
-      
+
       <div className="mt-[58px] mb-7 h-min-screen bg-gray-300 dark:bg-white/30 " />
       <div className=" mx-auto  flex   h-[120px] w-[120px] flex-col items-center justify-center rounded-full border-[4px] border-white bg-lightPrimary dark:!border-navy-700">
-      {profileImage && (
-              <div key={profileImage.id}>
-                <img
-                  className="rounded-[100px] h-[100px] w-[100px] flex justify-center border border-navy-800"
-                  src={`${IMAGE_API}/${profileImage.image}`}
-                  alt="Profile Image"
-                />
-              </div>
-            )}
-            
-           
-         
+        {profileImage && (
+          <div key={profileImage.id}>
+            <img
+              className="rounded-[100px] h-[100px] w-[100px] flex justify-center border border-navy-800"
+              src={`${IMAGE_API}/${profileImage.image}`}
+              alt="Profile Image"
+            />
+          </div>
+        )}
       </div>
-      <p className="text-black  font-bold text-xl text-[16px]  flex justify-center">Name: {username}</p>
-            <p className="text-[12px] text-center">
-              {email && (
-              <div key={email.id}>
-                <p>{email.email}</p>
-              </div>
-            )}
-            </p>
-      <div className="relative mb-3 hover:cursor-pointer overflow-y-auto max-h-[calc(100vh-250px)] ">
-      <li className="  text-[20px]  font-liolipins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to= "/dashboard">Dashboard</Link></li>
-      <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/task" >Tasks</Link></li>
-      <li
+      <p className="text-black  font-bold text-xl text-[16px]  flex justify-center">
+        Name: {username}
+      </p>
+      <p className="text-[12px] text-center">
+        {email && (
+          <div key={email.id}>
+            <p>{email.email}</p>
+          </div>
+        )}
+      </p>
+      <div className="relative mb-3 hover:cursor-pointer overflow-y-auto max-h-screen">
+        <li className="  text-[20px]  font-liolipins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
+        <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/task">Tasks</Link>
+        </li>
+        <li
           className="text-[20px] font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
           onClick={() => {
             setSettingsExpanded(!settingsExpanded);
@@ -117,12 +121,12 @@ const Sidebar = ({ open, onClose }) => {
           }}
         >
           Settings <IoIosArrowDown className=" w-5 h-5" />
-
-          
         </li>
         {settingsExpanded && (
           <div
-          className={`absolute right-0 mt-2 px-10 py-2 w-[300px] max-h-screen overflow-y-auto bg-lightPrimary rounded-md dark:bg-navy-900 dark:text-darktext z-10 ${dropdownOpen ? "" : "hidden"}`}
+            className={`absolute right-0 mt-2 px-10 py-2 w-[300px] max-h-screen overflow-y-auto bg-lightPrimary rounded-md dark:bg-navy-900 dark:text-darktext z-10 ${
+              dropdownOpen ? "" : "hidden"
+            }`}
           >
             {/* Dropdown menu items */}
             <Link
@@ -141,13 +145,13 @@ const Sidebar = ({ open, onClose }) => {
               to="/activity"
               className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
             >
-             Activity
+              Activity
             </Link>
             <Link
               to="/activityset"
               className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
             >
-              Activity Set 
+              Activity Set
             </Link>
             <Link
               to="/shifts"
@@ -173,55 +177,76 @@ const Sidebar = ({ open, onClose }) => {
             >
               Holiday Definition
             </Link>
-            
+
             {/* Add more dropdown menu items as needed */}
           </div>
         )}
+        <li
+          className="text-[20px] font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
+          onClick={() => {
+            setDocs(!docs);
+            setDocsOpen(!dropdocsOpen);
+          }}
+        >
+          Documentation <IoIosArrowDown className=" w-5 h-5" />
+        </li>
+        {docs && (
+          <div
+          className={`absolute right-0 mt-2 px-10 py-2 w-[300px] max-h-screen overflow-y-auto bg-lightPrimary rounded-md dark:bg-navy-900 dark:text-darktext z-10 ${
+            dropdocsOpen ? "" : "hidden"
+          }`}
+          >
+            {/* Dropdown menu items */}
+            <Link
+              to="/installation"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Installation
+            </Link>
+            <Link
+              to="/docsclientapp"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Client App
+            </Link>
+            <Link
+              to="/docsdashboard"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Dashboard
+            </Link>
+            <Link
+              to="/docsreports"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Reports
+            </Link>
+            <Link
+              to="/docsemployees"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Employees
+            </Link>
+            <Link
+              to="/docsteams"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Teams
+            </Link>
+            <Link
+              to="/docstasks"
+              className="block px-4 py-2 text-md text-white hover:bg-white dark:text-darktext  dark:hover:bg-navy-600 hover:text-lightPrimary"
+            >
+              Tasks
+            </Link>
+          </div>
+        )}
       </div>
-
-      {/* Rest of the Sidebar component */}
-      {/* ... */}
     </div>
   );
 };
 
 export default Sidebar;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const Sidebar = ({open , onClose}) => {
 //   return (
@@ -259,7 +284,6 @@ export default Sidebar;
 //       <li className="  text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/task" >Tasks</Link></li>
 //       <li className="  text-[20px]  font-poppins  text-navy-700 dark:text-white my-[3px] flex cursor-pointer items-center px-10 py-3"><Link to = "/settings" >settings</Link></li>
 //    </div>
-
 
 //       {/* Free Horizon Card */}
 //       <div className="flex justify-center">

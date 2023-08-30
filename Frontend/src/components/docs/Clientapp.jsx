@@ -1,26 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import home from '/src/assets/Images/layouts/home.jpg'
 const sections = [
+
+
   {
-    title: 'Getting Started',
-    content: [
-      'Welcome to the DianaSentinel Documentation guide ! To begin, follow these steps:',
-      'Install the system software by using the below link',
-      'https://sentinel.www.dianasentinel.com/api/dashboard/downloaddesktop/'
-    ],
-    image: '/src/assets/Images/download.png',
-  },
-  {
-    title: 'Configuration',
-    content: [
-      'In the setup of application',
-      'install the application by unziping the downloaded',
-     
-    ],
-    image: '/src/assets/Images/setup.png',
-  },
-  {
-    title: 'login',
+    title: 'Login',
     content: [
       'In this section you have to enter the login details provided by the ccompany',
       
@@ -29,7 +14,7 @@ const sections = [
     image: '/src/assets/Images/login.png',
   },
   {
-    title: 'staring',
+    title: 'Staring',
     content: [
       'After login you have to click on the start login icon to start the timmer',
       'So this will be recorded as the login time and your work starts to be monitoring',
@@ -67,13 +52,17 @@ const sections = [
   // Add more sections...
 ];
 
-const Documentation = () => {
+const ClientApp = () => {
   return (
-    <div className="bg-cover  min-h-screen" style={{ backgroundImage: `url(${home})` }}>
+    <div className="bg-cover min-h-screen" style={{ backgroundImage: `url(${home})` }}>
+      <div className='flex justify-between'>
+        <Link to="/installation"><button className='px-2 py-1 bg-gray-400 rounded-md'>Installation</button></Link>
+        <Link to="/docsdashboard"><button className='px-2 py-1 bg-gray-400 rounded-md'>Docs Dashboard</button></Link>
+      </div>
     <div className="p-4 w-full text-lightPrimary text-center">
       {sections.map((section, index) => (
         <section key={index} className="mb-8">
-          <h2 className="text-xl font-bold mb-2">{section.title}</h2>
+          <h2 className="text-2xl font-bold mb-2">{section.title}</h2>
           <ul className="list-disc ml-6">
             {section.content.map((item, itemIndex) => (
               <li key={itemIndex} className="mb-2">{item}</li>
@@ -87,4 +76,4 @@ const Documentation = () => {
   );
 };
 
-export default Documentation;
+export default ClientApp;

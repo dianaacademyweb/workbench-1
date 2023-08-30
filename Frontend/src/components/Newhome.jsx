@@ -41,7 +41,7 @@ const NewHome = () => {
                 HOME
               </a>
             </li>
-            <li className="mx-2 my-6 md:my-0">
+            <li className="mx-2 my-6 md:my-0">                                                                  
               <a href="/ourteam" className=" hover:text-navy-800 duration-500">
                 OUR TEAM
               </a>
@@ -59,14 +59,7 @@ const NewHome = () => {
                 CONTACT US
               </a>
             </li>
-            <li className="mx-2 my-6 md:my-0">
-              <a
-                href="/documentation"
-                className=" hover:text-navy-800 duration-500"
-              >
-                DOCS
-              </a>
-            </li>
+            
           </ul>
         </nav>
         <div className="flex  items-center justify-center">
