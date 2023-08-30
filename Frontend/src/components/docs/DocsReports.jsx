@@ -1,70 +1,70 @@
 import React from 'react';
 import home from '/src/assets/Images/layouts/home.jpg'
 import { Link } from 'react-router-dom';
+import dreport from '../../assets/Images/avatars/reportsnav.png'
+import topactivity from "../../assets/Images/layouts/topactivity.png";
+import employeereports from "../../assets/Images/layouts/employeereports.png";
+import attendancereports from "../../assets/Images/layouts/attendancereports.png";
+import idletime from "../../assets/Images/layouts/idletime.png";
 const sections = [
   {
-    title: 'Reports section',
+    title: 'Reports Section',
     content: [
-      'To view the reports section dropdown the reports in sidebar',
-     
+      'Access the Reports section by expanding the "Reports" dropdown in the sidebar.',
     ],
-    image: '/src/assets/Images/reportsnav.png',
+    image: `${dreport}`,
   },
   {
-    title: 'Top Activity',
+    title: 'Top Activity Analysis',
     content: [
-      'This is the Top Activity section',
-      'we can we the acivity of the selected employee',
-     
+      'Explore the Top Activity section to gain insights into user productivity.',
+      'View detailed activity records of selected employees for comprehensive analysis.',
     ],
-    image: '/src/assets/Images/topactivity.png',
+    image: `${topactivity}`,
   },
   {
-    title: 'Employee Reports',
+    title: 'Employee Activity Reports',
     content: [
-      'In this section when we select a particular employye we fecth the screenshots of the employee'
-      
-     
+      'In this dedicated section, select an employee to retrieve their detailed activity snapshots.',
+      'Examine employee productivity and tasks through the available screenshots.',
     ],
-    image: '/src/assets/Images/employeereports.png',
+    image: `${employeereports}`,
   },
   {
-    title: 'Attendance reports',
+    title: 'Attendance Reports',
     content: [
-      'Attendance reports show the login logout timmings of the employee'
-     
+      'Access comprehensive attendance reports showcasing employee login and logout timings.',
+      'Gain a comprehensive understanding of attendance patterns through detailed records.',
     ],
-    image: '/src/assets/Images/attendancereports.png',
+    image: `${attendancereports}`,
   },
   {
-    title: 'Idle Time',
+    title: 'Idle Time Tracking',
     content: [
-      'This section show the particular employee idle time ',
-      'a employee will be notified in the app where he/she not working for 16 mins'
-     
+      'Monitor employee idle time in this dedicated section.',
+      'Employees are alerted within the app if idle for more than 16 minutes, enhancing productivity.',
     ],
-    image: '/src/assets/Images/idletime.png',
+    image: `${idletime}`,
   },
 ];
 
+
 const DocsReports = () => {
   return (
-    <div className="bg-cover  min-h-screen" style={{ backgroundImage: `url(${home})` }}>
-      <div className="flex justify-between">
-        <Link to="/docsdashboard">
-          <button className="px-2 py-1 bg-gray-400 rounded-md">Dashboard</button>
-        </Link>
-        <Link to="/docsemployees">
-          <button className="px-2 py-1 bg-gray-400 rounded-md">
-            Employees
-          </button>
-        </Link>
-      </div>
-    <div className="p-4 w-full text-lightPrimary text-center">
+    <div className="bg-cover min-h-screen" style={{ backgroundImage: `url(${home})` }}>
+    <div className="flex justify-between p-4">
+      <Link to="/docsdashboard">
+        <button className="px-4 py-2 bg-gray-400 rounded-md">Dashboard</button>
+      </Link>
+      <Link to="/docsemployees">
+        <button className="px-4 py-2 bg-gray-400 rounded-md">Employees</button>
+      </Link>
+    </div>
+    <div className="p-4 w-full text-lightPrimary">
       {sections.map((section, index) => (
         <section key={index} className="mb-8">
-          <h2 className="text-xl font-bold mb-2">{section.title}</h2>
-          <ul className="list-disc ml-6">
+          <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+          <ul className="list-disc pl-6">
             {section.content.map((item, itemIndex) => (
               <li key={itemIndex} className="mb-2">{item}</li>
             ))}
@@ -73,7 +73,8 @@ const DocsReports = () => {
         </section>
       ))}
     </div>
-    </div>
+  </div>
+  
   );
 };
 
