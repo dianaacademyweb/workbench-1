@@ -37,11 +37,11 @@ const NewHome = () => {
           </div>
           <ul className="md:flex items-center md:text-3xl text-lightPrimary    transition-all ease-in duration-500 font-bernard">
             <li className="mx-2 my-6 md:my-0">
-              <a href="" className=" hover:text-navy-800 duration-500">
+              <a href="/" className=" hover:text-navy-800 duration-500">
                 HOME
               </a>
             </li>
-            <li className="mx-2 my-6 md:my-0">
+            <li className="mx-2 my-6 md:my-0">                                                                  
               <a href="/ourteam" className=" hover:text-navy-800 duration-500">
                 OUR TEAM
               </a>
@@ -59,6 +59,7 @@ const NewHome = () => {
                 CONTACT US
               </a>
             </li>
+            
           </ul>
         </nav>
         <div className="flex  items-center justify-center">

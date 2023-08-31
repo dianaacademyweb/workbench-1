@@ -60,7 +60,6 @@ function Allboard() {
           className="px-4 flex h-full w-full rounded-full  bg-white text-sm font-medium text-navy-700 outline-none placeholder:!text-lightPrimary dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
         />
       </div>
-      
     <div>
   
   <label className="text-darktext dark:bg-lightgray">
@@ -82,22 +81,22 @@ function Allboard() {
                 <table className="table-auto w-full">
                   <thead className="border-2">
                     <tr>
-                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-lightPrimary">
                         Teams Name
                       </th>
-                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                      <th className="border-2 py-2 px-2 justify-center bg-navy-800 text-lightPrimary">
                         
                         teams desc
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="border-2 ">
+                  <tbody className="border-2 text-lightPrimary">
                     {teamsdata.map((team, index) => (
                       <tr key={index} className="border-2 justify-center">
-                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-lightPrimary ">
                           {team.team_name}
                         </td>
-                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-white ">
+                        <td className="border-2 py-2 px-2 justify-center bg-navy-800 text-lightPrimary ">
                           {team.team_desc}
                         </td>
                       </tr>

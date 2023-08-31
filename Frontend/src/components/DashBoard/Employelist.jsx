@@ -99,7 +99,7 @@ function Employe() {
         <div className="md:w-4/5  mt-1">
           <Card extra="p-[20px]">
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-              <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+              <div class="inline-block min-w-full py-3 sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                   {employeeData !== null ? (
                     <table class="min-w-full text-left text-sm dark:text-lightPrimary">
@@ -118,7 +118,7 @@ function Employe() {
                       </thead>
                       <tbody>
                         {employeeData.data
-                          .slice(Math.max(employeeData.data.length - 5, 0))
+                          .slice(Math.max(employeeData.data.length - 6, 0))
                           .map((item) => (
                             <tr
                               key={item.id}

@@ -38,7 +38,6 @@ import Technical from "./components/teams/Technical";
 import Teams from "./views/teams";
 import TeamsAdd from "./views/teams/Teamadd";
 import AllTeams from "./views/teams/AllTeams";
-
 import ContactUs from "./components/ContactUs";
 import OurTeam from "./components/OurTeam";
 import Reports from "./views/reports/Reports";
@@ -60,14 +59,20 @@ import TimeLog from "./views/reports/TimeLog";
 import HolidayDefinition from "./views/settings/HolidayDefinition";
 import OtReport from "./views/reports/OtReport";
 import ClientAppActivity from "./views/reports/ClientAppActivity";
-
 import Employepage from "./views/employes/Employepage";
-
 import Boardpage from "./views/board/Boardpage";
 import Projectspage from "./views/Projects/Projectspage";
 import Teamspage from "./views/teams/Teampage";
 import EmployeeDash from "./EmployeeDash/EmployeeDash";
 import ApiTesting from "./testing/ApiTesting";
+
+import ClientApp from "./components/docs/Clientapp";
+import Installation from "./components/docs/Installation";
+import DocsDashboard from "./components/docs/DocsDashboard";
+import DocsReports from "./components/docs/DocsReports";
+import DocsEmployees from "./components/docs/DocsEmployees";
+import DocsTeams from "./components/docs/DocsTeams";
+import DocsTasks from "./components/docs/DocsTasks";
 
 function App() {
   let user = localStorage.getItem("id");
@@ -94,38 +99,36 @@ function App() {
             <Route element={<Sales />} path="/sales" exact />
             <Route element={<Creative />} path="/creative" exact />
             <Route element={<ContactUs />} path="/contactus" exact />
-            <Route
-              element={<EmployeeOnboarding />}
-              path="/employee-onboarding"
-              exact
-            />
+            <Route element={<EmployeeOnboarding />} path="/employee-onboarding" exact />
             <Route element={<Technical />} path="/technical" exact />
             <Route element={<Manager />} path="/manager" exact />
+            <Route element={<Installation/>} path="/installation" exact />
+            <Route element={<DocsDashboard/>} path="/docsdashboard" exact />
+            <Route element={<DocsReports/>} path="/docsreports" exact />
+            <Route element={<DocsEmployees/>} path="/docsemployees" exact />
+            <Route element={<DocsTeams/>} path="/docsteams" exact />
+            <Route element={<DocsTasks/>} path="/docstasks" exact />
+            <Route element={<ClientApp />} path="/docsclientapp" exact />
             <Route path="/login" element={<Newloginpage />} />
             <Route element={<Home />} path="/" exact />
             <Route path="/login" element={<Newloginpage />} />
             <Route path="/register" element={<Register />} />
             <Route path="/apitesting" element={<ApiTesting />} />
             {/* these are the privates routes no one can enter in these with out authentication  */}
-
             <Route element={<PrivateRoutes />}>
               <Route element={<Dash />} path="/dashboard" />
-
               {usertype === "employe" && (
                 <Route element={<Dash />} path="/dashboard" />
               )}
               <Route element={<TopActivity />} path="/topactivity" />
               <Route element={<EmployeeReports />} path="/employeereports" />
               <Route element={<EmployeeDash />} path="/mysentinel" />
-
               {usertype === "organization" && (
                 <Route exact path="employee/:id" element={<Employepage />} />
               )}
-
               {usertype === "organization" && (
                 <Route exact path="board/:id" element={<Boardpage />} />
               )}
-
               {usertype === "organization" && (
                 <Route
                   exact
@@ -133,7 +136,6 @@ function App() {
                   element={<Boardpage />}
                 />
               )}
-
               {usertype === "organization" && (
                 <Route
                   exact
@@ -141,17 +143,15 @@ function App() {
                   element={<Projectspage />}
                 />
               )}
-
               {usertype === "organization" && (
                 <Route exact path="teams/:id" element={<Teamspage />} />
               )}
-
               <Route element={<Reports />} path="/reports" />
               <Route element={<ActivityPattern />} path="/activitypattern" />
               <Route element={<DormantEmployee />} path="/dormantemployee" />
-              <Route element={<HighIdleHours />} path="/highidlehours" />
-              <Route element={<AttendanceReport />} path="/attendancereport" />
-              <Route element={<TimeLog />} path="/timelog" />
+              <Route element={<HighIdleHours />} path="/highidlehours"/>
+              <Route element={<AttendanceReport />} path="/attendancereport"/>
+              <Route element={<TimeLog />} path="/timelog"/>
               <Route
                 element={<UpdateProfile />}
                 path="/profile/updateprofile"
@@ -170,7 +170,6 @@ function App() {
                 <Route path="profilepage" element={<Profiledetail />} />
                 <Route path="createprofile" element={<CreateProfile />}></Route>
               </Route>
-
               {usertype === "organization" && (
                 <Route path="/employee" element={<Employe />}>
                   <Route index element={<ListEmploy />} />
@@ -178,7 +177,6 @@ function App() {
                   <Route path="addemployee" element={<Addemploye />}></Route>
                 </Route>
               )}
-
               <Route path="/Board" element={<Board />}>
                 <Route index element={<Allboard />} />
                 <Route path="allboard" element={<Allboard />} />
@@ -186,13 +184,11 @@ function App() {
                 <Route path="projects" element={<CreateProject />} />
                 <Route path="listprojects" element={<Listproject />}></Route>
               </Route>
-
               <Route path="/task" element={<Task />}>
                 <Route index element={<AllTask />} />
                 <Route path="task" element={<AllTask />} />
                 <Route path="addtask" element={<Addtask />}></Route>
               </Route>
-
               <Route path="/teams" element={<Teams />}>
                 <Route index element={<AllTeams />} />
                 <Route path="/teams" element={<AllTeams />} />
@@ -206,7 +202,6 @@ function App() {
       <div className=" w-full overflow-hidden " id="Home">
         <div className={`${styles.flexCenter}`}>
           <div className={`${styles.boxWidth}`}></div>
-
           <div className="bg-black-gradient"></div>
         </div>
       </div>
