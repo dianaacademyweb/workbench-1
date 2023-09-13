@@ -6,7 +6,7 @@ import employeeform from "../../assets/Images/layouts/employeeform.png";
 const sections = [
   {
     title: 'Managing Employees',
-    content: [
+    content: [+
       'Efficiently manage your workforce with the Employees section.',
       'This section empowers you to create new employees and manage existing profiles.',
     ],

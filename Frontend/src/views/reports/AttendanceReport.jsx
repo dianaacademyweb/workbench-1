@@ -172,6 +172,9 @@ const AttendanceReport = () => {
                               <th scope="col" class="px-4 py-2">
                                 End Report
                               </th>
+                              <th scope="col" class="px-4 py-2">
+                              total_time
+                              </th>
                             </tr>
                           </thead>
                           <tbody>
@@ -188,6 +191,9 @@ const AttendanceReport = () => {
                                 </td>
                                 <td class=" px-4 py-4">
                                   {logoutrecords.endreport}
+                                </td>
+                                <td class=" px-4 py-4">
+                                  {logoutrecords.total_time}
                                 </td>
                               </tr>
                             ))}

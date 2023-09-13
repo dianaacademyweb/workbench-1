@@ -7,6 +7,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* In your CSS file or stylesheet */
+/* .border-gradient {
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  border: 2px solid transparent;
+} */
+
+
 :root {
   --black-gradient: linear-gradient(
     144.39deg,

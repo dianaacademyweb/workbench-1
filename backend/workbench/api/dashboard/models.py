@@ -45,7 +45,7 @@ class ImageModel(models.Model):
 
 
 class Project(models.Model):
-    project_name = models.CharField(max_length=100)
+    project_name = models.CharField(max_length=100)         
     peoject_description = models.CharField(max_length=200)
     organization_id= models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
@@ -165,7 +165,7 @@ class screenshotsModel(models.Model):
 
 
 class desktopfile(models.Model):
-    name = models.CharField(null=True, max_length=50)
+    desktopfile_name = models.CharField(null=True, max_length=50)
     file = models.FileField(upload_to='desktopapp/')
     uploaded_at = models.DateTimeField(auto_now_add=True)
 

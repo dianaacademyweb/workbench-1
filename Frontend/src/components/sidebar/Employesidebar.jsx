@@ -113,6 +113,12 @@ const Sidebar = ({ open, onClose }) => {
         <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
           <Link to="/task">Tasks</Link>
         </li>
+        <li className="  text-[20px]  font-liolipins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/dianaconnect">Diana Connect</Link>
+        </li>
+        <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/performancepage">My Performance</Link>
+        </li>
         <li
           className="text-[20px] font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
           onClick={() => {

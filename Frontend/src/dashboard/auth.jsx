@@ -357,13 +357,6 @@ static Teamsdetails = (id) => {
     },
   });
 };
-
-
-
-
-
-
-
 }
 
 

@@ -4,6 +4,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        sidebar: "300px auto", //for sidebar layout
+        "sidebar-collapsed": "64px auto", //for collapsed sidebar layout
+      },
       animation: {
         marquee: 'marquee 30s linear infinite',
         marquee2: 'marquee2 30s linear infinite'

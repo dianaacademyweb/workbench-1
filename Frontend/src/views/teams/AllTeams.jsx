@@ -101,7 +101,7 @@ function AllTeams() {
           Teams
           <select className='my-1 mx-1 px-14 py-3 bg-gray-300 dark:bg-navy-800 dark:border dark:text-lightPrimary rounded-md text-navy-800 text-sm' value={Team.id} onChange={(event) => handleteamselect(event.target.value)}  >
           
-            <option value="" > Select team</option>
+            <option value="" >Select team</option>
             {teamsdata.map(Team => (
               <option key={Team.id} value={Team.id}>{Team.team_name}</option>
             ))}

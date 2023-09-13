@@ -43,7 +43,7 @@ const TeamAdd = () => {
       e.preventDefault();
     }
     if (team_name === "") {
-      return setError("You must enter your first name.");
+      return setError("You must enter your team name.");
     }
     if (team_desc === "") {
       return setError("You must enter some description ");
@@ -57,7 +57,7 @@ const TeamAdd = () => {
       });
       console.log(response);
       if (response.data && response.status === 201) {
-        return navigate("/teams");
+          return navigate("/teams");
         // return setError("Team created succesfullly");
       } // Handle the response as needed// Replace 'API_URL' with your actual API endpoint
       // Handle the response as needed

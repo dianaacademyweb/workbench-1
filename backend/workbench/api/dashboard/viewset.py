@@ -491,15 +491,55 @@ class allnotification(APIView):
           
     
     
+def send_attendance_email(user_email, date, username):
+    subject = 'Attendance Recorded'
+    message = f' {username} has marked the attendance {date}. Thank you!'
+    send_mail(subject, message, 'dianaacademyweb@gmail.com', [user_email], fail_silently=False,)
+
+def logout_attendance_email(user_email, date,attendance_totaltime , endreport, username):
+    subject = 'login out details'
+    message = f' {username} has been logout  {date} with total time of {attendance_totaltime} and today report is {endreport}. Thank you!'
+    send_mail(subject, message, 'dianaacademyweb@gmail.com', [user_email], fail_silently=False,)    
     
+
+    
+   
     
 class AttendanceViewset(viewsets.ModelViewSet):
      queryset = AttendanceLogs.objects.all()
-     serializer_class =  AttendanceSerilizer
-     
+     serializer_class =  AttendanceSerilizer 
+     def perform_create(self, serializer):
+        user_id = self.request.data.get('user_id')  # Adjust field name as per your payload
+        try:
+            attendance_instance = serializer.save()
+            attendance_date = attendance_instance.login_time    # Assuming you have a 'date' field in your model
+
+            user = User.objects.get(id=user_id)  # Get the associated user object
+            user_email = 'manager@dianaadvancedtechacademy.uk'
+            username = user.username
+            send_attendance_email(user_email,attendance_date, username)  # Send attendance email
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except User.DoesNotExist:
+            return Response({'message': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+      
 class logoutviewset(viewsets.ModelViewSet):
      queryset = logginout.objects.all()
-     serializer_class =  logoutserializer    
+     serializer_class =  logoutserializer 
+     def perform_create(self, serializer):
+        user_id = self.request.data.get('user_id')  # Adjust field name as per your payload
+        try:
+            attendance_instance = serializer.save()
+            attendance_date = attendance_instance.logout_time # Assuming you have a 'date' field in your model
+            attendance_totaltime = attendance_instance.total_time
+            endreport = attendance_instance.endreport
+
+            user = User.objects.get(id=user_id)  # Get the associated user object
+            user_email = 'manager@dianaadvancedtechacademy.uk'
+            username = user.username
+            logout_attendance_email(user_email,attendance_date,attendance_totaltime, endreport, username)  # Send attendance email
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except User.DoesNotExist:
+            return Response({'message': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)   
      
      
      

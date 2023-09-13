@@ -1,137 +1,172 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import DashApi from "../../dashboard/auth";
 import Top from "./Top";
+import { Bar } from "react-chartjs-2";
 
 const AdvancedReport = () => {
-  const [selectedOption, setSelectedOption] = useState("teams");
-  const [selectedTeam, setSelectedTeam] = useState("");
-  const [selectedEmployee, setSelectedEmployee] = useState("");
-
+  const [error, setError] = useState(undefined);
+  const [idle, SetIdle] = useState(null);
+  const [employees, setEmployees] = useState([]);
+  const [selectedEmployeeId, setSelectedEmployeeId] = useState(null);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [barChartData, setBarChartData] = useState({});
+  const countDateRangeOccurrences = () => {
+    if (idle && idle.data && startDate && endDate) {
+      const occurrences = {};
+      const startDateObj = new Date(startDate);
+      const endDateObj = new Date(endDate);
+      const dateList = [];
 
-  const handleStartDateChange = (event) => {
-    setStartDate(event.target.value);
+      let currentDate = startDateObj;
+      while (currentDate <= endDateObj) {
+        dateList.push(currentDate.toISOString().split("T")[0]);
+        currentDate.setDate(currentDate.getDate() + 1);
+      }
+
+      dateList.forEach((date) => {
+        occurrences[date] = idle.data.filter((item) => item.date === date).length * 16;
+      });
+
+      return occurrences;
+    }
+    return {};
   };
+  useEffect(() => {
+ 
+    setBarChartData({
+      labels: Object.keys(countDateRangeOccurrences()),
+      datasets: [
+        {
+          label: "Idle Time",
+          data: Object.values(countDateRangeOccurrences()),
+          backgroundColor: "rgba(75, 192, 192, 0.6)", 
+        },
+      ],
+    });
+  }, [countDateRangeOccurrences]);
 
-  const handleEndDateChange = (event) => {
-    setEndDate(event.target.value);
-  };
 
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value);
-    setSelectedTeam("");
-    setSelectedEmployee("");
-  };
+  useEffect(() => {
+    const Employelist = async (event) => {
+      if (event) {
+        event.preventDefault();
+      }
+      try {
+        let response = await DashApi.Employelist();
+        setEmployees(response.data.employes);
 
-  const handleTeamChange = (e) => {
-    setSelectedTeam(e.target.value);
-  };
+        if (response.data && response.data.success === true) {
+          return setError(response.data.msg);
+        }
+      } catch (error) {
+        if (error.response) {
+          return setError(error.response.data.msg);
+        }
+        return setError("There has been an error.");
+      }
+    };
 
-  const handleEmployeeChange = (e) => {
-    setSelectedEmployee(e.target.value);
-  };
+    Employelist(); // Call the function here
+  }, []);
 
-  const renderForm = () => {
-    if (selectedOption === "teams") {
-      return (
-        <div>
-          <label className="block mb-2 dark:text-lightPrimary dark:bg-navy-900">
-            Choose a team:
-          </label>
-          <select
-            className="border text-white  dark:text-lightPrimary dark:bg-navy-900 rounded p-2"
-            value={selectedTeam}
-            onChange={handleTeamChange}
-          >
-            <option value="">Select a team</option>
-            {/* Add your team options here */}
-          </select>
-        </div>
-      );
-    } else if (selectedOption === "employees") {
-      return (
-        <div>
-          <label className="block dark:text-lightPrimary dark:bg-navy-900 mb-2">
-            Choose an employee:
-          </label>
-          <select
-            className="border text-white  dark:text-lightPrimary dark:bg-navy-900 rounded p-2"
-            value={selectedEmployee}
-            onChange={handleEmployeeChange}
-          >
-            <option value="">Select an employee</option>
-            {/* Add your employee options here */}
-          </select>
-        </div>
-      );
+  const handleEmployeeClick = async (employeid) => {
+    setSelectedEmployeeId(employeid);
+    setStartDate("");
+    setEndDate(""); 
+    try {
+      let response = await DashApi.IdleTime(employeid);
+      SetIdle(response);
+    } catch (error) {
+      console.error("Error retrieving employee data:", error);
     }
   };
+
+
+
 
   return (
     <div>
       <Top />
-      <div className="flex mx-4 my-4 rounded-3xl text-lightPrimary  justify-between bg-white dark:bg-navy-900 dark:border-white dark:border">
+      <div className="flex mx-4 my-4 rounded-3xl text-white  justify-between bg-lightgray dark:bg-navy-900 dark:border-white dark:border">
         <h1 className="text-2xl py-6 px-4 text-black  dark:bg-navy-900 rounded-3xl">
           ADVANCED REPORT
         </h1>
       </div>
-      <div className="bg-white text-lightPrimary  dark:bg-navy-900 m-4 rounded-3xl  min-h-screen">
-        <div className="m-8 mt-4">
-          <div className="md:flex items-center mb-4">
-            <input
-              type="radio"
-              id="teams"
-              value="teams"
-              checked={selectedOption === "teams"}
-              onChange={handleOptionChange}
-             
-            />
-            <label
-              htmlFor="teams"
-              className="ml-2  dark:bg-navy-900 mr-4"
-            >
-              Teams
-            </label>
-            <input
-              type="radio"
-              id="employees"
-              value="employees"
-              checked={selectedOption === "employees"}
-              onChange={handleOptionChange}
-              className="dark:text-white dark:bg-navy-900"
-            />
-            <label htmlFor="employees" className="ml-2">
-              Employees
-            </label>
-            <label className="block mb-2 m-8">
-              Start Date:
+      <div className="bg-lightgray text-white dark:bg-navy-900 m-4 rounded-3xl  min-h-screen">
+        <div className="p-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex-grow">
+              <label className="mb-2 block text-white sm:text-xl">
+                Select Employee
+              </label>
+              <select
+                className="my-1 px-4 py-2 bg-lightPrimary rounded-md text-white dark:bg-[#000] border-2  sm:text-lg w-full"
+                onChange={(event) => handleEmployeeClick(event.target.value)}
+              >
+                <option className="dark:bg-[#4f4f504d]" value="">
+                  Select Employee
+                </option>
+                {employees.map((employee) => (
+                  <option
+                    key={employee.id}
+                    value={employee.employeid}
+                    className=""
+                  >
+                    {employee.username}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="flex-grow">
+              <label className="mb-2 block text-white sm:text-xl">
+                Start Date
+              </label>
               <input
                 type="date"
                 value={startDate}
-                onChange={handleStartDateChange}
-                className="block md:w-full text-white dark:border dark:text-lightPrimary border-gray-300 rounded-md  dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                onChange={(event) => setStartDate(event.target.value)}
+                className="my-1 px-4 py-2 bg-lightPrimary rounded-md text-white dark:bg-[#000] border-2  sm:text-lg w-full"
               />
-            </label>
-
-            <label className="block mb-2 m-8">
-              End Date:
+            </div>
+            <div className="flex-grow">
+              <label className="mb-2 block text-white sm:text-xl">
+                End Date
+              </label>
               <input
                 type="date"
                 value={endDate}
-                onChange={handleEndDateChange}
-                className="block md:w-full text-white border-gray-300 rounded-md dark:text-lightPrimary dark:border dark:bg-navy-900 shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50 "
+                onChange={(event) => setEndDate(event.target.value)}
+                className="my-1 px-4 py-2 bg-lightPrimary rounded-md text-white dark:bg-[#000] border-2  sm:text-lg w-full"
               />
-            </label>
-
-            <button
-              type="submit"
-              className="px-6 py-1 border rounded-full hover:bg-lightPrimary hover:text-white dark:bg-lightPrimary dark:hover:bg-navy-800 dark:hover:text-lightPrimary dark:text-navy-800"
-            >
-              Submit
-            </button>
+            </div>
           </div>
-          {renderForm()}
-          {/* Additional report content */}
+        </div>
+        <div>
+          {startDate && endDate && (
+            <div>
+              <div className="text-white text-center">
+                IdleTime within Date Range ({startDate} - {endDate}):
+              </div>
+              <div className="w-full">
+                <Bar
+                  data={barChartData}
+                  options={{
+                    responsive: true,
+                    scales: {
+                      x: {
+                        beginAtZero: true,
+                      },
+                      y: {
+                        beginAtZero: true,
+                      },
+                    },
+                  }}
+                />
+              </div>
+            </div>
+          )}
+          {error}
         </div>
       </div>
     </div>

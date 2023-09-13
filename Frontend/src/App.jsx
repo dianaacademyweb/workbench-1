@@ -73,6 +73,11 @@ import DocsReports from "./components/docs/DocsReports";
 import DocsEmployees from "./components/docs/DocsEmployees";
 import DocsTeams from "./components/docs/DocsTeams";
 import DocsTasks from "./components/docs/DocsTasks";
+import PerformancePage from "./components/performance/PerformancePage";
+import DianaDashboard from "./components/dianaconnect/DianaDashboard";
+
+import Chatting from "./components/dianaconnect/components/Chatting";
+
 
 function App() {
   let user = localStorage.getItem("id");
@@ -102,13 +107,7 @@ function App() {
             <Route element={<EmployeeOnboarding />} path="/employee-onboarding" exact />
             <Route element={<Technical />} path="/technical" exact />
             <Route element={<Manager />} path="/manager" exact />
-            <Route element={<Installation/>} path="/installation" exact />
-            <Route element={<DocsDashboard/>} path="/docsdashboard" exact />
-            <Route element={<DocsReports/>} path="/docsreports" exact />
-            <Route element={<DocsEmployees/>} path="/docsemployees" exact />
-            <Route element={<DocsTeams/>} path="/docsteams" exact />
-            <Route element={<DocsTasks/>} path="/docstasks" exact />
-            <Route element={<ClientApp />} path="/docsclientapp" exact />
+            
             <Route path="/login" element={<Newloginpage />} />
             <Route element={<Home />} path="/" exact />
             <Route path="/login" element={<Newloginpage />} />
@@ -117,6 +116,16 @@ function App() {
             {/* these are the privates routes no one can enter in these with out authentication  */}
             <Route element={<PrivateRoutes />}>
               <Route element={<Dash />} path="/dashboard" />
+              <Route element={<Installation/>} path="/installation" exact />
+            <Route element={<DocsDashboard/>} path="/docsdashboard" exact />
+            <Route element={<DocsReports/>} path="/docsreports" exact />
+            <Route element={<DocsEmployees/>} path="/docsemployees" exact />
+            <Route element={<DocsTeams/>} path="/docsteams" exact />
+            <Route element={<DocsTasks/>} path="/docstasks" exact />
+            <Route element={<PerformancePage/>} path="/performancepage" exact />
+            <Route element={<Chatting/>} path="/chat" exact />
+            <Route element={<ClientApp />} path="/docsclientapp" exact />
+              <Route element={<DianaDashboard/>} path="/dianaconnect" exact />
               {usertype === "employe" && (
                 <Route element={<Dash />} path="/dashboard" />
               )}
