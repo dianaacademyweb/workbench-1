@@ -11,6 +11,7 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import axios from "axios";
 
 const Chatting = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,7 +24,6 @@ const Chatting = () => {
   const [sentChat, setSentChat] = useState([]); // Store sent chat messages
   const [receivedChat, setReceivedChat] = useState([]); // Store received chat messages
   const type = localStorage.getItem("type"); // Retrieve the user type
-  const [receiver, setReceiver]=useState("")
   // ...
 
   useEffect(() => {
@@ -42,9 +42,11 @@ const Chatting = () => {
   useEffect(() => {
     const Employelist = async () => {
       try {
-        const response = await DashApi.Employelist();
-        setEmployees(response.data.employes);
-
+        const response = await axios.get(
+          "https://sentinel.www.dianasentinel.com/api/users/alluser"
+        );
+        setEmployees(response.data);
+        console.log(response.data);
         if (response.data && response.data.success === true) {
           setError(response.data.msg);
         }
@@ -78,6 +80,7 @@ const Chatting = () => {
 
     // Load sent and received chat messages for the selected employee
     loadSentChatMessages(employee.username);
+   
     loadReceivedChatMessages(employee.username);
   };
 
@@ -100,18 +103,12 @@ const Chatting = () => {
 
       // Update the sentChat state with sent chat messages
       setSentChat(sentChatData);
+      
     } catch (error) {
       console.error("Error loading sent chat messages:", error);
     }
   };
 
-  // Load received chat messages for a specific user from Firestore
-  // ...
-
-  // Load received chat messages for a specific user from Firestore
-
-  // Load received chat messages for a specific user from Firestore
-  // Load received chat messages for a specific user from Firestore
   const loadReceivedChatMessages = async (userName) => {
     try {
       // Get the reference to the user's document matching the selected username
@@ -131,10 +128,7 @@ const Chatting = () => {
 
       // Update the receivedChat state with received chat messages
       setReceivedChat(receivedChatData);
-      
       console.log("Received Chat Data:", receivedChatData);
-      setReceiver(receivedChat[0].from)
-      console.log(receiver)
     } catch (error) {
       console.error("Error loading received chat messages:", error);
     }
@@ -178,58 +172,17 @@ const Chatting = () => {
 
       // Update the chatMessages state with the new message
       setSentChat([...sentChat, newMessage]);
-      setMessageText(""); // Clear the message text input
-    } catch (error) {
-      console.error("Error sending message:", error);
-    }
-  };
-  const handleMessage = async (receiver) => {
-    if (messageText.trim() === "") return;
-
-    try {
-      const receiverUsername = receiver ;
-      console.log(receiverUsername)
-      // Create a new message document in Firestore for the sender
-      const senderDocRef = doc(db, "users", userName);
-      const senderSubcollectionRef = collection(senderDocRef, "sentMessages");
-      await addDoc(senderSubcollectionRef, {
-        to: receiverUsername, // Receiver's username
-        content: messageText, // Message content
-        timestamp: new Date().toISOString(),
-      });
-
-      // Create a new message document in Firestore for the receiver
-      const receiverDocRef = doc(db, "users", receiverUsername);
-      const receiverSubcollectionRef = collection(
-        receiverDocRef,
-        "receivedMessages"
-      );
-      await addDoc(receiverSubcollectionRef, {
-        from: userName, // Sender's username
-        content: messageText, // Message content
-        timestamp: new Date().toISOString(),
-      });
-
-      // Add the sent message to the local state for immediate display
-      const newMessage = {
-        from: userName,
-        to: receiverUsername,
-        content: messageText,
-        timestamp: new Date().toISOString(),
-      };
-
-      // Update the chatMessages state with the new message
-      setSentChat([...sentChat, newMessage]);
+     
       setMessageText(""); // Clear the message text input
     } catch (error) {
       console.error("Error sending message:", error);
     }
   };
 
-  
-  const combinedChat = [...sentChat, ...receivedChat].sort(
-    (a, b) => a.timestamp.localeCompare(b.timestamp)
+  const combinedChat = [ ...receivedChat,...sentChat].sort((a, b) =>
+    a.timestamp.localeCompare(b.timestamp)
   );
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* Video Background */}
@@ -244,17 +197,15 @@ const Chatting = () => {
 
       {/* Content */}
       <div className="relative z-10 p-4 flex">
-      
         <div className="relative flex-1">
-          {type === "organization" && (
-            <input
-              type="text"
-              placeholder="Search Employee"
-              className="py-2 px-4  rounded-full border border-gray-300 focus:outline-none focus:border-blue-500"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-          )}
+          <input
+            type="text"
+            placeholder="Search Employee"
+            className="py-2 px-4  rounded-full border border-gray-300 focus:outline-none focus:border-blue-500"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+
           <div className="p-3 w-1/4">
             {filteredEmployees.map((employee) => (
               <div
@@ -267,24 +218,19 @@ const Chatting = () => {
             ))}
           </div>
         </div>
-
-        {/* Right-side chat box */}
+      
         {selectedEmployee && (
           <div className="w-full bg-gray-50 bg-opacity-50 h-screen p-4">
             <div className="text-xl font-semibold mb-2">
               Chat with {selectedEmployee.username}
             </div>
             <div className="h-96 border border-gray-300 p-4 overflow-y-auto">
-              {/* Display sent chat messages */}
-            
+              {/* Display combined and sorted chat messages */}
               {combinedChat.map((message, index) => (
                 <div key={index} className="mb-2">
                   <strong>{message.from}:</strong> {message.content}
                 </div>
               ))}
-            
-              {/* Display received chat messages */}
-              
             </div>
             <div className="mt-4 flex">
               <input
@@ -297,38 +243,6 @@ const Chatting = () => {
               <button
                 className="bg-blue-500 text-lightPrimary px-4 py-2  rounded-full hover:bg-blue-600"
                 onClick={handleSendMessage}
-              >
-                Send
-              </button>
-            </div>
-          </div>
-        )}
-        {type==="employe" && (
-          <div className="w-full bg-gray-50 bg-opacity-50 h-screen p-4">
-            <div className="text-xl font-semibold mb-2">
-              Chat with {receiver}
-            </div>
-            <div className="h-96 border border-gray-300 p-4 overflow-y-auto">
-             
-              
-
-            {combinedChat.map((message, index) => (
-                <div key={index} className="mb-2">
-                  <strong>{message.from}:</strong> {message.content}
-                </div>
-              ))}
-            </div>
-            <div className="mt-4 flex">
-              <input
-                type="text"
-                placeholder="Type your message..."
-                className="w-full py-2 px-4 rounded-full border border-gray-300 focus:outline-none focus:border-blue-500"
-                value={messageText}
-                onChange={(e) => setMessageText(e.target.value)}
-              />
-              <button
-                className="bg-blue-500 text-lightPrimary px-4 py-2  rounded-full hover:bg-blue-600"
-                onClick={() => handleMessage(receiver)} 
               >
                 Send
               </button>

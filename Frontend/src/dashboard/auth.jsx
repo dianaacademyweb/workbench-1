@@ -15,7 +15,14 @@ class DashApi {
       },
     });
   };
-
+  // static Employees = () => {
+  //   const token = localStorage.getItem("token");
+  //   return axios.post(`${base2}/alluser`, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   });
+  // };
   static attendanceReport = (id , params) => {
     const token = localStorage.getItem("token");
     return axios.get(`${base}/attendancelist/${id}/`, params,{
