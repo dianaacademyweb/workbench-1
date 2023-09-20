@@ -23,6 +23,22 @@ class DashApi {
   //     },
   //   });
   // };
+  static breakstart = (id , params) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/breakstarttime/${id}/`, params,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
+  static totaltime = (id , params) => {
+    const token = localStorage.getItem("token");
+    return axios.get(`${base}/Totaltime/${id}/`, params,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
   static attendanceReport = (id , params) => {
     const token = localStorage.getItem("token");
     return axios.get(`${base}/attendancelist/${id}/`, params,{

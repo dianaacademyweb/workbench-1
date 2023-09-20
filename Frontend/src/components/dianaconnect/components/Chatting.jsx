@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import chatVideo from "../../../assets/chat.mp4";
-import DashApi from "../../../dashboard/auth";
+import axios from "axios";
 import {
   collection,
   addDoc,
@@ -11,33 +11,26 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import axios from "axios";
 
 const Chatting = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [employees, setEmployees] = useState([]);
   const [filteredEmployees, setFilteredEmployees] = useState([]);
   const [error, setError] = useState(undefined);
-  const [userName, setUserName] = useState(localStorage.getItem("name")); // Retrieve the sender's name from local storage
+  const [userName, setUserName] = useState(localStorage.getItem("name"));
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [messageText, setMessageText] = useState("");
-  const [sentChat, setSentChat] = useState([]); // Store sent chat messages
-  const [receivedChat, setReceivedChat] = useState([]); // Store received chat messages
-  const type = localStorage.getItem("type"); // Retrieve the user type
-  // ...
+  const [chatMessages, setChatMessages] = useState([]);
+
 
   useEffect(() => {
-    // Retrieve the sender's name from local storage
     const localUserName = localStorage.getItem("name");
     setUserName(localUserName);
 
-    // Load received chat messages when the component mounts
     if (localUserName) {
-      loadReceivedChatMessages(localUserName);
+      loadChatMessages(localUserName);
     }
   }, []);
-
-  // ...
 
   useEffect(() => {
     const Employelist = async () => {
@@ -46,7 +39,6 @@ const Chatting = () => {
           "https://sentinel.www.dianasentinel.com/api/users/alluser"
         );
         setEmployees(response.data);
-        console.log(response.data);
         if (response.data && response.data.success === true) {
           setError(response.data.msg);
         }
@@ -61,131 +53,114 @@ const Chatting = () => {
 
     Employelist();
   }, []);
+  // ...
 
   useEffect(() => {
     if (searchQuery === "") {
-      setFilteredEmployees([]); // Clear filtered employees when no query
+      setFilteredEmployees([]);
     } else {
       const filteredResults = employees.filter((employee) =>
         employee.username.toLowerCase().includes(searchQuery.toLowerCase())
       );
-      setFilteredEmployees(filteredResults);
+
+      // Filter out the currently logged-in user from the search results
+      const filteredEmployeesWithoutCurrentUser = filteredResults.filter(
+        (employee) => employee.username !== userName
+      );
+
+      setFilteredEmployees(filteredEmployeesWithoutCurrentUser);
     }
-  }, [searchQuery, employees]);
+  }, [searchQuery, employees, userName]);
 
-  // Handle click on employee name to open chat box
-  const handleEmployeeClick = (employee) => {
-    // Set the selected employee for chat
-    setSelectedEmployee(employee);
+  // ...
 
-    // Load sent and received chat messages for the selected employee
-    loadSentChatMessages(employee.username);
-   
-    loadReceivedChatMessages(employee.username);
-  };
-
-  // Load sent chat messages for a specific user from Firestore
-  const loadSentChatMessages = async (selectedUsername) => {
+  const loadChatMessages = async (userName) => {
     try {
       const senderDocRef = doc(db, "users", userName);
       const senderSubcollectionRef = collection(senderDocRef, "sentMessages");
-      const q = query(
-        senderSubcollectionRef,
-        where("to", "==", selectedUsername)
+      const receiverDocRef = doc(db, "users", userName);
+      const receiverSubcollectionRef = collection(
+        receiverDocRef,
+        "receivedMessages"
       );
-      const querySnapshot = await getDocs(q);
+
+      const sentQuery = query(senderSubcollectionRef);
+      const receivedQuery = query(receiverSubcollectionRef);
+
+      const [sentSnapshot, receivedSnapshot] = await Promise.all([
+        getDocs(sentQuery),
+        getDocs(receivedQuery),
+      ]);
 
       const sentChatData = [];
+      const receivedChatData = [];
 
-      querySnapshot.forEach((doc) => {
+      sentSnapshot.forEach((doc) => {
         sentChatData.push(doc.data());
       });
 
-      // Update the sentChat state with sent chat messages
-      setSentChat(sentChatData);
-      
-    } catch (error) {
-      console.error("Error loading sent chat messages:", error);
-    }
-  };
-
-  const loadReceivedChatMessages = async (userName) => {
-    try {
-      // Get the reference to the user's document matching the selected username
-      const userDocRef = doc(db, "users", userName);
-      const receivedSubcollectionRef = collection(
-        userDocRef,
-        "receivedMessages"
-      );
-      const q = query(receivedSubcollectionRef);
-      const querySnapshot = await getDocs(q);
-
-      const receivedChatData = [];
-
-      querySnapshot.forEach((doc) => {
+      receivedSnapshot.forEach((doc) => {
         receivedChatData.push(doc.data());
       });
 
-      // Update the receivedChat state with received chat messages
-      setReceivedChat(receivedChatData);
-      console.log("Received Chat Data:", receivedChatData);
+      const combinedChat = [...sentChatData, ...receivedChatData].sort((a, b) =>
+        a.timestamp.localeCompare(b.timestamp)
+      );
+
+      setChatMessages(combinedChat);
     } catch (error) {
-      console.error("Error loading received chat messages:", error);
+      console.error("Error loading chat messages:", error);
     }
   };
 
-  // Handle sending a message
+  const handleEmployeeClick = (employee) => {
+    setSelectedEmployee(employee);
+    loadChatMessages(employee.username);
+  };
+
   const handleSendMessage = async () => {
     if (messageText.trim() === "") return;
-
+  
     try {
       const receiverUsername = selectedEmployee.username;
-
-      // Create a new message document in Firestore for the sender
+  
       const senderDocRef = doc(db, "users", userName);
       const senderSubcollectionRef = collection(senderDocRef, "sentMessages");
-      await addDoc(senderSubcollectionRef, {
-        to: receiverUsername, // Receiver's username
-        content: messageText, // Message content
+      const senderMessage = {
+        to: receiverUsername,
+        content: messageText,
         timestamp: new Date().toISOString(),
-      });
-
-      // Create a new message document in Firestore for the receiver
+      };
+  
+      // Add the message to Firestore for the sender
+      await addDoc(senderSubcollectionRef, senderMessage);
+  
       const receiverDocRef = doc(db, "users", receiverUsername);
       const receiverSubcollectionRef = collection(
         receiverDocRef,
         "receivedMessages"
       );
-      await addDoc(receiverSubcollectionRef, {
-        from: userName, // Sender's username
-        content: messageText, // Message content
-        timestamp: new Date().toISOString(),
-      });
-
-      // Add the sent message to the local state for immediate display
-      const newMessage = {
+      const receiverMessage = {
         from: userName,
-        to: receiverUsername,
         content: messageText,
         timestamp: new Date().toISOString(),
       };
-
+  
+      // Add the message to Firestore for the receiver
+      await addDoc(receiverSubcollectionRef, receiverMessage);
+  
       // Update the chatMessages state with the new message
-      setSentChat([...sentChat, newMessage]);
-     
-      setMessageText(""); // Clear the message text input
+      setChatMessages([...chatMessages, senderMessage]);
+  
+      setMessageText("");
     } catch (error) {
       console.error("Error sending message:", error);
     }
   };
-
-  const combinedChat = [ ...receivedChat,...sentChat].sort((a, b) =>
-    a.timestamp.localeCompare(b.timestamp)
-  );
+  ;
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Video Background */}
       <video
         autoPlay
         loop
@@ -195,7 +170,6 @@ const Chatting = () => {
         <source src={chatVideo} type="video/mp4" />
       </video>
 
-      {/* Content */}
       <div className="relative z-10 p-4 flex">
         <div className="relative flex-1">
           <input
@@ -218,15 +192,14 @@ const Chatting = () => {
             ))}
           </div>
         </div>
-      
+
         {selectedEmployee && (
           <div className="w-full bg-gray-50 bg-opacity-50 h-screen p-4">
             <div className="text-xl font-semibold mb-2">
               Chat with {selectedEmployee.username}
             </div>
             <div className="h-96 border border-gray-300 p-4 overflow-y-auto">
-              {/* Display combined and sorted chat messages */}
-              {combinedChat.map((message, index) => (
+              {chatMessages.map((message, index) => (
                 <div key={index} className="mb-2">
                   <strong>{message.from}:</strong> {message.content}
                 </div>

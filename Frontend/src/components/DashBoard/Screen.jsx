@@ -110,7 +110,7 @@ const ScreenshotsRow = () => {
             onChange={(event) => handleEmployeeClick(event.target.value)}
           >
             <option className="dark:bg-[#4f4f504d] " value="">
-              select employe
+              select employee
             </option>
             {employees.map((employee) => (
               <option

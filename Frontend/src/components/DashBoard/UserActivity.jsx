@@ -2,7 +2,8 @@ import React from "react";
 import DashApi from "../../dashboard/auth";
 import { useState, useEffect } from "react";
 import Card from "../../components/card/index";
-
+import file from "./file.json"
+import Lottie from "lottie-react";
 const   UserActivity = (props) => {
   const [activiti, setActivity] = useState([]);
   let employeid = props.employeid;
@@ -45,7 +46,7 @@ const   UserActivity = (props) => {
           <h1 className=" mt-2 text-lightPrimary font-bold text-xl text-center">USER ACTIVITY</h1>
 
         <div className="py-4 px-8 ">
-          {activiti.length > 0 ? ( // Check if activiti has data before rendering the table
+          {activiti.length > 0 ? ( 
             <table className="table-auto w-full rounded-lg ">
               <thead className="border-2 border-navy-600 ">
                 <tr className="rounded-lg">
@@ -64,7 +65,7 @@ const   UserActivity = (props) => {
                     <td className="border-2 py-2 px-2  border-navy-600 justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
                       {task.screen_count}
                     </td>
-                    <td className="border-2 py-2 px-2 border-navy-600  justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
+                    <td className="border-2 py-2 px-2 border-navy-600 justify-center dark:text-darktext dark:bg-navy-800 bg-lightPrimary text-white">
                       {task.screen_name}
                     </td>
                   </tr>
@@ -72,7 +73,11 @@ const   UserActivity = (props) => {
               </tbody>
             </table>
           ) : (
-            <p className="text-lightPrimary">No activities to display.</p>
+            
+            // <p className="text-lightPrimary">No activities to display.</p>
+            <div className="flex h-[300px] w-1/2 items-center">
+            <Lottie  animationData={file}/>
+            </div>
           )}
         </div>
       </Card>

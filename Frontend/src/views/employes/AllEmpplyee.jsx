@@ -3,6 +3,8 @@ import { FiSearch } from "react-icons/fi";
 import DashApi from "../../dashboard/auth";
 import Card from "../../components/card";
 import { Link } from "react-router-dom";
+import addemp from "./addemp.json"
+import Lottie from "lottie-react";
 
 function Employe() {
   const [error, setError] = useState(undefined);
@@ -62,8 +64,8 @@ function Employe() {
       </div>
 
 
-      <div className="flex gap-1">
-        <div className="mt-5 w-1/5 ">
+      <div className="flex flex-col sm:flex-row gap-1">
+        <div className="mt-5 sm:w-1/5 ">
           <Card extra="p-[20px]">
             <div className=" mt-8 justify-center flex   rounded-md w-full h-full">
               <div className=" text-xl flex ">
@@ -93,34 +95,11 @@ function Employe() {
             </div>
           </Card>
         </div>{" "}
-        <div className=" w-4/5 ml-5  mt-5  ">
+        <div className=" sm:w-4/5 sm:ml-5  mt-5  ">
           <Card extra=" p-[20px]">
-            <div className="mt-8  text-xl  dark:border-white border-navy-400 rounded-md h-full">
-              {employeeData && (
-                <div
-                  className="justify-center grid grid-flow-row gap-3 mx-[70px] items-center text-navy-700 dark:bg-navy-900 px-2 py-2  my-2"
-                  key={employeeData.id}
-                >
-                  <h1 className="justify-center text-navy-900 dark:text-white">
-                    id = {employeeData.id}
-                  </h1>
-                  <h1 className="justify-center text-navy-900 dark:text-white ">
-                    {" "}
-                    Date ={employeeData.username}
-                  </h1>
-                  <h2 className="block text-navy-900 dark:text-white">
-                    title = {employeeData.e_address}
-                  </h2>
-                  <h3 className="block text-navy-900 dark:text-white">
-                    Time ={employeeData.e_gender}
-                  </h3>
-                  <h3 className="block text-navy-900 dark:text-white">
-                    contact = {employeeData.e_contact}
-                  </h3>
-                </div>
-              )}
-            </div>
-            {error}
+            <div className="w-2/3">
+                    <Lottie animationData={addemp}/>
+                    </div>
           </Card>
         </div>
       </div>

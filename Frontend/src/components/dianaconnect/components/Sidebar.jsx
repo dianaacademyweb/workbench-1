@@ -65,7 +65,7 @@ const Sidebar = ({
         <ul className="space-y-2 py-5">
           <Link to="/dianaconnect">
             <li
-              className={`px-1  items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
+              className={`px-1 hover:text-[17px] items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
                 selectedItem === "Home"
                   ? "bg-purple-600"
                   : "hover:bg-purple-600"
@@ -77,7 +77,7 @@ const Sidebar = ({
             </li>
           </Link>
           <li
-            className={`px-1 items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
+            className={`px-1 hover:text-[17px]  items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
               selectedItem === "Messages"
                 ? "bg-purple-600"
                 : "hover:bg-purple-600"
@@ -88,7 +88,7 @@ const Sidebar = ({
             Messages
           </li>
           <li
-            className={`px-1 items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
+            className={`px-1 hover:text-[17px]  items-center flex flex-col sm:flex-row sm:px-4 py-2 rounded-3xl cursor-pointer ${
               selectedItem === "Channels"
                 ? "bg-purple-600"
                 : "hover:bg-purple-600"
@@ -108,7 +108,7 @@ const Sidebar = ({
           {channels.map((channel) => (
             <li
               key={channel.id}
-              className={`text-center items-center flex flex-col sm:flex-row sm:px-4 px-2 sm:ml-6 py-2 rounded-3xl cursor-pointer ${
+              className={`text-center hover:text-[17px]  items-center flex flex-col sm:flex-row sm:px-4 px-2 sm:ml-6 py-2 rounded-3xl cursor-pointer ${
                 selectedItem === (channel?.name || "")
                   ? "bg-purple-600"
                   : "hover:bg-purple-600"
@@ -120,7 +120,7 @@ const Sidebar = ({
           ))}
 
           <li
-            className={`px-4 py-2 rounded-3xl cursor-pointer ${
+            className={`px-4 hover:text-[17px]  py-2 rounded-3xl cursor-pointer ${
               selectedItem === "Chats" ? "bg-purple-600" : "hover:bg-purple-600"
             }`}
         // Handle "Chats" menu item click

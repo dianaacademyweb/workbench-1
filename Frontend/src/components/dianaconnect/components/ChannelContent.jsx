@@ -8,6 +8,7 @@ import {
   
 } from "@fortawesome/free-solid-svg-icons";
 import ch from "../../../assets/Images/layouts/channel.png"
+import QuoteSlider from "./QuoteSlider";
 const ChannelContent = ({ channel, userName, db }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
@@ -60,10 +61,13 @@ const ChannelContent = ({ channel, userName, db }) => {
     <div className="w-full bg-LightPrimary bg-cover p-4 min-h-screen flex flex-col" style={{
       backgroundImage: `url(${ch})`,
     }}>
-      <div className="flex-1 mb-4">
-        <h2 className="text-2xl text-lightPrimary uppercase font-semibold"><FontAwesomeIcon icon={faHashtag} className="mr-2" />{channel.name}</h2>
+   
+      <div className="flex-1 mt-2 mb-2">
+        <h2 className="sm:text-2xl mb-2 text-lightPrimary uppercase font-semibold"><FontAwesomeIcon icon={faHashtag} className="mr-2" />{channel.name}</h2>
         {/* Add any additional channel information or styling here */}
+        <QuoteSlider/>
       </div>
+      
       <div className=" overflow-y-auto" >
         <Chat
           channel={channel}

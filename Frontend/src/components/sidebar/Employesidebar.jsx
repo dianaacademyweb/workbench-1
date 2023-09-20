@@ -2,6 +2,13 @@ import React, { useState, useEffect } from "react";
 import { HiX } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { IoMdSettings } from "react-icons/io";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { CgPerformance } from "react-icons/cg";
+import { AiOutlineTeam } from "react-icons/ai";
+
+import { HiDocument } from "react-icons/hi";
+import { MdOutlineConnectWithoutContact } from "react-icons/md";
 
 import DashApi from "../../dashboard/auth";
 import { IMAGE_API } from "../../config/constant";
@@ -107,26 +114,26 @@ const Sidebar = ({ open, onClose }) => {
         )}
       </p>
       <div className="relative mb-3 hover:cursor-pointer overflow-y-auto max-h-screen">
-        <li className="  text-[20px]  font-liolipins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
-          <Link to="/dashboard">Dashboard</Link>
+        <li className="  text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/dashboard"><div className="flex items-center gap-1"><LuLayoutDashboard/>Dashboard</div></Link>
         </li>
-        <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
-          <Link to="/task">Tasks</Link>
+        <li className="  text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/task"><div className="flex items-center"><AiOutlineTeam/>Teams</div></Link>
         </li>
-        <li className="  text-[20px]  font-liolipins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
-          <Link to="/dianaconnect">Diana Connect</Link>
+        <li className="  text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/dianaconnect"><div className="flex items-center"><MdOutlineConnectWithoutContact/>Diana Connect</div></Link>
         </li>
-        <li className="  text-[20px]  font-poppins  text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
-          <Link to="/performancepage">My Performance</Link>
+        <li className="  text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3">
+          <Link to="/performancepage"><div className="flex items-center"><CgPerformance/>My Performance</div></Link>
         </li>
         <li
-          className="text-[20px] font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
+          className="text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
           onClick={() => {
             setSettingsExpanded(!settingsExpanded);
             setDropdownOpen(!dropdownOpen);
           }}
         >
-          Settings <IoIosArrowDown className=" w-5 h-5" />
+        <IoMdSettings/>  Settings <IoIosArrowDown className=" w-5 h-5" />
         </li>
         {settingsExpanded && (
           <div
@@ -188,13 +195,13 @@ const Sidebar = ({ open, onClose }) => {
           </div>
         )}
         <li
-          className="text-[20px] font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
+          className="text-[20px] shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] hover:bg-white hover:text-lightPrimary font-liolipins text-white dark:text-darktext my-[3px] flex cursor-pointer items-center px-10 py-3"
           onClick={() => {
             setDocs(!docs);
             setDocsOpen(!dropdocsOpen);
           }}
         >
-          Documentation <IoIosArrowDown className=" w-5 h-5" />
+        <HiDocument/>  Documentation <IoIosArrowDown className=" w-5 h-5" />
         </li>
         {docs && (
           <div

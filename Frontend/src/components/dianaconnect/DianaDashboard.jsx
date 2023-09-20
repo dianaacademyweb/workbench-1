@@ -8,21 +8,18 @@ import bg from "../../assets/Images/layouts/connect.png";
 
 import "./animate.css";
 
-
-
 const DianaDashboard = () => {
   const [selectedItem, setSelectedItem] = useState("Home");
   const [channels, setChannels] = useState([]);
   const [selectedChannel, setSelectedChannel] = useState(null);
   const [userName] = useState(localStorage.getItem("name"));
-  const [isTypingAnimationFinished, setIsTypingAnimationFinished] = useState(
-    false
-  );
+  const [isTypingAnimationFinished, setIsTypingAnimationFinished] =
+    useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-// State to track the selected employee for chat
+  // State to track the selected employee for chat
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
- 
+
   useEffect(() => {
     // Simulate the typing animation by setting a delay
     const typingAnimationTimeout = setTimeout(() => {
@@ -72,7 +69,6 @@ const DianaDashboard = () => {
     setIsCreatingChannel(!isCreatingChannel);
   };
 
-
   const toggleSidebar = () => {
     setIsSidebarVisible(!isSidebarVisible);
   };
@@ -81,16 +77,12 @@ const DianaDashboard = () => {
   if (selectedItem === "Home") {
     dashboardContent = (
       <div
-        className="w-full bg-LightPrimary p-4 bg-cover bg-center relative"
+        className="w-full bg-LightPrimary  bg-cover bg-center relative"
         style={{
           backgroundImage: `url(${bg})`,
         }}
       >
-        <div className="flex right-0">
-          
-          
-        </div>
-        <div>
+        <div className="bg-blue-700 p-4 bg-opacity-50 min-h-screen">
           {searchQuery === "" ? (
             // Render your content when searchQuery is empty
             <div className=" text-lightPrimary flex flex-col justify-center items-center text-center">
@@ -105,14 +97,11 @@ const DianaDashboard = () => {
             </div>
           ) : (
             // Render filtered employees when searchQuery is not empty
-            <div className="text-lightPrimary  rounded-2xl p-2">
-
-            </div>
+            <div className="text-lightPrimary  rounded-2xl p-2"></div>
           )}
         </div>
       </div>
     );
- 
   } else {
     dashboardContent = selectedChannel ? (
       <ChannelContent channel={selectedChannel} userName={userName} db={db} />
@@ -127,8 +116,6 @@ const DianaDashboard = () => {
 
   return (
     <div className="flex h-screen">
-       
-      
       <Sidebar
         selectedItem={selectedItem}
         channels={channels}

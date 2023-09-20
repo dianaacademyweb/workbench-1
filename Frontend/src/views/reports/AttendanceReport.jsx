@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Top from "./Top";
 import { DashApi } from "../../components";
 
@@ -25,14 +26,14 @@ const AttendanceReport = () => {
 
         if (response.data && response.data.success === true) {
           console.log(response);
-          return setError(response.data.msg);
+          toast.error(response.data.msg);
         }
       } catch (error) {
         console.log(err);
         if (err.response) {
-          return setError(err.response.data.msg);
+          toast.error(err.response.data.msg);
         }
-        return setError("There has been an error.");
+        toast.error("There has been an error.");
       }
     };
 
@@ -42,10 +43,10 @@ const AttendanceReport = () => {
   const handleSubmit = async (employeid) => {
     setSelecteemployeid(employeid);
     if (start_date === "") {
-      return setError("You must select the start date");
+      toast.error("You must select the start date");
     }
     if (end_date === "") {
-      return setError("You must select the end date");
+      toast.error("You must select the end date");
     }
     try {
       let response = await DashApi.attendanceReport(employeid, {
@@ -64,8 +65,16 @@ const AttendanceReport = () => {
       });
       setLogoutreport(response2.data);
       console.log(response2);
+      
+      // let response4 = await DashApi.breakend(employeid, {
+      //   params: {
+      //     start_date: start_date,
+      //     end_date: end_date,
+      //   },
+      // });
+      // console.log('Break Start',response4);
     } catch (error) {
-      console.error("Error retrieving employee data:", error);
+      toast.error("Error retrieving employee data:", error);
     }
   };
 
@@ -84,7 +93,7 @@ const AttendanceReport = () => {
             type="date"
             value={start_date}
             onChange={(e) => setStartDate(e.target.value)}
-            className="block md:w-full border-gray-300 dark:border dark:text-lightPrimary text-white dark:bg-navy-900 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+            className="block md:w-full border border-gray-300 dark:border-darktext dark:text-lightPrimary text-white rounded-md py-2 px-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </label>
 
@@ -95,7 +104,7 @@ const AttendanceReport = () => {
             value={end_date}
             
             onChange={(e) => setEndDate(e.target.value)}
-            className="block md:w-full border-gray-300 text-white dark:bg-navy-900 dark:border dark:text-lightPrimary rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+            className="block md:w-full border border-gray-300 dark:border-darktext dark:text-lightPrimary text-white rounded-md py-2 px-3 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           />
         </label>
       </div>

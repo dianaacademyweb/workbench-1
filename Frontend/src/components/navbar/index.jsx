@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Dropdown from "../../components/dropdown/index";
 import { FiAlignJustify } from "react-icons/fi";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsArrowBarUp } from "react-icons/bs";
 import { FiSearch } from "react-icons/fi";
 import { useAuth } from "../../context/AuthContext";
-import avatar from "../../assets/Images/avatars/avatar10.png";
+import { AiFillHome } from "react-icons/ai";
 import { RiMoonFill, RiSunFill } from "react-icons/ri";
 import {
   IoMdNotificationsOutline,
@@ -90,13 +90,21 @@ const Navbar = (props) => {
     <nav className="m-2 top-4 z-40 flex flex-row flex-wrap items-center bg-[#C2CAD0]] justify-between  bg-white/10 p-2 backdrop-blur-xl dark:bg-[#4f4f504d]">
       <div className="ml-[6px]">
         <div className=" w-[224px] pt-1">
-          <Link
+          {/* <Link
             to="/dashboard"
             className="text-lg font-normal text-white hover:underline dark:text-lightPrimary py-1 px-2 text-center  border border-white rounded-3xl "
           >
             Back
+          </Link> */}
+          <Link to="/dashboard">
+          <button
+            type="button"
+            className="inline-block rounded dark:text-lightPrimary bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          >
+             <AiFillHome size={20} />
+          </button>
           </Link>
-          
+
           <Link
             className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-lightPrimary dark:hover:text-white"
             to="/"

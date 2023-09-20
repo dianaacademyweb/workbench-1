@@ -4,7 +4,8 @@ import DashApi from "../../dashboard/auth";
 import Card from "../card/index";
 import { DOAMINAPI } from "../../config/constant";
 import { Link, useNavigate } from "react-router-dom";
-
+import emp from "./emp.json"
+import Lottie from "lottie-react";
 function Employe() {
   const [error, setError] = useState(undefined);
   const [employees, setEmployees] = useState([]);
@@ -58,9 +59,10 @@ function Employe() {
           <p className="pl-3 py-2  pr-2 text-xl  flex">
             <FiSearch className="h-4 w-4 text-lightPrimary dark:text-darktext  align-center flex  " />
           </p>
+          
           <input
             type="text"
-            placeholder="Search employe"
+            placeholder="Search employee"
             className="px-4  py-3 flex h-full w-full rounded-full bg-lightPrimary text-sm font-medium text-white outline-none placeholder:!text-white  dark:bg-navy-900 dark:text-darktext dark:placeholder:!text-darktext sm:w-fit"
           />
         </div>
@@ -138,9 +140,9 @@ function Employe() {
                       </tbody>
                     </table>
                   ) : (
-                    <p className="text-center dark:text-lightPrimary">
-                      Select the employe to show data
-                    </p>
+                    <div className="h-[377px]">
+                     <Lottie animationData={emp}/>
+                    </div>
                   )}
                 </div>
               </div>

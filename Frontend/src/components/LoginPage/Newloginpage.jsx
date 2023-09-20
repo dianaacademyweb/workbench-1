@@ -5,6 +5,8 @@ import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import backgroundimage from '../../assets/Images/loginimage/back.jpg'
 // import sideimage from '../../assets/Images/loginimage/lg.jpg'
 
@@ -31,10 +33,11 @@ function Newloginpage() {
       return navigate("/dashboard");
     }
     if (email === "") {
-      return setError("You must enter your email.");
+    
+      toast.error("You must enter your email")
     }
     if (password === "") {
-      return setError("You must enter your password");
+      toast.error("You must enter your password")
     }
     setButtonText("Signing in");
     try {

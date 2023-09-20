@@ -82,6 +82,35 @@ const AdvancedReport = () => {
     }
   };
 
+  // const handleSubmit = async (employeid) => {
+  //   setSelectedEmployeeId(employeid);
+  //   if (startDate === "") {
+  //     return setError("You must select the start date");
+  //   }
+  //   if (endDate === "") {
+  //     return setError("You must select the end date");
+  //   }
+  //   try {
+  //     let response = await DashApi.breakstart(employeid, {
+  //       params: {
+  //         start_date: startDate,
+  //         end_date: endDate,
+  //       },
+  //     });
+  //     console.log(response);
+  //     setAttendanceReport(response.data);
+      // let response2 = await DashApi.logoutreports(employeid, {
+      //   params: {
+      //     start_date: start_date,
+      //     end_date: end_date,
+      //   },
+      // });
+      // setLogoutreport(response2.data);
+      // console.log(response2);
+  //   } catch (error) {
+  //     console.error("Error retrieving employee data:", error);
+  //   }
+  // };
 
 
 

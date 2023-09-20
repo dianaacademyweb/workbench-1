@@ -76,7 +76,10 @@ import DocsTasks from "./components/docs/DocsTasks";
 import PerformancePage from "./components/performance/PerformancePage";
 import DianaDashboard from "./components/dianaconnect/DianaDashboard";
 
-import Chatting from "./components/dianaconnect/components/Chatting";
+
+import NewChat from "./components/dianaconnect/components/NewChat";
+// import Sidebar from "./components/dianaconnect/components/SideChat";
+
 
 
 function App() {
@@ -123,7 +126,7 @@ function App() {
             <Route element={<DocsTeams/>} path="/docsteams" exact />
             <Route element={<DocsTasks/>} path="/docstasks" exact />
             <Route element={<PerformancePage/>} path="/performancepage" exact />
-            <Route element={<Chatting/>} path="/chat" exact />
+            <Route element={<NewChat/>} path="/chat" exact />
             <Route element={<ClientApp />} path="/docsclientapp" exact />
               <Route element={<DianaDashboard/>} path="/dianaconnect" exact />
               {usertype === "employe" && (

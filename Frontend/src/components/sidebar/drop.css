@@ -1,0 +1,22 @@
+/* CSS classes for dropdown animations */
+.dropdown-entering {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  .dropdown-entered {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  .dropdown-exiting {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+  }
+  
+  .dropdown-exited {
+    display: none;
+  }
+  
