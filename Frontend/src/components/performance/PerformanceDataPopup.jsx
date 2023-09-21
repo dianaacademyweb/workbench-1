@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const PerformanceDataPopup = ({ quarterData, onClose }) => {
   return (
@@ -6,7 +6,6 @@ const PerformanceDataPopup = ({ quarterData, onClose }) => {
       <div className="bg-gray-200 rounded-lg p-8">
         <h2 className="text-2xl font-semibold mb-4">Performance Data</h2>
         <table className="table-auto">
-          
           <tbody>
             {Object.entries(quarterData).map(([key, value]) => (
               <tr key={key}>
@@ -17,7 +16,10 @@ const PerformanceDataPopup = ({ quarterData, onClose }) => {
           </tbody>
         </table>
         <div className="text-center mt-4">
-          <button onClick={onClose} className="bg-blue-500 text-white px-4 py-2 rounded-full">
+          <button
+            onClick={onClose}
+            className="bg-blue-500 text-white px-4 py-2 rounded-full"
+          >
             Close
           </button>
         </div>
